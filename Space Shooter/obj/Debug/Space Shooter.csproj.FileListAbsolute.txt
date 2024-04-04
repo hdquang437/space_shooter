@@ -1,0 +1,10 @@
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\Space Shooter.exe.config
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\Space Shooter.exe
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\Space Shooter.pdb
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space Shooter.csproj.AssemblyReference.cache
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Form1.resources
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Properties.Resources.resources
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space Shooter.csproj.GenerateResource.cache
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space Shooter.csproj.CoreCompileInputs.cache
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space Shooter.exe
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space Shooter.pdb
