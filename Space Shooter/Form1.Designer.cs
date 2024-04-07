@@ -36,18 +36,17 @@
             this.panel_screen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_screen.Location = new System.Drawing.Point(0, 0);
             this.panel_screen.Name = "panel_screen";
-            this.panel_screen.Size = new System.Drawing.Size(1582, 853);
+            this.panel_screen.Size = new System.Drawing.Size(1582, 1053);
             this.panel_screen.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1582, 853);
+            this.ClientSize = new System.Drawing.Size(1582, 1053);
             this.Controls.Add(this.panel_screen);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

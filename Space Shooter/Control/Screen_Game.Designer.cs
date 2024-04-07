@@ -32,10 +32,11 @@
             // 
             // Screen_Game
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.DoubleBuffered = true;
             this.Name = "Screen_Game";
-            this.Size = new System.Drawing.Size(1600, 900);
+            this.Size = new System.Drawing.Size(1600, 1080);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Screen_Game_Paint);
             this.ResumeLayout(false);
 
         }

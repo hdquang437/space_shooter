@@ -1,0 +1,26 @@
+# TEMPLATE
+# id	image_file	columns	rows	frame_Width	frame_Height
+
+
+# PLAYER
+player1	char_Spaceship.png	4	1	80	80
+
+# ENEMY
+meteor_size1	char_Meteor.png	4	1	20	20
+meteor_size2	char_Meteor.png	4	1	60	60
+meteor_size3	char_Meteor.png	4	1	120	120
+meteor_size4	char_Meteor.png	4	1	240	240
+meteor_size5	char_Meteor.png	4	1	320	320
+
+# BULLET
+default_bullet	char_Bullet.png	4	1	40	40
+
+
+# ANIMATION
+break_size1	ani_Break.png	5	1	80	80
+break_size2	ani_Break.png	5	1	120	120
+break_size3	ani_Break.png	5	1	160	160
+break_size4	ani_Break.png	5	1	280	280
+break_size5	ani_Break.png	5	1	360	360
+explo_default_bullet	ani_Explosion.png	5	3	60	60
+explo_player	ani_Explosion.png	5	3	120	120

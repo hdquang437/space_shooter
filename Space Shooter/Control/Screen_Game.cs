@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Space_Shooter.Core;
+using Space_Shooter.Manager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +9,204 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Space_Shooter.Control
 {
     public partial class Screen_Game : UserControl
     {
-        public Screen_Game()
+        public const int REAL_SCREEN_WIDTH = 1500;
+        public const int REAL_SCREEN_HEIGHT = 810;
+
+        static private System.Windows.Forms.Timer _timer = new System.Windows.Forms.Timer();
+        private string difficulty = "easy";
+
+        private int time = 0;
+        int scrollY = 1;
+
+        private Form1 parentForm;
+
+        Bitmap background = new Bitmap(Space_Shooter.Properties.Resources.Background, 1536, 1536);
+
+        public Screen_Game(Form1 parent)
         {
             InitializeComponent();
+
+            parentForm = parent;
+
+            SpriteManager.Initialize();
+            GameDataManager.reset();
+            GameDataManager.player.ToCenterPoint(REAL_SCREEN_WIDTH / 2, REAL_SCREEN_HEIGHT - 200);
+
+            // Temporart use
+            GameDataManager.LoadStage(difficulty, 1);
+            //
+
+            _timer.Interval = 10;
+            _timer.Tick += new EventHandler(TimerOnTick);
+            _timer.Start();
+
+
+            //panel_screen.Paint += new PaintEventHandler(Screen_Game_Paint);
         }
+
+        void TimerOnTick(object obj, EventArgs e)
+        {
+            System.Windows.Forms.Control a = this.Parent;
+            //this.Parent.Size = new Size(REAL_SCREEN_WIDTH, REAL_SCREEN_HEIGHT);
+            //this.ParentForm.Size = new Size(REAL_SCREEN_WIDTH + 20, REAL_SCREEN_HEIGHT + 20);
+            //this.Size = this.Parent.Size;
+            Input.GetKeyStates();
+            Game_Update();
+            Entity_Kill_Process();
+            //this.AutoScaleDimensions = new System.Drawing.SizeF(120, 120);
+            //this.Size = new Size(1280, 720);
+            Refresh();
+           
+        }
+
+        private void Screen_Game_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            //e.ClipRectangle = new Rectangle(0, 0, REAL_SCREEN_HEIGHT, REAL_SCREEN_WIDTH);
+            Draw_Background(g);
+
+            foreach (Game_Bullet obj in GameDataManager.bullets)
+            {
+                obj.Draw_Sprite(g);
+            }
+
+            foreach (Game_Enemy obj in GameDataManager.enemies)
+            {
+                obj.Draw_Sprite(g);
+            }
+
+            Game_Player player = GameDataManager.player;
+            if (player != null)
+                player.Draw_Sprite(g);
+
+            foreach (Game_Animation obj in GameDataManager.animations)
+            {
+                obj.Draw_Sprite(g);
+            }
+        }
+
+        #region GameProcessor
+
+        private void Game_Update()
+        {
+            GameDataManager.Update();
+            Game_Player player = GameDataManager.player;
+            if (player != null)
+                player.Update();
+
+            foreach (Game_Bullet obj in GameDataManager.bullets)
+            {
+                obj.Update();
+            }
+
+            foreach (Game_Enemy obj in GameDataManager.enemies)
+            {
+                obj.Update();
+            }
+        
+            foreach (Game_Animation obj in GameDataManager.animations)
+            {
+                obj.Update_Data();
+            }
+        }
+
+        //void Entity_Process()
+        //{
+        //    foreach (Game_Enemy obj in Game_Database.enemies)
+        //    {
+        //        obj.Update_Data();
+        //        obj.Process_Action();
+        //        obj.kill_flag();
+        //    }
+        //    foreach (Game_Bullet obj in Game_Database.bullets)
+        //    {
+        //        obj.Update_Data();
+        //        obj.Process_Action();
+        //        obj.kill_flag();
+        //    }
+        //    foreach (Game_Animation obj in Game_Database.animations)
+        //    {
+        //        obj.Update_Data();
+        //    }
+        //    if (Game_Database.player != null && !Game_Database.player.die)
+        //    {
+        //        Game_Database.player.Update_Data();
+        //        Game_Database.player.Process_Action();
+        //    }
+        //}
+
+        void Entity_Kill_Process()
+        {
+            //List<Game_Enemy> died_enemies = new List<Game_Enemy>();
+            //List<Game_Bullet> died_bullets = new List<Game_Bullet>();
+
+            foreach (Game_Enemy obj in GameDataManager.enemies.GetRange(0, GameDataManager.enemies.Count).Where(x => x.die))
+            {
+                //died_enemies.Add(obj);
+                obj.Process_BeforeDie();
+            }
+            foreach (Game_Bullet obj in GameDataManager.bullets.GetRange(0, GameDataManager.bullets.Count).Where(x => x.die))
+            {
+                //died_bullets.Add(obj);
+                obj.Process_BeforeDie();
+            }
+            if (GameDataManager.player != null && GameDataManager.player.die)
+            {
+                GameDataManager.player.Process_BeforeDie();
+                GameDataManager.player = null;
+            }
+            GameDataManager.enemies.RemoveAll(obj => obj.die);
+            GameDataManager.bullets.RemoveAll(obj => obj.die);
+            GameDataManager.animations.RemoveAll(obj => obj.die);
+        }
+
+        void Draw_Background(Graphics g)
+        {
+            if (background.Width != (int)g.ClipBounds.Width)
+            {
+                background = new Bitmap(Space_Shooter.Properties.Resources.Background, (int)g.ClipBounds.Width, (int)g.ClipBounds.Width);
+            }
+            if (scrollY < background.Height)
+            {
+                scrollY++;
+            }
+            else
+            {
+                scrollY = 1;
+            }
+            
+            g.DrawImage(background, 0, 0, new Rectangle(0, background.Height - scrollY - 1, background.Width, scrollY), GraphicsUnit.Pixel);
+            if (scrollY < Height)
+                g.DrawImage(background, 0, scrollY, new Rectangle(0, 0, background.Width, background.Height - scrollY), GraphicsUnit.Pixel);
+        }
+
+        void GameData_Process()
+        {
+            Game_Player player = GameDataManager.player;
+            //if (player != null)
+            //{
+            //    Ammo.Maximum = player.maxAmmo;
+            //    Ammo.Value = player.Ammo;
+            //}
+            //else
+            //{
+            //    Ammo.Maximum = 1;
+            //    Ammo.Value = 1;
+            //}
+            //label_score.Text = "SCORE: " + score;
+            //Ammo.Refresh();
+            //label_score.Refresh();
+            //label_ammo.Refresh();
+        }
+
+        #endregion
+
+
     }
 }

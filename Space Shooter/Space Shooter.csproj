@@ -45,8 +45,27 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\Screen_Game.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Screen_Game.Designer.cs">
+      <DependentUpon>Screen_Game.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Bullet\Bullet_DefaultBullet.cs" />
+    <Compile Include="Core\Circle.cs" />
+    <Compile Include="Core\Enemy\Enemy_Meteor.cs" />
+    <Compile Include="Core\Game_Animation.cs" />
+    <Compile Include="Core\Game_Bullet.cs" />
+    <Compile Include="Core\Game_CollidableObject.cs" />
+    <Compile Include="Core\Game_Collision.cs" />
+    <Compile Include="Core\Game_Enemy.cs" />
+    <Compile Include="Core\Game_Object.cs" />
+    <Compile Include="Core\Game_Player.cs" />
+    <Compile Include="Core\Game_SpawnableEnemy.cs" />
+    <Compile Include="Core\Game_Sprite.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,8 +73,16 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager\AudioManager.cs" />
+    <Compile Include="Manager\Factory.cs" />
+    <Compile Include="Manager\GameDataManager.cs" />
+    <Compile Include="Manager\Input.cs" />
+    <Compile Include="Manager\ObjectID.cs" />
+    <Compile Include="Manager\SpriteManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Control\Screen_Game.resx">
+      <DependentUpon>Screen_Game.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -67,6 +94,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -81,16 +109,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Control\" />
-    <Folder Include="Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="audio\bgm\bgm1.wav" />
     <Content Include="audio\se\Break.wav" />
     <Content Include="audio\se\Explosion1.wav" />
     <Content Include="audio\se\Explosion2.wav" />
     <Content Include="audio\se\Laser1.wav" />
+    <None Include="Resources\char_Spaceship.png" />
+    <None Include="Resources\char_Meteor.png" />
+    <None Include="Resources\char_Bullet.png" />
+    <None Include="Resources\Background.png" />
+    <None Include="Resources\ani_Explosion.png" />
+    <None Include="Resources\ani_Break.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,25 +13,29 @@ namespace Space_Shooter
 {
     public partial class Form1 : Form
     {
-        static private System.Windows.Forms.Timer _timer = new System.Windows.Forms.Timer();
 
         public Form1()
         {
             InitializeComponent();
-            _timer.Interval = 1000;
-            _timer.Tick += new EventHandler(TimerOnTick);
-            _timer.Start();
+            Input.GetKeyStates();
+            ToCenter();
+        }
+
+        public void ToCenter()
+        {
+            StartPosition = FormStartPosition.Manual;
+            Left = (SystemInformation.VirtualScreen.Width - Width) / 2;
+            Top = (SystemInformation.VirtualScreen.Height - Height) / 2 - 50;
+        }
+
+        public bool IsCenter()
+        {
+            return Left == (SystemInformation.VirtualScreen.Width - Width) / 2 && Top == (SystemInformation.VirtualScreen.Height - Height) / 2;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            AudioManager.PlayBGM("bgm1.wav");
-
-        }
-
-        void TimerOnTick(object obj, EventArgs e)
-        {
-            AudioManager.PlaySE("Laser1.wav");
+            panel_screen.Controls.Add(new Control.Screen_Game(this));
         }
     }
 }
