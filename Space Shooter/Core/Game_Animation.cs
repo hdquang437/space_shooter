@@ -40,7 +40,7 @@ namespace Space_Shooter.Core
                 else
                 {
                     _frame_CD_timer = _frame_CD;
-                    if (_index < _sprite.TotalFrame)
+                    if (_index < _sprite.TotalFrame - 1)
                     {
                         _index++;
                     }

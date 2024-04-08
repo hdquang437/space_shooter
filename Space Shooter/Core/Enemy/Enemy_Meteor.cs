@@ -1,6 +1,7 @@
 ﻿using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -135,18 +136,18 @@ namespace Space_Shooter.Core.Enemy
                 //{
                 //    Game_Database.score += _reward;
                 //}
-                int offset = 20;
-                Factory.Create_ani_Break("size" + size, x - offset, y - offset);
+                Point center = Center;
+
+                Game_Animation breakAni = Factory.Create_ani_Break("size" + size, x, y);
+                breakAni.ToCenterPoint(center.X, center.Y);
                 AudioManager.PlaySE("Break.wav");
                 // Spawn small meteors
-                
-                int centerX = x + Width / 2;
-                int centerY = y + Height / 2;
+
 
                 foreach (MeteorMinion minion in minions)
                 {
-                    Enemy_Meteor child = Factory.Create_Meteor(minion.size, centerX, centerY, minion.velocityX, minion.velocityY, minion.speed);
-                    child.ToCenterPoint(centerX, centerY);
+                    Enemy_Meteor child = Factory.Create_Meteor(minion.size, center.X, center.Y, minion.velocityX, minion.velocityY, minion.speed);
+                    child.ToCenterPoint(center.X, center.Y);
                 }
             }
         }

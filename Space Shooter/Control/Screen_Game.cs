@@ -35,6 +35,7 @@ namespace Space_Shooter.Control
             parentForm = parent;
 
             SpriteManager.Initialize();
+
             GameDataManager.reset();
             GameDataManager.player.ToCenterPoint(REAL_SCREEN_WIDTH / 2, REAL_SCREEN_HEIGHT - 200);
 
@@ -61,8 +62,8 @@ namespace Space_Shooter.Control
             Entity_Kill_Process();
             //this.AutoScaleDimensions = new System.Drawing.SizeF(120, 120);
             //this.Size = new Size(1280, 720);
+            Update_GUI();
             Refresh();
-           
         }
 
         private void Screen_Game_Paint(object sender, PaintEventArgs e)
@@ -116,31 +117,6 @@ namespace Space_Shooter.Control
             }
         }
 
-        //void Entity_Process()
-        //{
-        //    foreach (Game_Enemy obj in Game_Database.enemies)
-        //    {
-        //        obj.Update_Data();
-        //        obj.Process_Action();
-        //        obj.kill_flag();
-        //    }
-        //    foreach (Game_Bullet obj in Game_Database.bullets)
-        //    {
-        //        obj.Update_Data();
-        //        obj.Process_Action();
-        //        obj.kill_flag();
-        //    }
-        //    foreach (Game_Animation obj in Game_Database.animations)
-        //    {
-        //        obj.Update_Data();
-        //    }
-        //    if (Game_Database.player != null && !Game_Database.player.die)
-        //    {
-        //        Game_Database.player.Update_Data();
-        //        Game_Database.player.Process_Action();
-        //    }
-        //}
-
         void Entity_Kill_Process()
         {
             //List<Game_Enemy> died_enemies = new List<Game_Enemy>();
@@ -168,7 +144,7 @@ namespace Space_Shooter.Control
 
         void Draw_Background(Graphics g)
         {
-            if (background.Width != (int)g.ClipBounds.Width)
+            if (background.Width != (int)g.ClipBounds.Width && Math.Abs(background.Width - g.ClipBounds.Width) < 2000)
             {
                 background = new Bitmap(Space_Shooter.Properties.Resources.Background, (int)g.ClipBounds.Width, (int)g.ClipBounds.Width);
             }
@@ -186,19 +162,29 @@ namespace Space_Shooter.Control
                 g.DrawImage(background, 0, scrollY, new Rectangle(0, 0, background.Width, background.Height - scrollY), GraphicsUnit.Pixel);
         }
 
-        void GameData_Process()
+        void Update_GUI()
         {
             Game_Player player = GameDataManager.player;
-            //if (player != null)
-            //{
-            //    Ammo.Maximum = player.maxAmmo;
-            //    Ammo.Value = player.Ammo;
-            //}
-            //else
-            //{
-            //    Ammo.Maximum = 1;
-            //    Ammo.Value = 1;
-            //}
+            if (player != null)
+            {
+                valueBar_HP.Maximum = player.maxHP;
+                valueBar_HP.Value = player.HP;
+            }
+            else
+            {
+                valueBar_HP.Maximum = 1;
+                valueBar_HP.Value = 0;
+            }
+            if (player != null)
+            {
+                valueBar_Ammo.Maximum = player.maxAmmo;
+                valueBar_Ammo.Value = player.Ammo;
+            }
+            else
+            {
+                valueBar_Ammo.Maximum = 1;
+                valueBar_Ammo.Value = 0;
+            }
             //label_score.Text = "SCORE: " + score;
             //Ammo.Refresh();
             //label_score.Refresh();

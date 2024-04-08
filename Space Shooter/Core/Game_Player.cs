@@ -13,8 +13,6 @@ namespace Space_Shooter.Core
 {
     internal class Game_Player : Game_CollidableObject
     {
-        public const int WIDTH = 60;
-        public const int HEIGHT = 60;
 
         int _attack_cd = 0;
         int _attack_cd_timer = 0;
@@ -25,6 +23,9 @@ namespace Space_Shooter.Core
         int _Ammo_CD_timer = 0;
 
         int _maxHP = 10;
+
+        public int maxHP {  get { return _maxHP; } }
+        public int HP { get { return _hp >= 0 ? _hp : 0; } }
 
         public int maxAmmo
         {
@@ -39,10 +40,10 @@ namespace Space_Shooter.Core
             : base(sprite, posX, posY)
         {
             // Data
-            _Width = WIDTH;
-            _Height = HEIGHT;
+            _Width = sprite.Width;
+            _Height = sprite.Height;
             _collidable = true;
-            _r = 30;
+            _r = sprite.Width / 2;
             _MoveSpeed = 4;
             _attack_cd = 10;
             _maxAmmo = 10;
@@ -87,7 +88,9 @@ namespace Space_Shooter.Core
             }
             if (state.shoot && _attack_cd_timer == 0 && _Ammo > 0)
             {
-                Factory.Create_DefaultBullet(this, x + Width / 2 - Bullet_DefaultBullet.WIDTH / 2, y - Height / 2);
+                Point center = Center;
+                Game_CollidableObject obj =  Factory.Create_DefaultBullet(this, x, y + Height / 4);
+                obj.ToCenterPoint(center.X, center.Y + Height / 4);
                 _attack_cd_timer = _attack_cd;
                 _Ammo--;
                 AudioManager.PlaySE("Laser1.wav");
@@ -159,8 +162,9 @@ namespace Space_Shooter.Core
             base.Process_BeforeDie();
             if (_die_ani)
             {
-                int offset = 20;
-                Factory.Create_ani_Explosion("player", x - offset, y - offset);
+                Point center = Center;
+                Game_Animation ani = Factory.Create_ani_Explosion("player", x, y);
+                ani.ToCenterPoint(center.X, center.Y);
                 AudioManager.PlaySE("Explosion2.wav");
             }
         }

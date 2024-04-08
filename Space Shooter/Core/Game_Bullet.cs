@@ -55,8 +55,9 @@ namespace Space_Shooter.Core
             base.Process_BeforeDie();
             if (_die_ani)
             {
-                int offset = Width * 3 / 4;
-                Factory.Create_ani_Explosion("default_bullet", x - offset, y - offset);
+                Point center = Center;
+                Game_Animation animation = Factory.Create_ani_Explosion("default_bullet", x, y);
+                animation.ToCenterPoint(Center.X, Center.Y);
                 AudioManager.PlaySE("Explosion1.wav");
             }
         }

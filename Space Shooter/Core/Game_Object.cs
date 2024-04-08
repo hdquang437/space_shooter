@@ -49,6 +49,12 @@ namespace Space_Shooter.Core
         {
             get { return new Rectangle(_x, _y, Width, Height); }
         }
+
+        public Point Center
+        {
+            get { return new Point(_x + Width / 2, _y + Height / 2); }
+        }
+
         public Circle Cir_Hitbox
         {
             get { return new Circle(_x + Width / 2, _y + Height / 2, _r); }
