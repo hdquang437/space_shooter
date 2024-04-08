@@ -41,13 +41,14 @@ namespace Space_Shooter.Core.Enemy
             this.velocityX = vX;
             this.velocityY = vY;
             this.size = size;
-            this._MoveSpeed = speed;
+            this._MoveSpeed = Math.Max(speed, 2); // Minimum speed is 2
             _frame_CD = 12;
             _collideDamage = 100;
             switch (size)
             {
                 case 1:
                     _hp = 1;
+                    _collideDamage = 1;
                     break;
                 case 2:
                     _hp = 2;
@@ -94,7 +95,7 @@ namespace Space_Shooter.Core.Enemy
                 random = new Random(Guid.NewGuid().GetHashCode());
                 int vY = random.Next(10, 101);
                 random = new Random(Guid.NewGuid().GetHashCode());
-                int spd = random.Next(_MoveSpeed, _MoveSpeed + 5 - size);
+                int spd = random.Next(_MoveSpeed, _MoveSpeed + Math.Max(5 - size, 1));
                 MeteorMinion minion = new MeteorMinion(size, vX, vY, spd);
                 list.Add(minion);
             }

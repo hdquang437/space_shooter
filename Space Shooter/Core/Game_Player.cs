@@ -43,6 +43,7 @@ namespace Space_Shooter.Core
             _Width = sprite.Width;
             _Height = sprite.Height;
             _collidable = true;
+            _collideDamage = 1;
             _r = sprite.Width / 2;
             _MoveSpeed = 4;
             _attack_cd = 10;
