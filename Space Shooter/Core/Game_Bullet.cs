@@ -15,7 +15,7 @@ namespace Space_Shooter.Core
 
         public Game_Object Owner {  get { return owner; } }
 
-        public Game_Bullet(Game_Object owner, Game_Sprite sprite, int x, int y, int speed = 1)
+        public Game_Bullet(Game_Object owner, Game_Sprite sprite, float x, float y, float speed = 1)
             : base (sprite, x, y)
         {
             this.owner = owner;
@@ -55,10 +55,10 @@ namespace Space_Shooter.Core
             base.Process_BeforeDie();
             if (_die_ani)
             {
-                Point center = Center;
+                PointF center = Center;
                 Game_Animation animation = Factory.Create_ani_Explosion("default_bullet", x, y);
                 animation.ToCenterPoint(Center.X, Center.Y);
-                AudioManager.PlaySE("Explosion1.wav");
+                AudioManager.PlaySE(SE.Explosion1);
             }
         }
     }

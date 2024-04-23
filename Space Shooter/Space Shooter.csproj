@@ -78,6 +78,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manager\AudioID.cs" />
     <Compile Include="Manager\AudioManager.cs" />
     <Compile Include="Manager\Factory.cs" />
     <Compile Include="Manager\GameDataManager.cs" />

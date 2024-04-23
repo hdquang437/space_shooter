@@ -13,9 +13,9 @@ namespace Space_Shooter.Core
             
         #region Attributes
         // Logical
-        protected int _x = 0;
-        protected int _y = 0;
-        protected int _MoveSpeed = 1;
+        protected float _x = 0;
+        protected float _y = 0;
+        protected float _MoveSpeed = 1;
         protected int _Width = 0;
         protected int _Height = 0;
         protected bool _IgnoreWall = false;
@@ -30,15 +30,15 @@ namespace Space_Shooter.Core
         #endregion
 
         #region Properties
-        public int x
+        public float x
         { get { return _x; } set { _x = value; } }
-        public int y
+        public float y
         { get { return _y; } set { _y = value; } }
-        public int MoveSpeed
+        public float MoveSpeed
         { get { return _MoveSpeed; } }
-        public int Width
+        public float Width
         { get { return _Width; } }
-        public int Height
+        public float Height
         { get { return _Height; } }
         public bool die
         {
@@ -47,17 +47,17 @@ namespace Space_Shooter.Core
         }
         public Rectangle Hitbox
         {
-            get { return new Rectangle(_x, _y, Width, Height); }
+            get { return new Rectangle((int)Math.Round(_x), (int)Math.Round(_y), (int)Width, (int)Height); }
         }
 
-        public Point Center
+        public PointF Center
         {
-            get { return new Point(_x + Width / 2, _y + Height / 2); }
+            get { return new PointF(_x + Width / 2.0f, _y + Height / 2.0f); }
         }
 
         public Circle Cir_Hitbox
         {
-            get { return new Circle(_x + Width / 2, _y + Height / 2, _r); }
+            get { return new Circle(x + Width / 2.0f, y + Height / 2.0f, _r); }
         }
         #endregion
 
@@ -88,7 +88,7 @@ namespace Space_Shooter.Core
         #region Methods
         private void fix_stuck()
         {
-            Rectangle test_stuck = Get_Collided_Wall(Hitbox);
+            RectangleF test_stuck = Get_Collided_Wall(Hitbox);
             if (!test_stuck.IsEmpty)
             {
                 if (test_stuck == Wall_D)
@@ -110,7 +110,7 @@ namespace Space_Shooter.Core
             }
         }
 
-        static public Rectangle Get_Collided_Wall(Rectangle test)
+        static public RectangleF Get_Collided_Wall(RectangleF test)
         {
             if (test.IntersectsWith(Wall_U))
             {
@@ -128,18 +128,19 @@ namespace Space_Shooter.Core
             {
                 return Wall_R;
             }
-            return new Rectangle();
+            return RectangleF.Empty;
         }
 
         // Return Empty Rectangle if can move
         // Return Best move Rectangle
-        public Rectangle test_move(int pos_x, int pos_y)
+        public RectangleF test_move(float pos_x, float pos_y)
         {
-            int base_moveX = pos_x - Hitbox.X;
-            int base_moveY = pos_y - Hitbox.Y;
-            int moveX = base_moveX;
-            int moveY = base_moveY;
-            Rectangle checkBox = new Rectangle(pos_x, pos_y, Hitbox.Width, Hitbox.Height);
+
+            float base_moveX = pos_x - Hitbox.X;
+            float base_moveY = pos_y - Hitbox.Y;
+            float moveX = base_moveX;
+            float moveY = base_moveY;
+            RectangleF checkBox = new RectangleF(pos_x, pos_y, Hitbox.Width, Hitbox.Height);
             if (_IgnoreWall)
             {
                 return checkBox;
@@ -158,7 +159,7 @@ namespace Space_Shooter.Core
                 else
                 {
                     // not zero
-                    double scale = Math.Abs(base_moveX / base_moveY);
+                    float scale = Math.Abs(base_moveX / base_moveY);
                     if (scale >= 1)
                     {
                         moveX -= (int)scale * (base_moveX >= 0 ? 1 : -1);
@@ -187,43 +188,43 @@ namespace Space_Shooter.Core
         #region Move Methods
         public void Move_Up()
         {
-            Rectangle BestMove = test_move(x, y - MoveSpeed);
+            RectangleF BestMove = test_move(x, y - MoveSpeed);
             x = BestMove.X;
             y = BestMove.Y;
         }
 
         public void Move_Down()
         {
-            Rectangle BestMove = test_move(x, y + MoveSpeed);
+            RectangleF BestMove = test_move(x, y + MoveSpeed);
             x = BestMove.X;
             y = BestMove.Y;
         }
 
         public void Move_Left()
         {
-            Rectangle BestMove = test_move(x - MoveSpeed, y);
+            RectangleF BestMove = test_move(x - MoveSpeed, y);
             x = BestMove.X;
             y = BestMove.Y;
         }
 
         public void Move_Right()
         {
-            Rectangle BestMove = test_move(x + MoveSpeed, y);
+            RectangleF BestMove = test_move(x + MoveSpeed, y);
             x = BestMove.X;
             y = BestMove.Y;
         }
 
-        public void Move_Vector(int vec_x, int vec_y)
+        public void Move_Vector(float vec_x, float vec_y)
         {
             double rad = Math.Atan(vec_y * 1.0 / vec_x);
-            int moveY = (int)(MoveSpeed * Math.Cos(rad));
-            int moveX = (int)(MoveSpeed * Math.Sin(rad));
-            Rectangle BestMove = test_move(x + moveX, y + moveY);
+            float moveY = (float)(MoveSpeed * Math.Cos(rad));
+            float moveX = (float)(MoveSpeed * Math.Sin(rad));
+            RectangleF BestMove = test_move(x + moveX, y + moveY);
             x = BestMove.X;
             y = BestMove.Y;
         }
 
-        public void ToCenterPoint(int X, int Y)
+        public void ToCenterPoint(float X, float Y)
         {
             x = X - _Width/2;
             y = Y - _Height/2;
@@ -234,7 +235,7 @@ namespace Space_Shooter.Core
         virtual public void Draw_Sprite(Graphics g)
         {
             if (!_die)
-                _sprite.Render(g, _x, _y, _index);
+                _sprite.Render(g, (int)_x, (int)_y, _index);
         }
         #endregion
 

@@ -12,7 +12,7 @@ namespace Space_Shooter.Core.Bullet
     {
         public const int EXPLOSION_SIZE = 30;
 
-        public Bullet_DefaultBullet(Game_Object owner, Game_Sprite sprite, int x, int y, int speed = 7)
+        public Bullet_DefaultBullet(Game_Object owner, Game_Sprite sprite, float x, float y, float speed = 7)
              : base(owner, sprite, x, y, speed)
         {
             _Width = sprite.Width;

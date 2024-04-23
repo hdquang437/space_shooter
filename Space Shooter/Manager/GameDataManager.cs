@@ -124,32 +124,31 @@ namespace Space_Shooter.Manager
                         line = sr.ReadLine();
                         continue;
                     }
-                    int key = Int32.Parse(parse[0]);
-                    int x = Int32.Parse(parse[2]);
-                    int y = Int32.Parse(parse[3]);
+                    int key = int.Parse(parse[0]);
+                    float x = float.Parse(parse[2]);
+                    float y = float.Parse(parse[3]);
 
                     Game_Object obj = null;
                     switch (parse[1])
                     {
                         case ObjectID.METEOR_1:
-                            obj = Factory.Create_Meteor(1, x, y, Int32.Parse(parse[4]),Int32.Parse(parse[5]), Int32.Parse(parse[6]), false);
+                            obj = Factory.Create_Meteor(1, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
                             break;
                         case ObjectID.METEOR_2:
-                            obj = Factory.Create_Meteor(2, x, y, Int32.Parse(parse[4]), Int32.Parse(parse[5]), Int32.Parse(parse[6]), false);
+                            obj = Factory.Create_Meteor(2, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
                             break;
                         case ObjectID.METEOR_3:
-                            obj = Factory.Create_Meteor(3, x, y, Int32.Parse(parse[4]), Int32.Parse(parse[5]), Int32.Parse(parse[6]), false);
+                            obj = Factory.Create_Meteor(3, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
                             break;
                         case ObjectID.METEOR_4:
-                            obj = Factory.Create_Meteor(4, x, y, Int32.Parse(parse[4]), Int32.Parse(parse[5]), Int32.Parse(parse[6]), false);
+                            obj = Factory.Create_Meteor(4, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
                             break;
                         case ObjectID.METEOR_5:
-                            obj = Factory.Create_Meteor(5, x, y, Int32.Parse(parse[4]), Int32.Parse(parse[5]), Int32.Parse(parse[6]), false);
+                            obj = Factory.Create_Meteor(5, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
                             break;
                         default:
                             Console.WriteLine("Unknown ID in line " + lineCount);
                             continue;
-                            break;
                     }
                     if (stageObjects.ContainsKey(key))
                     {

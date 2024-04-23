@@ -14,7 +14,7 @@ namespace Space_Shooter.Core
         protected int _reward = 1;
         public int Reward { get { return _reward; } }
 
-        public Game_Enemy(Game_Sprite sprite, int x, int y)
+        public Game_Enemy(Game_Sprite sprite, float x, float y)
             : base(sprite, x, y)
         {
             _IgnoreWall = true;

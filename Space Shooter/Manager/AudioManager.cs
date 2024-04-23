@@ -6,6 +6,7 @@ using System.Windows.Media.Media3D;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Space_Shooter.Manager
 {
@@ -28,6 +29,12 @@ namespace Space_Shooter.Manager
         }
 
         static public void PlaySE(string file)
+        {
+            var t = new Thread(() => ThreadPlaySE(file));
+            t.Start();
+        }
+
+        static private void ThreadPlaySE(string file)
         {
             string link = @"audio\se\" + file;
             string alias = @"sound" + _alias;

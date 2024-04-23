@@ -15,8 +15,8 @@ namespace Space_Shooter.Control
 {
     public partial class Screen_Game : UserControl
     {
-        public const int REAL_SCREEN_WIDTH = 1500;
-        public const int REAL_SCREEN_HEIGHT = 810;
+        public const int REAL_SCREEN_WIDTH = 1540;
+        public const int REAL_SCREEN_HEIGHT = 830;
 
         static private System.Windows.Forms.Timer _timer = new System.Windows.Forms.Timer();
         private string difficulty = "easy";
@@ -27,6 +27,14 @@ namespace Space_Shooter.Control
         private Form1 parentForm;
 
         Bitmap background = new Bitmap(Space_Shooter.Properties.Resources.Background, 1536, 1536);
+
+        #region FPS caculator params
+
+        DateTime _lastTime; // marks the beginning the measurement began
+        int _framesRendered; // an increasing count
+        int _fps;
+
+        #endregion
 
         public Screen_Game(Form1 parent)
         {
@@ -96,10 +104,10 @@ namespace Space_Shooter.Control
 
         private void Game_Update()
         {
+            FPS_Update();
             GameDataManager.Update();
             Game_Player player = GameDataManager.player;
-            if (player != null)
-                player.Update();
+            player?.Update();
 
             foreach (Game_Bullet obj in GameDataManager.bullets)
             {
@@ -193,6 +201,23 @@ namespace Space_Shooter.Control
 
         #endregion
 
+        #region FPS Caculator methods
+        
+        private void FPS_Update()
+        {
+            _framesRendered++;
 
+            if ((DateTime.Now - _lastTime).TotalSeconds >= 1)
+            {
+                // one second has elapsed 
+
+                _fps = _framesRendered;
+                _framesRendered = 0;
+                _lastTime = DateTime.Now;
+            }
+            label_FPS.Text = _fps.ToString() + " fps";
+        }
+
+        #endregion
     }
 }

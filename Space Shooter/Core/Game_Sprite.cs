@@ -32,14 +32,14 @@ namespace Space_Shooter.Core
             _sprite = new Bitmap(image, width * _max_frameX, height * _max_frameY);
         }
 
-        public void Render(Graphics g, int x, int y, int index)
+        public void Render(Graphics g, float x, float y, int index)
         {
-            index = index % TotalFrame;
+            index %= TotalFrame;
             int curFrameColumn = index % _max_frameX;
             int curFrameRow = index / _max_frameX;
             int height = _sprite.Height / _max_frameY;
             int width = _sprite.Width / _max_frameX;
-            g.DrawImage(_sprite, x, y, new Rectangle(curFrameColumn * width, curFrameRow * height, width, height), GraphicsUnit.Pixel);
+            g.DrawImage(_sprite, (int)x, (int)y, new Rectangle(curFrameColumn * width, curFrameRow * height, width, height), GraphicsUnit.Pixel);
         }
     }
 }

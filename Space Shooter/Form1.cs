@@ -19,6 +19,7 @@ namespace Space_Shooter
             InitializeComponent();
             Input.GetKeyStates();
             ToCenter();
+            AudioManager.PlayBGM(BGM.bgm1);
         }
 
         public void ToCenter()

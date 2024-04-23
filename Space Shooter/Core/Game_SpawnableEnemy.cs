@@ -9,7 +9,7 @@ namespace Space_Shooter.Core
     internal class Game_SpawnableEnemy<T> : Game_Enemy
     {
 
-        public Game_SpawnableEnemy(Game_Sprite sprite, int x, int y)
+        public Game_SpawnableEnemy(Game_Sprite sprite, float x, float y)
         : base(sprite,x, y)
         {
 

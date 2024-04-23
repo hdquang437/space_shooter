@@ -8,11 +8,11 @@ namespace Space_Shooter.Core
 {
     internal class Circle
     {
-        public int X;
-        public int Y;
-        public int R;
+        public float X;
+        public float Y;
+        public float R;
 
-        public Circle(int x, int y, int r)
+        public Circle(float x, float y, float r)
         {
             X = x;
             Y = y;
@@ -21,8 +21,8 @@ namespace Space_Shooter.Core
 
         public bool IntersectsWith(Circle target)
         {
-            int vectorX = X - target.X;
-            int vectorY = Y - target.Y;
+            float vectorX = X - target.X;
+            float vectorY = Y - target.Y;
             double d = Math.Sqrt(vectorX * vectorX + vectorY * vectorY);
             return (d < R + target.R);
         }

@@ -1,13 +1,13 @@
 # spawn_time	id	position_x	position_y	[sup Param]
 
 # ENEMY
-300	meteor_3	400	-119	1	0	3
-400	meteor_2	600	-59	1	0	4
-700	meteor_4	700	-239	1	0	2
-1200	meteor_4	550	-239	1	0	2
-1600	meteor_5	350	-319	1	0	1
-1750	meteor_4	820	-239	1	0	2
-1900	meteor_3	260	-119	1	0	3
-2000	meteor_5	420	-319	1	0	1
+300	meteor_3	400	-119	1	0	2
+400	meteor_2	600	-59	1	0	3
+700	meteor_4	700	-239	1	0	1
+800	meteor_4	550	-239	1	0	1
+900	meteor_5	350	-319	1	0	0.5
+1000	meteor_4	820	-239	1	0	1
+1100	meteor_3	260	-119	1	0	2
+1200	meteor_5	420	-319	1	0	0.5
 
 # BACKGROUND OBJECT

@@ -26,7 +26,7 @@ namespace Space_Shooter.Core
         public int CollideDamage { get { return _collideDamage; } }
         public int Team { get { return _team; } }
 
-        public Game_CollidableObject(Game_Sprite sprite , int x, int y)
+        public Game_CollidableObject(Game_Sprite sprite , float x, float y)
             : base()
         {
             _sprite = sprite;
@@ -73,10 +73,10 @@ namespace Space_Shooter.Core
 
         public void Test_move_over_screen()
         {
-            Rectangle collided_wall = Get_Collided_Wall(Hitbox);
+            RectangleF collided_wall = Get_Collided_Wall(Hitbox);
             if (!collided_wall.IsEmpty)
             {
-                Rectangle test = Hitbox;
+                RectangleF test = Hitbox;
                 test.Intersect(collided_wall);
                 if (test == Hitbox)
                 {

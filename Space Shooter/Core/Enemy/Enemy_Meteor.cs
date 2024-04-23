@@ -11,10 +11,10 @@ namespace Space_Shooter.Core.Enemy
     struct MeteorMinion
     {
         public int size;
-        public int velocityX;
-        public int velocityY;
-        public int speed;
-        public MeteorMinion(int size, int velocityX, int velocityY, int speed)
+        public float velocityX;
+        public float velocityY;
+        public float speed;
+        public MeteorMinion(int size, float velocityX, float velocityY, float speed)
         {
             this.size = size;
             this.velocityX = velocityX;
@@ -31,17 +31,17 @@ namespace Space_Shooter.Core.Enemy
         public const int SIZE_4 = 320;
         public const int SIZE_5 = 540;
 
-        private int velocityX;
-        private int velocityY;
+        private float velocityX;
+        private float velocityY;
         private int size;
 
-        public Enemy_Meteor(Game_Sprite sprite, int x, int y, int size, int vX = 0, int vY = 1, int speed = 5)
+        public Enemy_Meteor(Game_Sprite sprite, float x, float y, int size, float vX = 0, float vY = 1, float speed = 5)
             : base(sprite, x, y)
         {
             this.velocityX = vX;
             this.velocityY = vY;
             this.size = size;
-            this._MoveSpeed = Math.Max(speed, 2); // Minimum speed is 2
+            this._MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
             _frame_CD = 12;
             _collideDamage = 100;
             switch (size)
@@ -95,7 +95,7 @@ namespace Space_Shooter.Core.Enemy
                 random = new Random(Guid.NewGuid().GetHashCode());
                 int vY = random.Next(10, 101);
                 random = new Random(Guid.NewGuid().GetHashCode());
-                int spd = random.Next(_MoveSpeed, _MoveSpeed + Math.Max(5 - size, 1));
+                float spd = random.Next((int)(_MoveSpeed * 110), (int)(_MoveSpeed * 150)) / 100f + size * 0.2f;
                 MeteorMinion minion = new MeteorMinion(size, vX, vY, spd);
                 list.Add(minion);
             }
@@ -137,11 +137,11 @@ namespace Space_Shooter.Core.Enemy
                 //{
                 //    Game_Database.score += _reward;
                 //}
-                Point center = Center;
+                PointF center = Center;
 
                 Game_Animation breakAni = Factory.Create_ani_Break("size" + size, x, y);
                 breakAni.ToCenterPoint(center.X, center.Y);
-                AudioManager.PlaySE("Break.wav");
+                AudioManager.PlaySE(SE.Break);
                 // Spawn small meteors
 
 

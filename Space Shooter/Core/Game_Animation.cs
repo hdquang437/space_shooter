@@ -16,7 +16,7 @@ namespace Space_Shooter.Core
         //    get { return new Rectangle(_x, _y, _size, _size); }
         //}
 
-        public Game_Animation(Game_Sprite sprite, int x, int y)
+        public Game_Animation(Game_Sprite sprite, float x, float y)
         {
             _die = false;
             _index = 0;

@@ -36,7 +36,7 @@ namespace Space_Shooter.Core
             get { return _Ammo; }
         }
 
-        public Game_Player(Game_Sprite sprite, int posX = 0, int posY = 0)
+        public Game_Player(Game_Sprite sprite, float posX = 0, float posY = 0)
             : base(sprite, posX, posY)
         {
             // Data
@@ -89,12 +89,12 @@ namespace Space_Shooter.Core
             }
             if (state.shoot && _attack_cd_timer == 0 && _Ammo > 0)
             {
-                Point center = Center;
+                PointF center = Center;
                 Game_CollidableObject obj =  Factory.Create_DefaultBullet(this, x, y + Height / 4);
                 obj.ToCenterPoint(center.X, center.Y + Height / 4);
                 _attack_cd_timer = _attack_cd;
                 _Ammo--;
-                AudioManager.PlaySE("Laser1.wav");
+                AudioManager.PlaySE(SE.Laser1);
             }
         }
 
@@ -163,10 +163,10 @@ namespace Space_Shooter.Core
             base.Process_BeforeDie();
             if (_die_ani)
             {
-                Point center = Center;
+                PointF center = Center;
                 Game_Animation ani = Factory.Create_ani_Explosion("player", x, y);
                 ani.ToCenterPoint(center.X, center.Y);
-                AudioManager.PlaySE("Explosion2.wav");
+                AudioManager.PlaySE(SE.Explosion2);
             }
         }
     }
