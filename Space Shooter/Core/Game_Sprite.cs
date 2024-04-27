@@ -20,7 +20,7 @@ namespace Space_Shooter.Core
 
         public int TotalFrame
         {
-            get { return _totalFrame <= 0 ? _max_frameX * _max_frameY - 1 : _totalFrame; }
+            get { return _totalFrame <= 0 ? _max_frameX * _max_frameY : _totalFrame; }
         }
 
         public Game_Sprite(Bitmap image, int frameX, int frameY, int width, int height, int maxIndex = -1)

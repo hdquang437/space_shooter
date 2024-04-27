@@ -1,6 +1,7 @@
 ﻿using Space_Shooter.Core;
 using Space_Shooter.Core.Bullet;
 using Space_Shooter.Core.Enemy;
+using Space_Shooter.Core.Weapon;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +19,7 @@ namespace Space_Shooter.Manager
             return new Game_Player(SpriteManager.Sprites["player1"], x, y);
         }
 
-        public static Bullet_DefaultBullet Create_DefaultBullet(Game_Object owner, float x, float y)
-        {
-            Bullet_DefaultBullet bullet = new Bullet_DefaultBullet(owner, SpriteManager.Sprites["default_bullet"], x, y);
-            GameDataManager.bullets.Add(bullet);
-            return bullet;
-        }
+
 
         public static Enemy_Meteor Create_Meteor(int size, float x, float y, float vx = 0, float vy = 1, float speed = 6, bool AddToData = true)
         {
@@ -34,7 +30,22 @@ namespace Space_Shooter.Manager
         }
         #endregion
 
+
         #region Bullets
+        public static Bullet_DefaultBullet Create_DefaultBullet(Game_Object owner, float x, float y)
+        {
+            Bullet_DefaultBullet bullet = new Bullet_DefaultBullet(owner, SpriteManager.Sprites["default_bullet"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+
+        public static Bullet_Shotgun Create_ShotgunBullet(Game_Object owner, float x, float y)
+        {
+            Bullet_Shotgun bullet = new Bullet_Shotgun(owner, SpriteManager.Sprites["shotgun"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+
         #endregion
 
         #region Animation
@@ -56,6 +67,19 @@ namespace Space_Shooter.Manager
             ani.ToCenterPoint(x, y);
             GameDataManager.animations.Add(ani);
             return ani;
+        }
+        #endregion
+
+        #region Weapon
+
+        public static Weapon_Default Create_PlayerWeapon_Default(Game_CollidableObject owner)
+        {
+            return new Weapon_Default(owner, 0, - owner.Height / 4);
+        }
+
+        public static Weapon_Shotgun Create_PlayerWeapon_Shotgun(Game_CollidableObject owner)
+        {
+            return new Weapon_Shotgun(owner, 0, - owner.Height / 4);
         }
         #endregion
     }

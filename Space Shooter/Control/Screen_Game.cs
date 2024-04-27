@@ -175,21 +175,17 @@ namespace Space_Shooter.Control
             Game_Player player = GameDataManager.player;
             if (player != null)
             {
-                valueBar_HP.Maximum = player.maxHP;
+                valueBar_HP.Maximum = player.MaxHP;
                 valueBar_HP.Value = player.HP;
+                valueBar_Ammo.Maximum = player.MaxAmmo;
+                valueBar_Ammo.Value = player.Ammo;
+                valueBar_Ammo.ForeColor = player.WepPrimaryColor;
+                valueBar_Ammo.BackColor = player.WepSecondaryColor;
             }
             else
             {
                 valueBar_HP.Maximum = 1;
                 valueBar_HP.Value = 0;
-            }
-            if (player != null)
-            {
-                valueBar_Ammo.Maximum = player.maxAmmo;
-                valueBar_Ammo.Value = player.Ammo;
-            }
-            else
-            {
                 valueBar_Ammo.Maximum = 1;
                 valueBar_Ammo.Value = 0;
             }

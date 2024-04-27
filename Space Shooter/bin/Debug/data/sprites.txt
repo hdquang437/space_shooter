@@ -13,8 +13,14 @@ meteor_size4	char_Meteor.png	4	1	240	240
 meteor_size5	char_Meteor.png	4	1	320	320
 
 # BULLET
-default_bullet	char_Bullet.png	4	1	40	40
-
+default_bullet	char_BulletNormal.png	1	4	20	20
+shotgun	char_BulletDot2.png	1	4	20	20
+gatling	char_BulletDot3.png	1	4	20	20
+arrow	char_BulletArrow.png	1	4	30	30
+flame	char_BulletFlame.png	6	2	64	64	10
+pierce	char_BulletPierce.png	1	4	30	30
+rocket	char_BulletRocket.png	1	4	30	30
+rocket_blast	char_BulletDot4.png	1	1	25	25
 
 # ANIMATION
 break_size1	ani_Break.png	5	1	80	80
@@ -22,5 +28,6 @@ break_size2	ani_Break.png	5	1	120	120
 break_size3	ani_Break.png	5	1	160	160
 break_size4	ani_Break.png	5	1	280	280
 break_size5	ani_Break.png	5	1	360	360
-explo_default_bullet	ani_Explosion.png	5	3	60	60	11
+explo_default_bullet	ani_Explosion2.png	6	2	60	60	12
 explo_player	ani_Explosion.png	5	3	120	120	11
+explo_shotgun_bullet	ani_Explosion2.png	6	2	45	45	12

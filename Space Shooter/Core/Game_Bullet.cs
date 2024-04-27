@@ -11,7 +11,8 @@ namespace Space_Shooter.Core
 {
     internal class Game_Bullet : Game_CollidableObject
     {
-        private Game_Object owner;
+        protected Game_Object owner;
+        protected string die_ani_sprite = "default_bullet";
 
         public Game_Object Owner {  get { return owner; } }
 
@@ -56,7 +57,7 @@ namespace Space_Shooter.Core
             if (_die_ani)
             {
                 PointF center = Center;
-                Game_Animation animation = Factory.Create_ani_Explosion("default_bullet", x, y);
+                Game_Animation animation = Factory.Create_ani_Explosion(die_ani_sprite, x, y);
                 animation.ToCenterPoint(Center.X, Center.Y);
                 AudioManager.PlaySE(SE.Explosion1);
             }

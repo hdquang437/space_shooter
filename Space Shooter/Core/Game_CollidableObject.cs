@@ -22,7 +22,7 @@ namespace Space_Shooter.Core
         public bool Collidable { get { return _collidable && !_die; } }
         public bool NeedScan { get { return _needScan; } }
         public bool Immortal {  get { return _immortal; } }
-        public int HP { get { return _hp; } }
+        public int HP { get { return _hp >= 0 ? _hp : 0; } }
         public int CollideDamage { get { return _collideDamage; } }
         public int Team { get { return _team; } }
 

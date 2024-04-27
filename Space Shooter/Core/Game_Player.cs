@@ -13,27 +13,65 @@ namespace Space_Shooter.Core
 {
     internal class Game_Player : Game_CollidableObject
     {
+        public Game_Weapon Weapon {
+            get { return secondaryWep != null ? secondaryWep : primaryWep; }
+        }
 
-        int _attack_cd = 0;
-        int _attack_cd_timer = 0;
+        Game_Weapon primaryWep;
+        Game_Weapon secondaryWep;
 
-        int _maxAmmo = 1;
-        int _Ammo = 1;
-        int _Ammo_CD = 10;
-        int _Ammo_CD_timer = 0;
+        int changeWepDelay = 0;
+        int maxChangeWepDelay = 100;
 
-        int _maxHP = 10;
+        int _maxHP = 100;
 
-        public int maxHP {  get { return _maxHP; } }
-        public int HP { get { return _hp >= 0 ? _hp : 0; } }
+        public int MaxHP {  get { return _maxHP; } }
 
-        public int maxAmmo
+        public int MaxAmmo
         {
-            get { return _maxAmmo; }
+            get
+            {
+                if (changeWepDelay > 0)
+                {
+                    return maxChangeWepDelay;
+                }
+                return Weapon != null ? Weapon.MaxAmmo : 0;
+            }
         }
         public int Ammo
         {
-            get { return _Ammo; }
+            get
+            {
+                if (changeWepDelay > 0)
+                {
+                    return maxChangeWepDelay - changeWepDelay;
+                }
+                return Weapon != null ? Weapon.Ammo : 0;
+            }
+        }
+
+        public Color WepPrimaryColor
+        {
+            get
+            {
+                if (changeWepDelay > 0)
+                {
+                    return System.Drawing.Color.Gray;
+                }
+                return Weapon != null ? Weapon.PrimaryColor : System.Drawing.Color.White;
+            }
+        }
+
+        public Color WepSecondaryColor
+        {
+            get
+            {
+                if (changeWepDelay > 0)
+                {
+                    return System.Drawing.Color.DarkGray;
+                }
+                return Weapon != null ? Weapon.SecondaryColor : System.Drawing.Color.White;
+            }
         }
 
         public Game_Player(Game_Sprite sprite, float posX = 0, float posY = 0)
@@ -43,15 +81,13 @@ namespace Space_Shooter.Core
             _Width = sprite.Width;
             _Height = sprite.Height;
             _collidable = true;
-            _collideDamage = 1;
+            _collideDamage = 10;
             _r = sprite.Width / 2;
             _MoveSpeed = 4;
-            _attack_cd = 10;
-            _maxAmmo = 10;
-            _Ammo = 10;
-            _Ammo_CD = 30;
             _frame_CD = 10;
             _hp = _maxHP;
+            primaryWep = Factory.Create_PlayerWeapon_Default(this);
+            secondaryWep = Factory.Create_PlayerWeapon_Shotgun(this);
         }
 
         public override void Update()
@@ -61,12 +97,18 @@ namespace Space_Shooter.Core
             List<Game_CollidableObject> enemyTeam = GameDataManager.EnemyTeam_CollidableObjects;
             Game_Collision.Scan(this, enemyTeam);
             Update_Data();
+            primaryWep?.Update();
+            secondaryWep?.Update();
         }
 
         public override void Update_Data()
         {
             base.Update_Data();
-            Process_CD();
+            if (secondaryWep?.Ammo == 0)
+            {
+                secondaryWep = null;
+                changeWepDelay = maxChangeWepDelay;
+            }
         }
 
         public void Process_KeyEvent(KeyboardState state)
@@ -87,45 +129,19 @@ namespace Space_Shooter.Core
             {
                 Move_Right();
             }
-            if (state.shoot && _attack_cd_timer == 0 && _Ammo > 0)
+            if (state.shoot && changeWepDelay == 0)
             {
-                PointF center = Center;
-                Game_CollidableObject obj =  Factory.Create_DefaultBullet(this, x, y + Height / 4);
-                obj.ToCenterPoint(center.X, center.Y + Height / 4);
-                _attack_cd_timer = _attack_cd;
-                _Ammo--;
-                AudioManager.PlaySE(SE.Laser1);
+                Weapon?.Shoot();
             }
         }
 
         override public void Process_Action()
         {
-            //if (Input.IsPressed("up"))
-            //{
-            //    Move_Up();
-            //}
-            //else if (Input.IsPressed("down"))
-            //{
-            //    Move_Down();
-            //}
-            //if (Input.IsPressed("left"))
-            //{
-            //    Move_Left();
-            //}
-            //else if (Input.IsPressed("right"))
-            //{
-            //    Move_Right();
-            //}
-
-            //if (Input.IsPressed("space") && _attack_cd_timer == 0 && _Ammo > 0)
-            //{
-            //    Factory.Create_DefaultBullet(this, x + Width / 2 - Bullet_DefaultBullet.WIDTH / 2, y - Height / 2);
-            //    _attack_cd_timer = _attack_cd;
-            //    _Ammo--;
-            //    AudioManager.PlaySE("Laser1.wav");
-            //}
-
             base.Process_Action();
+            if (changeWepDelay > 0)
+            {
+                changeWepDelay--;
+            }
         }
 
         public override void CollidedWith(Game_CollidableObject src)
@@ -137,26 +153,6 @@ namespace Space_Shooter.Core
             }
         }
 
-        private void Process_CD()
-        {
-            if (_attack_cd_timer > 0)
-            {
-                _attack_cd_timer--;
-            }
-
-            if (_Ammo_CD_timer > 0)
-            {
-                _Ammo_CD_timer--;
-            }
-            else
-            {
-                _Ammo_CD_timer = _Ammo_CD;
-                if (_Ammo < _maxAmmo)
-                {
-                    _Ammo++;
-                }
-            }
-        }
 
         public override void Process_BeforeDie()
         {

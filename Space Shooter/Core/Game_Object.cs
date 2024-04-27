@@ -21,7 +21,7 @@ namespace Space_Shooter.Core
         protected bool _IgnoreWall = false;
         protected bool _die_ani = true;
         protected bool _die = false;
-        protected int _r;
+        protected float _r;
         // Sprite
         protected Game_Sprite _sprite;
         protected int _index = 0;
@@ -216,10 +216,11 @@ namespace Space_Shooter.Core
 
         public void Move_Vector(float vec_x, float vec_y)
         {
-            double rad = Math.Atan(vec_y * 1.0 / vec_x);
-            float moveY = (float)(MoveSpeed * Math.Cos(rad));
-            float moveX = (float)(MoveSpeed * Math.Sin(rad));
-            RectangleF BestMove = test_move(x + moveX, y + moveY);
+            float hypotenuse = (float)Math.Sqrt(vec_x * vec_x + vec_y * vec_y);
+
+            float vx = _MoveSpeed * vec_x / hypotenuse;
+            float vy = _MoveSpeed * vec_y / hypotenuse;
+            RectangleF BestMove = test_move(x + vx, y + vy);
             x = BestMove.X;
             y = BestMove.Y;
         }

@@ -43,31 +43,31 @@ namespace Space_Shooter.Core.Enemy
             this.size = size;
             this._MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
             _frame_CD = 12;
-            _collideDamage = 100;
+            _collideDamage = 1000;
             switch (size)
             {
                 case 1:
-                    _hp = 1;
-                    _collideDamage = 1;
+                    _hp = 10;
+                    _collideDamage = 10;
                     break;
                 case 2:
-                    _hp = 2;
+                    _hp = 20;
                     GenerateRandomMinions(1, 1, 3, 5);
                     break;
                 case 3:
-                    _hp = 5;
+                    _hp = 50;
                     GenerateRandomMinions(2, 2, 1, 2);
                     GenerateRandomMinions(1, 2, 2, 2);
                     GenerateRandomMinions(1, 1, 2, 3);
                     break;
                 case 4:
-                    _hp = 10;
+                    _hp = 100;
                     GenerateRandomMinions(3, 3, 1, 2);
                     GenerateRandomMinions(2, 3, 1, 2);
                     GenerateRandomMinions(1, 2, 3, 5);
                     break;
                 case 5:
-                    _hp = 20;
+                    _hp = 200;
                     GenerateRandomMinions(4, 4, 1, 2);
                     GenerateRandomMinions(3, 4, 1, 1);
                     GenerateRandomMinions(1, 3, 2, 4);
