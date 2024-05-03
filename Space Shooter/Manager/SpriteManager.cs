@@ -24,10 +24,11 @@ namespace Space_Shooter.Manager
         public static void Initialize()
         {
             String line;
+            StreamReader sr = null;
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
-                StreamReader sr = new StreamReader("data\\sprites.txt");
+                sr = new StreamReader("data\\sprites.txt");
                 //Read the first line of text
                 line = sr.ReadLine();
                 //Continue to read until you reach end of file
@@ -64,9 +65,6 @@ namespace Space_Shooter.Manager
                     //Read the next line
                     line = sr.ReadLine();
                 }
-                //close the file
-                sr.Close();
-                Console.ReadLine();
             }
             catch (Exception e)
             {
@@ -74,7 +72,9 @@ namespace Space_Shooter.Manager
             }
             finally
             {
-                //Console.WriteLine("Executing finally block.");
+                //close the file
+                sr?.Close();
+                Console.ReadLine();
             }
         }
 

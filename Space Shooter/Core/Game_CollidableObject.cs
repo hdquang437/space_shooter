@@ -22,7 +22,16 @@ namespace Space_Shooter.Core
         public bool Collidable { get { return _collidable && !_die; } }
         public bool NeedScan { get { return _needScan; } }
         public bool Immortal {  get { return _immortal; } }
-        public int HP { get { return _hp >= 0 ? _hp : 0; } }
+        public int HP {
+            get
+            {
+                return _hp >= 0 ? _hp : 0;
+            }
+            set
+            {
+                _hp = Math.Max(0, value);
+            }
+        }
         public int CollideDamage { get { return _collideDamage; } }
         public int Team { get { return _team; } }
 
@@ -50,7 +59,8 @@ namespace Space_Shooter.Core
             {
                 return;
             }
-            if (!_immortal && _team != src.Team)
+            // Game bullet colliding event will be handled by Game_Bullet
+            if (!_immortal && !(src is Game_Bullet) && _team != src.Team)
             {
                 _hp -= src.CollideDamage;
             }
@@ -58,7 +68,7 @@ namespace Space_Shooter.Core
 
         virtual public void Process_Action()
         {
-
+            UpdatePositionByVelocity();
         }
 
         public override void Update_Data()

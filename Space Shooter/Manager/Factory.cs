@@ -38,10 +38,43 @@ namespace Space_Shooter.Manager
             GameDataManager.bullets.Add(bullet);
             return bullet;
         }
-
         public static Bullet_Shotgun Create_ShotgunBullet(Game_Object owner, float x, float y)
         {
             Bullet_Shotgun bullet = new Bullet_Shotgun(owner, SpriteManager.Sprites["shotgun"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+        public static Bullet_Bio Create_BioBullet(Game_Object owner, float x, float y, float speed)
+        {
+            Bullet_Bio bullet = new Bullet_Bio(owner, SpriteManager.Sprites["bio"], x, y, speed);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+
+        public static Bullet_Gatling Create_GatlingBullet(Game_Object owner, float x, float y)
+        {
+            Bullet_Gatling bullet = new Bullet_Gatling(owner, SpriteManager.Sprites["gatling"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+
+        public static Bullet_Piercing Create_PiercingBullet(Game_Object owner, float x, float y)
+        {
+            Bullet_Piercing bullet = new Bullet_Piercing(owner, SpriteManager.Sprites["pierce"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+
+        public static Bullet_Rocket Create_RocketBullet(Game_Object owner, float x, float y)
+        {
+            Bullet_Rocket bullet = new Bullet_Rocket(owner, SpriteManager.Sprites["rocket"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+
+        public static Bullet_Flame Create_FlameBullet(Game_Object owner, float x, float y)
+        {
+            Bullet_Flame bullet = new Bullet_Flame(owner, SpriteManager.Sprites["flame"], x, y);
             GameDataManager.bullets.Add(bullet);
             return bullet;
         }
@@ -52,6 +85,7 @@ namespace Space_Shooter.Manager
 
         ///<summary>
         ///Type is the animation id without explo_ prefix
+        ///x, y is the center point of the animation
         ///</summary>
         public static Game_Animation Create_ani_Explosion(string type, float x, float y)
         {
@@ -74,12 +108,37 @@ namespace Space_Shooter.Manager
 
         public static Weapon_Default Create_PlayerWeapon_Default(Game_CollidableObject owner)
         {
-            return new Weapon_Default(owner, 0, - owner.Height / 4);
+            return new Weapon_Default(owner, 0, -owner.Height / 4);
         }
 
         public static Weapon_Shotgun Create_PlayerWeapon_Shotgun(Game_CollidableObject owner)
         {
-            return new Weapon_Shotgun(owner, 0, - owner.Height / 4);
+            return new Weapon_Shotgun(owner, 0, -owner.Height / 4);
+        }
+
+        public static Weapon_Bio Create_PlayerWeapon_Bio(Game_CollidableObject owner)
+        {
+            return new Weapon_Bio(owner, owner.Width * 0.4f, -owner.Height / 4);
+        }
+
+        public static Weapon_Flamethrower Create_PlayerWeapon_Flamethrower(Game_CollidableObject owner)
+        {
+            return new Weapon_Flamethrower(owner, owner.Width * 0.4f, -owner.Height / 4);
+        }
+
+        public static Weapon_Gatling Create_PlayerWeapon_Gatling(Game_CollidableObject owner)
+        {
+            return new Weapon_Gatling(owner, owner.Width * 0.4f, -owner.Height / 4);
+        }
+
+        public static Weapon_Rocket Create_PlayerWeapon_Rocket(Game_CollidableObject owner)
+        {
+            return new Weapon_Rocket(owner, owner.Width * 0.4f, -owner.Height / 4);
+        }
+
+        public static Weapon_Piercing Create_PlayerWeapon_Piercing(Game_CollidableObject owner)
+        {
+            return new Weapon_Piercing(owner, owner.Width * 0.4f, -owner.Height / 4);
         }
         #endregion
     }

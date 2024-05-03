@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Media3D;
 
 namespace Space_Shooter.Core
 {
@@ -13,6 +14,7 @@ namespace Space_Shooter.Core
     {
         protected Game_Object owner;
         protected string die_ani_sprite = "default_bullet";
+        protected string die_ani_audio = SE.Explosion1;
 
         public Game_Object Owner {  get { return owner; } }
 
@@ -48,7 +50,21 @@ namespace Space_Shooter.Core
 
         public override void CollidedWith(Game_CollidableObject src)
         {
-            base.CollidedWith(src);
+            if (_die)
+            {
+                return;
+            }
+            if (src is Game_CollidableObject && !(src is Game_Bullet) && _team != src.Team)
+            {
+                if (!src.Immortal)
+                {
+                    src.HP -= _collideDamage;
+                }
+                if (!_immortal)
+                {
+                    _hp -= src.CollideDamage;
+                }
+            }
         }
 
         public override void Process_BeforeDie()
@@ -56,10 +72,9 @@ namespace Space_Shooter.Core
             base.Process_BeforeDie();
             if (_die_ani)
             {
-                PointF center = Center;
                 Game_Animation animation = Factory.Create_ani_Explosion(die_ani_sprite, x, y);
                 animation.ToCenterPoint(Center.X, Center.Y);
-                AudioManager.PlaySE(SE.Explosion1);
+                AudioManager.PlaySE(die_ani_audio);
             }
         }
     }

@@ -15,6 +15,8 @@ namespace Space_Shooter.Core
         // Logical
         protected float _x = 0;
         protected float _y = 0;
+        protected float _vx = 0;
+        protected float _vy = 0;
         protected float _MoveSpeed = 1;
         protected int _Width = 0;
         protected int _Height = 0;
@@ -34,6 +36,10 @@ namespace Space_Shooter.Core
         { get { return _x; } set { _x = value; } }
         public float y
         { get { return _y; } set { _y = value; } }
+        public float Vx
+        { get { return _vx; } set { _vx = value; } }
+        public float Vy
+        { get { return _vy; } set { _vy = value; } }
         public float MoveSpeed
         { get { return _MoveSpeed; } }
         public float Width
@@ -86,7 +92,7 @@ namespace Space_Shooter.Core
         #endregion
 
         #region Methods
-        private void fix_stuck()
+        protected void fix_stuck()
         {
             RectangleF test_stuck = Get_Collided_Wall(Hitbox);
             if (!test_stuck.IsEmpty)
@@ -188,30 +194,34 @@ namespace Space_Shooter.Core
         #region Move Methods
         public void Move_Up()
         {
-            RectangleF BestMove = test_move(x, y - MoveSpeed);
-            x = BestMove.X;
-            y = BestMove.Y;
+            //RectangleF BestMove = test_move(x, y - MoveSpeed);
+            //_vx = BestMove.X - _x;
+            //_vy = BestMove.Y - _y;
+            _vy += -_MoveSpeed;
         }
 
         public void Move_Down()
         {
-            RectangleF BestMove = test_move(x, y + MoveSpeed);
-            x = BestMove.X;
-            y = BestMove.Y;
+            //RectangleF BestMove = test_move(x, y + MoveSpeed);
+            //_vx = BestMove.X - _x;
+            //_vy = BestMove.Y - _y;
+            _vy += _MoveSpeed;
         }
 
         public void Move_Left()
         {
-            RectangleF BestMove = test_move(x - MoveSpeed, y);
-            x = BestMove.X;
-            y = BestMove.Y;
+            //RectangleF BestMove = test_move(x - MoveSpeed, y);
+            //_vx = BestMove.X - _x;
+            //_vy = BestMove.Y - _y;
+            _vx += -_MoveSpeed;
         }
 
         public void Move_Right()
         {
-            RectangleF BestMove = test_move(x + MoveSpeed, y);
-            x = BestMove.X;
-            y = BestMove.Y;
+            //RectangleF BestMove = test_move(x + MoveSpeed, y);
+            //_vx = BestMove.X - _x;
+            //_vy = BestMove.Y - _y;
+            _vx += _MoveSpeed;
         }
 
         public void Move_Vector(float vec_x, float vec_y)
@@ -220,9 +230,9 @@ namespace Space_Shooter.Core
 
             float vx = _MoveSpeed * vec_x / hypotenuse;
             float vy = _MoveSpeed * vec_y / hypotenuse;
-            RectangleF BestMove = test_move(x + vx, y + vy);
-            x = BestMove.X;
-            y = BestMove.Y;
+            //RectangleF BestMove = test_move(x + vx, y + vy);
+            _vx += vx;
+            _vy += vy;
         }
 
         public void ToCenterPoint(float X, float Y)
@@ -230,13 +240,26 @@ namespace Space_Shooter.Core
             x = X - _Width/2;
             y = Y - _Height/2;
         }
+
+        public void UpdatePositionByVelocity()
+        {
+            _x += _vx;
+            _y += _vy;
+            ResetVelocity();
+        }
+
+        public void ResetVelocity()
+        {
+            _vx = 0;
+            _vy = 0;
+        }
         #endregion
 
         #region Graphic Method
         virtual public void Draw_Sprite(Graphics g)
         {
             if (!_die)
-                _sprite.Render(g, (int)_x, (int)_y, _index);
+                _sprite?.Render(g, (int)_x, (int)_y, _index);
         }
         #endregion
 

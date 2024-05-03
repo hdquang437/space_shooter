@@ -60,7 +60,12 @@
     <Compile Include="Control\ValueBar.Designer.cs">
       <DependentUpon>ValueBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Core\Bullet\Bullet_Bio.cs" />
     <Compile Include="Core\Bullet\Bullet_DefaultBullet.cs" />
+    <Compile Include="Core\Bullet\Bullet_Flame.cs" />
+    <Compile Include="Core\Bullet\Bullet_Gatling.cs" />
+    <Compile Include="Core\Bullet\Bullet_Piercing.cs" />
+    <Compile Include="Core\Bullet\Bullet_Rocket.cs" />
     <Compile Include="Core\Bullet\Bullet_Shotgun.cs" />
     <Compile Include="Core\Circle.cs" />
     <Compile Include="Core\Enemy\Enemy_Meteor.cs" />
@@ -75,6 +80,11 @@
     <Compile Include="Core\Game_Sprite.cs" />
     <Compile Include="Core\Game_Weapon.cs" />
     <Compile Include="Core\Weapon\Weapon_Default.cs" />
+    <Compile Include="Core\Weapon\Weapon_Bio.cs" />
+    <Compile Include="Core\Weapon\Weapon_Flamethrower.cs" />
+    <Compile Include="Core\Weapon\Weapon_Gatling.cs" />
+    <Compile Include="Core\Weapon\Weapon_Piercing.cs" />
+    <Compile Include="Core\Weapon\Weapon_Rocket.cs" />
     <Compile Include="Core\Weapon\Weapon_Shotgun.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

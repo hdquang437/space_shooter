@@ -87,7 +87,7 @@ namespace Space_Shooter.Core
             _frame_CD = 10;
             _hp = _maxHP;
             primaryWep = Factory.Create_PlayerWeapon_Default(this);
-            secondaryWep = Factory.Create_PlayerWeapon_Shotgun(this);
+            secondaryWep = Factory.Create_PlayerWeapon_Piercing(this);
         }
 
         public override void Update()
@@ -138,6 +138,7 @@ namespace Space_Shooter.Core
         override public void Process_Action()
         {
             base.Process_Action();
+            fix_stuck();
             if (changeWepDelay > 0)
             {
                 changeWepDelay--;

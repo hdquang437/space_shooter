@@ -12,6 +12,7 @@ namespace Space_Shooter.Manager
     }
     internal class SE
     {
+        public const string None = "None";
         public const string Explosion1 = "Explosion1.wav";
         public const string Explosion2 = "Explosion2.wav";
         public const string Laser1 = "Laser1.wav";

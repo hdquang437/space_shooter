@@ -4,11 +4,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Animation;
 
 namespace Space_Shooter.Core
 {
     internal class Game_Animation : Game_Object
     {
+        public const int animationFrame = 4; 
+
         int _size = 256;
 
         //Rectangle Box
@@ -20,7 +23,7 @@ namespace Space_Shooter.Core
         {
             _die = false;
             _index = 0;
-            _frame_CD = 4;
+            _frame_CD = animationFrame;
             _frame_CD_timer = 0;
             _x = x;
             _y = y;

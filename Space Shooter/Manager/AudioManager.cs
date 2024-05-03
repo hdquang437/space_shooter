@@ -30,6 +30,10 @@ namespace Space_Shooter.Manager
 
         static public void PlaySE(string file)
         {
+            if (file == SE.None)
+            {
+                return;
+            }
             var t = new Thread(() => ThreadPlaySE(file));
             t.Start();
         }

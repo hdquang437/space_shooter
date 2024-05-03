@@ -54,10 +54,10 @@ namespace Space_Shooter.Core
                 return;
             }
             base.Colliding(target);
-            if (!_immortal && target is Game_Bullet bullet && bullet.IsPlayerBullet())
-            {
-                _hp -= target.CollideDamage;
-            }
+            //if (!_immortal && target is Game_Bullet bullet && bullet.IsPlayerBullet())
+            //{
+            //    _hp -= target.CollideDamage;
+            //}
         }
 
         public override void Process_BeforeDie()
