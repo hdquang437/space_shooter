@@ -74,6 +74,7 @@
     <Compile Include="Core\Game_CollidableObject.cs" />
     <Compile Include="Core\Game_Collision.cs" />
     <Compile Include="Core\Game_Enemy.cs" />
+    <Compile Include="Core\Game_Item.cs" />
     <Compile Include="Core\Game_Object.cs" />
     <Compile Include="Core\Game_Player.cs" />
     <Compile Include="Core\Game_SpawnableEnemy.cs" />

@@ -21,7 +21,9 @@ namespace Space_Shooter.Core
         Game_Weapon secondaryWep;
 
         int changeWepDelay = 0;
-        int maxChangeWepDelay = 100;
+        int maxChangeWepDelay = 80;
+        int baseSpeed = 4;
+        int boostSpeed = 10;
 
         int _maxHP = 100;
 
@@ -133,6 +135,7 @@ namespace Space_Shooter.Core
             {
                 Weapon?.Shoot();
             }
+            _MoveSpeed = state.turbo ? boostSpeed : baseSpeed;
         }
 
         override public void Process_Action()
@@ -154,7 +157,6 @@ namespace Space_Shooter.Core
             }
         }
 
-
         public override void Process_BeforeDie()
         {
             base.Process_BeforeDie();
@@ -165,6 +167,12 @@ namespace Space_Shooter.Core
                 ani.ToCenterPoint(center.X, center.Y);
                 AudioManager.PlaySE(SE.Explosion2);
             }
+        }
+
+        public void GetWeapon(Game_Weapon wep)
+        {
+            secondaryWep = wep;
+            changeWepDelay = maxChangeWepDelay;
         }
     }
 }

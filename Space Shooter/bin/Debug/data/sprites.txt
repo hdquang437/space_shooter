@@ -17,11 +17,20 @@ default_bullet	char_BulletNormal.png	1	4	20	20
 shotgun	char_BulletDot2.png	1	4	20	20
 gatling	char_BulletDot3.png	1	4	20	20
 bio	char_BulletArrow.png	1	4	30	30
-arrow	char_BulletArrow.png	1	4	30	30
 flame	char_BulletFlame.png	6	2	96	96	10
 pierce	char_BulletPierce.png	1	4	30	30
 rocket	char_BulletRocket.png	1	4	30	30
 rocket_blast	char_BulletDot4.png	1	1	25	25
+
+# ITEM
+wep_shotgun	char_BuffS.png	1	1	32	32
+wep_bio	char_BuffB.png	1	1	32	32
+wep_flamethrower	char_BuffF.png	1	1	32	32
+wep_piercing	char_BuffP.png	1	1	32	32
+wep_rocket	char_BuffR.png	1	1	32	32
+wep_gatling	char_BuffG.png	1	1	32	32
+item_heal	char_ItemHeal.png	1	1	32	32
+item_coin	char_ItemCoin.png	1	4	24	24
 
 # ANIMATION
 break_size1	ani_Break.png	5	1	80	80

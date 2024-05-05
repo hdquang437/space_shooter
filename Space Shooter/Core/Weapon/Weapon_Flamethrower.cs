@@ -27,7 +27,7 @@ namespace Space_Shooter.Core.Weapon
             PointF center = owner.Center;
             Game_CollidableObject obj = Factory.Create_FlameBullet(owner, owner.x, owner.y + offsetY);
             obj.ToCenterPoint(center.X, center.Y + offsetY);
-            AudioManager.PlaySE(SE.Laser1);
+            AudioManager.PlaySE(SE.ShootFlamethrower);
         }
     }
 }

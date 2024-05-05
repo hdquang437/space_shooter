@@ -15,13 +15,15 @@ namespace Space_Shooter.Manager
         public bool left;
         public bool right;
         public bool shoot;
-        public KeyboardState(bool up, bool down, bool left, bool right, bool shot)
+        public bool turbo;
+        public KeyboardState(bool up, bool down, bool left, bool right, bool shot, bool turbo)
         {
             this.up = up;
             this.down = down;
             this.left = left;
             this.right = right;
             this.shoot = shot;
+            this.turbo = turbo;
         }
     }
 
@@ -39,6 +41,8 @@ namespace Space_Shooter.Manager
             bool left = false;
             bool right = false;
             bool shoot = false;
+            bool turbo = false;
+
             if (Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left))
             {
                 left = true;
@@ -55,13 +59,17 @@ namespace Space_Shooter.Manager
             {
                 down = true;
             }
+            if (Keyboard.IsKeyDown(Key.LeftShift))
+            {
+                turbo = true;
+            }    
             if (Keyboard.IsKeyDown(Key.Space))
             {
                 shoot = true;
             }
             if (GameDataManager.player != null)
             {
-                GameDataManager.player.Process_KeyEvent(new KeyboardState(up, down, left, right, shoot));
+                GameDataManager.player.Process_KeyEvent(new KeyboardState(up, down, left, right, shoot, turbo));
             }
         }
 

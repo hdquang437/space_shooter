@@ -14,6 +14,7 @@ namespace Space_Shooter.Core
         protected int _collideDamage = 0;
         protected int _hp = 0;
         protected bool _immortal = false;
+        protected bool _ignoreBullet = false;
 
         // 0 - Player Team
         // 1 - Enemy Team
@@ -22,6 +23,7 @@ namespace Space_Shooter.Core
         public bool Collidable { get { return _collidable && !_die; } }
         public bool NeedScan { get { return _needScan; } }
         public bool Immortal {  get { return _immortal; } }
+        public bool IgnoreBullet { get { return _ignoreBullet; } }
         public int HP {
             get
             {

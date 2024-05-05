@@ -53,7 +53,7 @@ namespace Space_Shooter.Core.Bullet
 
         public override void CollidedWith(Game_CollidableObject src)
         {
-            if (_die || triggerCD > 0)
+            if (_die || triggerCD > 0 || src.IgnoreBullet)
             {
                 return;
             }

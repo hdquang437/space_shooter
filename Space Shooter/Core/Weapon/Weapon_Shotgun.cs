@@ -30,7 +30,7 @@ namespace Space_Shooter.Core.Weapon
                 Game_CollidableObject obj = Factory.Create_ShotgunBullet(owner, owner.x, owner.y + offsetY);
                 obj.ToCenterPoint(center.X, center.Y + offsetY);
             }
-            AudioManager.PlaySE(SE.Laser1);
+            AudioManager.PlaySE(SE.ShootShotgun);
         }
 
     }

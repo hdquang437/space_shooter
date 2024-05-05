@@ -17,5 +17,12 @@ namespace Space_Shooter.Manager
         public const string Explosion2 = "Explosion2.wav";
         public const string Laser1 = "Laser1.wav";
         public const string Break = "Break.wav";
+        public const string Recovery = "Recovery.wav";
+        public const string Up1 = "Up1.wav";
+        public const string ShootBio = "ShootBio.wav";
+        public const string ShootFlamethrower = "ShootFlamethrower.wav";
+        public const string ShootRocket = "ShootRocket.wav";
+        public const string ShootShotgun = "ShootShotgun.wav";
+        public const string ShootPiercing = "ShootPiercing.wav";
     }
 }

@@ -54,7 +54,7 @@ namespace Space_Shooter.Core
             {
                 return;
             }
-            if (src is Game_CollidableObject && !(src is Game_Bullet) && _team != src.Team)
+            if (src is Game_CollidableObject && !(src is Game_Bullet) && !src.IgnoreBullet && _team != src.Team)
             {
                 if (!src.Immortal)
                 {

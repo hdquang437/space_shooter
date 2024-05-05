@@ -30,6 +30,71 @@ namespace Space_Shooter.Manager
         }
         #endregion
 
+        #region Item
+        public static Game_Item Create_Item_Shotgun(float x, float y, bool AddToData = true)
+        {
+            Game_Item item = new Game_Item(SpriteManager.Sprites[ItemID.WeaponShotgun], x, y, ItemID.WeaponShotgun);
+            if (AddToData)
+                GameDataManager.enemies.Add(item);
+            return item;
+        }
+
+        public static Game_Item Create_Item_Piercing(float x, float y, bool AddToData = true)
+        {
+            Game_Item item = new Game_Item(SpriteManager.Sprites[ItemID.WeaponPiercingGun], x, y, ItemID.WeaponPiercingGun);
+            if (AddToData)
+                GameDataManager.enemies.Add(item);
+            return item;
+        }
+
+        public static Game_Item Create_Item_Bio(float x, float y, bool AddToData = true)
+        {
+            Game_Item item = new Game_Item(SpriteManager.Sprites[ItemID.WeaponBioSprayer], x, y, ItemID.WeaponBioSprayer);
+            if (AddToData)
+                GameDataManager.enemies.Add(item);
+            return item;
+        }
+
+        public static Game_Item Create_Item_Gatling(float x, float y, bool AddToData = true)
+        {
+            Game_Item item = new Game_Item(SpriteManager.Sprites[ItemID.WeaponGatlingGun], x, y, ItemID.WeaponGatlingGun);
+            if (AddToData)
+                GameDataManager.enemies.Add(item);
+            return item;
+        }
+
+        public static Game_Item Create_Item_Rocket(float x, float y, bool AddToData = true)
+        {
+            Game_Item item = new Game_Item(SpriteManager.Sprites[ItemID.WeaponRocket], x, y, ItemID.WeaponRocket);
+            if (AddToData)
+                GameDataManager.enemies.Add(item);
+            return item;
+        }
+
+        public static Game_Item Create_Item_Flamethrower(float x, float y, bool AddToData = true)
+        {
+            Game_Item item = new Game_Item(SpriteManager.Sprites[ItemID.WeaponFlamethrower], x, y, ItemID.WeaponFlamethrower);
+            if (AddToData)
+                GameDataManager.enemies.Add(item);
+            return item;
+        }
+
+        public static Game_Item Create_Item_Coin(float x, float y, bool AddToData = true)
+        {
+            Game_Item item = new Game_Item(SpriteManager.Sprites[ItemID.ItemCoin], x, y, ItemID.ItemCoin);
+            if (AddToData)
+                GameDataManager.enemies.Add(item);
+            return item;
+        }
+
+        public static Game_Item Create_Item_Heal(float x, float y, bool AddToData = true)
+        {
+            Game_Item item = new Game_Item(SpriteManager.Sprites[ItemID.ItemHealPack], x, y, ItemID.ItemHealPack);
+            if (AddToData)
+                GameDataManager.enemies.Add(item);
+            return item;
+        }
+        #endregion
 
         #region Bullets
         public static Bullet_DefaultBullet Create_DefaultBullet(Game_Object owner, float x, float y)

@@ -30,7 +30,7 @@ namespace Space_Shooter.Core.Weapon
                 Game_CollidableObject obj = Factory.Create_BioBullet(owner, owner.x, owner.y + offsetY, 7 - Math.Abs(i - 2));
                 obj.ToCenterPoint(center.X + offsetX * (i - 2), center.Y + offsetY);
             }
-            AudioManager.PlaySE(SE.Laser1);
+            AudioManager.PlaySE(SE.ShootBio);
         }
 
     }

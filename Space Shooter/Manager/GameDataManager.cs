@@ -26,7 +26,7 @@ namespace Space_Shooter.Manager
         static public int Stage { get { return stage; } }
         //static public int highest_score;
 
-        static private Dictionary<int, List<Game_Object>> stageObjects = new Dictionary<int, List<Game_Object>>();
+        static private SortedDictionary<int, List<Game_Object>> stageObjects = new SortedDictionary<int, List<Game_Object>>();
 
         static public void Update()
         {
@@ -131,6 +131,7 @@ namespace Space_Shooter.Manager
                     Game_Object obj = null;
                     switch (parse[1])
                     {
+                        // METEOR
                         case ObjectID.METEOR_1:
                             obj = Factory.Create_Meteor(1, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
                             break;
@@ -146,8 +147,33 @@ namespace Space_Shooter.Manager
                         case ObjectID.METEOR_5:
                             obj = Factory.Create_Meteor(5, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
                             break;
+
+                        // ITEM
+                        case ObjectID.ITEM_S:
+                            obj = Factory.Create_Item_Shotgun(x, y, false);
+                            break;
+                        case ObjectID.ITEM_B:
+                            obj = Factory.Create_Item_Bio(x, y, false);
+                            break;
+                        case ObjectID.ITEM_R:
+                            obj = Factory.Create_Item_Rocket(x, y, false);
+                            break;
+                        case ObjectID.ITEM_G:
+                            obj = Factory.Create_Item_Gatling(x, y, false);
+                            break;
+                        case ObjectID.ITEM_P:
+                            obj = Factory.Create_Item_Piercing(x, y, false);
+                            break;
+                        case ObjectID.ITEM_F:
+                            obj = Factory.Create_Item_Flamethrower(x, y, false);
+                            break;
+                        case ObjectID.ITEM_HEAL:
+                            obj = Factory.Create_Item_Heal(x, y, false);
+                            break;
+
                         default:
                             Console.WriteLine("Unknown ID in line " + lineCount);
+                            line = sr.ReadLine();
                             continue;
                     }
                     if (stageObjects.ContainsKey(key))
@@ -176,7 +202,7 @@ namespace Space_Shooter.Manager
             {
                 //Console.WriteLine("Executing finally block.");
             }
-            stageObjects.OrderBy(x => x.Key);
+            //stageObjects.OrderBy(x => x.Key);
             return true;
         }
     }

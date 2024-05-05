@@ -15,5 +15,13 @@ namespace Space_Shooter.Manager
         public const string METEOR_3 = "meteor_3";
         public const string METEOR_4 = "meteor_4";
         public const string METEOR_5 = "meteor_5";
+        public const string ITEM_B = "item_b";
+        public const string ITEM_S = "item_s";
+        public const string ITEM_G = "item_g";
+        public const string ITEM_P = "item_p";
+        public const string ITEM_F = "item_f";
+        public const string ITEM_R = "item_r";
+        public const string ITEM_COIN = "item_coin";
+        public const string ITEM_HEAL = "item_heal";
     }
 }
