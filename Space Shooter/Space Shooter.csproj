@@ -48,6 +48,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountManagement\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountManagement\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\Screen_Game.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="Manager\SpriteManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AccountManagement\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\Screen_Game.resx">
       <DependentUpon>Screen_Game.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +152,8 @@
     <Content Include="audio\se\Explosion1.wav" />
     <Content Include="audio\se\Explosion2.wav" />
     <Content Include="audio\se\Laser1.wav" />
+    <Content Include="Resources\button_background.png" />
+    <Content Include="Resources\exit_icon.png" />
     <None Include="Resources\char_Spaceship.png" />
     <None Include="Resources\char_Meteor.png" />
     <None Include="Resources\char_Bullet.png" />
