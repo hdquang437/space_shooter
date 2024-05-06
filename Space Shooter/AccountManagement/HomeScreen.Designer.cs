@@ -45,7 +45,6 @@
             this.signUpComponent = new Space_Shooter.AccountManagement.SignUpComponent();
             this.fpn_leaderBoard = new System.Windows.Forms.FlowLayoutPanel();
             this.pn_leaderBoard = new System.Windows.Forms.Panel();
-            this.lb_title = new System.Windows.Forms.Label();
             this.pn_title_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).BeginInit();
             this.pn_user.SuspendLayout();
@@ -56,7 +55,6 @@
             // pn_title_bar
             // 
             this.pn_title_bar.BackColor = System.Drawing.Color.DarkCyan;
-            this.pn_title_bar.Controls.Add(this.lb_title);
             this.pn_title_bar.Controls.Add(this.pb_exit);
             this.pn_title_bar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_title_bar.Location = new System.Drawing.Point(0, 0);
@@ -255,17 +253,6 @@
             this.pn_leaderBoard.Size = new System.Drawing.Size(334, 563);
             this.pn_leaderBoard.TabIndex = 4;
             // 
-            // lb_title
-            // 
-            this.lb_title.AutoSize = true;
-            this.lb_title.Font = new System.Drawing.Font("Goudy Stout", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_title.ForeColor = System.Drawing.Color.DarkRed;
-            this.lb_title.Location = new System.Drawing.Point(0, 0);
-            this.lb_title.Name = "lb_title";
-            this.lb_title.Size = new System.Drawing.Size(1005, 41);
-            this.lb_title.TabIndex = 5;
-            this.lb_title.Text = "Hardcore Laggy Shooter Game";
-            // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -288,7 +275,6 @@
             this.Text = "Login";
             this.Load += new System.EventHandler(this.HomeScreen_Load);
             this.pn_title_bar.ResumeLayout(false);
-            this.pn_title_bar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).EndInit();
             this.pn_user.ResumeLayout(false);
             this.pn_user.PerformLayout();
@@ -316,6 +302,5 @@
         private System.Windows.Forms.PictureBox pb_avatar;
         private System.Windows.Forms.FlowLayoutPanel fpn_leaderBoard;
         private System.Windows.Forms.Panel pn_leaderBoard;
-        private System.Windows.Forms.Label lb_title;
     }
 }
