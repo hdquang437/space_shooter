@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,9 +39,10 @@ namespace Space_Shooter.AccountManagement
             openFileDialog.Filter = "Image Files (*.png;*.jpg;*.jpeg;*.gif;*.bmp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                avarPath = openFileDialog.FileName;
+                avarPath = CopyToStorage(openFileDialog.FileName);
                 pb_Avatar.Image = Image.FromFile(avarPath);
             }
+
         }
 
         private void btn_signup_Click(object sender, EventArgs e)
@@ -128,6 +130,22 @@ namespace Space_Shooter.AccountManagement
         {
             avarPath = FilePathManager.GetFilePath("images") + "defaultAvatar.png";
             pb_Avatar.Image = Image.FromFile(avarPath);
+        }
+
+        private String CopyToStorage(string avaPath)
+        {
+            string fileName = Path.GetFileName(avaPath);
+            string destPath = $"{Environment.CurrentDirectory}\\img\\avatar\\" + fileName;
+            try
+            {
+                File.Copy(avaPath, destPath, true);
+                return destPath;
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
     }
 }

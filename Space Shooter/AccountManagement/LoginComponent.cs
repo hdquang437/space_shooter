@@ -100,7 +100,7 @@ namespace Space_Shooter.AccountManagement
 
         private void lb_forgot_password_Click(object sender, EventArgs e)
         {
-
+            this.forgotPasswordComponent.Visible = true;
         }
     }
 }

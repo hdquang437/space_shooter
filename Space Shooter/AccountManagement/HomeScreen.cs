@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -74,7 +75,7 @@ namespace Space_Shooter.AccountManagement
         {
             Hide();
             Form1 game = new Form1();
-            game.Show();
+            game.ShowDialog();
         }
 
         private void loginComponent_getUser(object sender, EventArgs e)
@@ -111,7 +112,7 @@ namespace Space_Shooter.AccountManagement
             List<User> users = UserRepo.LoadUsersFromFile();
             users.Sort((o1, o2) => o1.highestScore < o2.highestScore ? 1 : 0);
 
-            for (int i = 0; i < (users.Count >=5 ? 5 : users.Count); i++)
+            for (int i = 0; i < (users.Count >= 5 ? 5 : users.Count); i++)
             {
                 loadUser(users[i], i);
             }

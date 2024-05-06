@@ -17,7 +17,7 @@ namespace Space_Shooter
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AccountManagement.Repository.FilePathManager.AddFilePath("users", $"{Environment.CurrentDirectory}\\data\\users.json");
-            AccountManagement.Repository.FilePathManager.AddFilePath("images", $"{Environment.CurrentDirectory}\\Images\\");
+            AccountManagement.Repository.FilePathManager.AddFilePath("images", $"{Environment.CurrentDirectory}\\img\\avatar\\");
             Application.Run(new AccountManagement.HomeScreen());
         }
     }

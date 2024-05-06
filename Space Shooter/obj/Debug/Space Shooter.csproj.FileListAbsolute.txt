@@ -29,3 +29,4 @@ F:\HK2-Nam3\C#\space_shooter\Space Shooter\bin\Debug\Newtonsoft.Json.xml
 F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space Sh.869F39FB.Up2Date
 F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.SignUpComponent.resources
 F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.LeaderBoardUser.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.ForgotPassword.resources

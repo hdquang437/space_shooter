@@ -36,6 +36,7 @@
             this.lb_forgot_password = new System.Windows.Forms.Label();
             this.btn_login = new System.Windows.Forms.Button();
             this.pb_exit = new System.Windows.Forms.PictureBox();
+            this.forgotPasswordComponent = new Space_Shooter.AccountManagement.ForgotPassword();
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,12 +130,24 @@
             this.pb_exit.TabStop = false;
             this.pb_exit.Click += new System.EventHandler(this.pb_exit_Click);
             // 
+            // forgotPasswordComponent
+            // 
+            this.forgotPasswordComponent.BackColor = System.Drawing.Color.Transparent;
+            this.forgotPasswordComponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forgotPasswordComponent.BackgroundImage")));
+            this.forgotPasswordComponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.forgotPasswordComponent.Location = new System.Drawing.Point(0, 0);
+            this.forgotPasswordComponent.Name = "forgotPasswordComponent";
+            this.forgotPasswordComponent.Size = new System.Drawing.Size(1161, 676);
+            this.forgotPasswordComponent.TabIndex = 12;
+            this.forgotPasswordComponent.Visible = false;
+            // 
             // LoginComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.forgotPasswordComponent);
             this.Controls.Add(this.pb_exit);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.lb_forgot_password);
@@ -159,5 +172,6 @@
         private System.Windows.Forms.Label lb_forgot_password;
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.PictureBox pb_exit;
+        private ForgotPassword forgotPasswordComponent;
     }
 }
