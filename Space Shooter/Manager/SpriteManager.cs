@@ -49,7 +49,7 @@ namespace Space_Shooter.Manager
                         continue;
                     }
                     string key = parse[0];
-                    Bitmap bitmap = new Bitmap("img\\" + parse[1]);
+                    Bitmap bitmap = new Bitmap("img\\game\\" + parse[1]);
                     int max_FrameX = Int32.Parse(parse[2]); 
                     int max_FrameY = Int32.Parse(parse[3]);
                     int frameWidth = Int32.Parse(parse[4]);
