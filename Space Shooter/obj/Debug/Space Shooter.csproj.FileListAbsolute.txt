@@ -10,3 +10,23 @@ D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\De
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space Shooter.pdb
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.Screen_Game.resources
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.ValueBar.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\bin\Debug\Space Shooter.exe.config
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\bin\Debug\Space Shooter.exe
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\bin\Debug\Space Shooter.pdb
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space Shooter.csproj.AssemblyReference.cache
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.Screen_Game.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.ValueBar.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Form1.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Properties.Resources.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space Shooter.csproj.GenerateResource.cache
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space Shooter.csproj.CoreCompileInputs.cache
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space Shooter.exe
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space Shooter.pdb
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.HomeScreen.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.LoginComponent.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\bin\Debug\Newtonsoft.Json.dll
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\bin\Debug\Newtonsoft.Json.xml
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space Sh.869F39FB.Up2Date
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.SignUpComponent.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.LeaderBoardUser.resources
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.ForgotPassword.resources
