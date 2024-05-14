@@ -1,4 +1,5 @@
-﻿using Space_Shooter.AccountManagement.Repository;
+﻿using Space_Shooter.AccountManagement.Model;
+using Space_Shooter.AccountManagement.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,6 @@ namespace Space_Shooter.AccountManagement
             openFileDialog.Filter = "Image Files (*.png;*.jpg;*.jpeg;*.gif;*.bmp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                avarPath = CopyToStorage(openFileDialog.FileName);
                 pb_Avatar.Image = Image.FromFile(avarPath);
             }
 
@@ -61,8 +61,8 @@ namespace Space_Shooter.AccountManagement
                 return;
             }
 
-            UserRepo.AddUser(tb_name.Text.Trim(), tb_password.Text.Trim(), tb_email.Text.Trim(), avarPath, 0);
-
+            User newUser = UserRepo.AddUser(tb_name.Text.Trim(), tb_password.Text.Trim(), tb_email.Text.Trim(), avarPath, 0);
+            CopyToStorage(avarPath, newUser.id);
             MessageBox.Show(createSuccessNoti);
             this.Visible = false;
         }
@@ -132,10 +132,10 @@ namespace Space_Shooter.AccountManagement
             pb_Avatar.Image = Image.FromFile(avarPath);
         }
 
-        private String CopyToStorage(string avaPath)
+        private String CopyToStorage(string avaPath, int userID)
         {
-            string fileName = Path.GetFileName(avaPath);
-            string destPath = $"{Environment.CurrentDirectory}\\img\\avatar\\" + fileName;
+            string fileExtension = Path.GetExtension(avaPath);
+            string destPath = FilePathManager.GetFilePath("images") + userID + fileExtension;
             try
             {
                 File.Copy(avaPath, destPath, true);

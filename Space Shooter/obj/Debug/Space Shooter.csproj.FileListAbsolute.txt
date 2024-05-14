@@ -30,3 +30,11 @@ F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space Sh.869F39FB.Up2Date
 F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.SignUpComponent.resources
 F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.LeaderBoardUser.resources
 F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.ForgotPassword.resources
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\Newtonsoft.Json.dll
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\Newtonsoft.Json.xml
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.ForgotPassword.resources
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.HomeScreen.resources
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.LeaderBoardUser.resources
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.LoginComponent.resources
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.AccountManagement.SignUpComponent.resources
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space Sh.869F39FB.Up2Date

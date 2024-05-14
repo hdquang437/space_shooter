@@ -76,6 +76,7 @@ namespace Space_Shooter.AccountManagement
             Hide();
             Form1 game = new Form1();
             game.ShowDialog();
+            
         }
 
         private void loginComponent_getUser(object sender, EventArgs e)
@@ -83,7 +84,7 @@ namespace Space_Shooter.AccountManagement
             User user = sender as User;
             this.lb_userName.Text = user.name;
             this.lb_highestScoreValue.Text = user.highestScore.ToString();
-            this.pb_avatar.Image = Image.FromFile(user.avaPath);
+            this.pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + user.avaPath);
             this.pn_user.Visible = true;
             this.btn_login.Visible = false;
             this.btn_signup.Visible = false;

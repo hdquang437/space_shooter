@@ -21,13 +21,15 @@ namespace Space_Shooter.AccountManagement.Repository
         }
 
 
-        public static void AddUser(string fullName, string password, string email, string avaPath, int highestScore)
+        public static User AddUser(string fullName, string password, string email, string avaPath, int highestScore)
         {
             List<User> users = LoadUsersFromFile();
-            User user = new User(fullName, password, email, avaPath, highestScore);
+            User user = new User(fullName, password, email, "", highestScore);
             user.id = users.Count();
+            user.avaPath = user.id + Path.GetExtension(avaPath);
             users.Add(user);
             SaveToFile(users, filePath);
+            return user;
         }
 
         public static List<User> LoadUsersFromFile()

@@ -31,6 +31,38 @@ namespace Space_Shooter.Manager
         #endregion
 
         #region Item
+        public static Game_Item Create_Random_Loot(float x, float y, bool AddToData = true)
+        {
+            Game_Item item = null;
+            Random random = new Random(Guid.NewGuid().GetHashCode());
+            int type = random.Next(0, 7);
+            switch (type)
+            {
+                case 0:
+                    item = Create_Item_Shotgun(x, y, AddToData);
+                    break;
+                case 1:
+                    item = Create_Item_Piercing(x, y, AddToData);
+                    break;
+                case 2:
+                    item = Create_Item_Bio(x, y, AddToData);
+                    break;
+                case 3:
+                    item = Create_Item_Gatling(x, y, AddToData);
+                    break;
+                case 4:
+                    item = Create_Item_Rocket(x, y, AddToData);
+                    break;
+                case 5:
+                    item = Create_Item_Flamethrower(x, y, AddToData);
+                    break;
+                case 6:
+                    item = Create_Item_Heal(x, y, AddToData);
+                    break;
+            }
+            return item;
+        }
+
         public static Game_Item Create_Item_Shotgun(float x, float y, bool AddToData = true)
         {
             Game_Item item = new Game_Item(SpriteManager.Sprites[ItemID.WeaponShotgun], x, y, ItemID.WeaponShotgun);
@@ -144,6 +176,33 @@ namespace Space_Shooter.Manager
             return bullet;
         }
 
+        public static Game_Bullet Create_EnemyBullet_Straight(Game_Object owner, float x, float y)
+        {
+            Game_Bullet bullet = new EnemyBullet_Straight(owner, SpriteManager.Sprites["enemy_bullet"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+
+        public static Game_Bullet Create_EnemyBullet_Homing(Game_Object owner, float x, float y)
+        {
+            Game_Bullet bullet = new EnemyBullet_Homing(owner, SpriteManager.Sprites["enemy_bullet"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+
+        public static Game_Bullet Create_EnemyBullet_Sniping(Game_Object owner, float x, float y)
+        {
+            Game_Bullet bullet = new EnemyBullet_Sniping(owner, SpriteManager.Sprites["enemy_bullet"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
+
+        public static Game_Bullet Create_EnemyBullet_Spread(Game_Object owner, float x, float y)
+        {
+            Game_Bullet bullet = new EnemyBullet_Spread(owner, SpriteManager.Sprites["enemy_bullet"], x, y);
+            GameDataManager.bullets.Add(bullet);
+            return bullet;
+        }
         #endregion
 
         #region Animation
@@ -204,6 +263,31 @@ namespace Space_Shooter.Manager
         public static Weapon_Piercing Create_PlayerWeapon_Piercing(Game_CollidableObject owner)
         {
             return new Weapon_Piercing(owner, owner.Width * 0.4f, -owner.Height / 4);
+        }
+
+        public static Game_EnemyWeapon Create_EnemyWeapon_Single(Game_CollidableObject owner, float offsetX, float offsetY)
+        {
+            return new EnemyWeapon_Single(owner, offsetX, offsetY);
+        }
+
+        public static Game_EnemyWeapon Create_EnemyWeapon_Rifle(Game_CollidableObject owner, float offsetX, float offsetY)
+        {
+            return new EnemyWeapon_Rifle(owner, offsetX, offsetY);
+        }
+
+        public static Game_EnemyWeapon Create_EnemyWeapon_Homing(Game_CollidableObject owner, float offsetX, float offsetY)
+        {
+            return new EnemyWeapon_Homing(owner, offsetX, offsetY);
+        }
+
+        public static Game_EnemyWeapon Create_EnemyWeapon_HomingRifle(Game_CollidableObject owner, float offsetX, float offsetY)
+        {
+            return new EnemyWeapon_HomingRifle(owner, offsetX, offsetY);
+        }
+
+        public static Game_EnemyWeapon Create_EnemyWeapon_Sniper(Game_CollidableObject owner, float offsetX, float offsetY)
+        {
+            return new EnemyWeapon_Sniper(owner, offsetX, offsetY);
         }
         #endregion
     }

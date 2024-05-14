@@ -49,25 +49,30 @@ namespace Space_Shooter.Core.Enemy
                 case 1:
                     _hp = 10;
                     _collideDamage = 10;
+                    _reward = 5;
                     break;
                 case 2:
                     _hp = 20;
+                    _reward = 10;
                     GenerateRandomMinions(1, 1, 3, 5);
                     break;
                 case 3:
                     _hp = 50;
+                    _reward = 25;
                     GenerateRandomMinions(2, 2, 1, 2);
                     GenerateRandomMinions(1, 2, 2, 2);
                     GenerateRandomMinions(1, 1, 2, 3);
                     break;
                 case 4:
                     _hp = 100;
+                    _reward = 50;
                     GenerateRandomMinions(3, 3, 1, 2);
                     GenerateRandomMinions(2, 3, 1, 2);
                     GenerateRandomMinions(1, 2, 3, 5);
                     break;
                 case 5:
                     _hp = 200;
+                    _reward = 100;
                     GenerateRandomMinions(4, 4, 1, 2);
                     GenerateRandomMinions(3, 4, 1, 1);
                     GenerateRandomMinions(1, 3, 2, 4);

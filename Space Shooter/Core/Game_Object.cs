@@ -266,6 +266,11 @@ namespace Space_Shooter.Core
         #region Update Data Method
         public virtual void Update_Data()
         {
+            if (_sprite.TotalFrame == 1)
+            {
+                if (_index != 0) _index = 0;
+                return;
+            }
             // Update Sprite Index
             if (_frame_CD > 0 && _sprite != null)
             {

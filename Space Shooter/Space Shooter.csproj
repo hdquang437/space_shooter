@@ -104,19 +104,37 @@
     <Compile Include="Core\Bullet\Bullet_Piercing.cs" />
     <Compile Include="Core\Bullet\Bullet_Rocket.cs" />
     <Compile Include="Core\Bullet\Bullet_Shotgun.cs" />
+    <Compile Include="Core\Bullet\EnemyBullet_Homing.cs" />
+    <Compile Include="Core\Bullet\EnemyBullet_Sniping.cs" />
+    <Compile Include="Core\Bullet\EnemyBullet_Spread.cs" />
+    <Compile Include="Core\Bullet\EnemyBullet_Straight.cs" />
     <Compile Include="Core\Circle.cs" />
+    <Compile Include="Core\Enemy\Enemy_Klaed_Battlecruiser.cs" />
+    <Compile Include="Core\Enemy\Enemy_Klaed_Bomber.cs" />
+    <Compile Include="Core\Enemy\Enemy_Klaed_Dreadnought.cs" />
+    <Compile Include="Core\Enemy\Enemy_Klaed_Fighter.cs" />
+    <Compile Include="Core\Enemy\Enemy_Klaed_Frigate.cs" />
+    <Compile Include="Core\Enemy\Enemy_Klaed_Scout.cs" />
+    <Compile Include="Core\Enemy\Enemy_Klaed_SupportShip.cs" />
+    <Compile Include="Core\Enemy\Enemy_Klaed_TorpedoShip.cs" />
     <Compile Include="Core\Enemy\Enemy_Meteor.cs" />
     <Compile Include="Core\Game_Animation.cs" />
     <Compile Include="Core\Game_Bullet.cs" />
     <Compile Include="Core\Game_CollidableObject.cs" />
     <Compile Include="Core\Game_Collision.cs" />
     <Compile Include="Core\Game_Enemy.cs" />
+    <Compile Include="Core\Game_EnemyWeapon.cs" />
     <Compile Include="Core\Game_Item.cs" />
     <Compile Include="Core\Game_Object.cs" />
     <Compile Include="Core\Game_Player.cs" />
     <Compile Include="Core\Game_SpawnableEnemy.cs" />
     <Compile Include="Core\Game_Sprite.cs" />
     <Compile Include="Core\Game_Weapon.cs" />
+    <Compile Include="Core\Weapon\EnemyWeapon_Homing.cs" />
+    <Compile Include="Core\Weapon\EnemyWeapon_HomingRifle.cs" />
+    <Compile Include="Core\Weapon\EnemyWeapon_Rifle.cs" />
+    <Compile Include="Core\Weapon\EnemyWeapon_Single.cs" />
+    <Compile Include="Core\Weapon\EnemyWeapon_Sniper.cs" />
     <Compile Include="Core\Weapon\Weapon_Default.cs" />
     <Compile Include="Core\Weapon\Weapon_Bio.cs" />
     <Compile Include="Core\Weapon\Weapon_Flamethrower.cs" />
@@ -137,6 +155,7 @@
     <Compile Include="Manager\Input.cs" />
     <Compile Include="Manager\ObjectID.cs" />
     <Compile Include="Manager\SpriteManager.cs" />
+    <Compile Include="Manager\Utilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AccountManagement\ForgotPassword.resx">
@@ -187,9 +206,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Buff\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="audio\bgm\bgm1.wav" />
     <Content Include="audio\se\Break.wav" />

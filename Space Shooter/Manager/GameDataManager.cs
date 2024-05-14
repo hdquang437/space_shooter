@@ -19,12 +19,13 @@ namespace Space_Shooter.Manager
         static public List<Game_Bullet> bullets = new List<Game_Bullet>();
         static public List<Game_Animation> animations = new List<Game_Animation>();
         static public Game_Player player;
-        static public int score;
+        static public int score = 0;
         static private int stage = 1;
         static private int time = 0;
 
         static public int Stage { get { return stage; } }
         //static public int highest_score;
+        static public GameDifficulty Difficulty = GameDifficulty.Easy;
 
         static private SortedDictionary<int, List<Game_Object>> stageObjects = new SortedDictionary<int, List<Game_Object>>();
 
@@ -73,7 +74,20 @@ namespace Space_Shooter.Manager
 
         static public void GainScore(int reward)
         {
-            score += reward;
+            double modifier = 1;
+            switch (Difficulty)
+            {
+                case GameDifficulty.Easy:
+                    modifier = 1;
+                    break;
+                case GameDifficulty.Normal:
+                    modifier = 1.5;
+                    break;
+                case GameDifficulty.Hard:
+                    modifier = 2;
+                    break;
+            }
+            score += (int)Math.Round(reward * modifier);
         }
 
         static public List<Game_CollidableObject> EnemyTeam_CollidableObjects
@@ -205,5 +219,12 @@ namespace Space_Shooter.Manager
             //stageObjects.OrderBy(x => x.Key);
             return true;
         }
+    }
+
+    public enum GameDifficulty
+    {
+        Easy,
+        Normal,
+        Hard
     }
 }

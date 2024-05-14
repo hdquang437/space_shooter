@@ -63,7 +63,7 @@ namespace Space_Shooter.Core
         {
         }
 
-        public void Update()
+        virtual public void Update()
         {
             if (attack_cd_timer > 0)
             {

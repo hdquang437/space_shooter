@@ -13,6 +13,9 @@ namespace Space_Shooter
 {
     public partial class Form1 : Form
     {
+        // Screen_Login loginScreen;
+        // Screen_SignUp signUpScreen;
+        // Screen_Game gameScreen;
 
         public Form1()
         {
@@ -20,6 +23,9 @@ namespace Space_Shooter
             Input.GetKeyStates();
             ToCenter();
             AudioManager.PlayBGM(BGM.bgm1);
+            // Screen_Login loginScreen = new ...
+            // Screen_SignUp signUpScreen = new ...
+            // Screen_Game gameScreen = new ...
         }
 
         public void ToCenter()
@@ -37,6 +43,12 @@ namespace Space_Shooter
         private void Form1_Load(object sender, EventArgs e)
         {
             panel_screen.Controls.Add(new Control.Screen_Game(this));
+        }
+
+        public void ToGameScreen()
+        {
+            panel_screen.Controls.Clear();
+            //panel_screen.Controls.Add(screenGame);
         }
     }
 }

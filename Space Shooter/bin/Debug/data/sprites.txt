@@ -4,6 +4,8 @@
 
 # PLAYER
 player1	char_Spaceship.png	4	1	80	80
+player2	char_SpaceshipBeholder.png	1	1	80	80
+player3	char_SpaceshipEmissary.png	1	1	80	80
 
 # ENEMY
 meteor_size1	char_Meteor.png	4	1	20	20
@@ -11,9 +13,18 @@ meteor_size2	char_Meteor.png	4	1	60	60
 meteor_size3	char_Meteor.png	4	1	120	120
 meteor_size4	char_Meteor.png	4	1	240	240
 meteor_size5	char_Meteor.png	4	1	320	320
+klaed_battlecruiser	char_EnemyKlaed_Battlecruiser.png	1	1	256	256
+klaed_bomber	char_EnemyKlaed_Bomber.png	1	1	128	128
+klaed_dreadnought	char_EnemyKlaed_Dreadnought.png	1	1	256	256
+klaed_fighter	char_EnemyKlaed_Fighter.png	1	1	256	256
+klaed_frigate	char_EnemyKlaed_Frigate.png	1	1	128	128
+klaed_scout	char_EnemyKlaed_Scout.png	1	1	128	128
+klaed_supportship	char_EnemyKlaed_Supportship.png	1	1	128	128
+klaed_torpedoship	char_EnemyKlaed_TorpedoShip.png	1	1	128	128
 
 # BULLET
 default_bullet	char_BulletNormal.png	1	4	20	20
+enemy_bullet	char_BulletEnemyDot.png	1	1	20	20
 shotgun	char_BulletDot2.png	1	4	20	20
 gatling	char_BulletDot3.png	1	4	20	20
 bio	char_BulletArrow.png	1	4	30	30
@@ -39,9 +50,12 @@ break_size3	ani_Break.png	5	1	160	160
 break_size4	ani_Break.png	5	1	280	280
 break_size5	ani_Break.png	5	1	360	360
 explo_default_bullet	ani_ExplosionS.png	6	2	60	60	12
+explo_enemy_bllet	ani_ExplosionE.png	6	2	60	60	12
 explo_player	ani_Explosion.png	5	3	120	120	12
 explo_shotgun_bullet	ani_ExplosionS.png	6	2	45	45	12
 explo_bio_bullet	ani_ExplosionB.png	6	2	60	60	12
 explo_piercing_bullet	ani_ExplosionP.png	6	2	60	60	12
 explo_rocket_bullet	ani_ExplosionR.png	5	3	240	240	12
 explo_gatling_bullet	ani_ExplosionG.png	6	2	40	40	12
+explo_enemy1	ani_Explosion.png	5	3	120	120	12
+explo_enemy2	ani_Explosion.png	5	3	256	256	12

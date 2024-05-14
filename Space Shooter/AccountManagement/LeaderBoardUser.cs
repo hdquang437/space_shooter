@@ -20,7 +20,7 @@ namespace Space_Shooter.AccountManagement
 
         public void LoadData(int id, string avatarPath, string name, string score)
         {
-            pb_avatar.BackgroundImage = Image.FromFile(avatarPath);
+            pb_avatar.BackgroundImage = Image.FromFile(FilePathManager.GetFilePath("images") + avatarPath);
             lb_userName.Text = name;
             lb_highestScoreValue.Text = score;
             if (id == 0)
