@@ -46,8 +46,16 @@ namespace Space_Shooter
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            panel_screen.Controls.Add(new HomeScreen());
+            HomeScreen homeScreen = new HomeScreen();
+            homeScreen.StartGame += new EventHandler(this.homeScreen_StartGame);
+            panel_screen.Controls.Add(homeScreen);
+
             //panel_screen.Controls.Add(new Control.Screen_Game(this));
+        }
+
+        private void homeScreen_StartGame(object sender, EventArgs e)
+        {
+
         }
 
         public void ToGameScreen()

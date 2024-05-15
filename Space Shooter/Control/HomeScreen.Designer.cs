@@ -41,13 +41,11 @@
             this.pb_avatar = new System.Windows.Forms.PictureBox();
             this.fpn_leaderBoard = new System.Windows.Forms.FlowLayoutPanel();
             this.pn_leaderBoard = new System.Windows.Forms.Panel();
-            this.pn_title_bar = new System.Windows.Forms.Panel();
             this.loginComponent = new Space_Shooter.AccountManagement.LoginComponent();
             this.signUpComponent = new Space_Shooter.AccountManagement.SignUpComponent();
             this.pn_user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).BeginInit();
             this.pn_leaderBoard.SuspendLayout();
-            this.pn_title_bar.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_exit
@@ -139,7 +137,7 @@
             this.lb_userName.ForeColor = System.Drawing.Color.SpringGreen;
             this.lb_userName.Location = new System.Drawing.Point(62, 166);
             this.lb_userName.Name = "lb_userName";
-            this.lb_userName.Size = new System.Drawing.Size(301, 41);
+            this.lb_userName.Size = new System.Drawing.Size(291, 40);
             this.lb_userName.TabIndex = 0;
             this.lb_userName.Text = "font chữ tiếng việt ";
             // 
@@ -194,9 +192,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fpn_leaderBoard.AutoSize = true;
             this.fpn_leaderBoard.BackColor = System.Drawing.Color.Transparent;
-            this.fpn_leaderBoard.Location = new System.Drawing.Point(32, 176);
+            this.fpn_leaderBoard.Location = new System.Drawing.Point(24, 146);
             this.fpn_leaderBoard.Name = "fpn_leaderBoard";
-            this.fpn_leaderBoard.Size = new System.Drawing.Size(394, 744);
+            this.fpn_leaderBoard.Size = new System.Drawing.Size(402, 716);
             this.fpn_leaderBoard.TabIndex = 3;
             // 
             // pn_leaderBoard
@@ -206,21 +204,10 @@
             this.pn_leaderBoard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pn_leaderBoard.BackgroundImage")));
             this.pn_leaderBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pn_leaderBoard.Controls.Add(this.fpn_leaderBoard);
-            this.pn_leaderBoard.Location = new System.Drawing.Point(1108, 75);
+            this.pn_leaderBoard.Location = new System.Drawing.Point(1106, 26);
             this.pn_leaderBoard.Name = "pn_leaderBoard";
-            this.pn_leaderBoard.Size = new System.Drawing.Size(454, 948);
+            this.pn_leaderBoard.Size = new System.Drawing.Size(454, 910);
             this.pn_leaderBoard.TabIndex = 4;
-            // 
-            // pn_title_bar
-            // 
-            this.pn_title_bar.BackColor = System.Drawing.Color.DarkCyan;
-            this.pn_title_bar.Controls.Add(this.loginComponent);
-            this.pn_title_bar.Controls.Add(this.signUpComponent);
-            this.pn_title_bar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pn_title_bar.Location = new System.Drawing.Point(0, 0);
-            this.pn_title_bar.Name = "pn_title_bar";
-            this.pn_title_bar.Size = new System.Drawing.Size(1582, 50);
-            this.pn_title_bar.TabIndex = 0;
             // 
             // loginComponent
             // 
@@ -229,7 +216,7 @@
             this.loginComponent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginComponent.Location = new System.Drawing.Point(0, 0);
             this.loginComponent.Name = "loginComponent";
-            this.loginComponent.Size = new System.Drawing.Size(1582, 50);
+            this.loginComponent.Size = new System.Drawing.Size(1582, 1053);
             this.loginComponent.TabIndex = 6;
             this.loginComponent.Visible = false;
             this.loginComponent.getUser += new System.EventHandler(this.loginComponent_getUser);
@@ -241,7 +228,7 @@
             this.signUpComponent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.signUpComponent.Location = new System.Drawing.Point(0, 0);
             this.signUpComponent.Name = "signUpComponent";
-            this.signUpComponent.Size = new System.Drawing.Size(1582, 50);
+            this.signUpComponent.Size = new System.Drawing.Size(1582, 1053);
             this.signUpComponent.TabIndex = 7;
             this.signUpComponent.Visible = false;
             this.signUpComponent.reloadUser += new System.EventHandler(this.signUpComponent_reloadUser);
@@ -252,6 +239,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.loginComponent);
+            this.Controls.Add(this.signUpComponent);
             this.Controls.Add(this.pn_leaderBoard);
             this.Controls.Add(this.pn_user);
             this.Controls.Add(this.btn_exit);
@@ -259,7 +248,6 @@
             this.Controls.Add(this.btn_signup);
             this.Controls.Add(this.btn_start);
             this.Controls.Add(this.btn_login);
-            this.Controls.Add(this.pn_title_bar);
             this.Name = "HomeScreen";
             this.Size = new System.Drawing.Size(1582, 1053);
             this.Load += new System.EventHandler(this.HomeScreen_Load);
@@ -268,7 +256,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).EndInit();
             this.pn_leaderBoard.ResumeLayout(false);
             this.pn_leaderBoard.PerformLayout();
-            this.pn_title_bar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -286,7 +273,6 @@
         private System.Windows.Forms.PictureBox pb_avatar;
         private System.Windows.Forms.FlowLayoutPanel fpn_leaderBoard;
         private System.Windows.Forms.Panel pn_leaderBoard;
-        private System.Windows.Forms.Panel pn_title_bar;
         private LoginComponent loginComponent;
         private SignUpComponent signUpComponent;
     }

@@ -17,6 +17,7 @@ namespace Space_Shooter.AccountManagement
     public partial class HomeScreen : UserControl
     {
         List<User> users = new List<User>();
+        User currentUser;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -36,6 +37,8 @@ namespace Space_Shooter.AccountManagement
             //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, formsize.Width-200, formsize.Height-200, 20, 20));
             this.Dock = DockStyle.Fill;
         }
+
+        public event EventHandler StartGame;
 
         private void pb_exit_Click(object sender, EventArgs e)
         {
@@ -59,18 +62,15 @@ namespace Space_Shooter.AccountManagement
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-            Hide();
-            Form1 game = new Form1();
-            game.ShowDialog();
-            
+            StartGame(currentUser,e);   
         }
 
         private void loginComponent_getUser(object sender, EventArgs e)
         {
-            User user = sender as User;
-            this.lb_userName.Text = user.name;
-            this.lb_highestScoreValue.Text = user.highestScore.ToString();
-            this.pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + user.avaPath);
+            currentUser = sender as User;
+            this.lb_userName.Text = currentUser.name;
+            this.lb_highestScoreValue.Text = currentUser.highestScore.ToString();
+            this.pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + currentUser.avaPath);
             this.pn_user.Visible = true;
             this.btn_login.Visible = false;
             this.btn_signup.Visible = false;
@@ -93,7 +93,7 @@ namespace Space_Shooter.AccountManagement
             users = UserRepo.LoadUsersFromFile();
             users.Sort((o1, o2) => o1.highestScore < o2.highestScore ? 1 : 0);
 
-            for (int i = 0; i < (users.Count >= 10 ? 10 : users.Count); i++)
+            for (int i = 0; i < (users.Count >= 9 ? 9 : users.Count); i++)
             {
                 loadUserToView(users[i], i);
             }
