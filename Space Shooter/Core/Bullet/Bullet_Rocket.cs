@@ -23,7 +23,7 @@ namespace Space_Shooter.Core.Bullet
             _r = _Width / 2;
             _team = 0;
             _immortal = true;
-            _collideDamage = 80;
+            _collideDamage = 100;
             die_ani_sprite = "rocket_bullet";
         }
 
@@ -64,9 +64,9 @@ namespace Space_Shooter.Core.Bullet
                     PointF center = Center;
                     _Width = 240;
                     _Height = 240;
-                    _r = 120;
                     ToCenterPoint(center.X, center.Y);
-                    Factory.Create_ani_Explosion(die_ani_sprite, center.X, center.Y);
+                    Game_Animation ani = Factory.Create_ani_Explosion(die_ani_sprite, center.X, center.Y);
+                    _r = ani.Width * 0.4f;
                     _sprite = null;
                     AudioManager.PlaySE(die_ani_audio);
                 }

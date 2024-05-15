@@ -13,10 +13,10 @@ namespace Space_Shooter.Core.Weapon
         public EnemyWeapon_Single(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
         : base(Owner, OffsetX, OffsetY)
         {
-            attack_cd = 10;
+            attack_cd = 40;
             maxAmmo = 3;
             ammo = maxAmmo;
-            ammo_CD = 40;
+            ammo_CD = 150;
             refillable = true;
         }
 
@@ -24,7 +24,7 @@ namespace Space_Shooter.Core.Weapon
         {
             PointF center = owner.Center;
             Game_CollidableObject obj = Factory.Create_EnemyBullet_Straight(owner, owner.x, owner.y + offsetY);
-            obj.ToCenterPoint(center.X, center.Y + offsetY);
+            obj.ToCenterPoint(center.X + offsetX, center.Y + offsetY);
             //AudioManager.PlaySE(SE.Laser1);
         }
     }

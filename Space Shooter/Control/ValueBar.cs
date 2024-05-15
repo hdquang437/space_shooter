@@ -13,7 +13,7 @@ namespace Space_Shooter.Control
 {
     public partial class ValueBar : ProgressBar
     {
-        int dpi;
+        //int dpi;
 
         public ValueBar()
         {

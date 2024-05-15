@@ -23,5 +23,13 @@ namespace Space_Shooter.Manager
         public const string ITEM_R = "item_r";
         public const string ITEM_COIN = "item_coin";
         public const string ITEM_HEAL = "item_heal";
+        public const string KLAED_BATTLECRUISER = "klaed_battlecruiser";
+        public const string KLAED_BOMBER = "klaed_bomber";
+        public const string KLAED_DREADNOUGHT = "klaed_dreadnought";
+        public const string KLAED_FIGHTER = "klaed_fighter";
+        public const string KLAED_FRIGATE = "klaed_frigate";
+        public const string KLAED_SCOUT = "klaed_scout";
+        public const string KLAED_SUPPORTSHIP = "klaed_supportship";
+        public const string KLAED_TORPEDOSHIP = "klaed_torpedoship";
     }
 }

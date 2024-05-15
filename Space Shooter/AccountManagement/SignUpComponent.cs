@@ -144,6 +144,7 @@ namespace Space_Shooter.AccountManagement
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return null;
             }
         }

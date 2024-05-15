@@ -19,7 +19,7 @@ namespace Space_Shooter.Core.Bullet
             _r = _Width / 2;
             _team = 0;
             _immortal = true;
-            _collideDamage = 40;
+            _collideDamage = 80;
             die_ani_sprite = "piercing_bullet";
         }
 

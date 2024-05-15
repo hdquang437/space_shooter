@@ -10,9 +10,10 @@ namespace Space_Shooter.Core
 {
     internal class Game_Object
     {
-            
+
         #region Attributes
         // Logical
+        protected int _z = 0;
         protected float _x = 0;
         protected float _y = 0;
         protected float _vx = 0;
@@ -36,6 +37,8 @@ namespace Space_Shooter.Core
         { get { return _x; } set { _x = value; } }
         public float y
         { get { return _y; } set { _y = value; } }
+        public int z
+        { get { return _z; } }
         public float Vx
         { get { return _vx; } set { _vx = value; } }
         public float Vy
@@ -266,7 +269,7 @@ namespace Space_Shooter.Core
         #region Update Data Method
         public virtual void Update_Data()
         {
-            if (_sprite.TotalFrame == 1)
+            if (_sprite?.TotalFrame == 1)
             {
                 if (_index != 0) _index = 0;
                 return;

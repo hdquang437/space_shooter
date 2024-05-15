@@ -27,6 +27,18 @@ namespace Space_Shooter.Core
 
         int _maxHP = 100;
 
+        override public int HP
+        {
+            get
+            {
+                return _hp >= 0 ? _hp : 0;
+            }
+            set
+            {
+                _hp = (Math.Max(0, Math.Min(_maxHP, value)));
+            }
+        }
+
         public int MaxHP {  get { return _maxHP; } }
 
         public int MaxAmmo
@@ -80,16 +92,17 @@ namespace Space_Shooter.Core
             : base(sprite, posX, posY)
         {
             // Data
+            _z = 3;
             _Width = sprite.Width;
             _Height = sprite.Height;
             _collidable = true;
-            _collideDamage = 10;
-            _r = sprite.Width / 2;
+            _collideDamage = 50;
+            _r = sprite.Width / 4;
             _MoveSpeed = 4;
             _frame_CD = 10;
             _hp = _maxHP;
             primaryWep = Factory.Create_PlayerWeapon_Default(this);
-            secondaryWep = Factory.Create_PlayerWeapon_Piercing(this);
+            secondaryWep = null;
         }
 
         public override void Update()
@@ -151,10 +164,6 @@ namespace Space_Shooter.Core
         public override void CollidedWith(Game_CollidableObject src)
         {
             base.CollidedWith(src);
-            if (src is Game_Enemy)
-            {
-
-            }
         }
 
         public override void Process_BeforeDie()

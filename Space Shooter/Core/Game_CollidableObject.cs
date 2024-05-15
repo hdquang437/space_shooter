@@ -24,14 +24,14 @@ namespace Space_Shooter.Core
         public bool NeedScan { get { return _needScan; } }
         public bool Immortal {  get { return _immortal; } }
         public bool IgnoreBullet { get { return _ignoreBullet; } }
-        public int HP {
+        virtual public int HP {
             get
             {
                 return _hp >= 0 ? _hp : 0;
             }
             set
             {
-                _hp = Math.Max(0, value);
+                _hp = (Math.Max(0, value));
             }
         }
         public int CollideDamage { get { return _collideDamage; } }

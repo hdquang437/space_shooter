@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Weapon
 {
-    internal class EnemyWeapon_Rifle : Game_EnemyWeapon
+    internal class EnemyWeapon_SniperRifle : Game_EnemyWeapon
     {
-        public EnemyWeapon_Rifle(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
+        public EnemyWeapon_SniperRifle(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
         : base(Owner, OffsetX, OffsetY)
         {
-            attack_cd = 20;
-            maxAmmo = 8;
+            attack_cd = 40;
+            maxAmmo = 5;
             ammo = maxAmmo;
             ammo_CD = 250;
         }
@@ -22,7 +22,7 @@ namespace Space_Shooter.Core.Weapon
         protected override void CreateBullet()
         {
             PointF center = owner.Center;
-            Game_CollidableObject obj = Factory.Create_EnemyBullet_Spread(owner, owner.x, owner.y + offsetY);
+            Game_CollidableObject obj = Factory.Create_EnemyBullet_Sniping(owner, owner.x, owner.y + offsetY);
             obj.ToCenterPoint(center.X + offsetX, center.Y + offsetY);
             //AudioManager.PlaySE(SE.Laser1);
         }

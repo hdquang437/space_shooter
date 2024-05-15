@@ -17,8 +17,8 @@ namespace Space_Shooter.Core.Weapon
             maxAmmo = 50;
             ammo = maxAmmo;
             ammo_CD = 0;
-            primaryColor = ColorTranslator.FromHtml("#eab92e");
-            secondaryColor = ColorTranslator.FromHtml("#efc85d");
+            primaryColor = ColorTranslator.FromHtml("#4dffca");
+            secondaryColor = ColorTranslator.FromHtml("#00b37d");
             refillable = false;
         }
 

@@ -22,8 +22,9 @@ namespace Space_Shooter.Core
                 attack_cd_timer--;
             }
 
-            if (ammo >= MaxAmmo)
+            if (ammo > 0)
             {
+                ammo_CD_timer = ammo_CD;
                 return;
             }
 

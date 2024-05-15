@@ -11,9 +11,9 @@ namespace Space_Shooter.Core.Bullet
     internal class EnemyBullet_Homing : Game_Bullet
     {
         int changeDirectionTimes = 0;
-        float vX;
-        float vY;
-        int actionTimer = 40;
+        float vX = 0;
+        float vY = 1;
+        int actionTimer = 10;
         int actionCD = 0;
 
         public EnemyBullet_Homing(Game_Object owner, Game_Sprite sprite, float x, float y)
@@ -22,28 +22,32 @@ namespace Space_Shooter.Core.Bullet
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;
-            _team = 0;
+            _team = 1;
             _collideDamage = 5;
 
             die_ani_sprite = "enemy_bullet";
+
+            Random random = new Random(Guid.NewGuid().GetHashCode());
+            float speedVariance = 1 + random.Next(-25, 26) / 100f;
 
             switch (GameDataManager.Difficulty)
             {
                 case GameDifficulty.Easy:
                     _MoveSpeed = 4;
-                    changeDirectionTimes = 6;                    
+                    changeDirectionTimes = 12;                    
                     break;
                 case GameDifficulty.Normal:
                     _MoveSpeed = 5;
-                    changeDirectionTimes = 8;
+                    changeDirectionTimes = 16;
                     actionTimer = 30;
                     break;
                 case GameDifficulty.Hard:
                     _MoveSpeed = 6;
-                    changeDirectionTimes = 12;
+                    changeDirectionTimes = 20;
                     actionTimer = 20;
                     break;
             }
+            _MoveSpeed *= speedVariance;
         }
 
         public override void Update()
@@ -53,20 +57,22 @@ namespace Space_Shooter.Core.Bullet
 
         public override void Process_Action()
         {
-            if (actionCD > 0)
-            {
-                actionCD--;
-            }
-            else
-            {
-                if (GameDataManager.player != null && changeDirectionTimes > 0)
+            if (changeDirectionTimes > 0)
+                if (actionCD > 0)
                 {
-                    PointF des = Utilities.GetVector(Center, GameDataManager.player.Center);
-                    vX = des.X;
-                    vY = des.Y;
+                    actionCD--;
                 }
-                actionCD = actionTimer;
-            }
+                else
+                {
+                    if (GameDataManager.player != null && changeDirectionTimes > 0)
+                    {
+                        PointF des = Utilities.GetVector(Center, GameDataManager.player.Center);
+                        vX = des.X;
+                        vY = des.Y;
+                        changeDirectionTimes--;
+                    }
+                    actionCD = actionTimer;
+                }
             Move_Vector(vX, vY);
             base.Process_Action();
         }

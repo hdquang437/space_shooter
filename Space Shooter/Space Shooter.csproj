@@ -135,6 +135,7 @@
     <Compile Include="Core\Weapon\EnemyWeapon_Rifle.cs" />
     <Compile Include="Core\Weapon\EnemyWeapon_Single.cs" />
     <Compile Include="Core\Weapon\EnemyWeapon_Sniper.cs" />
+    <Compile Include="Core\Weapon\EnemyWeapon_SniperRifle.cs" />
     <Compile Include="Core\Weapon\Weapon_Default.cs" />
     <Compile Include="Core\Weapon\Weapon_Bio.cs" />
     <Compile Include="Core\Weapon\Weapon_Flamethrower.cs" />

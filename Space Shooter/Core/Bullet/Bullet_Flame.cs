@@ -17,6 +17,7 @@ namespace Space_Shooter.Core.Bullet
         public Bullet_Flame(Game_Object owner, Game_Sprite sprite, float x, float y)
         : base(owner, sprite, x, y, 4)
         {
+            _z = 11;
             remainTime = sprite.TotalFrame * Game_Animation.animationFrame;
             _Width = sprite.Width;
             _Height = sprite.Height;

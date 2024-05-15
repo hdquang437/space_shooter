@@ -10,9 +10,9 @@ namespace Space_Shooter.Core.Enemy
 {
     internal class Enemy_Klaed_TorpedoShip : Game_Enemy
     {
-        private int actionTimer = 60;
+        private int actionTimer = 10;
         private int actionCD = 0;
-        private int changeDirectionTimes = 10;
+        private int changeDirectionTimes = 20;
         private float velocityX = 0;
         private float velocityY = 1;
         private Game_EnemyWeapon weaponL;
@@ -20,10 +20,12 @@ namespace Space_Shooter.Core.Enemy
         public Enemy_Klaed_TorpedoShip(Game_Sprite sprite, float x, float y, float speed, Mode mode)
             : base(sprite, x, y)
         {
-            _hp = 50;
-            _r = 20;
-            weaponL = Factory.Create_EnemyWeapon_Rifle(this, -25, 0);
-            weaponR = Factory.Create_EnemyWeapon_Rifle(this, 25, 0);
+            _hp = 30;
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = sprite.Width * 0.2f;
+            weaponL = Factory.Create_EnemyWeapon_HomingRifle(this, -25, 0);
+            weaponR = Factory.Create_EnemyWeapon_HomingRifle(this, 25, 0);
             this.mode = mode;
             _MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
             _collideDamage = 100;

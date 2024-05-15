@@ -13,5 +13,17 @@
 1100	meteor_3	260	-118	0	1	2
 1200	meteor_5	420	-318	0	1	0.5
 1400	item_b	600	-30
-
+2000	klaed_bomber	500	-79	2
+200	klaed_fighter	760	-79	1.5	following
+400	klaed_fighter	760	-79	1.5	following
+400	klaed_fighter	1002	-79	1.5	forward
+800	klaed_scout	420	-79	2	following
+800	klaed_scout	700	-79	2	forward
+1500	klaed_torpedoship	1200	-79	1.5	following
+1500	klaed_torpedoship	320	-79	1.5	forward
+2200	klaed_supportship	750	-79	0	1	1.8
+2200	klaed_frigate	420	-79	1.5	following
+2400	klaed_frigate	670	-79	1.5	forward
+2500	klaed_battlecruiser	500	-254	0.8
+200	klaed_dreadnought	700	-254	0.8
 # BACKGROUND OBJECT

@@ -21,6 +21,7 @@ namespace Space_Shooter.Core
         public Game_Bullet(Game_Object owner, Game_Sprite sprite, float x, float y, float speed = 1)
             : base (sprite, x, y)
         {
+            _z = 6;
             this.owner = owner;
             _MoveSpeed = speed;
             _frame_CD = 5;
