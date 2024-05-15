@@ -201,7 +201,6 @@
             // 
             this.pn_leaderBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pn_leaderBoard.BackColor = System.Drawing.Color.Transparent;
-            this.pn_leaderBoard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pn_leaderBoard.BackgroundImage")));
             this.pn_leaderBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pn_leaderBoard.Controls.Add(this.fpn_leaderBoard);
             this.pn_leaderBoard.Location = new System.Drawing.Point(1106, 26);
