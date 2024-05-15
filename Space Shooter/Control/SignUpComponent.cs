@@ -42,6 +42,7 @@ namespace Space_Shooter.AccountManagement
             openFileDialog.Filter = "Image Files (*.png;*.jpg;*.jpeg;*.gif;*.bmp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                avarPath = openFileDialog.FileName;
                 pb_Avatar.Image = Image.FromFile(avarPath);
             }
 

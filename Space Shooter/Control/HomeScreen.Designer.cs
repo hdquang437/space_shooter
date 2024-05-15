@@ -194,13 +194,14 @@
             this.fpn_leaderBoard.BackColor = System.Drawing.Color.Transparent;
             this.fpn_leaderBoard.Location = new System.Drawing.Point(24, 146);
             this.fpn_leaderBoard.Name = "fpn_leaderBoard";
-            this.fpn_leaderBoard.Size = new System.Drawing.Size(402, 716);
+            this.fpn_leaderBoard.Size = new System.Drawing.Size(402, 737);
             this.fpn_leaderBoard.TabIndex = 3;
             // 
             // pn_leaderBoard
             // 
             this.pn_leaderBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pn_leaderBoard.BackColor = System.Drawing.Color.Transparent;
+            this.pn_leaderBoard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pn_leaderBoard.BackgroundImage")));
             this.pn_leaderBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pn_leaderBoard.Controls.Add(this.fpn_leaderBoard);
             this.pn_leaderBoard.Location = new System.Drawing.Point(1106, 26);
@@ -238,8 +239,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.loginComponent);
             this.Controls.Add(this.signUpComponent);
+            this.Controls.Add(this.loginComponent);
             this.Controls.Add(this.pn_leaderBoard);
             this.Controls.Add(this.pn_user);
             this.Controls.Add(this.btn_exit);

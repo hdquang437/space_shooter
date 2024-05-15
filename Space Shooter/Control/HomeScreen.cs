@@ -90,10 +90,10 @@ namespace Space_Shooter.AccountManagement
         void loadUser()
         {
             users.Clear();
+            fpn_leaderBoard.Controls.Clear();
             users = UserRepo.LoadUsersFromFile();
             users.Sort((o1, o2) => o1.highestScore < o2.highestScore ? 1 : 0);
-
-            for (int i = 0; i < (users.Count >= 9 ? 9 : users.Count); i++)
+            for (int i = 0; i < (users.Count >= 10 ? 10 : users.Count); i++)
             {
                 loadUserToView(users[i], i);
             }
