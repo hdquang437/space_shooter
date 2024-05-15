@@ -32,7 +32,9 @@ namespace Space_Shooter.AccountManagement
             tb_password.Text = passwordHintText;
             tb_password.ForeColor = Color.Khaki;
             tb_password.PasswordChar = '\0';
+            this.Dock = DockStyle.Fill;
         }
+        public event EventHandler reloadUser;
 
         private void pb_Avatar_Click(object sender, EventArgs e)
         {
@@ -64,6 +66,7 @@ namespace Space_Shooter.AccountManagement
             User newUser = UserRepo.AddUser(tb_name.Text.Trim(), tb_password.Text.Trim(), tb_email.Text.Trim(), avarPath, 0);
             CopyToStorage(avarPath, newUser.id);
             MessageBox.Show(createSuccessNoti);
+            reloadUser(newUser, e);
             this.Visible = false;
         }
 

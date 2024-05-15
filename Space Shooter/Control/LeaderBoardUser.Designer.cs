@@ -38,20 +38,20 @@
             // lb_userName
             // 
             this.lb_userName.AutoSize = true;
-            this.lb_userName.Font = new System.Drawing.Font("Goudy Stout", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_userName.ForeColor = System.Drawing.Color.DarkRed;
-            this.lb_userName.Location = new System.Drawing.Point(110, 29);
+            this.lb_userName.Font = new System.Drawing.Font("Bahnschrift", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_userName.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lb_userName.Location = new System.Drawing.Point(99, 10);
             this.lb_userName.Name = "lb_userName";
-            this.lb_userName.Size = new System.Drawing.Size(156, 18);
+            this.lb_userName.Size = new System.Drawing.Size(125, 22);
             this.lb_userName.TabIndex = 1;
-            this.lb_userName.Text = "User Name";
+            this.lb_userName.Text = "Lê Ngọc Hưng";
             // 
             // lb_highestScoreValue
             // 
             this.lb_highestScoreValue.AutoSize = true;
             this.lb_highestScoreValue.Font = new System.Drawing.Font("Goudy Stout", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_highestScoreValue.ForeColor = System.Drawing.Color.DarkSalmon;
-            this.lb_highestScoreValue.Location = new System.Drawing.Point(108, 74);
+            this.lb_highestScoreValue.ForeColor = System.Drawing.Color.Gold;
+            this.lb_highestScoreValue.Location = new System.Drawing.Point(236, 39);
             this.lb_highestScoreValue.Name = "lb_highestScoreValue";
             this.lb_highestScoreValue.Size = new System.Drawing.Size(68, 18);
             this.lb_highestScoreValue.TabIndex = 2;
@@ -61,8 +61,8 @@
             // 
             this.lb_highestscore.AutoSize = true;
             this.lb_highestscore.Font = new System.Drawing.Font("Goudy Stout", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_highestscore.ForeColor = System.Drawing.Color.DarkSalmon;
-            this.lb_highestscore.Location = new System.Drawing.Point(110, 54);
+            this.lb_highestscore.ForeColor = System.Drawing.Color.Gold;
+            this.lb_highestscore.Location = new System.Drawing.Point(99, 39);
             this.lb_highestscore.Name = "lb_highestscore";
             this.lb_highestscore.Size = new System.Drawing.Size(94, 18);
             this.lb_highestscore.TabIndex = 3;
@@ -72,9 +72,9 @@
             // 
             this.pb_avatar.BackColor = System.Drawing.Color.Transparent;
             this.pb_avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb_avatar.Location = new System.Drawing.Point(19, 19);
+            this.pb_avatar.Location = new System.Drawing.Point(13, 9);
             this.pb_avatar.Name = "pb_avatar";
-            this.pb_avatar.Size = new System.Drawing.Size(86, 77);
+            this.pb_avatar.Size = new System.Drawing.Size(59, 53);
             this.pb_avatar.TabIndex = 0;
             this.pb_avatar.TabStop = false;
             // 
@@ -88,7 +88,7 @@
             this.Controls.Add(this.lb_userName);
             this.Controls.Add(this.pb_avatar);
             this.Name = "LeaderBoardUser";
-            this.Size = new System.Drawing.Size(300, 113);
+            this.Size = new System.Drawing.Size(390, 70);
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -51,38 +51,38 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountManagement\ForgotPassword.cs">
+    <Compile Include="Control\ForgotPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AccountManagement\ForgotPassword.Designer.cs">
+    <Compile Include="Control\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="AccountManagement\HomeScreen.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Control\HomeScreen.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AccountManagement\HomeScreen.Designer.cs">
+    <Compile Include="Control\HomeScreen.Designer.cs">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="AccountManagement\LeaderBoardUser.cs">
+    <Compile Include="Control\LeaderBoardUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AccountManagement\LeaderBoardUser.Designer.cs">
+    <Compile Include="Control\LeaderBoardUser.Designer.cs">
       <DependentUpon>LeaderBoardUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="AccountManagement\LoginComponent.cs">
+    <Compile Include="Control\LoginComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AccountManagement\LoginComponent.Designer.cs">
+    <Compile Include="Control\LoginComponent.Designer.cs">
       <DependentUpon>LoginComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="AccountManagement\Model\User.cs" />
     <Compile Include="AccountManagement\Repository\FilePathManager.cs" />
     <Compile Include="AccountManagement\Repository\InputValidator.cs" />
     <Compile Include="AccountManagement\Repository\UserRepo.cs" />
-    <Compile Include="AccountManagement\SignUpComponent.cs">
+    <Compile Include="Control\SignUpComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AccountManagement\SignUpComponent.Designer.cs">
+    <Compile Include="Control\SignUpComponent.Designer.cs">
       <DependentUpon>SignUpComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\Screen_Game.cs">
@@ -158,19 +158,19 @@
     <Compile Include="Manager\Utilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AccountManagement\ForgotPassword.resx">
+    <EmbeddedResource Include="Control\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AccountManagement\HomeScreen.resx">
+    <EmbeddedResource Include="Control\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AccountManagement\LeaderBoardUser.resx">
+    <EmbeddedResource Include="Control\LeaderBoardUser.resx">
       <DependentUpon>LeaderBoardUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AccountManagement\LoginComponent.resx">
+    <EmbeddedResource Include="Control\LoginComponent.resx">
       <DependentUpon>LoginComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AccountManagement\SignUpComponent.resx">
+    <EmbeddedResource Include="Control\SignUpComponent.resx">
       <DependentUpon>SignUpComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\Screen_Game.resx">

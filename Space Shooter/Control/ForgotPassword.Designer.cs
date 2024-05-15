@@ -44,7 +44,7 @@
             this.btn_sentPassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_sentPassword.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sentPassword.ForeColor = System.Drawing.Color.Khaki;
-            this.btn_sentPassword.Location = new System.Drawing.Point(126, 350);
+            this.btn_sentPassword.Location = new System.Drawing.Point(445, 687);
             this.btn_sentPassword.Name = "btn_sentPassword";
             this.btn_sentPassword.Size = new System.Drawing.Size(313, 71);
             this.btn_sentPassword.TabIndex = 13;
@@ -58,20 +58,20 @@
             this.lb_Email.BackColor = System.Drawing.Color.Transparent;
             this.lb_Email.Font = new System.Drawing.Font("Goudy Stout", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Email.ForeColor = System.Drawing.Color.Crimson;
-            this.lb_Email.Location = new System.Drawing.Point(68, 197);
+            this.lb_Email.Location = new System.Drawing.Point(311, 414);
             this.lb_Email.Name = "lb_Email";
-            this.lb_Email.Size = new System.Drawing.Size(265, 27);
+            this.lb_Email.Size = new System.Drawing.Size(406, 27);
             this.lb_Email.TabIndex = 12;
-            this.lb_Email.Text = "Your Email";
+            this.lb_Email.Text = "Enter Your Email";
             // 
             // tb_email
             // 
             this.tb_email.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tb_email.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_email.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_email.Location = new System.Drawing.Point(73, 245);
+            this.tb_email.Location = new System.Drawing.Point(316, 486);
             this.tb_email.Name = "tb_email";
-            this.tb_email.Size = new System.Drawing.Size(411, 35);
+            this.tb_email.Size = new System.Drawing.Size(560, 35);
             this.tb_email.TabIndex = 11;
             this.tb_email.Enter += new System.EventHandler(this.tb_email_Enter);
             this.tb_email.Leave += new System.EventHandler(this.tb_email_Leave);
@@ -100,7 +100,7 @@
             this.Controls.Add(this.lb_Email);
             this.Controls.Add(this.tb_email);
             this.Name = "ForgotPassword";
-            this.Size = new System.Drawing.Size(1161, 676);
+            this.Size = new System.Drawing.Size(1582, 1053);
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

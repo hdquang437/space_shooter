@@ -26,6 +26,7 @@ namespace Space_Shooter.AccountManagement
             tb_password.Text = passwordHintText;
             tb_password.ForeColor = Color.Khaki;
             tb_password.PasswordChar = '\0';
+            this.Dock = DockStyle.Fill;
         }
 
         public event EventHandler getUser; 
