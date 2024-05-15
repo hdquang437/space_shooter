@@ -13,17 +13,17 @@ namespace Space_Shooter.Core.Weapon
         public EnemyWeapon_HomingRifle(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
         : base(Owner, OffsetX, OffsetY)
         {
-            attack_cd = 4;
+            attack_cd = 50;
             maxAmmo = 5;
             ammo = maxAmmo;
-            ammo_CD = 80;
+            ammo_CD = 250;
         }
 
         protected override void CreateBullet()
         {
             PointF center = owner.Center;
             Game_CollidableObject obj = Factory.Create_EnemyBullet_Homing(owner, owner.x, owner.y + offsetY);
-            obj.ToCenterPoint(center.X, center.Y + offsetY);
+            obj.ToCenterPoint(center.X + offsetX, center.Y + offsetY);
             //AudioManager.PlaySE(SE.Laser1);
         }
     }

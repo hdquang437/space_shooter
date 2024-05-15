@@ -16,14 +16,14 @@ namespace Space_Shooter.Core.Weapon
             attack_cd = 40;
             maxAmmo = 3;
             ammo = maxAmmo;
-            ammo_CD = 100;
+            ammo_CD = 150;
         }
 
         protected override void CreateBullet()
         {
             PointF center = owner.Center;
             Game_CollidableObject obj = Factory.Create_EnemyBullet_Sniping(owner, owner.x, owner.y + offsetY);
-            obj.ToCenterPoint(center.X, center.Y + offsetY);
+            obj.ToCenterPoint(center.X + offsetX, center.Y + offsetY);
             //AudioManager.PlaySE(SE.Laser1);
         }
     }

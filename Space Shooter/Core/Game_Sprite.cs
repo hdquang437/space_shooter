@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Space_Shooter.Manager;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -39,6 +40,10 @@ namespace Space_Shooter.Core
             int curFrameRow = index / _max_frameX;
             int height = _sprite.Height / _max_frameY;
             int width = _sprite.Width / _max_frameX;
+            if (x + width < 0 || x > g.ClipBounds.Width || y + height < 0 || y > g.ClipBounds.Height)
+            {
+                return;
+            }
             g.DrawImage(_sprite, (int)x, (int)y, new Rectangle(curFrameColumn * width, curFrameRow * height, width, height), GraphicsUnit.Pixel);
         }
     }

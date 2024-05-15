@@ -38,6 +38,7 @@ namespace Space_Shooter.Core.Enemy
         public Enemy_Meteor(Game_Sprite sprite, float x, float y, int size, float vX = 0, float vY = 1, float speed = 5)
             : base(sprite, x, y)
         {
+            _z = 10;
             this.velocityX = vX;
             this.velocityY = vY;
             this.size = size;
@@ -52,26 +53,26 @@ namespace Space_Shooter.Core.Enemy
                     _reward = 5;
                     break;
                 case 2:
-                    _hp = 20;
+                    _hp = 50;
                     _reward = 10;
                     GenerateRandomMinions(1, 1, 3, 5);
                     break;
                 case 3:
-                    _hp = 50;
+                    _hp = 100;
                     _reward = 25;
                     GenerateRandomMinions(2, 2, 1, 2);
                     GenerateRandomMinions(1, 2, 2, 2);
                     GenerateRandomMinions(1, 1, 2, 3);
                     break;
                 case 4:
-                    _hp = 100;
+                    _hp = 200;
                     _reward = 50;
                     GenerateRandomMinions(3, 3, 1, 2);
                     GenerateRandomMinions(2, 3, 1, 2);
                     GenerateRandomMinions(1, 2, 3, 5);
                     break;
                 case 5:
-                    _hp = 200;
+                    _hp = 500;
                     _reward = 100;
                     GenerateRandomMinions(4, 4, 1, 2);
                     GenerateRandomMinions(3, 4, 1, 1);

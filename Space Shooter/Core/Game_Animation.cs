@@ -12,7 +12,7 @@ namespace Space_Shooter.Core
     {
         public const int animationFrame = 4; 
 
-        int _size = 256;
+        //int _size = 256;
 
         //Rectangle Box
         //{
@@ -21,6 +21,7 @@ namespace Space_Shooter.Core
 
         public Game_Animation(Game_Sprite sprite, float x, float y)
         {
+            _z = 20;
             _die = false;
             _index = 0;
             _frame_CD = animationFrame;

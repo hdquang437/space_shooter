@@ -19,7 +19,7 @@ namespace Space_Shooter.Core.Bullet
             _Height = sprite.Height;
             _r = _Width / 2;
             _team = 0;
-            _collideDamage = 7;
+            _collideDamage = 12;
         }
 
         public override void Update()

@@ -22,6 +22,7 @@ namespace Space_Shooter.Core
             _IgnoreWall = true;
             _collidable = true;
             _team = 1;
+            _z = 5;
         }
 
         public override void Update()

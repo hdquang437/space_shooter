@@ -10,16 +10,19 @@ namespace Space_Shooter.Core.Enemy
 {
     internal class Enemy_Klaed_Fighter : Game_Enemy
     {
-        private int actionTimer = 60;
+        private int actionTimer = 8;
         private int actionCD = 0;
-        private int changeDirectionTimes = 10;
+        private int changeDirectionTimes = 12;
         private float velocityX = 0;
         private float velocityY = 1;
         private Game_EnemyWeapon weapon = null;
         public Enemy_Klaed_Fighter(Game_Sprite sprite, float x, float y, float speed, Mode mode)
             : base(sprite, x, y)
         {
-            _hp = 40;
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = sprite.Width * 0.4f;
+            _hp = 30;
             this.mode = mode;
             _MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
             _collideDamage = 100;

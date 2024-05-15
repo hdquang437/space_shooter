@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Media.Media3D;
 
 namespace Space_Shooter.Manager
@@ -90,6 +91,7 @@ namespace Space_Shooter.Manager
             score += (int)Math.Round(reward * modifier);
         }
 
+        #region Getter
         static public List<Game_CollidableObject> EnemyTeam_CollidableObjects
         {
             get
@@ -111,6 +113,22 @@ namespace Space_Shooter.Manager
                 return list;
             }
         }
+
+        static public List<Game_Object> AllDrawableObjects
+        {
+            get
+            {
+                List<Game_Object> list = new List<Game_Object>
+                {
+                    player
+                };
+                list.AddRange(bullets);
+                list.AddRange(enemies);
+                list.AddRange(animations);
+                return list.OrderBy(obj => obj?.z).ToList();
+            }
+        }
+        #endregion
 
         static public bool LoadStage(string difficulty, int stage)
         {
@@ -183,6 +201,32 @@ namespace Space_Shooter.Manager
                             break;
                         case ObjectID.ITEM_HEAL:
                             obj = Factory.Create_Item_Heal(x, y, false);
+                            break;
+
+                        // ENEMY
+                        case ObjectID.KLAED_BATTLECRUISER:
+                            obj = Factory.Create_Klaed_Battlecruiser(x, y, float.Parse(parse[4]), false);
+                            break;
+                        case ObjectID.KLAED_BOMBER:
+                            obj = Factory.Create_Klaed_Bomber(x, y, float.Parse(parse[4]), false);
+                            break;
+                        case ObjectID.KLAED_DREADNOUGHT:
+                            obj = Factory.Create_Klaed_Dreadnought(x, y, float.Parse(parse[4]), false);
+                            break;
+                        case ObjectID.KLAED_FIGHTER:
+                            obj = Factory.Create_Klaed_Fighter(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
+                            break;
+                        case ObjectID.KLAED_FRIGATE:
+                            obj = Factory.Create_Klaed_Frigate(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
+                            break;
+                        case ObjectID.KLAED_SCOUT:
+                            obj = Factory.Create_Klaed_Scout(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
+                            break;
+                        case ObjectID.KLAED_SUPPORTSHIP:
+                            obj = Factory.Create_Klaed_SupportShip(x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
+                            break;
+                        case ObjectID.KLAED_TORPEDOSHIP:
+                            obj = Factory.Create_Klaed_TorpedoShip(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
                             break;
 
                         default:

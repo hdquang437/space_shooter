@@ -16,6 +16,9 @@ namespace Space_Shooter.Core.Enemy
         public Enemy_Klaed_SupportShip(Game_Sprite sprite, float x, float y, float vx = 0, float vy = 1, float speed = 4)
             : base(sprite, x, y)
         {
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = sprite.Width * 0.35f;
             _hp = 20;
             velocityX = vx;
             velocityY = vy;
@@ -46,6 +49,10 @@ namespace Space_Shooter.Core.Enemy
                 Game_Animation ani = Factory.Create_ani_Explosion("enemy1", x, y);
                 ani.ToCenterPoint(center.X, center.Y);
                 AudioManager.PlaySE(SE.Explosion1);
+                
+                // drop loot
+                Game_Enemy loot = Factory.Create_Random_Loot(center.X, center.Y);
+                loot.ToCenterPoint(center.X, center.Y);
             }
         }
     }

@@ -20,10 +20,73 @@ namespace Space_Shooter.Manager
         }
 
 
-
         public static Enemy_Meteor Create_Meteor(int size, float x, float y, float vx = 0, float vy = 1, float speed = 6, bool AddToData = true)
         {
             Enemy_Meteor obj = new Enemy_Meteor(SpriteManager.Sprites["meteor_size" + size], x, y, size, vx, vy, speed);
+            if (AddToData)
+                GameDataManager.enemies.Add(obj);
+            return obj;
+        }
+
+        public static Game_Enemy Create_Klaed_Fighter(float x, float y, float speed, Game_Enemy.Mode mode, bool AddToData = true)
+        {
+            Game_Enemy obj = new Enemy_Klaed_Fighter(SpriteManager.Sprites["klaed_fighter"], x, y, speed, mode);
+            if (AddToData)
+                GameDataManager.enemies.Add(obj);
+            return obj;
+        }
+
+        public static Game_Enemy Create_Klaed_Bomber(float x, float y, float speed, bool AddToData = true)
+        {
+            Game_Enemy obj = new Enemy_Klaed_Bomber(SpriteManager.Sprites["klaed_bomber"], x, y, speed);
+            if (AddToData)
+                GameDataManager.enemies.Add(obj);
+            return obj;
+        }
+
+        public static Game_Enemy Create_Klaed_Scout(float x, float y, float speed, Game_Enemy.Mode mode, bool AddToData = true)
+        {
+            Game_Enemy obj = new Enemy_Klaed_Scout(SpriteManager.Sprites["klaed_scout"], x, y, speed, mode);
+            if (AddToData)
+                GameDataManager.enemies.Add(obj);
+            return obj;
+        }
+
+        public static Game_Enemy Create_Klaed_Frigate(float x, float y, float speed, Game_Enemy.Mode mode, bool AddToData = true)
+        {
+            Game_Enemy obj = new Enemy_Klaed_Frigate(SpriteManager.Sprites["klaed_frigate"], x, y, speed, mode);
+            if (AddToData)
+                GameDataManager.enemies.Add(obj);
+            return obj;
+        }
+
+        public static Game_Enemy Create_Klaed_TorpedoShip(float x, float y, float speed, Game_Enemy.Mode mode, bool AddToData = true)
+        {
+            Game_Enemy obj = new Enemy_Klaed_TorpedoShip(SpriteManager.Sprites["klaed_torpedoship"], x, y, speed, mode);
+            if (AddToData)
+                GameDataManager.enemies.Add(obj);
+            return obj;
+        }
+
+        public static Game_Enemy Create_Klaed_SupportShip(float x, float y, float vx, float vy, float speed, bool AddToData = true)
+        {
+            Game_Enemy obj = new Enemy_Klaed_SupportShip(SpriteManager.Sprites["klaed_supportship"], x, y, vx, vy, speed);
+            if (AddToData)
+                GameDataManager.enemies.Add(obj);
+            return obj;
+        }
+
+        public static Game_Enemy Create_Klaed_Battlecruiser(float x, float y, float speed, bool AddToData = true)
+        {
+            Game_Enemy obj = new Enemy_Klaed_Battlecruiser(SpriteManager.Sprites["klaed_battlecruiser"], x, y, speed);
+            if (AddToData)
+                GameDataManager.enemies.Add(obj);
+            return obj;
+        }
+
+        public static Game_Enemy Create_Klaed_Dreadnought(float x, float y, float speed, bool AddToData = true)
+        {
+            Game_Enemy obj = new Enemy_Klaed_Dreadnought(SpriteManager.Sprites["klaed_dreadnought"], x, y, speed);
             if (AddToData)
                 GameDataManager.enemies.Add(obj);
             return obj;
@@ -283,6 +346,11 @@ namespace Space_Shooter.Manager
         public static Game_EnemyWeapon Create_EnemyWeapon_HomingRifle(Game_CollidableObject owner, float offsetX, float offsetY)
         {
             return new EnemyWeapon_HomingRifle(owner, offsetX, offsetY);
+        }
+
+        public static Game_EnemyWeapon Create_EnemyWeapon_SniperRifle(Game_CollidableObject owner, float offsetX, float offsetY)
+        {
+            return new EnemyWeapon_SniperRifle(owner, offsetX, offsetY);
         }
 
         public static Game_EnemyWeapon Create_EnemyWeapon_Sniper(Game_CollidableObject owner, float offsetX, float offsetY)

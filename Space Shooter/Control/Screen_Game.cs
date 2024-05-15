@@ -21,7 +21,7 @@ namespace Space_Shooter.Control
         static private System.Windows.Forms.Timer _timer = new System.Windows.Forms.Timer();
         private string difficulty = "easy";
 
-        private int time = 0;
+        //private int time = 0;
         int scrollY = 1;
 
         private Form1 parentForm;
@@ -80,24 +80,29 @@ namespace Space_Shooter.Control
             //e.ClipRectangle = new Rectangle(0, 0, REAL_SCREEN_HEIGHT, REAL_SCREEN_WIDTH);
             Draw_Background(g);
 
-            foreach (Game_Bullet obj in GameDataManager.bullets)
+            foreach (Game_Object obj in GameDataManager.AllDrawableObjects)
             {
-                obj.Draw_Sprite(g);
+                obj?.Draw_Sprite(g);
             }
 
-            foreach (Game_Enemy obj in GameDataManager.enemies)
-            {
-                obj.Draw_Sprite(g);
-            }
+            //foreach (Game_Enemy obj in GameDataManager.enemies)
+            //{
+            //    obj.Draw_Sprite(g);
+            //}
 
-            Game_Player player = GameDataManager.player;
-            if (player != null)
-                player.Draw_Sprite(g);
+            //Game_Player player = GameDataManager.player;
+            //if (player != null)
+            //    player.Draw_Sprite(g);
 
-            foreach (Game_Animation obj in GameDataManager.animations)
-            {
-                obj.Draw_Sprite(g);
-            }
+            //foreach (Game_Bullet obj in GameDataManager.bullets)
+            //{
+            //    obj.Draw_Sprite(g);
+            //}
+
+            //foreach (Game_Animation obj in GameDataManager.animations)
+            //{
+            //    obj.Draw_Sprite(g);
+            //}
         }
 
         #region GameProcessor
@@ -109,17 +114,17 @@ namespace Space_Shooter.Control
             Game_Player player = GameDataManager.player;
             player?.Update();
 
-            foreach (Game_Bullet obj in GameDataManager.bullets)
+            foreach (Game_Bullet obj in GameDataManager.bullets.ToList())
             {
                 obj.Update();
             }
 
-            foreach (Game_Enemy obj in GameDataManager.enemies)
+            foreach (Game_Enemy obj in GameDataManager.enemies.ToList())
             {
                 obj.Update();
             }
         
-            foreach (Game_Animation obj in GameDataManager.animations)
+            foreach (Game_Animation obj in GameDataManager.animations.ToList())
             {
                 obj.Update_Data();
             }

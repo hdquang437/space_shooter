@@ -15,7 +15,7 @@ namespace Space_Shooter.Core.Bullet
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;
-            _team = 0;
+            _team = 1;
             _collideDamage = 5;
             die_ani_sprite = "enemy_bullet";
 
