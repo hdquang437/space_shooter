@@ -66,7 +66,15 @@ namespace Space_Shooter.Core
         public override void Process_BeforeDie()
         {
             base.Process_BeforeDie();
-            GameDataManager.GainScore(_reward);
+            if (_die_ani)
+            {
+                GameDataManager.GainScore(_reward);
+            }
+            else
+            {
+                GameDataManager.GainScore((int)Math.Round(_reward * 0.5));
+            }
+
         }
 
         public enum Mode

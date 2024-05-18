@@ -31,8 +31,11 @@
             this.label_HP = new System.Windows.Forms.Label();
             this.label_Ammo = new System.Windows.Forms.Label();
             this.label_FPS = new System.Windows.Forms.Label();
+            this.labelMessage = new System.Windows.Forms.Label();
             this.valueBar_Ammo = new Space_Shooter.Control.ValueBar();
             this.valueBar_HP = new Space_Shooter.Control.ValueBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_HP
@@ -72,6 +75,17 @@
             this.label_FPS.Text = "fps";
             this.label_FPS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // labelMessage
+            // 
+            this.labelMessage.BackColor = System.Drawing.Color.Transparent;
+            this.labelMessage.Font = new System.Drawing.Font("Algerian", 64F, System.Drawing.FontStyle.Bold);
+            this.labelMessage.ForeColor = System.Drawing.Color.White;
+            this.labelMessage.Location = new System.Drawing.Point(33, 311);
+            this.labelMessage.Name = "labelMessage";
+            this.labelMessage.Size = new System.Drawing.Size(1480, 179);
+            this.labelMessage.TabIndex = 5;
+            this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // valueBar_Ammo
             // 
             this.valueBar_Ammo.BackColor = System.Drawing.Color.Brown;
@@ -92,11 +106,39 @@
             this.valueBar_HP.TabIndex = 0;
             this.valueBar_HP.Value = 100;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Algerian", 14F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(1393, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 26);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "SCORE";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelScore
+            // 
+            this.labelScore.BackColor = System.Drawing.Color.Transparent;
+            this.labelScore.Font = new System.Drawing.Font("Algerian", 14F, System.Drawing.FontStyle.Bold);
+            this.labelScore.ForeColor = System.Drawing.Color.White;
+            this.labelScore.Location = new System.Drawing.Point(1367, 69);
+            this.labelScore.Name = "labelScore";
+            this.labelScore.Size = new System.Drawing.Size(146, 26);
+            this.labelScore.TabIndex = 7;
+            this.labelScore.Text = "0";
+            this.labelScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Screen_Game
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.labelScore);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.label_FPS);
             this.Controls.Add(this.label_Ammo);
             this.Controls.Add(this.label_HP);
@@ -118,5 +160,8 @@
         private System.Windows.Forms.Label label_HP;
         private System.Windows.Forms.Label label_Ammo;
         private System.Windows.Forms.Label label_FPS;
+        private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelScore;
     }
 }

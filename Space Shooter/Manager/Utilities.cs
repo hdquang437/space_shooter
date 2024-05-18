@@ -27,5 +27,17 @@ namespace Space_Shooter.Manager
                     return Game_Enemy.Mode.forward;
             }
         }
+
+        static public SortedDictionary<int, List<Game_Object>> CloneStageObjects(SortedDictionary<int, List<Game_Object>> src)
+        {
+            SortedDictionary<int, List<Game_Object>> clone = new SortedDictionary<int, List<Game_Object>>();
+
+            foreach (KeyValuePair<int, List<Game_Object>> entry in src)
+            {
+                clone.Add(entry.Key, entry.Value);
+            }
+
+            return clone;
+        }
     }
 }

@@ -19,7 +19,6 @@ namespace Space_Shooter.Control
         public const int REAL_SCREEN_HEIGHT = 830;
 
         static private System.Windows.Forms.Timer _timer = new System.Windows.Forms.Timer();
-        private string difficulty = "easy";
 
         //private int time = 0;
         int scrollY = 1;
@@ -43,20 +42,26 @@ namespace Space_Shooter.Control
             parentForm = parent;
 
             SpriteManager.Initialize();
-
-            GameDataManager.reset();
-            GameDataManager.player.ToCenterPoint(REAL_SCREEN_WIDTH / 2, REAL_SCREEN_HEIGHT - 200);
-
-            // Temporart use
-            GameDataManager.LoadStage(difficulty, 1);
-            //
+            GameDataManager.LoadAllStages();
 
             _timer.Interval = 10;
             _timer.Tick += new EventHandler(TimerOnTick);
-            _timer.Start();
+            //_timer.Start();
 
 
             //panel_screen.Paint += new PaintEventHandler(Screen_Game_Paint);
+        }
+
+        public void StartGame()
+        {
+            GameDataManager.Reset();
+            GameDataManager.player.ToCenterPoint(REAL_SCREEN_WIDTH / 2, REAL_SCREEN_HEIGHT - 200);
+            _timer.Start();
+        }
+
+        public void StopGame()
+        {
+            _timer.Stop();
         }
 
         void TimerOnTick(object obj, EventArgs e)
@@ -84,25 +89,6 @@ namespace Space_Shooter.Control
             {
                 obj?.Draw_Sprite(g);
             }
-
-            //foreach (Game_Enemy obj in GameDataManager.enemies)
-            //{
-            //    obj.Draw_Sprite(g);
-            //}
-
-            //Game_Player player = GameDataManager.player;
-            //if (player != null)
-            //    player.Draw_Sprite(g);
-
-            //foreach (Game_Bullet obj in GameDataManager.bullets)
-            //{
-            //    obj.Draw_Sprite(g);
-            //}
-
-            //foreach (Game_Animation obj in GameDataManager.animations)
-            //{
-            //    obj.Draw_Sprite(g);
-            //}
         }
 
         #region GameProcessor
@@ -194,10 +180,20 @@ namespace Space_Shooter.Control
                 valueBar_Ammo.Maximum = 1;
                 valueBar_Ammo.Value = 0;
             }
-            //label_score.Text = "SCORE: " + score;
-            //Ammo.Refresh();
-            //label_score.Refresh();
-            //label_ammo.Refresh();
+
+            if (GameDataManager.NoteStageEndTimeRemain > 0)
+            {
+                labelMessage.Text = GameDataManager.NoteStageEnd;
+            }
+            else if (GameDataManager.NoteStageStartTimeRemain > 0)
+            {
+                labelMessage.Text = GameDataManager.NoteStageStart;
+            }
+            else
+            {
+                labelMessage.Text = "";
+            }
+            labelScore.Text = GameDataManager.score.ToString();
         }
 
         #endregion

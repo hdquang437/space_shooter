@@ -192,6 +192,14 @@ namespace Space_Shooter.Core
             }
             return checkBox;
         }
+
+        public bool IsOutsideScreen()
+        {
+            return
+                _x + _Width < 0 || _x > MoveField.Width
+                || _y + _Height < 0 || _y > MoveField.Height;
+           
+        }
         #endregion
 
         #region Move Methods

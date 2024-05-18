@@ -85,16 +85,10 @@ namespace Space_Shooter.Core
 
         public void Test_move_over_screen()
         {
-            RectangleF collided_wall = Get_Collided_Wall(Hitbox);
-            if (!collided_wall.IsEmpty)
+            if (IsOutsideScreen())
             {
-                RectangleF test = Hitbox;
-                test.Intersect(collided_wall);
-                if (test == Hitbox)
-                {
-                    _die = true;
-                    _die_ani = false;
-                }
+                _die = true;
+                _die_ani = false;
             }
         }
     }

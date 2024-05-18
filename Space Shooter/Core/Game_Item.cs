@@ -22,6 +22,7 @@ namespace Space_Shooter.Core
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;
+            _reward = 100;
         }
 
         public override void Process_Action()

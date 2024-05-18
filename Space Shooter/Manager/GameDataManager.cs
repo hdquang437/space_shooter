@@ -28,11 +28,36 @@ namespace Space_Shooter.Manager
         //static public int highest_score;
         static public GameDifficulty Difficulty = GameDifficulty.Easy;
 
+        static private SortedDictionary<string, StageData> StagesDict = new SortedDictionary<string, StageData>();
         static private SortedDictionary<int, List<Game_Object>> stageObjects = new SortedDictionary<int, List<Game_Object>>();
 
+        #region Stage Control
+        static public bool init = false;
+        static public int NoteStageEndTimeRemain = 0;
+        static public int NoteStageStartTimeRemain = 0;
+        static public string NoteStageEnd = "";
+        static public string NoteStageStart = "";
+        static public bool GameEnd = false;
+        static public bool StageEnd = false;
+        static public int WaitToNextStage = 0;
+        #endregion
+
+        #region Update
         static public void Update()
         {
+            if (!init)
+            {
+                return;
+            }
+
+            if (IsStageClear())
+            {
+                SetupStage();
+                return;
+            }
+            
             time++;
+            
             if (!stageObjects.ContainsKey(time))
             {
                 return;
@@ -47,24 +72,79 @@ namespace Space_Shooter.Manager
                         enemies.Add(enemy);
                     }
                 }
-                stageObjects[time] = null;
+                stageObjects.Remove(time);
             }
         }
 
-        static public void reset()
+        static public void SetupStage()
+        {
+            if (!StageEnd)
+            {
+                WaitToNextStage = 450;
+                
+                if (stage == LAST_STAGE)
+                {
+                    NoteStageEnd = "VICTORY";
+                    NoteStageEndTimeRemain = 400;
+                    NoteStageStart = "";
+                    NoteStageStartTimeRemain = 0;
+                    GameEnd = true;
+                }
+                else
+                {
+                    NoteStageEndTimeRemain = 200;
+                    NoteStageStartTimeRemain = 200;
+                    NoteStageEnd = stage == 0 ? "ARE YOU READY?" : "STAGE CLEAR";
+                    stage++;
+                    NoteStageStart = "STAGE " + stage;
+                }
+                StageEnd = true;
+            }
+            else if (WaitToNextStage > 0)
+            {
+                WaitToNextStage--;
+                if (NoteStageEndTimeRemain > 0)
+                {
+                    NoteStageEndTimeRemain--;
+                }
+                else if (NoteStageStartTimeRemain > 0)
+                {
+                    NoteStageStartTimeRemain--;
+                } 
+            }
+            else
+            {
+                if (!GameEnd)
+                {
+                    StageEnd = false;
+                    time = 0;
+                    LoadStage(Difficulty, stage);
+                }
+                else
+                {
+                    // Exit the game
+                }
+            }
+        }
+        #endregion
+
+        static public void Reset()
         {
             enemies.Clear();
             bullets.Clear();
             animations.Clear();
             player = Factory.Create_PlayerSpaceship(0, 0);
             score = 0;
-            stage = 1;
+            stage = 0;
             stageObjects.Clear();
+            GameEnd = false;
+            StageEnd = false;
+            init = true;
         }
 
         static public bool IsStageClear()
         {
-            return stageObjects.Count == 0;
+            return stageObjects.Count == 0 && enemies.Count == 0;
         }
 
         static public void NextStage()
@@ -130,13 +210,70 @@ namespace Space_Shooter.Manager
         }
         #endregion
 
-        static public bool LoadStage(string difficulty, int stage)
+        static public void LoadAllStages()
         {
+            for (int i = 0; i < 3; i++)
+            {
+                bool exit = false;
+                int stage = 0;
+                while (!exit)
+                {
+                    stage++;
+                    switch (i)
+                    {
+                        case 0:
+                            {
+                                StageData? data = LoadStageDataFromDisk("easy", stage);
+                                if (data == null)
+                                {
+                                    exit = true;
+                                }
+                                else
+                                {
+                                    StagesDict.Add("easy" + stage, (StageData)data);
+                                }
+                                break;
+                            }
+                        case 1:
+                            {
+                                StageData? data = LoadStageDataFromDisk("normal", stage);
+                                if (data == null)
+                                {
+                                    exit = true;
+                                }
+                                else
+                                {
+                                    StagesDict.Add("normal" + stage, (StageData)data);
+                                }
+                                break;
+                            }
+                        case 2:
+                            {
+                                StageData? data = LoadStageDataFromDisk("hard", stage);
+                                if (data == null)
+                                {
+                                    exit = true;
+                                }
+                                else
+                                {
+                                    StagesDict.Add("hard" + stage, (StageData)data);
+                                }
+                                break;
+                            }
+                    }
+                }
+            }
+        }
+
+        static public StageData? LoadStageDataFromDisk(string difficulty, int stage)
+        {
+            StageData stageData = new StageData(new SortedDictionary<int, List<Game_Object>>());
+            StreamReader sr = null;
             String line;
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
-                StreamReader sr = new StreamReader("data\\stage\\" + difficulty + "\\stage" + stage + ".txt");
+                sr = new StreamReader("data\\stage\\" + difficulty + "\\stage" + stage + ".txt");
                 //Read the first line of text
                 line = sr.ReadLine();
                 //Continue to read until you reach end of file
@@ -234,34 +371,67 @@ namespace Space_Shooter.Manager
                             line = sr.ReadLine();
                             continue;
                     }
-                    if (stageObjects.ContainsKey(key))
+                    if (stageData.StageObjects.ContainsKey(key))
                     {
-                        stageObjects[key].Add(obj);
+                        stageData.StageObjects[key].Add(obj);
                     }
                     else
                     {
-                        stageObjects.Add(key, new List<Game_Object>());
-                        stageObjects[key].Add(obj);
+                        stageData.StageObjects.Add(key, new List<Game_Object>());
+                        stageData.StageObjects[key].Add(obj);
                     }
 
                     //Read the next line
                     line = sr.ReadLine();
                 }
-                //close the file
-                sr.Close();
-                Console.ReadLine();
+
             }
             catch (Exception e)
             {
                 Console.WriteLine("Exception: " + e.Message);
-                return false;
+                return null;
             }
             finally
             {
-                //Console.WriteLine("Executing finally block.");
+                //close the file
+                sr?.Close();
+                Console.ReadLine();
             }
-            //stageObjects.OrderBy(x => x.Key);
-            return true;
+            return stageData;
+        }
+
+        static public bool LoadStage(GameDifficulty difficulty, int stage)
+        {
+            string difficultyStr = "";
+            switch (difficulty)
+            {
+                case GameDifficulty.Easy:
+                    difficultyStr = "easy";
+                    break;
+                case GameDifficulty.Normal:
+                    difficultyStr = "normal";
+                    break;
+                case GameDifficulty.Hard:
+                    difficultyStr = "hard";
+                    break;
+            }
+
+            if (StagesDict.ContainsKey(difficultyStr + stage))
+            {
+                stageObjects = Utilities.CloneStageObjects(StagesDict[difficultyStr + stage].StageObjects);
+                return true;
+            }
+            return false;
+        }
+    }
+
+    struct StageData
+    {
+        public SortedDictionary<int, List<Game_Object>> StageObjects;
+
+        public StageData(SortedDictionary<int, List<Game_Object>> stageObjects)
+        {
+            StageObjects = stageObjects;
         }
     }
 

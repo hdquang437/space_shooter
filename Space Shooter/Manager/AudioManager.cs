@@ -24,7 +24,7 @@ namespace Space_Shooter.Manager
             string alias = @"sound_bgm";
             mciSendString(@"close " + alias, null, 0, IntPtr.Zero);
             mciSendString(@"open " + link + " type waveaudio alias " + alias, null, 0, IntPtr.Zero);
-            mciSendString(@"play " + alias, null, 0, IntPtr.Zero);
+            mciSendString(@"play " + alias + "repeat", null, 0, IntPtr.Zero);
             //mciSendString(@"setaudio " + alias + " volume to 1000", null, 0, IntPtr.Zero);
         }
 

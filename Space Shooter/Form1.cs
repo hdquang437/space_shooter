@@ -18,7 +18,8 @@ namespace Space_Shooter
     {
         // Screen_Login loginScreen;
         // Screen_SignUp signUpScreen;
-        // Screen_Game gameScreen;
+        Screen_Game gameScreen;
+        HomeScreen homeScreen;
         User currentUser;
 
         public Form1()
@@ -29,7 +30,11 @@ namespace Space_Shooter
             AudioManager.PlayBGM(BGM.bgm1);
             // Screen_Login loginScreen = new ...
             // Screen_SignUp signUpScreen = new ...
-            // Screen_Game gameScreen = new ...
+            gameScreen = new Screen_Game(this);
+            homeScreen = new HomeScreen();
+            homeScreen.StartGame += new EventHandler(this.homeScreen_StartGame);
+            panel_screen.Controls.Add(homeScreen);
+            //panel_screen.Controls.Add(gameScreen);
         }
 
         public void ToCenter()
@@ -46,16 +51,15 @@ namespace Space_Shooter
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            HomeScreen homeScreen = new HomeScreen();
-            homeScreen.StartGame += new EventHandler(this.homeScreen_StartGame);
-            panel_screen.Controls.Add(homeScreen);
+
         }
 
         private void homeScreen_StartGame(object sender, EventArgs e)
         {
             currentUser = sender as User;
             panel_screen.Controls.Clear();
-            panel_screen.Controls.Add(new Control.Screen_Game(this));
+            panel_screen.Controls.Add(gameScreen);
+            gameScreen.StartGame();
         }
     }
 }
