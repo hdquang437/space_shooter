@@ -50,7 +50,7 @@
             this.lb_password.BackColor = System.Drawing.Color.Transparent;
             this.lb_password.Font = new System.Drawing.Font("Goudy Stout", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_password.ForeColor = System.Drawing.Color.Crimson;
-            this.lb_password.Location = new System.Drawing.Point(80, 422);
+            this.lb_password.Location = new System.Drawing.Point(237, 535);
             this.lb_password.Name = "lb_password";
             this.lb_password.Size = new System.Drawing.Size(216, 27);
             this.lb_password.TabIndex = 14;
@@ -62,7 +62,7 @@
             this.lb_Email.BackColor = System.Drawing.Color.Transparent;
             this.lb_Email.Font = new System.Drawing.Font("Goudy Stout", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Email.ForeColor = System.Drawing.Color.Crimson;
-            this.lb_Email.Location = new System.Drawing.Point(80, 312);
+            this.lb_Email.Location = new System.Drawing.Point(237, 379);
             this.lb_Email.Name = "lb_Email";
             this.lb_Email.Size = new System.Drawing.Size(145, 27);
             this.lb_Email.TabIndex = 15;
@@ -73,10 +73,10 @@
             this.tb_password.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tb_password.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_password.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_password.Location = new System.Drawing.Point(85, 460);
+            this.tb_password.Location = new System.Drawing.Point(242, 589);
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
-            this.tb_password.Size = new System.Drawing.Size(411, 35);
+            this.tb_password.Size = new System.Drawing.Size(507, 35);
             this.tb_password.TabIndex = 13;
             this.tb_password.Enter += new System.EventHandler(this.tb_password_Enter);
             this.tb_password.Leave += new System.EventHandler(this.tb_password_Leave);
@@ -86,9 +86,9 @@
             this.tb_email.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tb_email.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_email.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_email.Location = new System.Drawing.Point(85, 353);
+            this.tb_email.Location = new System.Drawing.Point(242, 438);
             this.tb_email.Name = "tb_email";
-            this.tb_email.Size = new System.Drawing.Size(411, 35);
+            this.tb_email.Size = new System.Drawing.Size(507, 35);
             this.tb_email.TabIndex = 12;
             this.tb_email.Enter += new System.EventHandler(this.tb_email_Enter);
             this.tb_email.Leave += new System.EventHandler(this.tb_email_Leave);
@@ -113,7 +113,7 @@
             this.btn_signUp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_signUp.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_signUp.ForeColor = System.Drawing.Color.Khaki;
-            this.btn_signUp.Location = new System.Drawing.Point(177, 528);
+            this.btn_signUp.Location = new System.Drawing.Point(336, 720);
             this.btn_signUp.Name = "btn_signUp";
             this.btn_signUp.Size = new System.Drawing.Size(215, 71);
             this.btn_signUp.TabIndex = 17;
@@ -126,9 +126,9 @@
             this.tb_name.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tb_name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_name.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_name.Location = new System.Drawing.Point(85, 237);
+            this.tb_name.Location = new System.Drawing.Point(242, 287);
             this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(411, 35);
+            this.tb_name.Size = new System.Drawing.Size(507, 35);
             this.tb_name.TabIndex = 12;
             this.tb_name.Enter += new System.EventHandler(this.tb_user_name_Enter);
             this.tb_name.Leave += new System.EventHandler(this.tb_user_name_Leave);
@@ -139,7 +139,7 @@
             this.lb_name.BackColor = System.Drawing.Color.Transparent;
             this.lb_name.Font = new System.Drawing.Font("Goudy Stout", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_name.ForeColor = System.Drawing.Color.Crimson;
-            this.lb_name.Location = new System.Drawing.Point(80, 197);
+            this.lb_name.Location = new System.Drawing.Point(237, 237);
             this.lb_name.Name = "lb_name";
             this.lb_name.Size = new System.Drawing.Size(123, 27);
             this.lb_name.TabIndex = 15;
@@ -149,7 +149,7 @@
             // 
             this.pb_Avatar.BackColor = System.Drawing.Color.Transparent;
             this.pb_Avatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb_Avatar.Location = new System.Drawing.Point(585, 237);
+            this.pb_Avatar.Location = new System.Drawing.Point(825, 309);
             this.pb_Avatar.Name = "pb_Avatar";
             this.pb_Avatar.Size = new System.Drawing.Size(110, 97);
             this.pb_Avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -162,7 +162,7 @@
             this.pb_chooseAvatar.BackColor = System.Drawing.Color.Transparent;
             this.pb_chooseAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pb_chooseAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pb_chooseAvatar.Image")));
-            this.pb_chooseAvatar.Location = new System.Drawing.Point(666, 308);
+            this.pb_chooseAvatar.Location = new System.Drawing.Point(906, 380);
             this.pb_chooseAvatar.Name = "pb_chooseAvatar";
             this.pb_chooseAvatar.Size = new System.Drawing.Size(43, 43);
             this.pb_chooseAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -187,7 +187,7 @@
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.tb_email);
             this.Name = "SignUpComponent";
-            this.Size = new System.Drawing.Size(1161, 676);
+            this.Size = new System.Drawing.Size(1582, 1053);
             this.Load += new System.EventHandler(this.SignUpComponent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Avatar)).EndInit();

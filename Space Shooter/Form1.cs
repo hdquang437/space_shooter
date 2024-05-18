@@ -1,4 +1,7 @@
-﻿using Space_Shooter.Manager;
+﻿using Space_Shooter.AccountManagement;
+using Space_Shooter.AccountManagement.Model;
+using Space_Shooter.Control;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +19,7 @@ namespace Space_Shooter
         // Screen_Login loginScreen;
         // Screen_SignUp signUpScreen;
         // Screen_Game gameScreen;
+        User currentUser;
 
         public Form1()
         {
@@ -42,13 +46,16 @@ namespace Space_Shooter
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            panel_screen.Controls.Add(new Control.Screen_Game(this));
+            HomeScreen homeScreen = new HomeScreen();
+            homeScreen.StartGame += new EventHandler(this.homeScreen_StartGame);
+            panel_screen.Controls.Add(homeScreen);
         }
 
-        public void ToGameScreen()
+        private void homeScreen_StartGame(object sender, EventArgs e)
         {
+            currentUser = sender as User;
             panel_screen.Controls.Clear();
-            //panel_screen.Controls.Add(screenGame);
+            panel_screen.Controls.Add(new Control.Screen_Game(this));
         }
     }
 }

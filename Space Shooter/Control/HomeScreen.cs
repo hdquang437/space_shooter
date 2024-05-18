@@ -14,10 +14,10 @@ using System.Windows.Forms;
 
 namespace Space_Shooter.AccountManagement
 {
-    public partial class HomeScreen : Form
+    public partial class HomeScreen : UserControl
     {
-
-        Point mouseLocation;
+        List<User> users = new List<User>();
+        User currentUser;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -33,27 +33,16 @@ namespace Space_Shooter.AccountManagement
         public HomeScreen()
         {
             InitializeComponent();
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            Size formsize = new Size(1582, 1053);
+            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, formsize.Width-200, formsize.Height-200, 20, 20));
+            this.Dock = DockStyle.Fill;
         }
+
+        public event EventHandler StartGame;
 
         private void pb_exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void pn_title_bar_MouseDown(object sender, MouseEventArgs e)
-        {
-            mouseLocation = new Point(-e.X, -e.Y);
-        }
-
-        private void pn_title_bar_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Point mousePos = System.Windows.Forms.Control.MousePosition;
-                mousePos.Offset(mouseLocation.X, mouseLocation.Y);
-                Location = mousePos;
-            }
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -73,18 +62,15 @@ namespace Space_Shooter.AccountManagement
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-            Hide();
-            Form1 game = new Form1();
-            game.ShowDialog();
-            
+            StartGame(currentUser,e);   
         }
 
         private void loginComponent_getUser(object sender, EventArgs e)
         {
-            User user = sender as User;
-            this.lb_userName.Text = user.name;
-            this.lb_highestScoreValue.Text = user.highestScore.ToString();
-            this.pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + user.avaPath);
+            currentUser = sender as User;
+            this.lb_userName.Text = currentUser.name;
+            this.lb_highestScoreValue.Text = currentUser.highestScore.ToString();
+            this.pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + currentUser.avaPath);
             this.pn_user.Visible = true;
             this.btn_login.Visible = false;
             this.btn_signup.Visible = false;
@@ -101,7 +87,19 @@ namespace Space_Shooter.AccountManagement
             this.btn_signup.Visible = true;
         }
 
-        void loadUser(User user, int i)
+        void loadUser()
+        {
+            users.Clear();
+            fpn_leaderBoard.Controls.Clear();
+            users = UserRepo.LoadUsersFromFile();
+            users.Sort((o1, o2) => o1.highestScore < o2.highestScore ? 1 : 0);
+            for (int i = 0; i < (users.Count >= 10 ? 10 : users.Count); i++)
+            {
+                loadUserToView(users[i], i);
+            }
+
+        }
+        private void loadUserToView(User user, int i)
         {
             LeaderBoardUser leaderBoardUser = new LeaderBoardUser();
             leaderBoardUser.LoadData(i, user.avaPath, user.name, user.highestScore.ToString());
@@ -110,13 +108,12 @@ namespace Space_Shooter.AccountManagement
 
         private void HomeScreen_Load(object sender, EventArgs e)
         {
-            List<User> users = UserRepo.LoadUsersFromFile();
-            users.Sort((o1, o2) => o1.highestScore < o2.highestScore ? 1 : 0);
+            loadUser();
+        }
 
-            for (int i = 0; i < (users.Count >= 5 ? 5 : users.Count); i++)
-            {
-                loadUser(users[i], i);
-            }
+        private void signUpComponent_reloadUser(object sender, EventArgs e)
+        {
+            loadUser();
         }
     }
 }

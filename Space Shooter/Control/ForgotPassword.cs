@@ -25,6 +25,7 @@ namespace Space_Shooter.AccountManagement
             InitializeComponent();
             tb_email.Text = emailHintText;
             tb_email.ForeColor = Color.Khaki;
+            this.Dock = DockStyle.Fill;
         }
 
         private void tb_email_Enter(object sender, EventArgs e)
