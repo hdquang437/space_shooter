@@ -63,7 +63,7 @@ namespace Space_Shooter.Manager
             {
                 turbo = true;
             }    
-            if (Keyboard.IsKeyDown(Key.Space))
+            if (Keyboard.IsKeyDown(Key.Z))
             {
                 shoot = true;
             }

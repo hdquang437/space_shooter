@@ -69,7 +69,7 @@ namespace Space_Shooter
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.Focus();
         }
 
         public void BackToHomeScreen()
@@ -90,6 +90,7 @@ namespace Space_Shooter
             currentUser = sender as User;
             panel_screen.Controls.Clear();
             panel_screen.Controls.Add(gameScreen);
+            panel_screen.Refresh();
             gameScreen.StartGame();
         }
 
@@ -102,6 +103,7 @@ namespace Space_Shooter
         {
             panel_screen.Controls.Clear();
             panel_screen.Controls.Add(gameScreen);
+            panel_screen.Refresh();
             gameScreen.StartGame();
         }
 
@@ -109,6 +111,8 @@ namespace Space_Shooter
         {
             panel_screen.Controls.Clear();
             panel_screen.Controls.Add(homeScreen);
+            panel_screen.Refresh();
         }
+
     }
 }

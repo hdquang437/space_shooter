@@ -41,6 +41,13 @@ namespace Space_Shooter.AccountManagement
             //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, formsize.Width-200, formsize.Height-200, 20, 20));
             this.Dock = DockStyle.Fill;
             this.currentUser = user;
+            //btn_diff_easy.KeyDown += Utilities.PreventKeyDown;
+            //btn_diff_normal.KeyDown += Utilities.PreventKeyDown;
+            //btn_diff_hard.KeyDown += Utilities.PreventKeyDown;
+            //btn_start.KeyDown += Utilities.PreventKeyDown;
+            //btn_exit.KeyDown += Utilities.PreventKeyDown;
+            //btn_login.KeyDown += Utilities.PreventKeyDown;
+            //btn_signup.KeyDown += Utilities.PreventKeyDown;
         }
 
         public event EventHandler StartGame;
@@ -54,6 +61,10 @@ namespace Space_Shooter.AccountManagement
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
+            if (GameDataManager.init)
+            {
+                return;
+            }
             Application.Exit();
         }
 
@@ -69,6 +80,10 @@ namespace Space_Shooter.AccountManagement
 
         private void btn_start_Click(object sender, EventArgs e)
         {
+            if (GameDataManager.init)
+            {
+                return;
+            }
             SetDiff(this, e);
             ChooseShip(this, e);
             StartGame(currentUser,e);
@@ -168,6 +183,7 @@ namespace Space_Shooter.AccountManagement
         private void btn_diff_easy_Click(object sender, EventArgs e)
         {
             currentDiff = GameDifficulty.Easy;
+            GameDataManager.Difficulty = currentDiff;
             btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_active;
             btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_inactive;
             btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_inactive;
@@ -176,6 +192,7 @@ namespace Space_Shooter.AccountManagement
         private void btn_diff_normal_Click(object sender, EventArgs e)
         {
             currentDiff = GameDifficulty.Normal;
+            GameDataManager.Difficulty = currentDiff;
             btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_inactive;
             btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_active;
             btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_inactive;
@@ -184,6 +201,7 @@ namespace Space_Shooter.AccountManagement
         private void btn_diff_hard_Click(object sender, EventArgs e)
         {
             currentDiff = GameDifficulty.Hard;
+            GameDataManager.Difficulty = currentDiff;
             btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_inactive;
             btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_inactive;
             btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_active;

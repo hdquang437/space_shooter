@@ -6,6 +6,7 @@ using System.Deployment.Application;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,6 +67,7 @@ namespace Space_Shooter.Manager
                 } 
                 else
                 {
+                    init = false;
                     StopGame = true;
                 }
             }
@@ -143,6 +145,7 @@ namespace Space_Shooter.Manager
                 else
                 {
                     // Exit the game
+                    init = false;
                     StopGame = true;
                 }
             }
@@ -154,10 +157,10 @@ namespace Space_Shooter.Manager
             enemies.Clear();
             bullets.Clear();
             animations.Clear();
+            stageObjects.Clear();
             player = Factory.Create_PlayerSpaceship(0, 0);
             score = 0;
             stage = 0;
-            stageObjects.Clear();
             GameEnd = false;
             StageEnd = false;
             StopGame = false;
@@ -292,7 +295,7 @@ namespace Space_Shooter.Manager
 
         static public StageData? LoadStageDataFromDisk(string difficulty, int stage)
         {
-            StageData stageData = new StageData(new SortedDictionary<int, List<Game_Object>>());
+            StageData stageData = new StageData(new List<string>());
             StreamReader sr = null;
             String line;
             try
@@ -311,101 +314,8 @@ namespace Space_Shooter.Manager
                         line = sr.ReadLine();
                         continue;
                     }
-                    string[] parse = line.Split('\t');
-                    if (parse.Length < 4)
-                    {
-                        Console.WriteLine("Data error at line " + lineCount + ":\n" + line);
-                        line = sr.ReadLine();
-                        continue;
-                    }
-                    int key = int.Parse(parse[0]);
-                    float x = float.Parse(parse[2]);
-                    float y = float.Parse(parse[3]);
-
-                    Game_Object obj = null;
-                    switch (parse[1])
-                    {
-                        // METEOR
-                        case ObjectID.METEOR_1:
-                            obj = Factory.Create_Meteor(1, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
-                            break;
-                        case ObjectID.METEOR_2:
-                            obj = Factory.Create_Meteor(2, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
-                            break;
-                        case ObjectID.METEOR_3:
-                            obj = Factory.Create_Meteor(3, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
-                            break;
-                        case ObjectID.METEOR_4:
-                            obj = Factory.Create_Meteor(4, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
-                            break;
-                        case ObjectID.METEOR_5:
-                            obj = Factory.Create_Meteor(5, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
-                            break;
-
-                        // ITEM
-                        case ObjectID.ITEM_S:
-                            obj = Factory.Create_Item_Shotgun(x, y, false);
-                            break;
-                        case ObjectID.ITEM_B:
-                            obj = Factory.Create_Item_Bio(x, y, false);
-                            break;
-                        case ObjectID.ITEM_R:
-                            obj = Factory.Create_Item_Rocket(x, y, false);
-                            break;
-                        case ObjectID.ITEM_G:
-                            obj = Factory.Create_Item_Gatling(x, y, false);
-                            break;
-                        case ObjectID.ITEM_P:
-                            obj = Factory.Create_Item_Piercing(x, y, false);
-                            break;
-                        case ObjectID.ITEM_F:
-                            obj = Factory.Create_Item_Flamethrower(x, y, false);
-                            break;
-                        case ObjectID.ITEM_HEAL:
-                            obj = Factory.Create_Item_Heal(x, y, false);
-                            break;
-
-                        // ENEMY
-                        case ObjectID.KLAED_BATTLECRUISER:
-                            obj = Factory.Create_Klaed_Battlecruiser(x, y, float.Parse(parse[4]), false);
-                            break;
-                        case ObjectID.KLAED_BOMBER:
-                            obj = Factory.Create_Klaed_Bomber(x, y, float.Parse(parse[4]), false);
-                            break;
-                        case ObjectID.KLAED_DREADNOUGHT:
-                            obj = Factory.Create_Klaed_Dreadnought(x, y, float.Parse(parse[4]), false);
-                            break;
-                        case ObjectID.KLAED_FIGHTER:
-                            obj = Factory.Create_Klaed_Fighter(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
-                            break;
-                        case ObjectID.KLAED_FRIGATE:
-                            obj = Factory.Create_Klaed_Frigate(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
-                            break;
-                        case ObjectID.KLAED_SCOUT:
-                            obj = Factory.Create_Klaed_Scout(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
-                            break;
-                        case ObjectID.KLAED_SUPPORTSHIP:
-                            obj = Factory.Create_Klaed_SupportShip(x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
-                            break;
-                        case ObjectID.KLAED_TORPEDOSHIP:
-                            obj = Factory.Create_Klaed_TorpedoShip(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
-                            break;
-
-                        default:
-                            Console.WriteLine("Unknown ID in line " + lineCount);
-                            line = sr.ReadLine();
-                            continue;
-                    }
-                    if (stageData.StageObjects.ContainsKey(key))
-                    {
-                        stageData.StageObjects[key].Add(obj);
-                    }
-                    else
-                    {
-                        stageData.StageObjects.Add(key, new List<Game_Object>());
-                        stageData.StageObjects[key].Add(obj);
-                    }
-
+                    
+                    stageData.StageObjectsData.Add(line);
                     //Read the next line
                     line = sr.ReadLine();
                 }
@@ -425,6 +335,106 @@ namespace Space_Shooter.Manager
             return stageData;
         }
 
+        static private void ImportStageData(List<string> data)
+        {
+            foreach (string line in data)
+            {
+                string[] parse = line.Split('\t');
+                if (parse.Length < 4)
+                {
+                    Console.WriteLine("Wrong data format:\n" + line);
+                    continue;
+                }
+                int key = int.Parse(parse[0]);
+                float x = float.Parse(parse[2]);
+                float y = float.Parse(parse[3]);
+
+                Game_Object obj = null;
+                switch (parse[1])
+                {
+                    // METEOR
+                    case ObjectID.METEOR_1:
+                        obj = Factory.Create_Meteor(1, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
+                        break;
+                    case ObjectID.METEOR_2:
+                        obj = Factory.Create_Meteor(2, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
+                        break;
+                    case ObjectID.METEOR_3:
+                        obj = Factory.Create_Meteor(3, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
+                        break;
+                    case ObjectID.METEOR_4:
+                        obj = Factory.Create_Meteor(4, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
+                        break;
+                    case ObjectID.METEOR_5:
+                        obj = Factory.Create_Meteor(5, x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
+                        break;
+
+                    // ITEM
+                    case ObjectID.ITEM_S:
+                        obj = Factory.Create_Item_Shotgun(x, y, false);
+                        break;
+                    case ObjectID.ITEM_B:
+                        obj = Factory.Create_Item_Bio(x, y, false);
+                        break;
+                    case ObjectID.ITEM_R:
+                        obj = Factory.Create_Item_Rocket(x, y, false);
+                        break;
+                    case ObjectID.ITEM_G:
+                        obj = Factory.Create_Item_Gatling(x, y, false);
+                        break;
+                    case ObjectID.ITEM_P:
+                        obj = Factory.Create_Item_Piercing(x, y, false);
+                        break;
+                    case ObjectID.ITEM_F:
+                        obj = Factory.Create_Item_Flamethrower(x, y, false);
+                        break;
+                    case ObjectID.ITEM_HEAL:
+                        obj = Factory.Create_Item_Heal(x, y, false);
+                        break;
+
+                    // ENEMY
+                    case ObjectID.KLAED_BATTLECRUISER:
+                        obj = Factory.Create_Klaed_Battlecruiser(x, y, float.Parse(parse[4]), false);
+                        break;
+                    case ObjectID.KLAED_BOMBER:
+                        obj = Factory.Create_Klaed_Bomber(x, y, float.Parse(parse[4]), false);
+                        break;
+                    case ObjectID.KLAED_DREADNOUGHT:
+                        obj = Factory.Create_Klaed_Dreadnought(x, y, float.Parse(parse[4]), false);
+                        break;
+                    case ObjectID.KLAED_FIGHTER:
+                        obj = Factory.Create_Klaed_Fighter(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
+                        break;
+                    case ObjectID.KLAED_FRIGATE:
+                        obj = Factory.Create_Klaed_Frigate(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
+                        break;
+                    case ObjectID.KLAED_SCOUT:
+                        obj = Factory.Create_Klaed_Scout(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
+                        break;
+                    case ObjectID.KLAED_SUPPORTSHIP:
+                        obj = Factory.Create_Klaed_SupportShip(x, y, float.Parse(parse[4]), float.Parse(parse[5]), float.Parse(parse[6]), false);
+                        break;
+                    case ObjectID.KLAED_TORPEDOSHIP:
+                        obj = Factory.Create_Klaed_TorpedoShip(x, y, float.Parse(parse[4]), Utilities.ParseMode(parse[5]), false);
+                        break;
+
+                    default:
+                        Console.WriteLine("[Unknown ID]:" + line);
+                        continue;
+                }
+                if (stageObjects.ContainsKey(key))
+                {
+                    stageObjects[key].Add(obj);
+                }
+                else
+                {
+                    stageObjects.Add(key, new List<Game_Object>());
+                    stageObjects[key].Add(obj);
+                }
+            }
+        }
+
+
         static public bool LoadStage(GameDifficulty difficulty, int stage)
         {
             string difficultyStr = "";
@@ -443,7 +453,7 @@ namespace Space_Shooter.Manager
 
             if (StagesDict.ContainsKey(difficultyStr + stage))
             {
-                stageObjects = Utilities.CloneStageObjects(StagesDict[difficultyStr + stage].StageObjects);
+                ImportStageData(StagesDict[difficultyStr + stage].StageObjectsData);
                 return true;
             }
             return false;
@@ -452,11 +462,11 @@ namespace Space_Shooter.Manager
 
     struct StageData
     {
-        public SortedDictionary<int, List<Game_Object>> StageObjects;
+        public List<string> StageObjectsData;
 
-        public StageData(SortedDictionary<int, List<Game_Object>> stageObjects)
+        public StageData(List<string> stageObjectsData)
         {
-            StageObjects = stageObjects;
+            StageObjectsData = stageObjectsData;
         }
     }
 

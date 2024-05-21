@@ -46,6 +46,7 @@
             this.ClientSize = new System.Drawing.Size(1582, 1053);
             this.Controls.Add(this.panel_screen);
             this.DoubleBuffered = true;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

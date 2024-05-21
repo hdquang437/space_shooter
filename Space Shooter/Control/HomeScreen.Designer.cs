@@ -78,7 +78,7 @@
             this.btn_exit.Location = new System.Drawing.Point(866, 664);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(304, 101);
-            this.btn_exit.TabIndex = 1;
+            this.btn_exit.TabIndex = 10;
             this.btn_exit.Text = "Exit";
             this.btn_exit.UseVisualStyleBackColor = false;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
@@ -94,7 +94,7 @@
             this.btn_logout.Location = new System.Drawing.Point(866, 499);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(304, 101);
-            this.btn_logout.TabIndex = 1;
+            this.btn_logout.TabIndex = 3;
             this.btn_logout.Text = "Log Out";
             this.btn_logout.UseVisualStyleBackColor = false;
             this.btn_logout.Visible = false;
@@ -111,7 +111,7 @@
             this.btn_signup.Location = new System.Drawing.Point(866, 499);
             this.btn_signup.Name = "btn_signup";
             this.btn_signup.Size = new System.Drawing.Size(304, 101);
-            this.btn_signup.TabIndex = 1;
+            this.btn_signup.TabIndex = 2;
             this.btn_signup.Text = "Sign Up";
             this.btn_signup.UseVisualStyleBackColor = false;
             this.btn_signup.Click += new System.EventHandler(this.btn_signup_Click);
@@ -416,6 +416,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.loginComponent);
