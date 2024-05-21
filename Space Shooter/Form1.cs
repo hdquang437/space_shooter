@@ -21,6 +21,8 @@ namespace Space_Shooter
         Screen_Game gameScreen;
         HomeScreen homeScreen;
         User currentUser;
+        GameDifficulty currentDiff = GameDifficulty.Normal;
+        Ship currentShip = Ship.Default;
 
         public Form1()
         {
@@ -33,8 +35,20 @@ namespace Space_Shooter
             gameScreen = new Screen_Game(this);
             homeScreen = new HomeScreen();
             homeScreen.StartGame += new EventHandler(this.homeScreen_StartGame);
+            homeScreen.SetDiff += HomeScreen_SetDiff;
+            homeScreen.ChooseShip += HomeScreen_ChooseShip;
             panel_screen.Controls.Add(homeScreen);
             //panel_screen.Controls.Add(gameScreen);
+        }
+
+        private void HomeScreen_ChooseShip(object sender, EventArgs e)
+        {
+            currentShip = (sender as HomeScreen).currentShip;
+        }
+
+        private void HomeScreen_SetDiff(object sender, EventArgs e)
+        {
+            currentDiff = (sender as HomeScreen).currentDiff;
         }
 
         public void ToCenter()

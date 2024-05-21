@@ -214,9 +214,14 @@
     <Content Include="audio\se\Explosion1.wav" />
     <Content Include="audio\se\Explosion2.wav" />
     <Content Include="audio\se\Laser1.wav" />
+    <None Include="bin\Debug\img\game\char_SpaceshipBeholder.png" />
+    <None Include="bin\Debug\img\game\char_SpaceshipEmissary.png" />
+    <None Include="bin\Debug\img\game\char_SpaceshipNormal.png" />
     <Content Include="Resources\choose_avatar_icon.png" />
     <Content Include="Resources\back_icon.png" />
     <Content Include="Resources\button_background.png" />
+    <None Include="Resources\diff_button_inactive.png" />
+    <None Include="Resources\diff_button_active.png" />
     <Content Include="Resources\exit_icon.png" />
     <Content Include="Resources\leaderboard_bg.png" />
     <None Include="Resources\char_Spaceship.png" />

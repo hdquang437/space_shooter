@@ -1,5 +1,6 @@
 ﻿using Space_Shooter.AccountManagement.Model;
 using Space_Shooter.AccountManagement.Repository;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,9 @@ namespace Space_Shooter.AccountManagement
     {
         List<User> users = new List<User>();
         User currentUser;
+        public GameDifficulty currentDiff = GameDifficulty.Normal;
+        public Ship currentShip = Ship.Default;
+
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -39,6 +43,8 @@ namespace Space_Shooter.AccountManagement
         }
 
         public event EventHandler StartGame;
+        public event EventHandler ChooseShip;
+        public event EventHandler SetDiff;
 
         private void pb_exit_Click(object sender, EventArgs e)
         {
@@ -62,7 +68,9 @@ namespace Space_Shooter.AccountManagement
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-            StartGame(currentUser,e);   
+            StartGame(currentUser,e);
+            SetDiff(this, e);
+            ChooseShip(this, e);
         }
 
         private void loginComponent_getUser(object sender, EventArgs e)
@@ -76,6 +84,7 @@ namespace Space_Shooter.AccountManagement
             this.btn_signup.Visible = false;
             this.btn_start.Visible = true;
             this.btn_logout.Visible = true;
+            this.pn_chooseShipDiff.Visible = true;
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
@@ -114,6 +123,56 @@ namespace Space_Shooter.AccountManagement
         private void signUpComponent_reloadUser(object sender, EventArgs e)
         {
             loadUser();
+        }
+
+        private void pb_currentShip_Click(object sender, EventArgs e)
+        {
+            fpn_chooseShip.Visible = !fpn_chooseShip.Visible;
+        }
+
+        private void pb_normalShip_Click(object sender, EventArgs e)
+        {
+            currentShip = Ship.Default;
+            pb_currentShip.Image = Properties.Resources.char_SpaceshipNormal;
+            fpn_chooseShip.Visible = false;
+        }
+
+        private void pb_Emissary_Click(object sender, EventArgs e)
+        {
+            currentShip = Ship.Emissary;
+            pb_currentShip.Image = Properties.Resources.char_SpaceshipEmissary;
+            fpn_chooseShip.Visible = false;
+        }
+
+        private void pb_beholder_Click(object sender, EventArgs e)
+        {
+            currentShip = Ship.Beholder;
+            pb_currentShip.Image = Properties.Resources.char_SpaceshipBeholder;
+            fpn_chooseShip.Visible = false;
+        }
+
+        private void btn_diff_easy_Click(object sender, EventArgs e)
+        {
+            currentDiff = GameDifficulty.Easy;
+            btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_active;
+            btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_inactive;
+            btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_inactive;
+        }
+
+        private void btn_diff_normal_Click(object sender, EventArgs e)
+        {
+            currentDiff = GameDifficulty.Normal;
+            btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_inactive;
+            btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_active;
+            btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_inactive;
+        }
+
+        private void btn_diff_hard_Click(object sender, EventArgs e)
+        {
+            currentDiff = GameDifficulty.Hard;
+            btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_inactive;
+            btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_inactive;
+            btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_active;
         }
     }
 }
