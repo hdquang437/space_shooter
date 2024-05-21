@@ -101,18 +101,18 @@ namespace Space_Shooter.Core
             {
                 _vx = -_x;
             }
-            else if (_x + _vx > MoveField.Width)
+            else if (_x + Width + _vx > MoveField.Width)
             {
-                _vx = Screen_Game.REAL_SCREEN_WIDTH - _x;
+                _vx = Screen_Game.REAL_SCREEN_WIDTH - Width - _x;
             }
 
             if (_y + _vy < 0)
             {
                 _vy = -_y;
             }
-            else if (_y + _vy > MoveField.Height)
+            else if (_y + Height + _vy > MoveField.Height)
             {
-                _vy = MoveField.Height - _y;
+                _vy = MoveField.Height - Height - _y;
             }
         }
 

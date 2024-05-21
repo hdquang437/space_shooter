@@ -153,8 +153,8 @@ namespace Space_Shooter.Core
 
         override public void Process_Action()
         {
-            base.Process_Action();
             fix_stuck();
+            base.Process_Action();
             if (changeWepDelay > 0)
             {
                 changeWepDelay--;
