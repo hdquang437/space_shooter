@@ -186,6 +186,7 @@
             this.Controls.Add(this.tb_password);
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.tb_email);
+            this.DoubleBuffered = true;
             this.Name = "SignUpComponent";
             this.Size = new System.Drawing.Size(1582, 1053);
             this.Load += new System.EventHandler(this.SignUpComponent_Load);

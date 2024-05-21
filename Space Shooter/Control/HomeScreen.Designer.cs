@@ -248,6 +248,7 @@
             this.Controls.Add(this.btn_signup);
             this.Controls.Add(this.btn_start);
             this.Controls.Add(this.btn_login);
+            this.DoubleBuffered = true;
             this.Name = "HomeScreen";
             this.Size = new System.Drawing.Size(1582, 1053);
             this.Load += new System.EventHandler(this.HomeScreen_Load);

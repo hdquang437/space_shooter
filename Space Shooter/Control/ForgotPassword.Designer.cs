@@ -99,6 +99,7 @@
             this.Controls.Add(this.btn_sentPassword);
             this.Controls.Add(this.lb_Email);
             this.Controls.Add(this.tb_email);
+            this.DoubleBuffered = true;
             this.Name = "ForgotPassword";
             this.Size = new System.Drawing.Size(1582, 1053);
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).EndInit();

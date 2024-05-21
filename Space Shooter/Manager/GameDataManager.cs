@@ -35,10 +35,13 @@ namespace Space_Shooter.Manager
         static public bool init = false;
         static public int NoteStageEndTimeRemain = 0;
         static public int NoteStageStartTimeRemain = 0;
+        static public int GameOverTimeRemain = 0;
         static public string NoteStageEnd = "";
         static public string NoteStageStart = "";
+        static public string NotePlayerDie = "";
         static public bool GameEnd = false;
         static public bool StageEnd = false;
+        static public bool StopGame = false;
         static public int WaitToNextStage = 0;
         #endregion
 
@@ -49,8 +52,25 @@ namespace Space_Shooter.Manager
             {
                 return;
             }
+            // Player died
+            else if (player == null)
+            {
+                if (NotePlayerDie == "")
+                {
+                    NotePlayerDie = "GAME OVER";
+                    GameOverTimeRemain = 300;
+                }
+                else if (GameOverTimeRemain > 0)
+                {
+                    GameOverTimeRemain--;
+                } 
+                else
+                {
+                    StopGame = true;
+                }
+            }
 
-            if (IsStageClear())
+            if (IsStageClear() && player != null)
             {
                 SetupStage();
                 return;
@@ -123,6 +143,7 @@ namespace Space_Shooter.Manager
                 else
                 {
                     // Exit the game
+                    StopGame = true;
                 }
             }
         }
@@ -139,6 +160,8 @@ namespace Space_Shooter.Manager
             stageObjects.Clear();
             GameEnd = false;
             StageEnd = false;
+            StopGame = false;
+            NotePlayerDie = "";
             init = true;
         }
 

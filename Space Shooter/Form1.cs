@@ -54,6 +54,12 @@ namespace Space_Shooter
 
         }
 
+        public void BackToHomeScreen()
+        {
+            panel_screen.Controls.Clear();
+            panel_screen.Controls.Add(homeScreen);  
+        }
+
         private void homeScreen_StartGame(object sender, EventArgs e)
         {
             currentUser = sender as User;

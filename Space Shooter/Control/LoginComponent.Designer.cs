@@ -93,11 +93,11 @@
             // 
             this.lb_forgot_password.AutoSize = true;
             this.lb_forgot_password.BackColor = System.Drawing.Color.Transparent;
-            this.lb_forgot_password.Font = new System.Drawing.Font("Unispace", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_forgot_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_forgot_password.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lb_forgot_password.Location = new System.Drawing.Point(587, 519);
             this.lb_forgot_password.Name = "lb_forgot_password";
-            this.lb_forgot_password.Size = new System.Drawing.Size(143, 18);
+            this.lb_forgot_password.Size = new System.Drawing.Size(136, 18);
             this.lb_forgot_password.TabIndex = 9;
             this.lb_forgot_password.Text = "Forgot password";
             this.lb_forgot_password.Click += new System.EventHandler(this.lb_forgot_password_Click);
@@ -156,6 +156,7 @@
             this.Controls.Add(this.lb_Email);
             this.Controls.Add(this.tb_password);
             this.Controls.Add(this.tb_email);
+            this.DoubleBuffered = true;
             this.Name = "LoginComponent";
             this.Size = new System.Drawing.Size(1582, 1053);
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).EndInit();

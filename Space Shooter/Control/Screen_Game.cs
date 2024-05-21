@@ -62,6 +62,7 @@ namespace Space_Shooter.Control
         public void StopGame()
         {
             _timer.Stop();
+            parentForm.BackToHomeScreen();
         }
 
         void TimerOnTick(object obj, EventArgs e)
@@ -113,6 +114,12 @@ namespace Space_Shooter.Control
             foreach (Game_Animation obj in GameDataManager.animations.ToList())
             {
                 obj.Update_Data();
+            }
+
+            if (GameDataManager.StopGame)
+            {
+                StopGame();
+                parentForm.BackToHomeScreen();
             }
         }
 
@@ -181,7 +188,11 @@ namespace Space_Shooter.Control
                 valueBar_Ammo.Value = 0;
             }
 
-            if (GameDataManager.NoteStageEndTimeRemain > 0)
+            if (GameDataManager.GameOverTimeRemain > 0)
+            {
+                labelMessage.Text = GameDataManager.NotePlayerDie;
+            }
+            else if (GameDataManager.NoteStageEndTimeRemain > 0)
             {
                 labelMessage.Text = GameDataManager.NoteStageEnd;
             }
