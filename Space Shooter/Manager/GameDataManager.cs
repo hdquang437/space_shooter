@@ -178,6 +178,8 @@ namespace Space_Shooter.Manager
 
         static public void GainScore(int reward)
         {
+            if (player == null)
+                return;
             double modifier = 1;
             switch (Difficulty)
             {
