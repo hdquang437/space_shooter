@@ -14,9 +14,21 @@ namespace Space_Shooter.Manager
     {
 
         #region Damageable entities
-        public static Game_Player Create_PlayerSpaceship(float x, float y)
+        public static Game_Player Create_PlayerSpaceship(float x, float y, Ship type)
         {
-            return new Game_Player(SpriteManager.Sprites["player1"], x, y);
+            string sprite = "player1";
+            switch (type)
+            {
+                case Ship.Default:
+                    break;
+                case Ship.Beholder:
+                    sprite = "player2";
+                    break;
+                case Ship.Emissary:
+                    sprite = "player3";
+                    break;
+            }
+            return new Game_Player(SpriteManager.Sprites[sprite], x, y);
         }
 
 

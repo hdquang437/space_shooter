@@ -162,6 +162,7 @@ namespace Space_Shooter.AccountManagement
         private void pb_normalShip_Click(object sender, EventArgs e)
         {
             currentShip = Ship.Default;
+            GameDataManager.playerShipType = currentShip;
             pb_currentShip.Image = Properties.Resources.char_SpaceshipNormal;
             fpn_chooseShip.Visible = false;
         }
@@ -169,6 +170,7 @@ namespace Space_Shooter.AccountManagement
         private void pb_Emissary_Click(object sender, EventArgs e)
         {
             currentShip = Ship.Emissary;
+            GameDataManager.playerShipType = currentShip;
             pb_currentShip.Image = Properties.Resources.char_SpaceshipEmissary;
             fpn_chooseShip.Visible = false;
         }
@@ -176,6 +178,7 @@ namespace Space_Shooter.AccountManagement
         private void pb_beholder_Click(object sender, EventArgs e)
         {
             currentShip = Ship.Beholder;
+            GameDataManager.playerShipType = currentShip;
             pb_currentShip.Image = Properties.Resources.char_SpaceshipBeholder;
             fpn_chooseShip.Visible = false;
         }

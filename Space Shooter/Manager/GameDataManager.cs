@@ -21,6 +21,7 @@ namespace Space_Shooter.Manager
         static public List<Game_Bullet> bullets = new List<Game_Bullet>();
         static public List<Game_Animation> animations = new List<Game_Animation>();
         static public Game_Player player;
+        static public Ship playerShipType = Ship.Default;
         static public int score = 0;
         static private int stage = 1;
         static private int time = 0;
@@ -158,7 +159,7 @@ namespace Space_Shooter.Manager
             bullets.Clear();
             animations.Clear();
             stageObjects.Clear();
-            player = Factory.Create_PlayerSpaceship(0, 0);
+            player = Factory.Create_PlayerSpaceship(0, 0, playerShipType);
             score = 0;
             stage = 0;
             GameEnd = false;
