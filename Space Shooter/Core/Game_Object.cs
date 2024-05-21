@@ -97,101 +97,45 @@ namespace Space_Shooter.Core
         #region Methods
         protected void fix_stuck()
         {
-            RectangleF test_stuck = Get_Collided_Wall(Hitbox);
-            if (!test_stuck.IsEmpty)
+            if (_x + _vx < 0)
             {
-                if (test_stuck == Wall_D)
-                {
-                    _y = Wall_D.Y - Hitbox.Height - 1;
-                }
-                else if (test_stuck == Wall_U)
-                {
-                    _y = Wall_U.Y + Wall_U.Height + 1;
-                }
-                else if (test_stuck == Wall_L)
-                {
-                    _x = Wall_L.X + Wall_L.Width + 1;
-                }
-                else if (test_stuck == Wall_R)
-                {
-                    _x = Wall_R.X - Hitbox.Width - 1;
-                }
+                _vx = -_x;
+            }
+            else if (_x + _vx > MoveField.Width)
+            {
+                _vx = Screen_Game.REAL_SCREEN_WIDTH - _x;
+            }
+
+            if (_y + _vy < 0)
+            {
+                _vy = -_y;
+            }
+            else if (_y + _vy > MoveField.Height)
+            {
+                _vy = MoveField.Height - _y;
             }
         }
 
-        static public RectangleF Get_Collided_Wall(RectangleF test)
-        {
-            if (test.IntersectsWith(Wall_U))
-            {
-                return Wall_U;
-            }
-            else if (test.IntersectsWith(Wall_D))
-            {
-                return Wall_D;
-            }
-            else if (test.IntersectsWith(Wall_L))
-            {
-                return Wall_L;
-            }
-            else if (test.IntersectsWith(Wall_R))
-            {
-                return Wall_R;
-            }
-            return RectangleF.Empty;
-        }
-
-        // Return Empty Rectangle if can move
-        // Return Best move Rectangle
-        public RectangleF test_move(float pos_x, float pos_y)
-        {
-
-            float base_moveX = pos_x - Hitbox.X;
-            float base_moveY = pos_y - Hitbox.Y;
-            float moveX = base_moveX;
-            float moveY = base_moveY;
-            RectangleF checkBox = new RectangleF(pos_x, pos_y, Hitbox.Width, Hitbox.Height);
-            if (_IgnoreWall)
-            {
-                return checkBox;
-            }
-            while (!Get_Collided_Wall(checkBox).IsEmpty)
-            {
-                // x or y = 0
-                if (moveX == 0)
-                {
-                    moveY -= (moveY >= 0) ? 1 : -1;
-                }
-                else if (moveY == 0)
-                {
-                    moveX -= (moveX >= 0) ? 1 : -1;
-                }
-                else
-                {
-                    // not zero
-                    float scale = Math.Abs(base_moveX / base_moveY);
-                    if (scale >= 1)
-                    {
-                        moveX -= (int)scale * (base_moveX >= 0 ? 1 : -1);
-                        moveY -= base_moveY >= 0 ? 1 : -1;
-                    }
-                    else
-                    {
-                        scale = 1 / scale;
-                        moveY -= (int)scale * (base_moveY >= 0 ? 1 : -1);
-                        moveX -= base_moveX >= 0 ? 1 : -1;
-                    }
-                }
-                if (moveX * base_moveX < 0)
-                    moveX = 0;
-                if (moveY * base_moveY < 0)
-                    moveY = 0;
-
-                checkBox.X = Hitbox.X + (int)moveX;
-                checkBox.Y = Hitbox.Y + (int)moveY;
-
-            }
-            return checkBox;
-        }
+        //static public RectangleF Get_Collided_Wall(RectangleF test)
+        //{
+        //    if (test.IntersectsWith(Wall_U))
+        //    {
+        //        return Wall_U;
+        //    }
+        //    else if (test.IntersectsWith(Wall_D))
+        //    {
+        //        return Wall_D;
+        //    }
+        //    else if (test.IntersectsWith(Wall_L))
+        //    {
+        //        return Wall_L;
+        //    }
+        //    else if (test.IntersectsWith(Wall_R))
+        //    {
+        //        return Wall_R;
+        //    }
+        //    return RectangleF.Empty;
+        //}
 
         public bool IsOutsideScreen()
         {

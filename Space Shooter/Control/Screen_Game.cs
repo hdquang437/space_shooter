@@ -44,8 +44,6 @@ namespace Space_Shooter.Control
             SpriteManager.Initialize();
             GameDataManager.LoadAllStages();
 
-            _timer.Interval = 10;
-            _timer.Tick += new EventHandler(TimerOnTick);
             //_timer.Start();
 
 
@@ -56,12 +54,15 @@ namespace Space_Shooter.Control
         {
             GameDataManager.Reset();
             GameDataManager.player.ToCenterPoint(REAL_SCREEN_WIDTH / 2, REAL_SCREEN_HEIGHT - 200);
+            _timer.Interval = 10;
+            _timer.Tick += new EventHandler(TimerOnTick);
             _timer.Start();
         }
 
         public void StopGame()
         {
             _timer.Stop();
+            _timer.Dispose();
             parentForm.BackToHomeScreen();
         }
 
@@ -119,7 +120,6 @@ namespace Space_Shooter.Control
             if (GameDataManager.StopGame)
             {
                 StopGame();
-                parentForm.BackToHomeScreen();
             }
         }
 

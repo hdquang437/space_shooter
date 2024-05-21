@@ -17,11 +17,9 @@ namespace Space_Shooter
 {
     public partial class Form1 : Form
     {
-        // Screen_Login loginScreen;
-        // Screen_SignUp signUpScreen;
-        Screen_Game gameScreen;
-        HomeScreen homeScreen;
-        EndGameScreen endGameScreen;
+        public Screen_Game gameScreen;
+        public HomeScreen homeScreen;
+        public EndGameScreen endGameScreen;
         User currentUser;
         GameDifficulty currentDiff = GameDifficulty.Normal;
         Ship currentShip = Ship.Default;
@@ -32,14 +30,17 @@ namespace Space_Shooter
             Input.GetKeyStates();
             ToCenter();
             AudioManager.PlayBGM(BGM.bgm1);
-            // Screen_Login loginScreen = new ...
-            // Screen_SignUp signUpScreen = new ...
             gameScreen = new Screen_Game(this);
             homeScreen = new HomeScreen(null);
-            homeScreen.StartGame += new EventHandler(this.homeScreen_StartGame);
+            homeScreen.StartGame += new EventHandler(this.HomeScreen_StartGame);
             homeScreen.SetDiff += HomeScreen_SetDiff;
             homeScreen.ChooseShip += HomeScreen_ChooseShip;
             panel_screen.Controls.Add(homeScreen);
+
+            endGameScreen = new EndGameScreen(currentUser);
+            endGameScreen.GoToMainMenu += EndGameScreen_GoToMainMenu;
+            endGameScreen.Continue += EndGameScreen_Continue;
+            endGameScreen.ShareOnFacebook += EndGameScreen_ShareOnFacebook;
             //panel_screen.Controls.Add(gameScreen);
         }
 
@@ -73,12 +74,9 @@ namespace Space_Shooter
 
         public void BackToHomeScreen()
         {
+            endGameScreen.currentUser = homeScreen.currentUser;
             MessageBox.Show("1");
             panel_screen.Controls.Clear();
-            endGameScreen = new EndGameScreen(currentUser);
-            endGameScreen.GoToMainMenu += EndGameScreen_GoToMainMenu;
-            endGameScreen.Continue += EndGameScreen_Continue;
-            endGameScreen.ShareOnFacebook += EndGameScreen_ShareOnFacebook;
             panel_screen.Controls.Add(endGameScreen);
             if (currentUser.highestScore < GameDataManager.score)
             {
@@ -87,7 +85,7 @@ namespace Space_Shooter
             }
         }
 
-        private void homeScreen_StartGame(object sender, EventArgs e)
+        private void HomeScreen_StartGame(object sender, EventArgs e)
         {
             currentUser = sender as User;
             panel_screen.Controls.Clear();
@@ -110,10 +108,6 @@ namespace Space_Shooter
         private void EndGameScreen_GoToMainMenu(object sender, EventArgs e)
         {
             panel_screen.Controls.Clear();
-            homeScreen = new HomeScreen(currentUser);
-            homeScreen.StartGame += new EventHandler(this.homeScreen_StartGame);
-            homeScreen.SetDiff += HomeScreen_SetDiff;
-            homeScreen.ChooseShip += HomeScreen_ChooseShip;
             panel_screen.Controls.Add(homeScreen);
         }
     }

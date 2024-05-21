@@ -17,7 +17,7 @@ namespace Space_Shooter.Control
     {
         string victorySentence = "Congrat! You beated the game!";
         string defeatedSentence = "Too bad! Better luck next time!";
-        User currentUser;
+        public User currentUser;
         public EndGameScreen(User user)
         {
             InitializeComponent();

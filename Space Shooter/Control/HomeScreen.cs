@@ -18,7 +18,7 @@ namespace Space_Shooter.AccountManagement
     public partial class HomeScreen : UserControl
     {
         List<User> users = new List<User>();
-        User currentUser;
+        public User currentUser;
         public GameDifficulty currentDiff = GameDifficulty.Normal;
         public Ship currentShip = Ship.Default;
 
