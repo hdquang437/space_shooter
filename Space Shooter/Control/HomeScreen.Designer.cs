@@ -43,9 +43,28 @@
             this.pn_leaderBoard = new System.Windows.Forms.Panel();
             this.loginComponent = new Space_Shooter.AccountManagement.LoginComponent();
             this.signUpComponent = new Space_Shooter.AccountManagement.SignUpComponent();
+            this.lb_chooseShip = new System.Windows.Forms.Label();
+            this.pb_currentShip = new System.Windows.Forms.PictureBox();
+            this.fpn_chooseShip = new System.Windows.Forms.FlowLayoutPanel();
+            this.pb_normalShip = new System.Windows.Forms.PictureBox();
+            this.pb_Emissary = new System.Windows.Forms.PictureBox();
+            this.pb_beholder = new System.Windows.Forms.PictureBox();
+            this.lb_setDiff = new System.Windows.Forms.Label();
+            this.pn_currentShip = new System.Windows.Forms.Panel();
+            this.btn_diff_easy = new System.Windows.Forms.Button();
+            this.btn_diff_normal = new System.Windows.Forms.Button();
+            this.btn_diff_hard = new System.Windows.Forms.Button();
+            this.pn_chooseShipDiff = new System.Windows.Forms.Panel();
             this.pn_user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).BeginInit();
             this.pn_leaderBoard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_currentShip)).BeginInit();
+            this.fpn_chooseShip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_normalShip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Emissary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_beholder)).BeginInit();
+            this.pn_currentShip.SuspendLayout();
+            this.pn_chooseShipDiff.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_exit
@@ -214,6 +233,7 @@
             this.loginComponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("loginComponent.BackgroundImage")));
             this.loginComponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loginComponent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loginComponent.ForeColor = System.Drawing.Color.Yellow;
             this.loginComponent.Location = new System.Drawing.Point(0, 0);
             this.loginComponent.Name = "loginComponent";
             this.loginComponent.Size = new System.Drawing.Size(1582, 1053);
@@ -226,6 +246,7 @@
             this.signUpComponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("signUpComponent.BackgroundImage")));
             this.signUpComponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.signUpComponent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.signUpComponent.ForeColor = System.Drawing.Color.Yellow;
             this.signUpComponent.Location = new System.Drawing.Point(0, 0);
             this.signUpComponent.Name = "signUpComponent";
             this.signUpComponent.Size = new System.Drawing.Size(1582, 1053);
@@ -233,14 +254,173 @@
             this.signUpComponent.Visible = false;
             this.signUpComponent.reloadUser += new System.EventHandler(this.signUpComponent_reloadUser);
             // 
+            // lb_chooseShip
+            // 
+            this.lb_chooseShip.AutoSize = true;
+            this.lb_chooseShip.BackColor = System.Drawing.Color.Transparent;
+            this.lb_chooseShip.Font = new System.Drawing.Font("Goudy Stout", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_chooseShip.ForeColor = System.Drawing.Color.Gold;
+            this.lb_chooseShip.Location = new System.Drawing.Point(22, 49);
+            this.lb_chooseShip.Name = "lb_chooseShip";
+            this.lb_chooseShip.Size = new System.Drawing.Size(389, 27);
+            this.lb_chooseShip.TabIndex = 8;
+            this.lb_chooseShip.Text = "Choose your ship";
+            // 
+            // pb_currentShip
+            // 
+            this.pb_currentShip.BackColor = System.Drawing.Color.Transparent;
+            this.pb_currentShip.Image = ((System.Drawing.Image)(resources.GetObject("pb_currentShip.Image")));
+            this.pb_currentShip.Location = new System.Drawing.Point(0, 0);
+            this.pb_currentShip.Name = "pb_currentShip";
+            this.pb_currentShip.Size = new System.Drawing.Size(100, 93);
+            this.pb_currentShip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_currentShip.TabIndex = 9;
+            this.pb_currentShip.TabStop = false;
+            this.pb_currentShip.Click += new System.EventHandler(this.pb_currentShip_Click);
+            // 
+            // fpn_chooseShip
+            // 
+            this.fpn_chooseShip.BackColor = System.Drawing.Color.Transparent;
+            this.fpn_chooseShip.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fpn_chooseShip.BackgroundImage")));
+            this.fpn_chooseShip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.fpn_chooseShip.Controls.Add(this.pb_normalShip);
+            this.fpn_chooseShip.Controls.Add(this.pb_Emissary);
+            this.fpn_chooseShip.Controls.Add(this.pb_beholder);
+            this.fpn_chooseShip.Location = new System.Drawing.Point(180, 104);
+            this.fpn_chooseShip.Name = "fpn_chooseShip";
+            this.fpn_chooseShip.Size = new System.Drawing.Size(320, 99);
+            this.fpn_chooseShip.TabIndex = 10;
+            this.fpn_chooseShip.Visible = false;
+            // 
+            // pb_normalShip
+            // 
+            this.pb_normalShip.Image = ((System.Drawing.Image)(resources.GetObject("pb_normalShip.Image")));
+            this.pb_normalShip.Location = new System.Drawing.Point(3, 3);
+            this.pb_normalShip.Name = "pb_normalShip";
+            this.pb_normalShip.Size = new System.Drawing.Size(100, 93);
+            this.pb_normalShip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_normalShip.TabIndex = 9;
+            this.pb_normalShip.TabStop = false;
+            this.pb_normalShip.Click += new System.EventHandler(this.pb_normalShip_Click);
+            // 
+            // pb_Emissary
+            // 
+            this.pb_Emissary.Image = ((System.Drawing.Image)(resources.GetObject("pb_Emissary.Image")));
+            this.pb_Emissary.Location = new System.Drawing.Point(109, 3);
+            this.pb_Emissary.Name = "pb_Emissary";
+            this.pb_Emissary.Size = new System.Drawing.Size(100, 93);
+            this.pb_Emissary.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_Emissary.TabIndex = 9;
+            this.pb_Emissary.TabStop = false;
+            this.pb_Emissary.Click += new System.EventHandler(this.pb_Emissary_Click);
+            // 
+            // pb_beholder
+            // 
+            this.pb_beholder.Image = ((System.Drawing.Image)(resources.GetObject("pb_beholder.Image")));
+            this.pb_beholder.Location = new System.Drawing.Point(215, 3);
+            this.pb_beholder.Name = "pb_beholder";
+            this.pb_beholder.Size = new System.Drawing.Size(100, 93);
+            this.pb_beholder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_beholder.TabIndex = 9;
+            this.pb_beholder.TabStop = false;
+            this.pb_beholder.Click += new System.EventHandler(this.pb_beholder_Click);
+            // 
+            // lb_setDiff
+            // 
+            this.lb_setDiff.AutoSize = true;
+            this.lb_setDiff.BackColor = System.Drawing.Color.Transparent;
+            this.lb_setDiff.Font = new System.Drawing.Font("Goudy Stout", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_setDiff.ForeColor = System.Drawing.Color.Gold;
+            this.lb_setDiff.Location = new System.Drawing.Point(22, 239);
+            this.lb_setDiff.Name = "lb_setDiff";
+            this.lb_setDiff.Size = new System.Drawing.Size(338, 27);
+            this.lb_setDiff.TabIndex = 8;
+            this.lb_setDiff.Text = "Set Difficulty";
+            // 
+            // pn_currentShip
+            // 
+            this.pn_currentShip.BackColor = System.Drawing.Color.Transparent;
+            this.pn_currentShip.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pn_currentShip.BackgroundImage")));
+            this.pn_currentShip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pn_currentShip.Controls.Add(this.pb_currentShip);
+            this.pn_currentShip.Location = new System.Drawing.Point(42, 104);
+            this.pn_currentShip.Name = "pn_currentShip";
+            this.pn_currentShip.Size = new System.Drawing.Size(101, 96);
+            this.pn_currentShip.TabIndex = 11;
+            // 
+            // btn_diff_easy
+            // 
+            this.btn_diff_easy.BackColor = System.Drawing.Color.Transparent;
+            this.btn_diff_easy.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_diff_easy.BackgroundImage")));
+            this.btn_diff_easy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_diff_easy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_diff_easy.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_diff_easy.ForeColor = System.Drawing.Color.Khaki;
+            this.btn_diff_easy.Location = new System.Drawing.Point(46, 296);
+            this.btn_diff_easy.Name = "btn_diff_easy";
+            this.btn_diff_easy.Size = new System.Drawing.Size(199, 61);
+            this.btn_diff_easy.TabIndex = 12;
+            this.btn_diff_easy.Text = "Easy";
+            this.btn_diff_easy.UseVisualStyleBackColor = false;
+            this.btn_diff_easy.Click += new System.EventHandler(this.btn_diff_easy_Click);
+            // 
+            // btn_diff_normal
+            // 
+            this.btn_diff_normal.BackColor = System.Drawing.Color.Transparent;
+            this.btn_diff_normal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_diff_normal.BackgroundImage")));
+            this.btn_diff_normal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_diff_normal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_diff_normal.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_diff_normal.ForeColor = System.Drawing.Color.Khaki;
+            this.btn_diff_normal.Location = new System.Drawing.Point(268, 296);
+            this.btn_diff_normal.Name = "btn_diff_normal";
+            this.btn_diff_normal.Size = new System.Drawing.Size(199, 61);
+            this.btn_diff_normal.TabIndex = 12;
+            this.btn_diff_normal.Text = "Normal";
+            this.btn_diff_normal.UseVisualStyleBackColor = false;
+            this.btn_diff_normal.Click += new System.EventHandler(this.btn_diff_normal_Click);
+            // 
+            // btn_diff_hard
+            // 
+            this.btn_diff_hard.BackColor = System.Drawing.Color.Transparent;
+            this.btn_diff_hard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_diff_hard.BackgroundImage")));
+            this.btn_diff_hard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_diff_hard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_diff_hard.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_diff_hard.ForeColor = System.Drawing.Color.Khaki;
+            this.btn_diff_hard.Location = new System.Drawing.Point(482, 296);
+            this.btn_diff_hard.Name = "btn_diff_hard";
+            this.btn_diff_hard.Size = new System.Drawing.Size(199, 61);
+            this.btn_diff_hard.TabIndex = 12;
+            this.btn_diff_hard.Text = "Hard";
+            this.btn_diff_hard.UseVisualStyleBackColor = false;
+            this.btn_diff_hard.Click += new System.EventHandler(this.btn_diff_hard_Click);
+            // 
+            // pn_chooseShipDiff
+            // 
+            this.pn_chooseShipDiff.BackColor = System.Drawing.Color.Transparent;
+            this.pn_chooseShipDiff.Controls.Add(this.fpn_chooseShip);
+            this.pn_chooseShipDiff.Controls.Add(this.btn_diff_hard);
+            this.pn_chooseShipDiff.Controls.Add(this.pn_currentShip);
+            this.pn_chooseShipDiff.Controls.Add(this.btn_diff_normal);
+            this.pn_chooseShipDiff.Controls.Add(this.lb_chooseShip);
+            this.pn_chooseShipDiff.Controls.Add(this.btn_diff_easy);
+            this.pn_chooseShipDiff.Controls.Add(this.lb_setDiff);
+            this.pn_chooseShipDiff.Location = new System.Drawing.Point(12, 615);
+            this.pn_chooseShipDiff.Name = "pn_chooseShipDiff";
+            this.pn_chooseShipDiff.Size = new System.Drawing.Size(701, 419);
+            this.pn_chooseShipDiff.TabIndex = 13;
+            this.pn_chooseShipDiff.Visible = false;
+            // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.signUpComponent);
             this.Controls.Add(this.loginComponent);
+            this.Controls.Add(this.signUpComponent);
+            this.Controls.Add(this.pn_chooseShipDiff);
             this.Controls.Add(this.pn_leaderBoard);
             this.Controls.Add(this.pn_user);
             this.Controls.Add(this.btn_exit);
@@ -257,6 +437,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).EndInit();
             this.pn_leaderBoard.ResumeLayout(false);
             this.pn_leaderBoard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_currentShip)).EndInit();
+            this.fpn_chooseShip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_normalShip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Emissary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_beholder)).EndInit();
+            this.pn_currentShip.ResumeLayout(false);
+            this.pn_chooseShipDiff.ResumeLayout(false);
+            this.pn_chooseShipDiff.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -276,5 +464,17 @@
         private System.Windows.Forms.Panel pn_leaderBoard;
         private LoginComponent loginComponent;
         private SignUpComponent signUpComponent;
+        private System.Windows.Forms.Label lb_chooseShip;
+        private System.Windows.Forms.PictureBox pb_currentShip;
+        private System.Windows.Forms.FlowLayoutPanel fpn_chooseShip;
+        private System.Windows.Forms.PictureBox pb_normalShip;
+        private System.Windows.Forms.PictureBox pb_Emissary;
+        private System.Windows.Forms.PictureBox pb_beholder;
+        private System.Windows.Forms.Label lb_setDiff;
+        private System.Windows.Forms.Panel pn_currentShip;
+        private System.Windows.Forms.Button btn_diff_easy;
+        private System.Windows.Forms.Button btn_diff_normal;
+        private System.Windows.Forms.Button btn_diff_hard;
+        private System.Windows.Forms.Panel pn_chooseShipDiff;
     }
 }

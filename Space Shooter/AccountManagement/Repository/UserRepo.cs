@@ -80,5 +80,19 @@ namespace Space_Shooter.AccountManagement.Repository
                 MessageBox.Show("This account does not exist!");
             }
         }
+        public static void UpdateScore(string email, int newScore)
+        {
+            List<User> users = LoadUsersFromFile();
+            User user = users.FirstOrDefault(u => u.email == email);
+            if (user != null)
+            {
+                user.highestScore = newScore;
+                SaveToFile(users, filePath);
+            }
+            else
+            {
+                MessageBox.Show("This account does not exist!");
+            }
+        }
     }
 }

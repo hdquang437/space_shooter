@@ -466,4 +466,10 @@ namespace Space_Shooter.Manager
         Normal,
         Hard
     }
+    public enum Ship
+    {
+        Default,
+        Emissary,
+        Beholder
+    }
 }
