@@ -51,6 +51,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\EndGameScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\EndGameScreen.Designer.cs">
+      <DependentUpon>EndGameScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\ForgotPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     <Compile Include="Manager\Utilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Control\EndGameScreen.resx">
+      <DependentUpon>EndGameScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +223,7 @@
     <Content Include="audio\se\Explosion1.wav" />
     <Content Include="audio\se\Explosion2.wav" />
     <Content Include="audio\se\Laser1.wav" />
+    <None Include="Resources\victory_img.png" />
     <None Include="bin\Debug\img\game\char_SpaceshipBeholder.png" />
     <None Include="bin\Debug\img\game\char_SpaceshipEmissary.png" />
     <None Include="bin\Debug\img\game\char_SpaceshipNormal.png" />
@@ -222,6 +232,7 @@
     <Content Include="Resources\button_background.png" />
     <None Include="Resources\diff_button_inactive.png" />
     <None Include="Resources\diff_button_active.png" />
+    <None Include="Resources\defeat_img.png" />
     <Content Include="Resources\exit_icon.png" />
     <Content Include="Resources\leaderboard_bg.png" />
     <None Include="Resources\char_Spaceship.png" />

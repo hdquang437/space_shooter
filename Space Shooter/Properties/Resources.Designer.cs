@@ -153,6 +153,16 @@ namespace Space_Shooter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap defeat_img {
+            get {
+                object obj = ResourceManager.GetObject("defeat_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap diff_button_active {
             get {
                 object obj = ResourceManager.GetObject("diff_button_active", resourceCulture);
@@ -166,6 +176,16 @@ namespace Space_Shooter.Properties {
         internal static System.Drawing.Bitmap diff_button_inactive {
             get {
                 object obj = ResourceManager.GetObject("diff_button_inactive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap victory_img {
+            get {
+                object obj = ResourceManager.GetObject("victory_img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

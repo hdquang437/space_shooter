@@ -22,15 +22,17 @@ namespace Space_Shooter.AccountManagement
         private string emailExistError = "This email is used!";
         private string createSuccessNoti = "Sign up success! You can now login!";
         private string inputErrorNoti = "Email and password are not in correct format!";
+        Color hintColor = Color.Khaki;
+
         public SignUpComponent()
         {
             InitializeComponent();
             tb_name.Text = userNameHintText;
-            tb_name.ForeColor = Color.Khaki;
+            tb_name.ForeColor = hintColor;
             tb_email.Text = emailHintText;
-            tb_email.ForeColor = Color.Khaki;
+            tb_email.ForeColor = hintColor;
             tb_password.Text = passwordHintText;
-            tb_password.ForeColor = Color.Khaki;
+            tb_password.ForeColor = hintColor;
             tb_password.PasswordChar = '\0';
             this.Dock = DockStyle.Fill;
         }
@@ -89,7 +91,7 @@ namespace Space_Shooter.AccountManagement
             if (tb_name.Text == "")
             {
                 tb_name.Text = userNameHintText;
-                tb_name.ForeColor = Color.Khaki;
+                tb_name.ForeColor = hintColor;
             }
         }
         private void tb_email_Enter(object sender, EventArgs e)
@@ -106,7 +108,7 @@ namespace Space_Shooter.AccountManagement
             if (tb_email.Text == "")
             {
                 tb_email.Text = emailHintText;
-                tb_email.ForeColor = Color.Khaki;
+                tb_email.ForeColor = hintColor;
             }
         }
 
@@ -125,7 +127,7 @@ namespace Space_Shooter.AccountManagement
             if (tb_password.Text == "")
             {
                 tb_password.Text = passwordHintText;
-                tb_password.ForeColor = Color.Khaki;
+                tb_password.ForeColor = hintColor;
                 tb_password.PasswordChar = '\0';
             }
         }

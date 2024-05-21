@@ -20,11 +20,12 @@ namespace Space_Shooter.AccountManagement
         const String emailNotExistError = "Email Doesn't Exist!";
         const String emailSentSuccessNoti = "Email Sent Successfully! Check your email for the password!";
         const String emailInvalidError = "Invalid Email!";
+        Color hintColor = Color.Khaki;
         public ForgotPassword()
         {
             InitializeComponent();
             tb_email.Text = emailHintText;
-            tb_email.ForeColor = Color.Khaki;
+            tb_email.ForeColor = hintColor;
             this.Dock = DockStyle.Fill;
         }
 
@@ -42,7 +43,7 @@ namespace Space_Shooter.AccountManagement
             if (tb_email.Text == "")
             {
                 tb_email.Text = emailHintText;
-                tb_email.ForeColor = Color.Khaki;
+                tb_email.ForeColor = hintColor;
             }
         }
 

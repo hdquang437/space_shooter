@@ -233,6 +233,7 @@
             this.loginComponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("loginComponent.BackgroundImage")));
             this.loginComponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loginComponent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loginComponent.ForeColor = System.Drawing.Color.Yellow;
             this.loginComponent.Location = new System.Drawing.Point(0, 0);
             this.loginComponent.Name = "loginComponent";
             this.loginComponent.Size = new System.Drawing.Size(1582, 1053);
@@ -245,6 +246,7 @@
             this.signUpComponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("signUpComponent.BackgroundImage")));
             this.signUpComponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.signUpComponent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.signUpComponent.ForeColor = System.Drawing.Color.Yellow;
             this.signUpComponent.Location = new System.Drawing.Point(0, 0);
             this.signUpComponent.Name = "signUpComponent";
             this.signUpComponent.Size = new System.Drawing.Size(1582, 1053);
@@ -284,7 +286,7 @@
             this.fpn_chooseShip.Controls.Add(this.pb_normalShip);
             this.fpn_chooseShip.Controls.Add(this.pb_Emissary);
             this.fpn_chooseShip.Controls.Add(this.pb_beholder);
-            this.fpn_chooseShip.Location = new System.Drawing.Point(159, 104);
+            this.fpn_chooseShip.Location = new System.Drawing.Point(180, 104);
             this.fpn_chooseShip.Name = "fpn_chooseShip";
             this.fpn_chooseShip.Size = new System.Drawing.Size(320, 99);
             this.fpn_chooseShip.TabIndex = 10;
@@ -341,7 +343,7 @@
             this.pn_currentShip.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pn_currentShip.BackgroundImage")));
             this.pn_currentShip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pn_currentShip.Controls.Add(this.pb_currentShip);
-            this.pn_currentShip.Location = new System.Drawing.Point(27, 104);
+            this.pn_currentShip.Location = new System.Drawing.Point(42, 104);
             this.pn_currentShip.Name = "pn_currentShip";
             this.pn_currentShip.Size = new System.Drawing.Size(101, 96);
             this.pn_currentShip.TabIndex = 11;
@@ -416,6 +418,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.loginComponent);
+            this.Controls.Add(this.signUpComponent);
             this.Controls.Add(this.pn_chooseShipDiff);
             this.Controls.Add(this.pn_leaderBoard);
             this.Controls.Add(this.pn_user);
@@ -424,8 +428,6 @@
             this.Controls.Add(this.btn_signup);
             this.Controls.Add(this.btn_start);
             this.Controls.Add(this.btn_login);
-            this.Controls.Add(this.loginComponent);
-            this.Controls.Add(this.signUpComponent);
             this.DoubleBuffered = true;
             this.Name = "HomeScreen";
             this.Size = new System.Drawing.Size(1582, 1053);

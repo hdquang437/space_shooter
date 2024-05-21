@@ -33,18 +33,21 @@
             this.lb_Email = new System.Windows.Forms.Label();
             this.tb_email = new System.Windows.Forms.TextBox();
             this.pb_exit = new System.Windows.Forms.PictureBox();
+            this.pn_border = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).BeginInit();
+            this.pn_border.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_sentPassword
             // 
+            this.btn_sentPassword.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_sentPassword.BackColor = System.Drawing.Color.DimGray;
             this.btn_sentPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_sentPassword.BackgroundImage")));
             this.btn_sentPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_sentPassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_sentPassword.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sentPassword.ForeColor = System.Drawing.Color.Khaki;
-            this.btn_sentPassword.Location = new System.Drawing.Point(445, 687);
+            this.btn_sentPassword.Location = new System.Drawing.Point(160, 416);
             this.btn_sentPassword.Name = "btn_sentPassword";
             this.btn_sentPassword.Size = new System.Drawing.Size(313, 71);
             this.btn_sentPassword.TabIndex = 13;
@@ -57,8 +60,8 @@
             this.lb_Email.AutoSize = true;
             this.lb_Email.BackColor = System.Drawing.Color.Transparent;
             this.lb_Email.Font = new System.Drawing.Font("Goudy Stout", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Email.ForeColor = System.Drawing.Color.Crimson;
-            this.lb_Email.Location = new System.Drawing.Point(311, 414);
+            this.lb_Email.ForeColor = System.Drawing.Color.Lime;
+            this.lb_Email.Location = new System.Drawing.Point(26, 83);
             this.lb_Email.Name = "lb_Email";
             this.lb_Email.Size = new System.Drawing.Size(406, 27);
             this.lb_Email.TabIndex = 12;
@@ -66,10 +69,10 @@
             // 
             // tb_email
             // 
-            this.tb_email.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tb_email.BackColor = System.Drawing.Color.DarkBlue;
             this.tb_email.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_email.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_email.Location = new System.Drawing.Point(316, 486);
+            this.tb_email.Location = new System.Drawing.Point(31, 155);
             this.tb_email.Name = "tb_email";
             this.tb_email.Size = new System.Drawing.Size(560, 35);
             this.tb_email.TabIndex = 11;
@@ -88,6 +91,19 @@
             this.pb_exit.TabStop = false;
             this.pb_exit.Click += new System.EventHandler(this.pb_exit_Click);
             // 
+            // pn_border
+            // 
+            this.pn_border.BackColor = System.Drawing.Color.Transparent;
+            this.pn_border.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pn_border.BackgroundImage")));
+            this.pn_border.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pn_border.Controls.Add(this.lb_Email);
+            this.pn_border.Controls.Add(this.tb_email);
+            this.pn_border.Controls.Add(this.btn_sentPassword);
+            this.pn_border.Location = new System.Drawing.Point(123, 203);
+            this.pn_border.Name = "pn_border";
+            this.pn_border.Size = new System.Drawing.Size(617, 581);
+            this.pn_border.TabIndex = 15;
+            // 
             // ForgotPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -95,16 +111,16 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.pn_border);
             this.Controls.Add(this.pb_exit);
-            this.Controls.Add(this.btn_sentPassword);
-            this.Controls.Add(this.lb_Email);
-            this.Controls.Add(this.tb_email);
             this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.Color.Yellow;
             this.Name = "ForgotPassword";
             this.Size = new System.Drawing.Size(1582, 1053);
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).EndInit();
+            this.pn_border.ResumeLayout(false);
+            this.pn_border.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -114,5 +130,6 @@
         private System.Windows.Forms.Label lb_Email;
         private System.Windows.Forms.TextBox tb_email;
         private System.Windows.Forms.PictureBox pb_exit;
+        private System.Windows.Forms.Panel pn_border;
     }
 }
