@@ -19,7 +19,7 @@ namespace Space_Shooter.AccountManagement
     {
         List<User> users = new List<User>();
         public User currentUser;
-        public GameDifficulty currentDiff = GameDifficulty.Normal;
+        public GameDifficulty currentDiff = GameDifficulty.Easy;
         public Ship currentShip = Ship.Default;
 
 
@@ -41,13 +41,10 @@ namespace Space_Shooter.AccountManagement
             //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, formsize.Width-200, formsize.Height-200, 20, 20));
             this.Dock = DockStyle.Fill;
             this.currentUser = user;
-            //btn_diff_easy.KeyDown += Utilities.PreventKeyDown;
-            //btn_diff_normal.KeyDown += Utilities.PreventKeyDown;
-            //btn_diff_hard.KeyDown += Utilities.PreventKeyDown;
-            //btn_start.KeyDown += Utilities.PreventKeyDown;
-            //btn_exit.KeyDown += Utilities.PreventKeyDown;
-            //btn_login.KeyDown += Utilities.PreventKeyDown;
-            //btn_signup.KeyDown += Utilities.PreventKeyDown;
+
+            btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_active;
+            btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_inactive;
+            btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_inactive;
         }
 
         public event EventHandler StartGame;

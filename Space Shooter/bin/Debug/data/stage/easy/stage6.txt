@@ -1,0 +1,38 @@
+#	spawn_time	id	position_x	position_y	[sup	Param]
+
+#	ENEMY
+100	item_s	1200	-30
+300	item_f	450	-30
+150	meteor_3	400	-118	0	1	2
+200	meteor_2	600	-58	1	0	3
+300	meteor_4	700	-238	0	1	1
+400	meteor_4	550	-238	0	1	1
+500	meteor_5	350	-318	0	1	0.5
+600	item_r	760	-30
+700	meteor_4	820	-238	0	1	1
+800	meteor_3	260	-118	0	1	2
+900	meteor_5	420	-318	0	1	0.5
+1000	item_b	600	-30
+1200	klaed_bomber	500	-79	2
+1400	klaed_fighter	760	-79	1.5	following
+1600	klaed_fighter	760	-79	1.5	following
+1700	klaed_fighter	1002	-79	1.5	forward
+1900	klaed_scout	420	-79	2	following
+2100	klaed_scout	700	-79	2	forward
+2300	klaed_torpedoship	1200	-79	1.5	following
+2500	klaed_torpedoship	320	-79	1.5	forward
+2700	klaed_supportship	750	-79	0	1	1.8
+2900	klaed_frigate	420	-79	1.5	following
+3100	klaed_frigate	670	-79	1.5	forward
+3300	klaed_battlecruiser	500	-254	0.8
+3500	klaed_dreadnought	700	-254	0.8
+3700	klaed_battlecruiser	1000	-254	0.8
+3900	klaed_dreadnought	1200	-254	0.8
+4100	item_m	600	-30
+4300	klaed_bomber	200	-79	2
+4500	klaed_bomber	900	-79	2
+4700	klaed_scout	550	-79	2	following
+4900	klaed_scout	750	-79	2	forward
+5000	klaed_supportship	400	-79	0	1	1.8
+
+#	BACKGROUND	OBJECT

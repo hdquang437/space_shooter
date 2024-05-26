@@ -17,15 +17,12 @@ namespace Space_Shooter.Manager
         [DllImport("winmm.dll")]
         static private extern Int32 mciSendString(string command, StringBuilder buffer, int bufferSize, IntPtr hwndCallback);
         static private int _alias = 0;
-
+        static private SoundPlayer bgm;
         static public void PlayBGM(string file)
         {
             string link = @"audio\bgm\" + file;
-            string alias = @"sound_bgm";
-            mciSendString(@"close " + alias, null, 0, IntPtr.Zero);
-            mciSendString(@"open " + link + " type waveaudio alias " + alias, null, 0, IntPtr.Zero);
-            mciSendString(@"play " + alias, null, 0, IntPtr.Zero);
-            //mciSendString(@"setaudio " + alias + " volume to 1000", null, 0, IntPtr.Zero);
+            bgm = new SoundPlayer(link);
+            bgm.PlayLooping();
         }
 
         static public void PlaySE(string file)
@@ -46,7 +43,7 @@ namespace Space_Shooter.Manager
             mciSendString(@"open " + link + " type waveaudio alias " + alias, null, 0, IntPtr.Zero);
             mciSendString(@"play " + alias, null, 0, IntPtr.Zero);
             //mciSendString(@"setaudio " + alias + " volume to 1000", null, 0, IntPtr.Zero);
-            if (_alias < 20)
+            if (_alias < 10)
             {
                 _alias++;
             }

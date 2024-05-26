@@ -8,7 +8,9 @@ namespace Space_Shooter.Manager
 {
     internal class BGM
     {
-        public const string bgm1 = "bgm1.wav";
+        public const string bgm_ingame = "bgm_ingame.wav";
+        public const string bgm_menu = "bgm_menu.wav";
+        public const string bgm_gameover = "bgm_gameover.wav";
     }
     internal class SE
     {
