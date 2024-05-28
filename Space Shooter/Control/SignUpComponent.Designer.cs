@@ -80,7 +80,7 @@
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(507, 35);
-            this.tb_password.TabIndex = 13;
+            this.tb_password.TabIndex = 2;
             this.tb_password.Enter += new System.EventHandler(this.tb_password_Enter);
             this.tb_password.Leave += new System.EventHandler(this.tb_password_Leave);
             // 
@@ -93,7 +93,7 @@
             this.tb_email.Location = new System.Drawing.Point(64, 269);
             this.tb_email.Name = "tb_email";
             this.tb_email.Size = new System.Drawing.Size(507, 35);
-            this.tb_email.TabIndex = 12;
+            this.tb_email.TabIndex = 1;
             this.tb_email.Enter += new System.EventHandler(this.tb_email_Enter);
             this.tb_email.Leave += new System.EventHandler(this.tb_email_Leave);
             // 
@@ -121,7 +121,7 @@
             this.btn_signUp.Location = new System.Drawing.Point(315, 593);
             this.btn_signUp.Name = "btn_signUp";
             this.btn_signUp.Size = new System.Drawing.Size(215, 71);
-            this.btn_signUp.TabIndex = 17;
+            this.btn_signUp.TabIndex = 3;
             this.btn_signUp.Text = "Sign Up";
             this.btn_signUp.UseVisualStyleBackColor = false;
             this.btn_signUp.Click += new System.EventHandler(this.btn_signup_Click);
@@ -135,7 +135,7 @@
             this.tb_name.Location = new System.Drawing.Point(64, 118);
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(507, 35);
-            this.tb_name.TabIndex = 12;
+            this.tb_name.TabIndex = 0;
             this.tb_name.Enter += new System.EventHandler(this.tb_user_name_Enter);
             this.tb_name.Leave += new System.EventHandler(this.tb_user_name_Leave);
             // 

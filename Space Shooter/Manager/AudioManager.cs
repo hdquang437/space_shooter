@@ -18,6 +18,10 @@ namespace Space_Shooter.Manager
         static private extern Int32 mciSendString(string command, StringBuilder buffer, int bufferSize, IntPtr hwndCallback);
         static private int _alias = 0;
         static private SoundPlayer bgm;
+
+        private const int MAX_SE_PER_PERIOD = 5;
+        static private int played_se_count = 0;
+        static private System.Windows.Forms.Timer _timer = new System.Windows.Forms.Timer();
         static public void PlayBGM(string file)
         {
             string link = @"audio\bgm\" + file;
@@ -37,6 +41,15 @@ namespace Space_Shooter.Manager
 
         static private void ThreadPlaySE(string file)
         {
+            if (played_se_count < MAX_SE_PER_PERIOD)
+            {
+                played_se_count++;
+            }
+            else
+            {
+                return;
+            }
+
             string link = @"audio\se\" + file;
             string alias = @"sound" + _alias;
             mciSendString(@"close " + alias, null, 0, IntPtr.Zero);
@@ -51,6 +64,18 @@ namespace Space_Shooter.Manager
             {
                 _alias = 0;
             }
+        }
+
+        static public void InitializeController()
+        {
+            _timer.Interval = 20;
+            _timer.Tick += new EventHandler(TimerOnTick);
+            _timer.Start();
+        }
+
+        static private void TimerOnTick(object obj, EventArgs e)
+        {
+            played_se_count = 0;
         }
     }
 }

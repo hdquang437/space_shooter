@@ -29,6 +29,9 @@ namespace Space_Shooter
             InitializeComponent();
             Input.GetKeyStates();
             ToCenter();
+
+            AudioManager.InitializeController();
+
             AudioManager.PlayBGM(BGM.bgm_menu);
             gameScreen = new Screen_Game(this);
             homeScreen = new HomeScreen(null);
