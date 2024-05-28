@@ -1,0 +1,54 @@
+#	spawn_time	id	position_x	position_y	[sup	Param]
+
+#	ENEMY
+200	klaed_scout	420	-79	2.5	following
+500	klaed_scout	1200	-79	2.5	following
+600	klaed_supportship	700	-79	150	100	2.3
+800	klaed_battlecruiser	500	-254	1.0
+1000	klaed_frigate	800	-79	2	following
+1000	klaed_torpedoship	1500	-79	2.0	following
+1100	klaed_scout	400	-79	2.5	following
+1200	klaed_torpedoship	150	-79	2.0	following
+1250	klaed_supportship	700	-79	150	100	2.3
+1300	klaed_scout	800	-79	2.5	following
+1350	klaed_scout	320	-79	2.5	following
+1400	klaed_torpedoship	1250	-79	2.0	following
+1450	klaed_scout	20	-79	2.5	following
+1500	klaed_frigate	1200	-79	2	following
+1500	klaed_torpedoship	350	-79	2.0	following
+1700	klaed_frigate	750	-79	2	following
+2000	klaed_supportship	200	-79	150	100	2.3
+2200	klaed_scout	50	-79	2.5	following
+
+# BUFF
+700	item_r	1000	-30
+1500	item_r	450	-30
+
+#	METEOR
+
+100	meteor_4	600	-238	0	100	1.4
+300	meteor_4	100	-238	0	100	1.6
+300	meteor_3	600	-118	0	100	2.2
+350	meteor_3	600	-118	0	100	2.3
+400	meteor_4	800	-238	0	100	1.5
+400	meteor_3	300	-118	0	100	2.4
+500	meteor_5	350	-318	0	100	0.9
+600	meteor_4	50	-238	0	100	1.7
+650	meteor_3	1000	-118	0	100	2.1
+660	meteor_3	800	-118	0	100	2.4
+680	meteor_3	200	-118	0	100	2.2
+790	meteor_5	350	-318	0	100	1.1
+850	meteor_2	900	-58	0	1	2.5
+890	meteor_2	600	-58	0	1	2.3
+920	meteor_2	350	-58	0	1	2.5
+960	meteor_3	500	-118	0	100	2.3
+1000	meteor_2	350	-58	0	1	2.5
+1000	meteor_5	890	-318	0	100	1.1
+1100	meteor_2	700	-58	0	1	2.5
+1200	meteor_4	250	-238	0	100	1.5
+1300	meteor_5	750	-318	0	100	1.1
+1400	meteor_4	800	-238	0	100	1.8
+1500	meteor_3	400	-118	0	100	2.5
+1600	meteor_4	200	-238	0	100	1.8
+1800	meteor_4	500	-238	0	100	1.5
+1900	meteor_4	1200	-238	0	100	1.7

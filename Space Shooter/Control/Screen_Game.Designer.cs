@@ -98,7 +98,7 @@
             // 
             // valueBar_HP
             // 
-            this.valueBar_HP.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.valueBar_HP.BackColor = System.Drawing.Color.OrangeRed;
             this.valueBar_HP.ForeColor = System.Drawing.Color.Lime;
             this.valueBar_HP.Location = new System.Drawing.Point(32, 33);
             this.valueBar_HP.Name = "valueBar_HP";

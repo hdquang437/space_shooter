@@ -13,7 +13,7 @@ namespace Space_Shooter.Core.Bullet
         int changeDirectionTimes = 0;
         float vX = 0;
         float vY = 1;
-        int actionTimer = 10;
+        int actionTimer = 5;
         int actionCD = 0;
 
         public EnemyBullet_Homing(Game_Object owner, Game_Sprite sprite, float x, float y)
@@ -23,7 +23,7 @@ namespace Space_Shooter.Core.Bullet
             _Height = sprite.Height;
             _r = _Width / 2;
             _team = 1;
-            _collideDamage = 5;
+            _collideDamage = 20;
 
             die_ani_sprite = "enemy_bullet";
 
@@ -34,17 +34,17 @@ namespace Space_Shooter.Core.Bullet
             {
                 case GameDifficulty.Easy:
                     _MoveSpeed = 4;
-                    changeDirectionTimes = 12;                    
+                    changeDirectionTimes = 6;                    
                     break;
                 case GameDifficulty.Normal:
                     _MoveSpeed = 5;
-                    changeDirectionTimes = 16;
-                    actionTimer = 30;
+                    changeDirectionTimes = 12;
+                    actionTimer = 10;
                     break;
                 case GameDifficulty.Hard:
                     _MoveSpeed = 6;
-                    changeDirectionTimes = 20;
-                    actionTimer = 20;
+                    changeDirectionTimes = 16;
+                    actionTimer = 8;
                     break;
             }
             _MoveSpeed *= speedVariance;

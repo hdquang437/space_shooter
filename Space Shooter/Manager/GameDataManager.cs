@@ -16,7 +16,7 @@ namespace Space_Shooter.Manager
 {
     internal class GameDataManager
     {
-        public const int LAST_STAGE = 10;
+        public const int LAST_STAGE = 5;
         static public List<Game_Enemy> enemies = new List<Game_Enemy>();
         static public List<Game_Bullet> bullets = new List<Game_Bullet>();
         static public List<Game_Animation> animations = new List<Game_Animation>();

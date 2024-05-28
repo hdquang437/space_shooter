@@ -76,6 +76,7 @@ namespace Space_Shooter
         {
             AudioManager.PlayBGM(BGM.bgm_gameover);
             endGameScreen.currentUser = homeScreen.currentUser;
+            endGameScreen.UpdateScreen();
             panel_screen.Controls.Clear();
             panel_screen.Controls.Add(endGameScreen);
             if (currentUser.highestScore < GameDataManager.score)

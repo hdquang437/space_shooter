@@ -1,0 +1,40 @@
+#	spawn_time	id	position_x	position_y	[sup	Param]
+
+#	ENEMY
+
+150	klaed_fighter	400	-79	1.75	following
+200	klaed_fighter	700	-79	1.75	forward
+400	klaed_fighter	600	-79	1.75	forward
+400	klaed_fighter	700	-79	2.5	forward
+400	klaed_fighter	800	-79	1.75	forward
+500	klaed_scout	20	-79	2	following
+700	klaed_fighter	1000	-79	1.75	following
+750	klaed_scout	1500	-79	2	following
+800	klaed_scout	50	-79	2.2	following
+1000	klaed_bomber	200	-79	2.2
+1050	klaed_bomber	800	-79	2.2
+1100	klaed_bomber	600	-79	2.2
+1100	klaed_scout	400	-79	2	following
+1150	klaed_bomber	1200	-79	2.2
+1200	klaed_bomber	1500	-79	2.2
+1300	klaed_supportship	1000	-79	-10	100	1.8
+1400	klaed_scout	400	-79	2	forward
+1400	klaed_scout	800	-79	2	forward
+1600	klaed_frigate	600	-79	1.75	following
+1650	klaed_scout	200	-79	2	following
+1700	klaed_fighter	400	-79	1.75	forward
+1700	klaed_fighter	800	-79	1.75	forward
+1750	klaed_scout	1500	-79	2	following
+1800	klaed_scout	200	-79	2.2	following
+1800	klaed_scout	1000	-79	2.2	following
+2000	klaed_frigate	300	-79	1.75	following
+2000	klaed_frigate	700	-79	1.75	forward
+2200	klaed_supportship	600	-79	10	100	1.8
+2200	klaed_scout	400	-79	2	forward
+2250	klaed_scout	800	-79	2	forward
+
+# BUFF
+
+
+#	METEOR
+

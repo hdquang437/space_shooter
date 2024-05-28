@@ -27,13 +27,19 @@ namespace Space_Shooter.Control
 
         private void EndGameScreen_Load(object sender, EventArgs e)
         {
+            //UpdateScreen();
+        }
+
+        public void UpdateScreen()
+        {
             pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + currentUser.avaPath);
             lb_userName.Text = currentUser.name;
             if (GameDataManager.GameEnd == true)
             {
                 lb_senceten.Text = victorySentence;
                 pb_victory.Image = Properties.Resources.victory_img;
-            } else
+            }
+            else
             {
                 pb_victory.Image = Properties.Resources.defeat_img;
                 lb_senceten.Text = defeatedSentence;
@@ -42,7 +48,8 @@ namespace Space_Shooter.Control
             if (GameDataManager.score > currentUser.highestScore)
             {
                 lb_yourScore.Text = "New High Score";
-            } else
+            }
+            else
             {
                 lb_yourScore.Text = "Your Score";
             }
