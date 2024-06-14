@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -55,6 +56,7 @@ namespace Space_Shooter.Control
         {
             GameDataManager.Reset();
             GameDataManager.player.ToCenterPoint(REAL_SCREEN_WIDTH / 2, REAL_SCREEN_HEIGHT - 200);
+            label_Difficulty.Text = $"Difficulty: {GameDataManager.GetDifficultyStr}";
             _timer.Start();
         }
 
@@ -97,6 +99,8 @@ namespace Space_Shooter.Control
         private void Game_Update()
         {
             FPS_Update();
+            GameDataManager.cursorPosition = PointToClient(Cursor.Position);
+            Debug.Print(Cursor.Position.ToString());
             GameDataManager.Update();
             Game_Player player = GameDataManager.player;
             player?.Update();
@@ -204,6 +208,7 @@ namespace Space_Shooter.Control
                 labelMessage.Text = "";
             }
             labelScore.Text = GameDataManager.score.ToString();
+            label_Playtime.Text = $"Play time: {GameDataManager.PlayTimeStr}";
         }
 
         #endregion
@@ -226,5 +231,15 @@ namespace Space_Shooter.Control
         }
 
         #endregion
+
+        private void Screen_Game_MouseDown(object sender, MouseEventArgs e)
+        {
+            Input.IsMouseDown = true;
+        }
+
+        private void Screen_Game_MouseUp(object sender, MouseEventArgs e)
+        {
+            Input.IsMouseDown = false;
+        }
     }
 }

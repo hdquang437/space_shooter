@@ -29,10 +29,7 @@ namespace Space_Shooter.Manager
 
     internal class Input
     {
-        public static void keyDown(object sender, KeyEventArgs e)
-        {
-
-        }
+        public static bool IsMouseDown;
 
         public static void GetKeyStates()
         {
@@ -63,7 +60,7 @@ namespace Space_Shooter.Manager
             {
                 turbo = true;
             }    
-            if (Keyboard.IsKeyDown(Key.Z))
+            if (Keyboard.IsKeyDown(Key.Z) || (GameDataManager.playMode == PlayMode.Mouse && IsMouseDown))
             {
                 shoot = true;
             }

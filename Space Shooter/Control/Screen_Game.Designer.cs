@@ -32,10 +32,12 @@
             this.label_Ammo = new System.Windows.Forms.Label();
             this.label_FPS = new System.Windows.Forms.Label();
             this.labelMessage = new System.Windows.Forms.Label();
-            this.valueBar_Ammo = new Space_Shooter.Control.ValueBar();
-            this.valueBar_HP = new Space_Shooter.Control.ValueBar();
             this.label1 = new System.Windows.Forms.Label();
             this.labelScore = new System.Windows.Forms.Label();
+            this.label_Playtime = new System.Windows.Forms.Label();
+            this.label_Difficulty = new System.Windows.Forms.Label();
+            this.valueBar_Ammo = new Space_Shooter.Control.ValueBar();
+            this.valueBar_HP = new Space_Shooter.Control.ValueBar();
             this.SuspendLayout();
             // 
             // label_HP
@@ -86,6 +88,55 @@
             this.labelMessage.TabIndex = 5;
             this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Algerian", 14F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(1395, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 26);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "SCORE";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelScore
+            // 
+            this.labelScore.BackColor = System.Drawing.Color.Transparent;
+            this.labelScore.Font = new System.Drawing.Font("Algerian", 14F, System.Drawing.FontStyle.Bold);
+            this.labelScore.ForeColor = System.Drawing.Color.White;
+            this.labelScore.Location = new System.Drawing.Point(1367, 86);
+            this.labelScore.Name = "labelScore";
+            this.labelScore.Size = new System.Drawing.Size(146, 26);
+            this.labelScore.TabIndex = 7;
+            this.labelScore.Text = "0";
+            this.labelScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Playtime
+            // 
+            this.label_Playtime.BackColor = System.Drawing.Color.Transparent;
+            this.label_Playtime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Playtime.ForeColor = System.Drawing.Color.White;
+            this.label_Playtime.Location = new System.Drawing.Point(1329, 13);
+            this.label_Playtime.Name = "label_Playtime";
+            this.label_Playtime.Size = new System.Drawing.Size(143, 18);
+            this.label_Playtime.TabIndex = 8;
+            this.label_Playtime.Text = "Play time:";
+            this.label_Playtime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label_Difficulty
+            // 
+            this.label_Difficulty.BackColor = System.Drawing.Color.Transparent;
+            this.label_Difficulty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Difficulty.ForeColor = System.Drawing.Color.White;
+            this.label_Difficulty.Location = new System.Drawing.Point(1372, 39);
+            this.label_Difficulty.Name = "label_Difficulty";
+            this.label_Difficulty.Size = new System.Drawing.Size(141, 18);
+            this.label_Difficulty.TabIndex = 9;
+            this.label_Difficulty.Text = "Difficulty: Easy";
+            this.label_Difficulty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // valueBar_Ammo
             // 
             this.valueBar_Ammo.BackColor = System.Drawing.Color.Brown;
@@ -106,36 +157,13 @@
             this.valueBar_HP.TabIndex = 0;
             this.valueBar_HP.Value = 100;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Algerian", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1393, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 26);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "SCORE";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelScore
-            // 
-            this.labelScore.BackColor = System.Drawing.Color.Transparent;
-            this.labelScore.Font = new System.Drawing.Font("Algerian", 14F, System.Drawing.FontStyle.Bold);
-            this.labelScore.ForeColor = System.Drawing.Color.White;
-            this.labelScore.Location = new System.Drawing.Point(1367, 69);
-            this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(146, 26);
-            this.labelScore.TabIndex = 7;
-            this.labelScore.Text = "0";
-            this.labelScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Screen_Game
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.label_Difficulty);
+            this.Controls.Add(this.label_Playtime);
             this.Controls.Add(this.labelScore);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelMessage);
@@ -148,6 +176,8 @@
             this.Name = "Screen_Game";
             this.Size = new System.Drawing.Size(1600, 1080);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Screen_Game_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Screen_Game_MouseDown);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Screen_Game_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +193,7 @@
         private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelScore;
+        private System.Windows.Forms.Label label_Playtime;
+        private System.Windows.Forms.Label label_Difficulty;
     }
 }

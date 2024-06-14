@@ -183,6 +183,16 @@ namespace Space_Shooter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ship_border {
+            get {
+                object obj = ResourceManager.GetObject("ship_border", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap victory_img {
             get {
                 object obj = ResourceManager.GetObject("victory_img", resourceCulture);

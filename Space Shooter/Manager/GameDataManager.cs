@@ -22,9 +22,45 @@ namespace Space_Shooter.Manager
         static public List<Game_Animation> animations = new List<Game_Animation>();
         static public Game_Player player;
         static public Ship playerShipType = Ship.Default;
+        static public PlayMode playMode = PlayMode.Mouse;
+        static public Point cursorPosition;
         static public int score = 0;
         static private int stage = 1;
         static private int time = 0;
+        static public int PlayTime = 0;
+
+        static public string PlayTimeStr
+        {
+            get
+            {
+                int time = PlayTime;
+                int minute = time / 6000;
+                time %= 6000;
+                int second = time / 100;
+                time %= 100;
+                string addZeroToMinute = minute >= 10 ? "" : "0";
+                string addZeroToSecond = second >= 10 ? "" : "0";
+                string addZeroToMinusSecond = time >= 10 ? "" : "0";
+                return $"{addZeroToMinute}{minute}:{addZeroToSecond}{second}:{addZeroToMinusSecond}{time}";
+            }
+        }
+
+        static public string GetDifficultyStr
+        {
+            get
+            {
+                switch (Difficulty)
+                {
+                    case GameDifficulty.Easy:
+                        return "Easy";
+                    case GameDifficulty.Normal:
+                        return "Normal";
+                    case GameDifficulty.Hard:
+                        return "Hard";
+                }
+                return "";
+            }
+        }
 
         static public int Stage { get { return stage; } }
         //static public int highest_score;
@@ -71,6 +107,10 @@ namespace Space_Shooter.Manager
                     init = false;
                     StopGame = true;
                 }
+            }
+            else
+            {
+                PlayTime++;
             }
 
             if (IsStageClear() && player != null)
@@ -162,6 +202,7 @@ namespace Space_Shooter.Manager
             player = Factory.Create_PlayerSpaceship(0, 0, playerShipType);
             score = 0;
             stage = 0;
+            PlayTime = 0;
             GameEnd = false;
             StageEnd = false;
             StopGame = false;
@@ -482,5 +523,11 @@ namespace Space_Shooter.Manager
         Default,
         Emissary,
         Beholder
+    }
+
+    public enum PlayMode
+    {
+        Mouse,
+        Keyboard
     }
 }

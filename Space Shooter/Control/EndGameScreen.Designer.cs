@@ -39,9 +39,12 @@
             this.pb_victory = new System.Windows.Forms.PictureBox();
             this.btn_continue = new System.Windows.Forms.Button();
             this.btn_share = new System.Windows.Forms.Button();
+            this.lb_playtime = new System.Windows.Forms.Label();
+            this.pn_result = new System.Windows.Forms.Panel();
             this.pn_user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_victory)).BeginInit();
+            this.pn_result.SuspendLayout();
             this.SuspendLayout();
             // 
             // pn_user
@@ -79,10 +82,10 @@
             this.lb_senceten.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lb_senceten.Font = new System.Drawing.Font("Goudy Stout", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_senceten.ForeColor = System.Drawing.Color.Gold;
-            this.lb_senceten.Location = new System.Drawing.Point(500, 335);
-            this.lb_senceten.MaximumSize = new System.Drawing.Size(660, 85);
+            this.lb_senceten.Location = new System.Drawing.Point(83, 30);
+            this.lb_senceten.MaximumSize = new System.Drawing.Size(1000, 90);
             this.lb_senceten.Name = "lb_senceten";
-            this.lb_senceten.Size = new System.Drawing.Size(660, 85);
+            this.lb_senceten.Size = new System.Drawing.Size(660, 90);
             this.lb_senceten.TabIndex = 0;
             this.lb_senceten.Text = "Too bad! Better luck next time!";
             this.lb_senceten.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -90,11 +93,12 @@
             // lb_scoreVal
             // 
             this.lb_scoreVal.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lb_scoreVal.BackColor = System.Drawing.Color.Transparent;
             this.lb_scoreVal.Font = new System.Drawing.Font("Goudy Stout", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_scoreVal.ForeColor = System.Drawing.Color.Gold;
-            this.lb_scoreVal.Location = new System.Drawing.Point(557, 524);
+            this.lb_scoreVal.Location = new System.Drawing.Point(0, 171);
             this.lb_scoreVal.Name = "lb_scoreVal";
-            this.lb_scoreVal.Size = new System.Drawing.Size(537, 51);
+            this.lb_scoreVal.Size = new System.Drawing.Size(818, 51);
             this.lb_scoreVal.TabIndex = 0;
             this.lb_scoreVal.Text = "10000";
             this.lb_scoreVal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -104,9 +108,9 @@
             this.lb_yourScore.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lb_yourScore.Font = new System.Drawing.Font("Goudy Stout", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_yourScore.ForeColor = System.Drawing.Color.Lime;
-            this.lb_yourScore.Location = new System.Drawing.Point(482, 483);
+            this.lb_yourScore.Location = new System.Drawing.Point(2, 120);
             this.lb_yourScore.Name = "lb_yourScore";
-            this.lb_yourScore.Size = new System.Drawing.Size(696, 41);
+            this.lb_yourScore.Size = new System.Drawing.Size(815, 41);
             this.lb_yourScore.TabIndex = 0;
             this.lb_yourScore.Text = "Your Score";
             this.lb_yourScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -174,6 +178,32 @@
             this.btn_share.UseVisualStyleBackColor = false;
             this.btn_share.Click += new System.EventHandler(this.btn_share_Click);
             // 
+            // lb_playtime
+            // 
+            this.lb_playtime.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lb_playtime.Font = new System.Drawing.Font("Haettenschweiler", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_playtime.ForeColor = System.Drawing.Color.White;
+            this.lb_playtime.Location = new System.Drawing.Point(0, 239);
+            this.lb_playtime.Name = "lb_playtime";
+            this.lb_playtime.Size = new System.Drawing.Size(815, 41);
+            this.lb_playtime.TabIndex = 5;
+            this.lb_playtime.Text = "Play time: --:--:--";
+            this.lb_playtime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pn_result
+            // 
+            this.pn_result.BackColor = System.Drawing.Color.Transparent;
+            this.pn_result.BackgroundImage = global::Space_Shooter.Properties.Resources.ship_border;
+            this.pn_result.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pn_result.Controls.Add(this.lb_playtime);
+            this.pn_result.Controls.Add(this.lb_senceten);
+            this.pn_result.Controls.Add(this.lb_yourScore);
+            this.pn_result.Controls.Add(this.lb_scoreVal);
+            this.pn_result.Location = new System.Drawing.Point(650, 295);
+            this.pn_result.Name = "pn_result";
+            this.pn_result.Size = new System.Drawing.Size(818, 334);
+            this.pn_result.TabIndex = 6;
+            // 
             // EndGameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -185,10 +215,8 @@
             this.Controls.Add(this.btn_continue);
             this.Controls.Add(this.btn_mainmenu);
             this.Controls.Add(this.pb_victory);
-            this.Controls.Add(this.lb_scoreVal);
+            this.Controls.Add(this.pn_result);
             this.Controls.Add(this.pn_user);
-            this.Controls.Add(this.lb_yourScore);
-            this.Controls.Add(this.lb_senceten);
             this.DoubleBuffered = true;
             this.Name = "EndGameScreen";
             this.Size = new System.Drawing.Size(1582, 1053);
@@ -197,6 +225,7 @@
             this.pn_user.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_victory)).EndInit();
+            this.pn_result.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -213,5 +242,7 @@
         private System.Windows.Forms.Button btn_mainmenu;
         private System.Windows.Forms.Button btn_continue;
         private System.Windows.Forms.Button btn_share;
+        private System.Windows.Forms.Label lb_playtime;
+        private System.Windows.Forms.Panel pn_result;
     }
 }

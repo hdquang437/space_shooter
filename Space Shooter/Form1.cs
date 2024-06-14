@@ -82,11 +82,6 @@ namespace Space_Shooter
             endGameScreen.UpdateScreen();
             panel_screen.Controls.Clear();
             panel_screen.Controls.Add(endGameScreen);
-            if (currentUser.highestScore < GameDataManager.score)
-            {
-                UserRepo.UpdateScore(currentUser.email, GameDataManager.score);
-                currentUser.highestScore = GameDataManager.score;
-            }
         }
 
         private void HomeScreen_StartGame(object sender, EventArgs e)
@@ -116,6 +111,7 @@ namespace Space_Shooter
         private void EndGameScreen_GoToMainMenu(object sender, EventArgs e)
         {
             AudioManager.PlayBGM(BGM.bgm_menu);
+            homeScreen.UpdateLeaderboard();
             panel_screen.Controls.Clear();
             panel_screen.Controls.Add(homeScreen);
             panel_screen.Refresh();
