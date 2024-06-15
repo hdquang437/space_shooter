@@ -51,7 +51,7 @@
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(507, 35);
-            this.tb_password.TabIndex = 6;
+            this.tb_password.TabIndex = 1;
             this.tb_password.Enter += new System.EventHandler(this.tb_password_Enter);
             this.tb_password.Leave += new System.EventHandler(this.tb_password_Leave);
             // 
@@ -63,7 +63,7 @@
             this.tb_email.Location = new System.Drawing.Point(47, 105);
             this.tb_email.Name = "tb_email";
             this.tb_email.Size = new System.Drawing.Size(507, 35);
-            this.tb_email.TabIndex = 5;
+            this.tb_email.TabIndex = 0;
             this.tb_email.Enter += new System.EventHandler(this.tb_email_Enter);
             this.tb_email.Leave += new System.EventHandler(this.tb_email_Leave);
             // 
@@ -116,7 +116,7 @@
             this.btn_login.Location = new System.Drawing.Point(198, 472);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(218, 71);
-            this.btn_login.TabIndex = 10;
+            this.btn_login.TabIndex = 3;
             this.btn_login.Text = "LOG IN";
             this.btn_login.UseVisualStyleBackColor = false;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
@@ -155,10 +155,11 @@
             this.forgotPasswordComponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("forgotPasswordComponent.BackgroundImage")));
             this.forgotPasswordComponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.forgotPasswordComponent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.forgotPasswordComponent.ForeColor = System.Drawing.Color.Yellow;
             this.forgotPasswordComponent.Location = new System.Drawing.Point(0, 0);
             this.forgotPasswordComponent.Name = "forgotPasswordComponent";
             this.forgotPasswordComponent.Size = new System.Drawing.Size(1582, 1053);
-            this.forgotPasswordComponent.TabIndex = 12;
+            this.forgotPasswordComponent.TabIndex = 10;
             this.forgotPasswordComponent.Visible = false;
             // 
             // LoginComponent

@@ -20,5 +20,6 @@ namespace Space_Shooter
             AccountManagement.Repository.FilePathManager.AddFilePath("images", $"{Environment.CurrentDirectory}\\img\\avatar\\");
             Application.Run(new Form1());
         }
+
     }
 }

@@ -41,8 +41,6 @@
             this.pb_avatar = new System.Windows.Forms.PictureBox();
             this.fpn_leaderBoard = new System.Windows.Forms.FlowLayoutPanel();
             this.pn_leaderBoard = new System.Windows.Forms.Panel();
-            this.loginComponent = new Space_Shooter.AccountManagement.LoginComponent();
-            this.signUpComponent = new Space_Shooter.AccountManagement.SignUpComponent();
             this.lb_chooseShip = new System.Windows.Forms.Label();
             this.pb_currentShip = new System.Windows.Forms.PictureBox();
             this.fpn_chooseShip = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,6 +53,12 @@
             this.btn_diff_normal = new System.Windows.Forms.Button();
             this.btn_diff_hard = new System.Windows.Forms.Button();
             this.pn_chooseShipDiff = new System.Windows.Forms.Panel();
+            this.pn_chooseShip = new System.Windows.Forms.Panel();
+            this.btn_continue = new System.Windows.Forms.Button();
+            this.pn_Controller = new System.Windows.Forms.Panel();
+            this.btn_controlKeyboard = new System.Windows.Forms.Button();
+            this.btn_controlMouse = new System.Windows.Forms.Button();
+            this.lb_ChooseMode = new System.Windows.Forms.Label();
             this.pn_user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).BeginInit();
             this.pn_leaderBoard.SuspendLayout();
@@ -65,6 +69,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_beholder)).BeginInit();
             this.pn_currentShip.SuspendLayout();
             this.pn_chooseShipDiff.SuspendLayout();
+            this.pn_chooseShip.SuspendLayout();
+            this.pn_Controller.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_exit
@@ -91,7 +97,7 @@
             this.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_logout.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_logout.ForeColor = System.Drawing.Color.Khaki;
-            this.btn_logout.Location = new System.Drawing.Point(866, 499);
+            this.btn_logout.Location = new System.Drawing.Point(866, 544);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(304, 101);
             this.btn_logout.TabIndex = 3;
@@ -124,7 +130,7 @@
             this.btn_start.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_start.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_start.ForeColor = System.Drawing.Color.Khaki;
-            this.btn_start.Location = new System.Drawing.Point(866, 329);
+            this.btn_start.Location = new System.Drawing.Point(866, 304);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(304, 101);
             this.btn_start.TabIndex = 1;
@@ -228,32 +234,6 @@
             this.pn_leaderBoard.Size = new System.Drawing.Size(454, 910);
             this.pn_leaderBoard.TabIndex = 4;
             // 
-            // loginComponent
-            // 
-            this.loginComponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("loginComponent.BackgroundImage")));
-            this.loginComponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.loginComponent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loginComponent.ForeColor = System.Drawing.Color.Yellow;
-            this.loginComponent.Location = new System.Drawing.Point(0, 0);
-            this.loginComponent.Name = "loginComponent";
-            this.loginComponent.Size = new System.Drawing.Size(1582, 1053);
-            this.loginComponent.TabIndex = 6;
-            this.loginComponent.Visible = false;
-            this.loginComponent.getUser += new System.EventHandler(this.loginComponent_getUser);
-            // 
-            // signUpComponent
-            // 
-            this.signUpComponent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("signUpComponent.BackgroundImage")));
-            this.signUpComponent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.signUpComponent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.signUpComponent.ForeColor = System.Drawing.Color.Yellow;
-            this.signUpComponent.Location = new System.Drawing.Point(0, 0);
-            this.signUpComponent.Name = "signUpComponent";
-            this.signUpComponent.Size = new System.Drawing.Size(1582, 1053);
-            this.signUpComponent.TabIndex = 7;
-            this.signUpComponent.Visible = false;
-            this.signUpComponent.reloadUser += new System.EventHandler(this.signUpComponent_reloadUser);
-            // 
             // lb_chooseShip
             // 
             this.lb_chooseShip.AutoSize = true;
@@ -281,7 +261,7 @@
             // fpn_chooseShip
             // 
             this.fpn_chooseShip.BackColor = System.Drawing.Color.Transparent;
-            this.fpn_chooseShip.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fpn_chooseShip.BackgroundImage")));
+            this.fpn_chooseShip.BackgroundImage = global::Space_Shooter.Properties.Resources.ship_border;
             this.fpn_chooseShip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.fpn_chooseShip.Controls.Add(this.pb_normalShip);
             this.fpn_chooseShip.Controls.Add(this.pb_Emissary);
@@ -340,7 +320,7 @@
             // pn_currentShip
             // 
             this.pn_currentShip.BackColor = System.Drawing.Color.Transparent;
-            this.pn_currentShip.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pn_currentShip.BackgroundImage")));
+            this.pn_currentShip.BackgroundImage = global::Space_Shooter.Properties.Resources.ship_border;
             this.pn_currentShip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pn_currentShip.Controls.Add(this.pb_currentShip);
             this.pn_currentShip.Location = new System.Drawing.Point(42, 104);
@@ -399,11 +379,9 @@
             // pn_chooseShipDiff
             // 
             this.pn_chooseShipDiff.BackColor = System.Drawing.Color.Transparent;
-            this.pn_chooseShipDiff.Controls.Add(this.fpn_chooseShip);
+            this.pn_chooseShipDiff.Controls.Add(this.pn_chooseShip);
             this.pn_chooseShipDiff.Controls.Add(this.btn_diff_hard);
-            this.pn_chooseShipDiff.Controls.Add(this.pn_currentShip);
             this.pn_chooseShipDiff.Controls.Add(this.btn_diff_normal);
-            this.pn_chooseShipDiff.Controls.Add(this.lb_chooseShip);
             this.pn_chooseShipDiff.Controls.Add(this.btn_diff_easy);
             this.pn_chooseShipDiff.Controls.Add(this.lb_setDiff);
             this.pn_chooseShipDiff.Location = new System.Drawing.Point(12, 615);
@@ -412,6 +390,85 @@
             this.pn_chooseShipDiff.TabIndex = 13;
             this.pn_chooseShipDiff.Visible = false;
             // 
+            // pn_chooseShip
+            // 
+            this.pn_chooseShip.Controls.Add(this.lb_chooseShip);
+            this.pn_chooseShip.Controls.Add(this.pn_currentShip);
+            this.pn_chooseShip.Controls.Add(this.fpn_chooseShip);
+            this.pn_chooseShip.Location = new System.Drawing.Point(3, 3);
+            this.pn_chooseShip.Name = "pn_chooseShip";
+            this.pn_chooseShip.Size = new System.Drawing.Size(698, 213);
+            this.pn_chooseShip.TabIndex = 13;
+            // 
+            // btn_continue
+            // 
+            this.btn_continue.BackColor = System.Drawing.Color.DimGray;
+            this.btn_continue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_continue.BackgroundImage")));
+            this.btn_continue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_continue.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_continue.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_continue.ForeColor = System.Drawing.Color.Khaki;
+            this.btn_continue.Location = new System.Drawing.Point(866, 424);
+            this.btn_continue.Name = "btn_continue";
+            this.btn_continue.Size = new System.Drawing.Size(304, 101);
+            this.btn_continue.TabIndex = 14;
+            this.btn_continue.Text = "CONTINUE";
+            this.btn_continue.UseVisualStyleBackColor = false;
+            this.btn_continue.Visible = false;
+            // 
+            // pn_Controller
+            // 
+            this.pn_Controller.BackColor = System.Drawing.Color.Transparent;
+            this.pn_Controller.Controls.Add(this.btn_controlKeyboard);
+            this.pn_Controller.Controls.Add(this.btn_controlMouse);
+            this.pn_Controller.Controls.Add(this.lb_ChooseMode);
+            this.pn_Controller.Location = new System.Drawing.Point(4, 443);
+            this.pn_Controller.Name = "pn_Controller";
+            this.pn_Controller.Size = new System.Drawing.Size(451, 166);
+            this.pn_Controller.TabIndex = 15;
+            // 
+            // btn_controlKeyboard
+            // 
+            this.btn_controlKeyboard.BackColor = System.Drawing.Color.Transparent;
+            this.btn_controlKeyboard.BackgroundImage = global::Space_Shooter.Properties.Resources.controller_keyboard_deactive;
+            this.btn_controlKeyboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_controlKeyboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_controlKeyboard.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_controlKeyboard.ForeColor = System.Drawing.Color.Khaki;
+            this.btn_controlKeyboard.Location = new System.Drawing.Point(184, 44);
+            this.btn_controlKeyboard.Name = "btn_controlKeyboard";
+            this.btn_controlKeyboard.Size = new System.Drawing.Size(110, 110);
+            this.btn_controlKeyboard.TabIndex = 15;
+            this.btn_controlKeyboard.UseVisualStyleBackColor = false;
+            this.btn_controlKeyboard.Click += new System.EventHandler(this.btn_controlKeyboard_Click);
+            // 
+            // btn_controlMouse
+            // 
+            this.btn_controlMouse.BackColor = System.Drawing.Color.Transparent;
+            this.btn_controlMouse.BackgroundImage = global::Space_Shooter.Properties.Resources.controller_mouse_active;
+            this.btn_controlMouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_controlMouse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_controlMouse.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_controlMouse.ForeColor = System.Drawing.Color.Khaki;
+            this.btn_controlMouse.Location = new System.Drawing.Point(51, 44);
+            this.btn_controlMouse.Name = "btn_controlMouse";
+            this.btn_controlMouse.Size = new System.Drawing.Size(110, 110);
+            this.btn_controlMouse.TabIndex = 14;
+            this.btn_controlMouse.UseVisualStyleBackColor = false;
+            this.btn_controlMouse.Click += new System.EventHandler(this.btn_controlMouse_Click);
+            // 
+            // lb_ChooseMode
+            // 
+            this.lb_ChooseMode.AutoSize = true;
+            this.lb_ChooseMode.BackColor = System.Drawing.Color.Transparent;
+            this.lb_ChooseMode.Font = new System.Drawing.Font("Goudy Stout", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_ChooseMode.ForeColor = System.Drawing.Color.Gold;
+            this.lb_ChooseMode.Location = new System.Drawing.Point(33, 11);
+            this.lb_ChooseMode.Name = "lb_ChooseMode";
+            this.lb_ChooseMode.Size = new System.Drawing.Size(283, 27);
+            this.lb_ChooseMode.TabIndex = 12;
+            this.lb_ChooseMode.Text = "Choose mode";
+            // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -419,15 +476,15 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.loginComponent);
-            this.Controls.Add(this.signUpComponent);
+            this.Controls.Add(this.pn_Controller);
             this.Controls.Add(this.pn_chooseShipDiff);
             this.Controls.Add(this.pn_leaderBoard);
             this.Controls.Add(this.pn_user);
             this.Controls.Add(this.btn_exit);
+            this.Controls.Add(this.btn_start);
+            this.Controls.Add(this.btn_continue);
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.btn_signup);
-            this.Controls.Add(this.btn_start);
             this.Controls.Add(this.btn_login);
             this.DoubleBuffered = true;
             this.Name = "HomeScreen";
@@ -446,6 +503,10 @@
             this.pn_currentShip.ResumeLayout(false);
             this.pn_chooseShipDiff.ResumeLayout(false);
             this.pn_chooseShipDiff.PerformLayout();
+            this.pn_chooseShip.ResumeLayout(false);
+            this.pn_chooseShip.PerformLayout();
+            this.pn_Controller.ResumeLayout(false);
+            this.pn_Controller.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -463,8 +524,6 @@
         private System.Windows.Forms.PictureBox pb_avatar;
         private System.Windows.Forms.FlowLayoutPanel fpn_leaderBoard;
         private System.Windows.Forms.Panel pn_leaderBoard;
-        private LoginComponent loginComponent;
-        private SignUpComponent signUpComponent;
         private System.Windows.Forms.Label lb_chooseShip;
         private System.Windows.Forms.PictureBox pb_currentShip;
         private System.Windows.Forms.FlowLayoutPanel fpn_chooseShip;
@@ -477,5 +536,11 @@
         private System.Windows.Forms.Button btn_diff_normal;
         private System.Windows.Forms.Button btn_diff_hard;
         private System.Windows.Forms.Panel pn_chooseShipDiff;
+        private System.Windows.Forms.Button btn_continue;
+        private System.Windows.Forms.Panel pn_chooseShip;
+        private System.Windows.Forms.Panel pn_Controller;
+        private System.Windows.Forms.Label lb_ChooseMode;
+        private System.Windows.Forms.Button btn_controlMouse;
+        private System.Windows.Forms.Button btn_controlKeyboard;
     }
 }

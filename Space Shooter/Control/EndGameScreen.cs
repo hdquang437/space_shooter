@@ -45,13 +45,23 @@ namespace Space_Shooter.Control
                 lb_senceten.Text = defeatedSentence;
             }
             lb_scoreVal.Text = GameDataManager.score.ToString();
-            if (GameDataManager.score > currentUser.highestScore)
+            string difficulty = GameDataManager.GetDifficultyStr.ToLower();
+            if (GameDataManager.score > currentUser.highestScore[difficulty])
             {
                 lb_yourScore.Text = "New High Score";
             }
             else
             {
                 lb_yourScore.Text = "Your Score";
+            }
+            lb_playtime.Text = "Play time: " + GameDataManager.PlayTimeStr;
+
+            // Update user score
+            if (currentUser.highestScore[difficulty] < GameDataManager.score)
+            {
+                UserRepo.UpdateScore(currentUser.email, GameDataManager.score, GameDataManager.PlayTime, difficulty);
+                currentUser.SetHighestScore(difficulty, GameDataManager.score);
+                currentUser.SetPlayTime(difficulty, GameDataManager.PlayTime);
             }
         }
 

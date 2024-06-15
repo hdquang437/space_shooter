@@ -93,6 +93,16 @@ namespace Space_Shooter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap black_background {
+            get {
+                object obj = ResourceManager.GetObject("black_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap char_Bullet {
             get {
                 object obj = ResourceManager.GetObject("char_Bullet", resourceCulture);
@@ -153,6 +163,66 @@ namespace Space_Shooter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap controller_button_active {
+            get {
+                object obj = ResourceManager.GetObject("controller_button_active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap controller_keyboard_active {
+            get {
+                object obj = ResourceManager.GetObject("controller_keyboard_active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap controller_keyboard_deactive {
+            get {
+                object obj = ResourceManager.GetObject("controller_keyboard_deactive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap controller_mouse {
+            get {
+                object obj = ResourceManager.GetObject("controller_mouse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap controller_mouse_active {
+            get {
+                object obj = ResourceManager.GetObject("controller_mouse_active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap controller_mouse_deactive {
+            get {
+                object obj = ResourceManager.GetObject("controller_mouse_deactive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap defeat_img {
             get {
                 object obj = ResourceManager.GetObject("defeat_img", resourceCulture);
@@ -176,6 +246,16 @@ namespace Space_Shooter.Properties {
         internal static System.Drawing.Bitmap diff_button_inactive {
             get {
                 object obj = ResourceManager.GetObject("diff_button_inactive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ship_border {
+            get {
+                object obj = ResourceManager.GetObject("ship_border", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

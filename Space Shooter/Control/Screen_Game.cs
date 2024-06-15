@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,8 @@ namespace Space_Shooter.Control
         int scrollY = 1;
 
         private Form1 parentForm;
+        private Screen_Pause screenPause;
+        private Screen_SaveAndLoad screenSaveAndLoad;
 
         Bitmap background = new Bitmap(Space_Shooter.Properties.Resources.Background, 1536, 1536);
 
@@ -48,13 +51,32 @@ namespace Space_Shooter.Control
             _timer.Interval = 10;
             _timer.Tick += new EventHandler(TimerOnTick);
 
-            //panel_screen.Paint += new PaintEventHandler(Screen_Game_Paint);
+            label_screenshot.Text = "";
+
+            screenPause = new Screen_Pause();
+            screenSaveAndLoad = new Screen_SaveAndLoad();
+            screenPause.parentControl = this;
+            screenSaveAndLoad.parentControl = this;
+            screenSaveAndLoad.mode = Screen_SaveAndLoad.Mode.Save;
+            screenSaveAndLoad.Setup();
+
+            Controls.Add(screenPause);
+            Controls.Add(screenSaveAndLoad);
+
+            screenPause.BringToFront();
+            screenSaveAndLoad.BringToFront();
+
+            screenPause.Visible = false;
+            screenSaveAndLoad.Visible = false;
         }
 
         public void StartGame()
         {
+            screenPause.Visible = false;
+            screenSaveAndLoad.Visible = false;
             GameDataManager.Reset();
             GameDataManager.player.ToCenterPoint(REAL_SCREEN_WIDTH / 2, REAL_SCREEN_HEIGHT - 200);
+            label_Difficulty.Text = $"Difficulty: {GameDataManager.GetDifficultyStr}";
             _timer.Start();
         }
 
@@ -62,20 +84,49 @@ namespace Space_Shooter.Control
         {
             _timer.Stop();
             _timer.Dispose();
-            parentForm.BackToHomeScreen();
+            parentForm.GameScreen_ToConclusion();
+        }
+
+        public void BackToMenu()
+        {
+            _timer.Stop();
+            _timer.Dispose();
+            parentForm.GameScreen_ToMainMenu();
+        }
+
+        public void OpenSave()
+        {
+            screenSaveAndLoad.Visible = true;
         }
 
         void TimerOnTick(object obj, EventArgs e)
         {
-            System.Windows.Forms.Control a = this.Parent;
+            //System.Windows.Forms.Control a = this.Parent;
             //this.Parent.Size = new Size(REAL_SCREEN_WIDTH, REAL_SCREEN_HEIGHT);
             //this.ParentForm.Size = new Size(REAL_SCREEN_WIDTH + 20, REAL_SCREEN_HEIGHT + 20);
             //this.Size = this.Parent.Size;
+            if (GameDataManager.isPaused)
+            {
+                return;
+            }
+
             Input.GetKeyStates();
+
+            if (GameDataManager.triggeredScreenshot)
+            {
+                GameDataManager.RequestScreenshot(this);
+            }
+
+            if (GameDataManager.triggeredPause)
+            {
+                GameDataManager.triggeredPause = false;
+                GameDataManager.isPaused = true;
+                screenPause.Visible = true;
+                return;
+            }
+
             Game_Update();
             Entity_Kill_Process();
-            //this.AutoScaleDimensions = new System.Drawing.SizeF(120, 120);
-            //this.Size = new Size(1280, 720);
             Update_GUI();
             Refresh();
         }
@@ -83,7 +134,7 @@ namespace Space_Shooter.Control
         private void Screen_Game_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            //e.ClipRectangle = new Rectangle(0, 0, REAL_SCREEN_HEIGHT, REAL_SCREEN_WIDTH);
+
             Draw_Background(g);
 
             foreach (Game_Object obj in GameDataManager.AllDrawableObjects)
@@ -97,6 +148,8 @@ namespace Space_Shooter.Control
         private void Game_Update()
         {
             FPS_Update();
+            GameDataManager.cursorPosition = PointToClient(Cursor.Position);
+            Debug.Print(Cursor.Position.ToString());
             GameDataManager.Update();
             Game_Player player = GameDataManager.player;
             player?.Update();
@@ -204,6 +257,8 @@ namespace Space_Shooter.Control
                 labelMessage.Text = "";
             }
             labelScore.Text = GameDataManager.score.ToString();
+            label_Playtime.Text = $"Play time: {GameDataManager.PlayTimeStr}";
+            label_screenshot.Text = GameDataManager.screenshotText;
         }
 
         #endregion
@@ -226,5 +281,15 @@ namespace Space_Shooter.Control
         }
 
         #endregion
+
+        private void Screen_Game_MouseDown(object sender, MouseEventArgs e)
+        {
+            Input.IsMouseDown = true;
+        }
+
+        private void Screen_Game_MouseUp(object sender, MouseEventArgs e)
+        {
+            Input.IsMouseDown = false;
+        }
     }
 }

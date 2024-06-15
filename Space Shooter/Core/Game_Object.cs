@@ -185,9 +185,30 @@ namespace Space_Shooter.Core
 
             float vx = _MoveSpeed * vec_x / hypotenuse;
             float vy = _MoveSpeed * vec_y / hypotenuse;
-            //RectangleF BestMove = test_move(x + vx, y + vy);
+
             _vx += vx;
             _vy += vy;
+        }
+
+        public void MoveToPoint(float pointX, float pointY)
+        {
+            float vec_x = pointX - Center.X;
+            float vec_y = pointY - Center.Y;
+            float hypotenuse = (float)Math.Sqrt(vec_x * vec_x + vec_y * vec_y);
+
+            if (hypotenuse <= _MoveSpeed) {
+                _vx += vec_x;
+                _vy += vec_y;
+            }
+            else
+            {
+                float vx = _MoveSpeed * vec_x / hypotenuse;
+                float vy = _MoveSpeed * vec_y / hypotenuse;
+
+                _vx += vx;
+                _vy += vy;
+            }
+
         }
 
         public void ToCenterPoint(float X, float Y)

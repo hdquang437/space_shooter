@@ -29,6 +29,9 @@ namespace Space_Shooter
             InitializeComponent();
             Input.GetKeyStates();
             ToCenter();
+
+            AudioManager.InitializeController();
+
             AudioManager.PlayBGM(BGM.bgm_menu);
             gameScreen = new Screen_Game(this);
             homeScreen = new HomeScreen(null);
@@ -72,18 +75,21 @@ namespace Space_Shooter
             this.Focus();
         }
 
-        public void BackToHomeScreen()
+        public void GameScreen_ToConclusion()
         {
             AudioManager.PlayBGM(BGM.bgm_gameover);
             endGameScreen.currentUser = homeScreen.currentUser;
             endGameScreen.UpdateScreen();
             panel_screen.Controls.Clear();
             panel_screen.Controls.Add(endGameScreen);
-            if (currentUser.highestScore < GameDataManager.score)
-            {
-                UserRepo.UpdateScore(currentUser.email, GameDataManager.score);
-                currentUser.highestScore = GameDataManager.score;
-            }
+        }
+
+        public void GameScreen_ToMainMenu()
+        {
+            AudioManager.PlayBGM(BGM.bgm_menu);
+            panel_screen.Controls.Clear();
+            panel_screen.Controls.Add(homeScreen);
+            panel_screen.Refresh();
         }
 
         private void HomeScreen_StartGame(object sender, EventArgs e)
@@ -113,6 +119,7 @@ namespace Space_Shooter
         private void EndGameScreen_GoToMainMenu(object sender, EventArgs e)
         {
             AudioManager.PlayBGM(BGM.bgm_menu);
+            homeScreen.UpdateLeaderboard();
             panel_screen.Controls.Clear();
             panel_screen.Controls.Add(homeScreen);
             panel_screen.Refresh();

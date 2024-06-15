@@ -66,7 +66,7 @@ namespace Space_Shooter.AccountManagement
                 return;
             }
 
-            User newUser = UserRepo.AddUser(tb_name.Text.Trim(), tb_password.Text.Trim(), tb_email.Text.Trim(), avarPath, 0);
+            User newUser = UserRepo.AddUser(tb_name.Text.Trim(), tb_password.Text.Trim(), tb_email.Text.Trim(), avarPath);
             CopyToStorage(avarPath, newUser.id);
             MessageBox.Show(createSuccessNoti);
             reloadUser(newUser, e);

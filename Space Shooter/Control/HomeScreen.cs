@@ -1,10 +1,12 @@
 ﻿using Space_Shooter.AccountManagement.Model;
 using Space_Shooter.AccountManagement.Repository;
 using Space_Shooter.Manager;
+using Space_Shooter.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -34,10 +36,14 @@ namespace Space_Shooter.AccountManagement
             int nHeightEllipse // width of ellipse
         );
 
+        LoginComponent loginComponent = null;
+        SignUpComponent signUpComponent = null;
+
         public HomeScreen(User user)
         {
             InitializeComponent();
             Size formsize = new Size(1582, 1053);
+
             //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, formsize.Width-200, formsize.Height-200, 20, 20));
             this.Dock = DockStyle.Fill;
             this.currentUser = user;
@@ -45,6 +51,25 @@ namespace Space_Shooter.AccountManagement
             btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_active;
             btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_inactive;
             btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_inactive;
+
+            //accountPagePlaceholder.BringToFront();
+            //accountPagePlaceholder.Visible = false;
+
+            loginComponent = new LoginComponent();
+            signUpComponent = new SignUpComponent();
+            loginComponent.Visible = false;
+            signUpComponent.Visible = false;
+            Controls.Add(loginComponent);
+            Controls.Add(signUpComponent);
+            loginComponent.BringToFront();
+            signUpComponent.BringToFront();
+
+            loginComponent.getUser += new EventHandler(loginComponent_getUser);
+            signUpComponent.reloadUser += new EventHandler(signUpComponent_reloadUser);
+
+            pn_chooseShipDiff.Visible = true;
+            pn_chooseShip.Visible = false;
+            pn_Controller.Visible = false;
         }
 
         public event EventHandler StartGame;
@@ -90,14 +115,16 @@ namespace Space_Shooter.AccountManagement
         {
             currentUser = sender as User;
             this.lb_userName.Text = currentUser.name;
-            this.lb_highestScoreValue.Text = currentUser.highestScore.ToString();
+            this.lb_highestScoreValue.Text = currentUser.highestScore[GameDataManager.GetDifficultyStr.ToLower()].ToString();
             this.pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + currentUser.avaPath);
             this.pn_user.Visible = true;
             this.btn_login.Visible = false;
             this.btn_signup.Visible = false;
             this.btn_start.Visible = true;
             this.btn_logout.Visible = true;
-            this.pn_chooseShipDiff.Visible = true;
+            this.btn_continue.Visible = true;
+            this.pn_chooseShip.Visible = true;
+            this.pn_Controller.Visible = true;
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
@@ -107,7 +134,9 @@ namespace Space_Shooter.AccountManagement
             this.pn_user.Visible = false;
             this.btn_login.Visible = true;
             this.btn_signup.Visible = true;
-            this.pn_chooseShipDiff.Visible = false;
+            this.btn_continue.Visible = false;
+            this.pn_chooseShip.Visible = false;
+            this.pn_Controller.Visible = false;
         }
 
         void loadUser()
@@ -115,7 +144,9 @@ namespace Space_Shooter.AccountManagement
             users.Clear();
             fpn_leaderBoard.Controls.Clear();
             users = UserRepo.LoadUsersFromFile();
-            users.Sort((o1, o2) => o1.highestScore < o2.highestScore ? 1 : -1);
+            LeaderBoardUser.ImportAvatar(users);
+
+            users.Sort((o1, o2) => Utilities.CompareUserResult(o1, o2, GameDataManager.GetDifficultyStr.ToLower()) * -1);
             for (int i = 0; i < (users.Count >= 10 ? 10 : users.Count); i++)
             {
                 loadUserToView(users[i], i);
@@ -124,8 +155,9 @@ namespace Space_Shooter.AccountManagement
         }
         private void loadUserToView(User user, int i)
         {
+            string difficulty = GameDataManager.GetDifficultyStr.ToLower();
             LeaderBoardUser leaderBoardUser = new LeaderBoardUser();
-            leaderBoardUser.LoadData(i, user.avaPath, user.name, user.highestScore.ToString());
+            leaderBoardUser.LoadData(i, user.avaPath, user.name, user.highestScore[difficulty].ToString(), user.GetPlayTimeString(difficulty));
             this.fpn_leaderBoard.Controls.Add(leaderBoardUser);
         }
 
@@ -142,7 +174,8 @@ namespace Space_Shooter.AccountManagement
                 this.btn_signup.Visible = false;
                 this.btn_start.Visible = true;
                 this.btn_logout.Visible = true;
-                this.pn_chooseShipDiff.Visible = true;
+                this.pn_chooseShip.Visible = true;
+                this.pn_Controller.Visible = true;
             }
         }
 
@@ -182,29 +215,75 @@ namespace Space_Shooter.AccountManagement
 
         private void btn_diff_easy_Click(object sender, EventArgs e)
         {
+            if (currentDiff == GameDifficulty.Easy)
+                return;
             currentDiff = GameDifficulty.Easy;
             GameDataManager.Difficulty = currentDiff;
             btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_active;
             btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_inactive;
             btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_inactive;
+            UpdateLeaderboard();
         }
 
         private void btn_diff_normal_Click(object sender, EventArgs e)
         {
+            if (currentDiff == GameDifficulty.Normal)
+                return;
             currentDiff = GameDifficulty.Normal;
             GameDataManager.Difficulty = currentDiff;
             btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_inactive;
             btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_active;
             btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_inactive;
+            UpdateLeaderboard();
         }
 
         private void btn_diff_hard_Click(object sender, EventArgs e)
         {
+            if (currentDiff == GameDifficulty.Hard)
+                return;
             currentDiff = GameDifficulty.Hard;
             GameDataManager.Difficulty = currentDiff;
             btn_diff_easy.BackgroundImage = Properties.Resources.diff_button_inactive;
             btn_diff_normal.BackgroundImage = Properties.Resources.diff_button_inactive;
             btn_diff_hard.BackgroundImage = Properties.Resources.diff_button_active;
+            UpdateLeaderboard();
+        }
+
+        public void UpdateLeaderboard()
+        {
+            if (currentUser != null)
+            {
+                this.lb_highestScoreValue.Text = currentUser.highestScore[GameDataManager.GetDifficultyStr.ToLower()].ToString();
+                int index = users.FindIndex(x => x.id == currentUser.id);
+                if (index != -1)
+                    users[index] = currentUser;
+            }
+
+            this.fpn_leaderBoard.Controls.Clear();
+
+            users.Sort((o1, o2) => Utilities.CompareUserResult(o1, o2, GameDataManager.GetDifficultyStr.ToLower()) * -1);
+            for (int i = 0; i < (users.Count >= 10 ? 10 : users.Count); i++)
+            {
+                loadUserToView(users[i], i);
+            }
+        }
+
+        private void btn_controlMouse_Click(object sender, EventArgs e)
+        {
+            if (GameDataManager.playMode == PlayMode.Mouse)
+                return;
+            GameDataManager.playMode = PlayMode.Mouse;
+            btn_controlMouse.BackgroundImage = Resources.controller_mouse_active;
+            btn_controlKeyboard.BackgroundImage = Resources.controller_keyboard_deactive;
+        }
+
+        private void btn_controlKeyboard_Click(object sender, EventArgs e)
+        {
+            if (GameDataManager.playMode == PlayMode.Keyboard)
+                return;
+            GameDataManager.playMode = PlayMode.Keyboard;
+            btn_controlMouse.BackgroundImage = Resources.controller_mouse_deactive;
+            btn_controlKeyboard.BackgroundImage = Resources.controller_keyboard_active;
         }
     }
 }

@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <HintPath>packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
@@ -88,6 +91,18 @@
     <Compile Include="AccountManagement\Repository\FilePathManager.cs" />
     <Compile Include="AccountManagement\Repository\InputValidator.cs" />
     <Compile Include="AccountManagement\Repository\UserRepo.cs" />
+    <Compile Include="Control\Screen_Pause.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Screen_Pause.Designer.cs">
+      <DependentUpon>Screen_Pause.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Screen_SaveAndLoad.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Screen_SaveAndLoad.Designer.cs">
+      <DependentUpon>Screen_SaveAndLoad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\SignUpComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -183,6 +198,12 @@
     <EmbeddedResource Include="Control\LoginComponent.resx">
       <DependentUpon>LoginComponent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\Screen_Pause.resx">
+      <DependentUpon>Screen_Pause.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\Screen_SaveAndLoad.resx">
+      <DependentUpon>Screen_SaveAndLoad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\SignUpComponent.resx">
       <DependentUpon>SignUpComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,6 +226,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -226,16 +248,24 @@
     <Content Include="audio\se\Explosion1.wav" />
     <Content Include="audio\se\Explosion2.wav" />
     <Content Include="audio\se\Laser1.wav" />
+    <None Include="Resources\ship_border.png" />
     <None Include="Resources\victory_img.png" />
     <None Include="bin\Debug\img\game\char_SpaceshipBeholder.png" />
     <None Include="bin\Debug\img\game\char_SpaceshipEmissary.png" />
     <None Include="bin\Debug\img\game\char_SpaceshipNormal.png" />
+    <None Include="Resources\black_background.png" />
     <Content Include="Resources\choose_avatar_icon.png" />
     <Content Include="Resources\back_icon.png" />
     <Content Include="Resources\button_background.png" />
     <None Include="Resources\diff_button_inactive.png" />
     <None Include="Resources\diff_button_active.png" />
     <None Include="Resources\defeat_img.png" />
+    <None Include="Resources\controller_button_active.png" />
+    <None Include="Resources\controller_mouse.png" />
+    <None Include="Resources\controller_mouse_active.png" />
+    <None Include="Resources\controller_keyboard_active.png" />
+    <None Include="Resources\controller_keyboard_deactive.png" />
+    <None Include="Resources\controller_mouse_deactive.png" />
     <Content Include="Resources\exit_icon.png" />
     <Content Include="Resources\leaderboard_bg.png" />
     <None Include="Resources\char_Spaceship.png" />

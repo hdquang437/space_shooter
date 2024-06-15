@@ -21,11 +21,13 @@ namespace Space_Shooter.AccountManagement.Repository
         }
 
 
-        public static User AddUser(string fullName, string password, string email, string avaPath, int highestScore)
+        public static User AddUser(string fullName, string password, string email, string avaPath)
         {
             List<User> users = LoadUsersFromFile();
-            User user = new User(fullName, password, email, "", highestScore);
-            user.id = users.Count();
+            User user = new User(fullName, password, email, "", null, null)
+            {
+                id = users.Count()
+            };
             user.avaPath = user.id + Path.GetExtension(avaPath);
             users.Add(user);
             SaveToFile(users, filePath);
@@ -80,13 +82,14 @@ namespace Space_Shooter.AccountManagement.Repository
                 MessageBox.Show("This account does not exist!");
             }
         }
-        public static void UpdateScore(string email, int newScore)
+        public static void UpdateScore(string email, int newScore, int playTime, string difficulty)
         {
             List<User> users = LoadUsersFromFile();
             User user = users.FirstOrDefault(u => u.email == email);
             if (user != null)
             {
-                user.highestScore = newScore;
+                user.SetHighestScore(difficulty, newScore);
+                user.SetPlayTime(difficulty, playTime);
                 SaveToFile(users, filePath);
             }
             else

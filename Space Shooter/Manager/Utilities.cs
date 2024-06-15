@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Core;
+﻿using Space_Shooter.AccountManagement.Model;
+using Space_Shooter.Core;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -39,6 +40,18 @@ namespace Space_Shooter.Manager
             }
 
             return clone;
+        }
+
+        static public int CompareUserResult(User user1, User user2, string difficulty)
+        {
+            if (user1.highestScore != user2.highestScore)
+            {
+                return user1.highestScore[difficulty] - user2.highestScore[difficulty];
+            }
+            else
+            {
+                return user2.playTime[difficulty] - user1.playTime[difficulty];
+            }
         }
     }
 }

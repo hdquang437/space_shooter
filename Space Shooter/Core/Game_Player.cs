@@ -128,26 +128,43 @@ namespace Space_Shooter.Core
 
         public void Process_KeyEvent(KeyboardState state)
         {
-            if (state.up)
+            switch (GameDataManager.playMode)
             {
-                Move_Up();
+                case PlayMode.Keyboard:
+                    {
+                        if (state.up)
+                        {
+                            Move_Up();
+                        }
+                        else if (state.down)
+                        {
+                            Move_Down();
+                        }
+                        if (state.left)
+                        {
+                            Move_Left();
+                        }
+                        else if (state.right)
+                        {
+                            Move_Right();
+                        }
+                        if (state.shoot && changeWepDelay == 0)
+                        {
+                            Weapon?.Shoot();
+                        }
+                        break;
+                    }
+                case PlayMode.Mouse:
+                    {
+                        MoveToPoint(GameDataManager.cursorPosition.X, GameDataManager.cursorPosition.Y);
+                        if (state.shoot && changeWepDelay == 0)
+                        {
+                            Weapon?.Shoot();
+                        }
+                        break;
+                    }
             }
-            else if (state.down)
-            {
-                Move_Down();
-            }
-            if (state.left)
-            {
-                Move_Left();
-            }
-            else if (state.right)
-            {
-                Move_Right();
-            }
-            if (state.shoot && changeWepDelay == 0)
-            {
-                Weapon?.Shoot();
-            }
+
             _MoveSpeed = state.turbo ? boostSpeed : baseSpeed;
         }
 
