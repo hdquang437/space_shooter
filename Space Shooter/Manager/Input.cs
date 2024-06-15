@@ -72,6 +72,10 @@ namespace Space_Shooter.Manager
             {
                 GameDataManager.triggeredScreenshot = true;
             }
+            if (Keyboard.IsKeyDown(Key.P))
+            {
+                GameDataManager.triggeredPause = true;
+            }
         }
 
 

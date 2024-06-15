@@ -1,6 +1,7 @@
 ﻿using Space_Shooter.AccountManagement.Model;
 using Space_Shooter.AccountManagement.Repository;
 using Space_Shooter.Manager;
+using Space_Shooter.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,6 +69,7 @@ namespace Space_Shooter.AccountManagement
 
             pn_chooseShipDiff.Visible = true;
             pn_chooseShip.Visible = false;
+            pn_Controller.Visible = false;
         }
 
         public event EventHandler StartGame;
@@ -122,6 +124,7 @@ namespace Space_Shooter.AccountManagement
             this.btn_logout.Visible = true;
             this.btn_continue.Visible = true;
             this.pn_chooseShip.Visible = true;
+            this.pn_Controller.Visible = true;
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
@@ -133,6 +136,7 @@ namespace Space_Shooter.AccountManagement
             this.btn_signup.Visible = true;
             this.btn_continue.Visible = false;
             this.pn_chooseShip.Visible = false;
+            this.pn_Controller.Visible = false;
         }
 
         void loadUser()
@@ -171,6 +175,7 @@ namespace Space_Shooter.AccountManagement
                 this.btn_start.Visible = true;
                 this.btn_logout.Visible = true;
                 this.pn_chooseShip.Visible = true;
+                this.pn_Controller.Visible = true;
             }
         }
 
@@ -261,6 +266,24 @@ namespace Space_Shooter.AccountManagement
             {
                 loadUserToView(users[i], i);
             }
+        }
+
+        private void btn_controlMouse_Click(object sender, EventArgs e)
+        {
+            if (GameDataManager.playMode == PlayMode.Mouse)
+                return;
+            GameDataManager.playMode = PlayMode.Mouse;
+            btn_controlMouse.BackgroundImage = Resources.controller_mouse_active;
+            btn_controlKeyboard.BackgroundImage = Resources.controller_keyboard_deactive;
+        }
+
+        private void btn_controlKeyboard_Click(object sender, EventArgs e)
+        {
+            if (GameDataManager.playMode == PlayMode.Keyboard)
+                return;
+            GameDataManager.playMode = PlayMode.Keyboard;
+            btn_controlMouse.BackgroundImage = Resources.controller_mouse_deactive;
+            btn_controlKeyboard.BackgroundImage = Resources.controller_keyboard_active;
         }
     }
 }

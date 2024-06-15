@@ -43,6 +43,10 @@ namespace Space_Shooter.Manager
         static private int time = 0;
         static public int PlayTime = 0;
 
+        // pause game
+        static public bool isPaused = false;
+        static public bool triggeredPause = false;
+
         static public string PlayTimeStr
         {
             get
@@ -315,7 +319,7 @@ namespace Space_Shooter.Manager
                 Bitmap bmp = new Bitmap(control.Width, control.Height);
                 control.DrawToBitmap(bmp, new Rectangle(Point.Empty, new Size(Screen_Game.REAL_SCREEN_WIDTH - 4, Screen_Game.REAL_SCREEN_HEIGHT)));
                 DateTime time = DateTime.Now;
-                string path = SCREENSHOT_FOLDER_PATH + "screenshot_" + time.ToString("MMddyyyyHHmmss") + ".png";
+                string path = SCREENSHOT_FOLDER_PATH + "screenshot_" + time.ToString("yyyyMMddHHmmss") + ".png";
                 bmp.Save(path, ImageFormat.Png);
                 screenshotCD = SCREENSHOT_CD;
                 screenshotText = "Your screenshot has been saved to: " + path;

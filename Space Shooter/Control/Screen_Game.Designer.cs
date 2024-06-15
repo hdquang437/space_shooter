@@ -189,7 +189,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Screen_Game";
-            this.Size = new System.Drawing.Size(1540, 830);
+            this.Size = new System.Drawing.Size(1540, 838);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Screen_Game_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Screen_Game_MouseDown);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Screen_Game_MouseUp);

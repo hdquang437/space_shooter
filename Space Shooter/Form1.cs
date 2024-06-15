@@ -75,13 +75,21 @@ namespace Space_Shooter
             this.Focus();
         }
 
-        public void BackToHomeScreen()
+        public void GameScreen_ToConclusion()
         {
             AudioManager.PlayBGM(BGM.bgm_gameover);
             endGameScreen.currentUser = homeScreen.currentUser;
             endGameScreen.UpdateScreen();
             panel_screen.Controls.Clear();
             panel_screen.Controls.Add(endGameScreen);
+        }
+
+        public void GameScreen_ToMainMenu()
+        {
+            AudioManager.PlayBGM(BGM.bgm_menu);
+            panel_screen.Controls.Clear();
+            panel_screen.Controls.Add(homeScreen);
+            panel_screen.Refresh();
         }
 
         private void HomeScreen_StartGame(object sender, EventArgs e)

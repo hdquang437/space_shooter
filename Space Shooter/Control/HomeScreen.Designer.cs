@@ -53,8 +53,12 @@
             this.btn_diff_normal = new System.Windows.Forms.Button();
             this.btn_diff_hard = new System.Windows.Forms.Button();
             this.pn_chooseShipDiff = new System.Windows.Forms.Panel();
-            this.btn_continue = new System.Windows.Forms.Button();
             this.pn_chooseShip = new System.Windows.Forms.Panel();
+            this.btn_continue = new System.Windows.Forms.Button();
+            this.pn_Controller = new System.Windows.Forms.Panel();
+            this.btn_controlKeyboard = new System.Windows.Forms.Button();
+            this.btn_controlMouse = new System.Windows.Forms.Button();
+            this.lb_ChooseMode = new System.Windows.Forms.Label();
             this.pn_user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).BeginInit();
             this.pn_leaderBoard.SuspendLayout();
@@ -66,6 +70,7 @@
             this.pn_currentShip.SuspendLayout();
             this.pn_chooseShipDiff.SuspendLayout();
             this.pn_chooseShip.SuspendLayout();
+            this.pn_Controller.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_exit
@@ -385,6 +390,16 @@
             this.pn_chooseShipDiff.TabIndex = 13;
             this.pn_chooseShipDiff.Visible = false;
             // 
+            // pn_chooseShip
+            // 
+            this.pn_chooseShip.Controls.Add(this.lb_chooseShip);
+            this.pn_chooseShip.Controls.Add(this.pn_currentShip);
+            this.pn_chooseShip.Controls.Add(this.fpn_chooseShip);
+            this.pn_chooseShip.Location = new System.Drawing.Point(3, 3);
+            this.pn_chooseShip.Name = "pn_chooseShip";
+            this.pn_chooseShip.Size = new System.Drawing.Size(698, 213);
+            this.pn_chooseShip.TabIndex = 13;
+            // 
             // btn_continue
             // 
             this.btn_continue.BackColor = System.Drawing.Color.DimGray;
@@ -401,15 +416,58 @@
             this.btn_continue.UseVisualStyleBackColor = false;
             this.btn_continue.Visible = false;
             // 
-            // pn_chooseShip
+            // pn_Controller
             // 
-            this.pn_chooseShip.Controls.Add(this.lb_chooseShip);
-            this.pn_chooseShip.Controls.Add(this.pn_currentShip);
-            this.pn_chooseShip.Controls.Add(this.fpn_chooseShip);
-            this.pn_chooseShip.Location = new System.Drawing.Point(3, 3);
-            this.pn_chooseShip.Name = "pn_chooseShip";
-            this.pn_chooseShip.Size = new System.Drawing.Size(698, 213);
-            this.pn_chooseShip.TabIndex = 13;
+            this.pn_Controller.BackColor = System.Drawing.Color.Transparent;
+            this.pn_Controller.Controls.Add(this.btn_controlKeyboard);
+            this.pn_Controller.Controls.Add(this.btn_controlMouse);
+            this.pn_Controller.Controls.Add(this.lb_ChooseMode);
+            this.pn_Controller.Location = new System.Drawing.Point(4, 443);
+            this.pn_Controller.Name = "pn_Controller";
+            this.pn_Controller.Size = new System.Drawing.Size(451, 166);
+            this.pn_Controller.TabIndex = 15;
+            // 
+            // btn_controlKeyboard
+            // 
+            this.btn_controlKeyboard.BackColor = System.Drawing.Color.Transparent;
+            this.btn_controlKeyboard.BackgroundImage = global::Space_Shooter.Properties.Resources.controller_keyboard_deactive;
+            this.btn_controlKeyboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_controlKeyboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_controlKeyboard.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_controlKeyboard.ForeColor = System.Drawing.Color.Khaki;
+            this.btn_controlKeyboard.Location = new System.Drawing.Point(184, 44);
+            this.btn_controlKeyboard.Name = "btn_controlKeyboard";
+            this.btn_controlKeyboard.Size = new System.Drawing.Size(110, 110);
+            this.btn_controlKeyboard.TabIndex = 15;
+            this.btn_controlKeyboard.UseVisualStyleBackColor = false;
+            this.btn_controlKeyboard.Click += new System.EventHandler(this.btn_controlKeyboard_Click);
+            // 
+            // btn_controlMouse
+            // 
+            this.btn_controlMouse.BackColor = System.Drawing.Color.Transparent;
+            this.btn_controlMouse.BackgroundImage = global::Space_Shooter.Properties.Resources.controller_mouse_active;
+            this.btn_controlMouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_controlMouse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_controlMouse.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_controlMouse.ForeColor = System.Drawing.Color.Khaki;
+            this.btn_controlMouse.Location = new System.Drawing.Point(51, 44);
+            this.btn_controlMouse.Name = "btn_controlMouse";
+            this.btn_controlMouse.Size = new System.Drawing.Size(110, 110);
+            this.btn_controlMouse.TabIndex = 14;
+            this.btn_controlMouse.UseVisualStyleBackColor = false;
+            this.btn_controlMouse.Click += new System.EventHandler(this.btn_controlMouse_Click);
+            // 
+            // lb_ChooseMode
+            // 
+            this.lb_ChooseMode.AutoSize = true;
+            this.lb_ChooseMode.BackColor = System.Drawing.Color.Transparent;
+            this.lb_ChooseMode.Font = new System.Drawing.Font("Goudy Stout", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_ChooseMode.ForeColor = System.Drawing.Color.Gold;
+            this.lb_ChooseMode.Location = new System.Drawing.Point(33, 11);
+            this.lb_ChooseMode.Name = "lb_ChooseMode";
+            this.lb_ChooseMode.Size = new System.Drawing.Size(283, 27);
+            this.lb_ChooseMode.TabIndex = 12;
+            this.lb_ChooseMode.Text = "Choose mode";
             // 
             // HomeScreen
             // 
@@ -418,6 +476,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.pn_Controller);
             this.Controls.Add(this.pn_chooseShipDiff);
             this.Controls.Add(this.pn_leaderBoard);
             this.Controls.Add(this.pn_user);
@@ -446,6 +505,8 @@
             this.pn_chooseShipDiff.PerformLayout();
             this.pn_chooseShip.ResumeLayout(false);
             this.pn_chooseShip.PerformLayout();
+            this.pn_Controller.ResumeLayout(false);
+            this.pn_Controller.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -477,5 +538,9 @@
         private System.Windows.Forms.Panel pn_chooseShipDiff;
         private System.Windows.Forms.Button btn_continue;
         private System.Windows.Forms.Panel pn_chooseShip;
+        private System.Windows.Forms.Panel pn_Controller;
+        private System.Windows.Forms.Label lb_ChooseMode;
+        private System.Windows.Forms.Button btn_controlMouse;
+        private System.Windows.Forms.Button btn_controlKeyboard;
     }
 }
