@@ -68,6 +68,10 @@ namespace Space_Shooter.Manager
             {
                 GameDataManager.player.Process_KeyEvent(new KeyboardState(up, down, left, right, shoot, turbo));
             }
+            if (Keyboard.IsKeyDown(Key.U))
+            {
+                GameDataManager.triggeredScreenshot = true;
+            }
         }
 
 

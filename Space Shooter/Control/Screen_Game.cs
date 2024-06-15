@@ -49,6 +49,8 @@ namespace Space_Shooter.Control
             _timer.Interval = 10;
             _timer.Tick += new EventHandler(TimerOnTick);
 
+            label_screenshot.Text = "";
+
             //panel_screen.Paint += new PaintEventHandler(Screen_Game_Paint);
         }
 
@@ -74,6 +76,12 @@ namespace Space_Shooter.Control
             //this.ParentForm.Size = new Size(REAL_SCREEN_WIDTH + 20, REAL_SCREEN_HEIGHT + 20);
             //this.Size = this.Parent.Size;
             Input.GetKeyStates();
+
+            if (GameDataManager.triggeredScreenshot)
+            {
+                GameDataManager.RequestScreenshot(this);
+            }
+
             Game_Update();
             Entity_Kill_Process();
             //this.AutoScaleDimensions = new System.Drawing.SizeF(120, 120);
@@ -209,6 +217,7 @@ namespace Space_Shooter.Control
             }
             labelScore.Text = GameDataManager.score.ToString();
             label_Playtime.Text = $"Play time: {GameDataManager.PlayTimeStr}";
+            label_screenshot.Text = GameDataManager.screenshotText;
         }
 
         #endregion

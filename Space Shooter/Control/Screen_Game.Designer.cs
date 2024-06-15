@@ -36,6 +36,7 @@
             this.labelScore = new System.Windows.Forms.Label();
             this.label_Playtime = new System.Windows.Forms.Label();
             this.label_Difficulty = new System.Windows.Forms.Label();
+            this.label_screenshot = new System.Windows.Forms.Label();
             this.valueBar_Ammo = new Space_Shooter.Control.ValueBar();
             this.valueBar_HP = new Space_Shooter.Control.ValueBar();
             this.SuspendLayout();
@@ -137,6 +138,18 @@
             this.label_Difficulty.Text = "Difficulty: Easy";
             this.label_Difficulty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label_screenshot
+            // 
+            this.label_screenshot.BackColor = System.Drawing.Color.Transparent;
+            this.label_screenshot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_screenshot.ForeColor = System.Drawing.Color.White;
+            this.label_screenshot.Location = new System.Drawing.Point(29, 785);
+            this.label_screenshot.Name = "label_screenshot";
+            this.label_screenshot.Size = new System.Drawing.Size(1424, 18);
+            this.label_screenshot.TabIndex = 10;
+            this.label_screenshot.Text = "screenshot_description";
+            this.label_screenshot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // valueBar_Ammo
             // 
             this.valueBar_Ammo.BackColor = System.Drawing.Color.Brown;
@@ -162,6 +175,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.label_screenshot);
             this.Controls.Add(this.label_Difficulty);
             this.Controls.Add(this.label_Playtime);
             this.Controls.Add(this.labelScore);
@@ -173,8 +187,9 @@
             this.Controls.Add(this.valueBar_Ammo);
             this.Controls.Add(this.valueBar_HP);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Screen_Game";
-            this.Size = new System.Drawing.Size(1600, 1080);
+            this.Size = new System.Drawing.Size(1540, 830);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Screen_Game_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Screen_Game_MouseDown);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Screen_Game_MouseUp);
@@ -195,5 +210,6 @@
         private System.Windows.Forms.Label labelScore;
         private System.Windows.Forms.Label label_Playtime;
         private System.Windows.Forms.Label label_Difficulty;
+        private System.Windows.Forms.Label label_screenshot;
     }
 }

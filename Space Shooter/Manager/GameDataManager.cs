@@ -1,9 +1,11 @@
-﻿using Space_Shooter.Core;
+﻿using Space_Shooter.Control;
+using Space_Shooter.Core;
 using Space_Shooter.Core.Enemy;
 using System;
 using System.Collections.Generic;
 using System.Deployment.Application;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -16,7 +18,12 @@ namespace Space_Shooter.Manager
 {
     internal class GameDataManager
     {
+        #region Constants
         public const int LAST_STAGE = 5;
+        public const int SCREENSHOT_CD = 100;
+        static public readonly string SCREENSHOT_FOLDER_PATH = $"{Environment.CurrentDirectory}\\screenshot\\";
+        #endregion
+
         static public List<Game_Enemy> enemies = new List<Game_Enemy>();
         static public List<Game_Bullet> bullets = new List<Game_Bullet>();
         static public List<Game_Animation> animations = new List<Game_Animation>();
@@ -24,6 +31,13 @@ namespace Space_Shooter.Manager
         static public Ship playerShipType = Ship.Default;
         static public PlayMode playMode = PlayMode.Mouse;
         static public Point cursorPosition;
+        
+        // screenshot
+        static public bool triggeredScreenshot;
+        static public int screenshotCD;
+        static public string screenshotText;
+
+        // score and playtime
         static public int score = 0;
         static private int stage = 1;
         static private int time = 0;
@@ -111,6 +125,15 @@ namespace Space_Shooter.Manager
             else
             {
                 PlayTime++;
+            }
+
+            if (screenshotCD > 0)
+            {
+                screenshotCD--;
+            }
+            else if (screenshotText != "")
+            {
+                screenshotText = "";
             }
 
             if (IsStageClear() && player != null)
@@ -203,6 +226,8 @@ namespace Space_Shooter.Manager
             score = 0;
             stage = 0;
             PlayTime = 0;
+            screenshotCD = 0;
+            triggeredScreenshot = false;
             GameEnd = false;
             StageEnd = false;
             StopGame = false;
@@ -280,6 +305,26 @@ namespace Space_Shooter.Manager
         }
         #endregion
 
+        #region Action
+
+        static public void RequestScreenshot(Screen_Game control)
+        {
+            triggeredScreenshot = false;
+            if (screenshotCD == 0)
+            {
+                Bitmap bmp = new Bitmap(control.Width, control.Height);
+                control.DrawToBitmap(bmp, new Rectangle(Point.Empty, new Size(Screen_Game.REAL_SCREEN_WIDTH - 4, Screen_Game.REAL_SCREEN_HEIGHT)));
+                DateTime time = DateTime.Now;
+                string path = SCREENSHOT_FOLDER_PATH + "screenshot_" + time.ToString("MMddyyyyHHmmss") + ".png";
+                bmp.Save(path, ImageFormat.Png);
+                screenshotCD = SCREENSHOT_CD;
+                screenshotText = "Your screenshot has been saved to: " + path;
+            }
+        }
+
+        #endregion
+
+        #region Loader
         static public void LoadAllStages()
         {
             for (int i = 0; i < 3; i++)
@@ -476,7 +521,6 @@ namespace Space_Shooter.Manager
             }
         }
 
-
         static public bool LoadStage(GameDifficulty difficulty, int stage)
         {
             string difficultyStr = "";
@@ -500,6 +544,8 @@ namespace Space_Shooter.Manager
             }
             return false;
         }
+
+        #endregion
     }
 
     struct StageData
