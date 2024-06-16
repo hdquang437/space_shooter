@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Control;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Control;
 using Space_Shooter.Core;
 using Space_Shooter.Core.Enemy;
 using System;
@@ -16,38 +17,51 @@ using System.Windows.Media.Media3D;
 
 namespace Space_Shooter.Manager
 {
-    internal class GameDataManager
+    public class GameDataManager
     {
+        private static GameDataManager instance;
+        public static GameDataManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new GameDataManager();
+                return instance;
+            }
+        }
+
         #region Constants
         public const int LAST_STAGE = 5;
         public const int SCREENSHOT_CD = 100;
         static public readonly string SCREENSHOT_FOLDER_PATH = $"{Environment.CurrentDirectory}\\screenshot\\";
         #endregion
 
-        static public List<Game_Enemy> enemies = new List<Game_Enemy>();
-        static public List<Game_Bullet> bullets = new List<Game_Bullet>();
-        static public List<Game_Animation> animations = new List<Game_Animation>();
-        static public Game_Player player;
-        static public Ship playerShipType = Ship.Default;
-        static public PlayMode playMode = PlayMode.Mouse;
-        static public Point cursorPosition;
+        public List<Game_Enemy> enemies = new List<Game_Enemy>();
+        public List<Game_Bullet> bullets = new List<Game_Bullet>();
+        public List<Game_Animation> animations = new List<Game_Animation>();
+        public Game_Player player;
+        public Ship playerShipType = Ship.Default;
+        public PlayMode playMode = PlayMode.Mouse;
+        public Point cursorPosition;
         
         // screenshot
-        static public bool triggeredScreenshot;
-        static public int screenshotCD;
-        static public string screenshotText;
+        public bool triggeredScreenshot;
+        public int screenshotCD;
+        public string screenshotText;
 
         // score and playtime
-        static public int score = 0;
-        static private int stage = 1;
-        static private int time = 0;
-        static public int PlayTime = 0;
+        public int score = 0;
+        [JsonProperty]
+        private int stage = 1;
+        [JsonProperty]
+        private int time = 0;
+        public int PlayTime = 0;
 
         // pause game
-        static public bool isPaused = false;
-        static public bool triggeredPause = false;
+        public bool isPaused = false;
+        public bool triggeredPause = false;
 
-        static public string PlayTimeStr
+        public string PlayTimeStr
         {
             get
             {
@@ -63,7 +77,7 @@ namespace Space_Shooter.Manager
             }
         }
 
-        static public string GetDifficultyStr
+        public string GetDifficultyStr
         {
             get
             {
@@ -80,29 +94,31 @@ namespace Space_Shooter.Manager
             }
         }
 
-        static public int Stage { get { return stage; } }
+        //public int Stage { get { return stage; } }
         //static public int highest_score;
-        static public GameDifficulty Difficulty = GameDifficulty.Easy;
+        public GameDifficulty Difficulty = GameDifficulty.Easy;
 
-        static private SortedDictionary<string, StageData> StagesDict = new SortedDictionary<string, StageData>();
-        static private SortedDictionary<int, List<Game_Object>> stageObjects = new SortedDictionary<int, List<Game_Object>>();
+        [JsonProperty]
+        private SortedDictionary<string, StageData> StagesDict = new SortedDictionary<string, StageData>();
+        [JsonProperty]
+        private SortedDictionary<int, List<Game_Object>> stageObjects = new SortedDictionary<int, List<Game_Object>>();
 
         #region Stage Control
-        static public bool init = false;
-        static public int NoteStageEndTimeRemain = 0;
-        static public int NoteStageStartTimeRemain = 0;
-        static public int GameOverTimeRemain = 0;
-        static public string NoteStageEnd = "";
-        static public string NoteStageStart = "";
-        static public string NotePlayerDie = "";
-        static public bool GameEnd = false;
-        static public bool StageEnd = false;
-        static public bool StopGame = false;
-        static public int WaitToNextStage = 0;
+        public bool init = false;
+        public int NoteStageEndTimeRemain = 0;
+        public int NoteStageStartTimeRemain = 0;
+        public int GameOverTimeRemain = 0;
+        public string NoteStageEnd = "";
+        public string NoteStageStart = "";
+        public string NotePlayerDie = "";
+        public bool GameEnd = false;
+        public bool StageEnd = false;
+        public bool StopGame = false;
+        public int WaitToNextStage = 0;
         #endregion
 
         #region Update
-        static public void Update()
+        public void Update()
         {
             if (!init)
             {
@@ -166,7 +182,7 @@ namespace Space_Shooter.Manager
             }
         }
 
-        static public void SetupStage()
+        public void SetupStage()
         {
             if (!StageEnd)
             {
@@ -220,7 +236,7 @@ namespace Space_Shooter.Manager
         }
         #endregion
 
-        static public void Reset()
+        public void Reset()
         {
             enemies.Clear();
             bullets.Clear();
@@ -239,18 +255,18 @@ namespace Space_Shooter.Manager
             init = true;
         }
 
-        static public bool IsStageClear()
+        public bool IsStageClear()
         {
             return stageObjects.Count == 0 && enemies.Count == 0;
         }
 
-        static public void NextStage()
+        public void NextStage()
         {
             stage++;
             time = 0;
         }
 
-        static public void GainScore(int reward)
+        public void GainScore(int reward)
         {
             if (player == null)
                 return;
@@ -271,7 +287,7 @@ namespace Space_Shooter.Manager
         }
 
         #region Getter
-        static public List<Game_CollidableObject> EnemyTeam_CollidableObjects
+        public List<Game_CollidableObject> EnemyTeam_CollidableObjects
         {
             get
             {
@@ -282,7 +298,7 @@ namespace Space_Shooter.Manager
             }
         }
 
-        static public List<Game_CollidableObject> PlayerTeam_CollidableObjects
+        public List<Game_CollidableObject> PlayerTeam_CollidableObjects
         {
             get
             {
@@ -293,7 +309,7 @@ namespace Space_Shooter.Manager
             }
         }
 
-        static public List<Game_Object> AllDrawableObjects
+        public List<Game_Object> AllDrawableObjects
         {
             get
             {
@@ -311,7 +327,7 @@ namespace Space_Shooter.Manager
 
         #region Action
 
-        static public void RequestScreenshot(Screen_Game control)
+        public void RequestScreenshot(Screen_Game control)
         {
             triggeredScreenshot = false;
             if (screenshotCD == 0)
@@ -329,7 +345,7 @@ namespace Space_Shooter.Manager
         #endregion
 
         #region Loader
-        static public void LoadAllStages()
+        public void LoadAllStages()
         {
             for (int i = 0; i < 3; i++)
             {
@@ -384,7 +400,7 @@ namespace Space_Shooter.Manager
             }
         }
 
-        static public StageData? LoadStageDataFromDisk(string difficulty, int stage)
+        public StageData? LoadStageDataFromDisk(string difficulty, int stage)
         {
             StageData stageData = new StageData(new List<string>());
             StreamReader sr = null;
@@ -426,7 +442,7 @@ namespace Space_Shooter.Manager
             return stageData;
         }
 
-        static private void ImportStageData(List<string> data)
+        private void ImportStageData(List<string> data)
         {
             foreach (string line in data)
             {
@@ -525,7 +541,7 @@ namespace Space_Shooter.Manager
             }
         }
 
-        static public bool LoadStage(GameDifficulty difficulty, int stage)
+        public bool LoadStage(GameDifficulty difficulty, int stage)
         {
             string difficultyStr = "";
             switch (difficulty)
@@ -552,7 +568,7 @@ namespace Space_Shooter.Manager
         #endregion
     }
 
-    struct StageData
+    public struct StageData
     {
         public List<string> StageObjectsData;
 

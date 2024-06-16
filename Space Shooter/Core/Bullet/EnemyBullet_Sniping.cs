@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class EnemyBullet_Sniping : Game_Bullet
+    public class EnemyBullet_Sniping : Game_Bullet
     {
         float vX;
         float vY;

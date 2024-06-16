@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_EnemyWeapon : Game_Weapon
+    public class Game_EnemyWeapon : Game_Weapon
     {
 
         public Game_EnemyWeapon(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)

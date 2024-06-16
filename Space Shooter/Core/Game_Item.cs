@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_Item : Game_Enemy
+    public class Game_Item : Game_Enemy
     {
         string buffType;
 
@@ -94,7 +94,7 @@ namespace Space_Shooter.Core
         }
     }
 
-    internal abstract class ItemID
+    public abstract class ItemID
     {
         #region Weapon
         public const string WeaponShotgun = "wep_shotgun";

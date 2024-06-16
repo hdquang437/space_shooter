@@ -12,7 +12,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Space_Shooter.Manager
 {
-    internal class SpriteManager
+    public class SpriteManager
     {
         private static Dictionary<string, Game_Sprite> sprites = new Dictionary<string, Game_Sprite>();
 

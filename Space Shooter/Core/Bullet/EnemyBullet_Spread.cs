@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class EnemyBullet_Spread : Game_Bullet
+    public class EnemyBullet_Spread : Game_Bullet
     {
         float vX;
         float vY;

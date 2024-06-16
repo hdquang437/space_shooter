@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace Space_Shooter.Manager
 {
-    internal class AudioManager
+    public class AudioManager
     {
         // Audio
         //static private SoundPlayer bgm;

@@ -11,7 +11,7 @@ using System.Drawing.Text;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_Weapon
+    public class Game_Weapon
     {
         protected int attack_cd = 0;
         protected int attack_cd_timer = 0;

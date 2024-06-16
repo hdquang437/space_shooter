@@ -9,7 +9,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_Collision
+    public class Game_Collision
     {
         static public void Scan(Game_CollidableObject src, List<Game_CollidableObject> targets)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Enemy
 {
-    internal class Enemy_Klaed_SupportShip : Game_Enemy
+    public class Enemy_Klaed_SupportShip : Game_Enemy
     {
         private float velocityX = 0;
         private float velocityY = 1;

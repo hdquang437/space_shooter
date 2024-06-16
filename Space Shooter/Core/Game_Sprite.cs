@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_Sprite
+    public class Game_Sprite
     {
         Bitmap _sprite = null;
         int _max_frameX = 1;

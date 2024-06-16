@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class Bullet_DefaultBullet : Game_Bullet
+    public class Bullet_DefaultBullet : Game_Bullet
     {
         public const int EXPLOSION_SIZE = 30;
 

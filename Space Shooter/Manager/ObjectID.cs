@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Manager
 {
-    internal class ObjectID
+    public class ObjectID
     {
         public const string PLAYER = "player";
         public const string DEFAULT_BULLET = "default_bullet";

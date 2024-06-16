@@ -8,7 +8,7 @@ using System.Windows.Media.Animation;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_Animation : Game_Object
+    public class Game_Animation : Game_Object
     {
         public const int animationFrame = 4; 
 

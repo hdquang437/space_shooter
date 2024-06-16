@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace Space_Shooter.Core.Weapon
 {
-    internal class Weapon_Default : Game_Weapon
+    public class Weapon_Default : Game_Weapon
     {
         public Weapon_Default(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
             : base(Owner, OffsetX, OffsetY) {

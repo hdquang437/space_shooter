@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class EnemyBullet_Straight : Game_Bullet
+    public class EnemyBullet_Straight : Game_Bullet
     {
         public EnemyBullet_Straight(Game_Object owner, Game_Sprite sprite, float x, float y)
         : base(owner, sprite, x, y, 7)

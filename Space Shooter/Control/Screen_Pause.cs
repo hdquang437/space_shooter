@@ -15,6 +15,7 @@ namespace Space_Shooter.Control
     public partial class Screen_Pause : UserControl
     {
         public Screen_Game parentControl;
+        public static readonly GameDataManager GameDataManager = GameDataManager.Instance;
 
         public Screen_Pause()
         {

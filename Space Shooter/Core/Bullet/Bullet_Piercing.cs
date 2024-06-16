@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class Bullet_Piercing : Game_Bullet
+    public class Bullet_Piercing : Game_Bullet
     {
         private List<Game_CollidableObject> collidedList = new List<Game_CollidableObject>();
 

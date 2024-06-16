@@ -10,7 +10,7 @@ using System.Windows.Media.Media3D;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_Bullet : Game_CollidableObject
+    public class Game_Bullet : Game_CollidableObject
     {
         protected Game_Object owner;
         protected string die_ani_sprite = "default_bullet";

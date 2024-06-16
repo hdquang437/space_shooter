@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Enemy
 {
-    struct MeteorMinion
+    public struct MeteorMinion
     {
         public int size;
         public float velocityX;
@@ -23,7 +23,7 @@ namespace Space_Shooter.Core.Enemy
         }
     }
 
-    internal class Enemy_Meteor : Game_SpawnableEnemy<MeteorMinion>
+    public class Enemy_Meteor : Game_SpawnableEnemy<MeteorMinion>
     {
         public const int SIZE_1 = 40;
         public const int SIZE_2 = 80;

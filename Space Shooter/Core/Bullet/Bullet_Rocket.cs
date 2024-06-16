@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class Bullet_Rocket : Game_Bullet
+    public class Bullet_Rocket : Game_Bullet
     {
         private bool triggered = false;
         private int remainTime = 10;

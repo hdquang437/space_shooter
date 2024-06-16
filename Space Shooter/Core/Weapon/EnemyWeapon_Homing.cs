@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Weapon
 {
-    internal class EnemyWeapon_Homing : Game_EnemyWeapon
+    public class EnemyWeapon_Homing : Game_EnemyWeapon
     {
         public EnemyWeapon_Homing(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
         : base(Owner, OffsetX, OffsetY)

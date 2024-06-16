@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Enemy
 {
-    internal class Enemy_Klaed_Frigate : Game_Enemy
+    public class Enemy_Klaed_Frigate : Game_Enemy
     {
         private int actionTimer = 8;
         private int actionCD = 0;
