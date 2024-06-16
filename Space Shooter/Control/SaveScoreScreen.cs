@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,6 @@ namespace Space_Shooter.Control
         }
 
         public event EventHandler BackButtonClick;
-        public event EventHandler SaveImageClick;
 
         private void btn_back_Click(object sender, EventArgs e)
         {
@@ -37,7 +37,15 @@ namespace Space_Shooter.Control
         {
             this.btn_back.Visible = false;
             this.btn_save.Visible = false;
-            SaveImageClick(sender, e);
+
+            Bitmap bmp = new Bitmap(this.Width, this.Height);
+            this.DrawToBitmap(bmp, new Rectangle(Point.Empty, new Size(Screen_Game.REAL_SCREEN_WIDTH - 4, Screen_Game.REAL_SCREEN_HEIGHT)));
+            DateTime time = DateTime.Now;
+            string path = GameDataManager.SCREENSHOT_FOLDER_PATH + "user_" + currentUser.name + time.ToString("yyyyMMddHHmmss") + ".png";
+            bmp.Save(path, ImageFormat.Png);
+            MessageBox.Show("Your screenshot has been saved to: " + path);
+
+            BackButtonClick(sender, e);
         }
 
         public void UpdateScreen()

@@ -49,17 +49,13 @@ namespace Space_Shooter
 
             saveScoreScreen = new SaveScoreScreen(currentUser);
             saveScoreScreen.BackButtonClick += SaveScoreScreen_BackButtonClick;
-            saveScoreScreen.SaveImageClick += SaveScoreScreen_SaveImageClick;
-        }
-
-        private void SaveScoreScreen_SaveImageClick(object sender, EventArgs e)
-        {
-            
         }
 
         private void SaveScoreScreen_BackButtonClick(object sender, EventArgs e)
         {
-            
+            AudioManager.PlayBGM(BGM.bgm_gameover);
+            panel_screen.Controls.Clear();
+            panel_screen.Controls.Add(endGameScreen);
         }
 
         private void HomeScreen_ChooseShip(object sender, EventArgs e)
