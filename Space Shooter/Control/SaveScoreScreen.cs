@@ -16,9 +16,13 @@ namespace Space_Shooter.Control
 {
     public partial class SaveScoreScreen : UserControl
     {
+
         string victorySentence = "Congrat! You beated the game!";
         string defeatedSentence = "Too bad! Better luck next time!";
         public User currentUser;
+
+        public static readonly GameDataManager GameDataManger = GameDataManager.Instance;
+
         public SaveScoreScreen(User user)
         {
             InitializeComponent();
@@ -52,7 +56,7 @@ namespace Space_Shooter.Control
         {
             pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + currentUser.avaPath);
             lb_userName.Text = currentUser.name;
-            if (GameDataManager.GameEnd == true)
+            if (GameDataManger.GameEnd == true)
             {
                 lb_senceten.Text = victorySentence;
                 pb_victory.Image = Properties.Resources.victory_img;
@@ -62,9 +66,9 @@ namespace Space_Shooter.Control
                 pb_victory.Image = Properties.Resources.defeat_img;
                 lb_senceten.Text = defeatedSentence;
             }
-            lb_scoreVal.Text = GameDataManager.score.ToString();
-            string difficulty = GameDataManager.GetDifficultyStr.ToLower();
-            if (GameDataManager.score > currentUser.highestScore[difficulty])
+            lb_scoreVal.Text = GameDataManger.score.ToString();
+            string difficulty = GameDataManger.GetDifficultyStr.ToLower();
+            if (GameDataManger.score > currentUser.highestScore[difficulty])
             {
                 lb_yourScore.Text = "New High Score";
             }
@@ -72,14 +76,14 @@ namespace Space_Shooter.Control
             {
                 lb_yourScore.Text = "Your Score";
             }
-            lb_playtime.Text = "Play time: " + GameDataManager.PlayTimeStr;
+            lb_playtime.Text = "Play time: " + GameDataManger.PlayTimeStr;
 
             // Update user score
-            if (currentUser.highestScore[difficulty] < GameDataManager.score)
+            if (currentUser.highestScore[difficulty] < GameDataManger.score)
             {
-                UserRepo.UpdateScore(currentUser.email, GameDataManager.score, GameDataManager.PlayTime, difficulty);
-                currentUser.SetHighestScore(difficulty, GameDataManager.score);
-                currentUser.SetPlayTime(difficulty, GameDataManager.PlayTime);
+                UserRepo.UpdateScore(currentUser.email, GameDataManger.score, GameDataManger.PlayTime, difficulty);
+                currentUser.SetHighestScore(difficulty, GameDataManger.score);
+                currentUser.SetPlayTime(difficulty, GameDataManger.PlayTime);
             }
         }
 
