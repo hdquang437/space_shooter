@@ -75,6 +75,12 @@
     <Compile Include="Control\HomeScreen.Designer.cs">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\InstructionScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\InstructionScreen.Designer.cs">
+      <DependentUpon>InstructionScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\LeaderBoardUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     <EmbeddedResource Include="Control\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\InstructionScreen.resx">
+      <DependentUpon>InstructionScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\LeaderBoardUser.resx">
       <DependentUpon>LeaderBoardUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +285,9 @@
     <None Include="Resources\controller_keyboard_deactive.png" />
     <None Include="Resources\controller_mouse_deactive.png" />
     <Content Include="Resources\exit_icon.png" />
+    <None Include="Resources\instruc_2.png" />
+    <None Include="Resources\instruc_3.png" />
+    <None Include="Resources\instruc_1.png" />
     <Content Include="Resources\leaderboard_bg.png" />
     <None Include="Resources\char_Spaceship.png" />
     <None Include="Resources\char_Meteor.png" />

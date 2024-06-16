@@ -50,3 +50,4 @@ F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.Scree
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.SaveScoreScreen.resources
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\Facebook.dll
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\Facebook.xml
+F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.InstructionScreen.resources

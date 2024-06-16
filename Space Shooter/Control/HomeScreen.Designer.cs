@@ -59,6 +59,7 @@
             this.btn_controlKeyboard = new System.Windows.Forms.Button();
             this.btn_controlMouse = new System.Windows.Forms.Button();
             this.lb_ChooseMode = new System.Windows.Forms.Label();
+            this.btn_instruction = new System.Windows.Forms.Button();
             this.pn_user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).BeginInit();
             this.pn_leaderBoard.SuspendLayout();
@@ -81,7 +82,7 @@
             this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_exit.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_exit.ForeColor = System.Drawing.Color.Khaki;
-            this.btn_exit.Location = new System.Drawing.Point(866, 664);
+            this.btn_exit.Location = new System.Drawing.Point(866, 662);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(304, 101);
             this.btn_exit.TabIndex = 10;
@@ -469,6 +470,23 @@
             this.lb_ChooseMode.TabIndex = 12;
             this.lb_ChooseMode.Text = "Choose mode";
             // 
+            // btn_instruction
+            // 
+            this.btn_instruction.BackColor = System.Drawing.Color.DimGray;
+            this.btn_instruction.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_instruction.BackgroundImage")));
+            this.btn_instruction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_instruction.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_instruction.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_instruction.ForeColor = System.Drawing.Color.Khaki;
+            this.btn_instruction.Location = new System.Drawing.Point(494, 424);
+            this.btn_instruction.Name = "btn_instruction";
+            this.btn_instruction.Size = new System.Drawing.Size(322, 101);
+            this.btn_instruction.TabIndex = 10;
+            this.btn_instruction.Text = "Instruction";
+            this.btn_instruction.UseVisualStyleBackColor = false;
+            this.btn_instruction.Visible = false;
+            this.btn_instruction.Click += new System.EventHandler(this.btn_instruction_Click);
+            // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -479,6 +497,7 @@
             this.Controls.Add(this.pn_Controller);
             this.Controls.Add(this.pn_chooseShipDiff);
             this.Controls.Add(this.pn_leaderBoard);
+            this.Controls.Add(this.btn_instruction);
             this.Controls.Add(this.pn_user);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_start);
@@ -542,5 +561,6 @@
         private System.Windows.Forms.Label lb_ChooseMode;
         private System.Windows.Forms.Button btn_controlMouse;
         private System.Windows.Forms.Button btn_controlKeyboard;
+        private System.Windows.Forms.Button btn_instruction;
     }
 }
