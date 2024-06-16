@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_CollidableObject : Game_Object
+    public class Game_CollidableObject : Game_Object
     {
         protected bool _collidable = true;
         protected bool _needScan = true;

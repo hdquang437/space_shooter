@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_SpawnableEnemy<T> : Game_Enemy
+    public class Game_SpawnableEnemy<T> : Game_Enemy
     {
 
         public Game_SpawnableEnemy(Game_Sprite sprite, float x, float y)

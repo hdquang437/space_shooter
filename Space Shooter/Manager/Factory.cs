@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Manager
 {
-    internal class Factory
+    public class Factory
     {
+        static public readonly GameDataManager GameDataManager = GameDataManager.Instance;
 
         #region Damageable entities
         public static Game_Player Create_PlayerSpaceship(float x, float y, Ship type)

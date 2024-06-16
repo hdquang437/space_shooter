@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class Bullet_Bio : Game_Bullet
+    public class Bullet_Bio : Game_Bullet
     {
         public Bullet_Bio(Game_Object owner, Game_Sprite sprite, float x, float y, float speed = 5)
          : base(owner, sprite, x, y, speed)

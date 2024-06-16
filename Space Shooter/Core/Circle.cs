@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core
 {
-    internal class Circle
+    public class Circle
     {
         public float X;
         public float Y;

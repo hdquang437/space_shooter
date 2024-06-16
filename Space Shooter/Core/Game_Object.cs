@@ -1,4 +1,5 @@
 ﻿using Space_Shooter.Control;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_Object
+    public class Game_Object
     {
+        public static readonly GameDataManager GameDataManager = GameDataManager.Instance;
 
         #region Attributes
         // Logical

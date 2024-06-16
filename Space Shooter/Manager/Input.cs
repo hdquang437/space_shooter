@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Space_Shooter.Manager
 {
-    internal struct KeyboardState
+    public struct KeyboardState
     {
         public bool up;
         public bool down;
@@ -27,9 +27,11 @@ namespace Space_Shooter.Manager
         }
     }
 
-    internal class Input
+    public class Input
     {
         public static bool IsMouseDown;
+
+        public static readonly GameDataManager GameDataManager = GameDataManager.Instance;
 
         public static void GetKeyStates()
         {

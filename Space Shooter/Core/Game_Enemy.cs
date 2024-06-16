@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_Enemy : Game_CollidableObject
+    public class Game_Enemy : Game_CollidableObject
     {
         protected int _reward = 1;
         public int Reward { get { return _reward; } }

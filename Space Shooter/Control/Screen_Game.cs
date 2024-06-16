@@ -38,6 +38,8 @@ namespace Space_Shooter.Control
 
         #endregion
 
+        private readonly GameDataManager GameDataManager = GameDataManager.Instance;
+
         public Screen_Game(Form1 parent)
         {
             InitializeComponent();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class EnemyBullet_Homing : Game_Bullet
+    public class EnemyBullet_Homing : Game_Bullet
     {
         int changeDirectionTimes = 0;
         float vX = 0;

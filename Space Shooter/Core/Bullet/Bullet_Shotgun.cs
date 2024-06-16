@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class Bullet_Shotgun : Game_Bullet
+    public class Bullet_Shotgun : Game_Bullet
     {
         float vX;
         float vY;

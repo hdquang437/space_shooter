@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Space_Shooter.Manager
 {
-    internal static class Utilities
+    public static class Utilities
     {
         static public PointF GetVector(PointF src, PointF des)
         {

@@ -11,7 +11,7 @@ using System.Windows.Media.Media3D;
 
 namespace Space_Shooter.Core
 {
-    internal class Game_Player : Game_CollidableObject
+    public class Game_Player : Game_CollidableObject
     {
         public Game_Weapon Weapon {
             get { return secondaryWep != null ? secondaryWep : primaryWep; }

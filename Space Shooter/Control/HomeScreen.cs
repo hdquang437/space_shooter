@@ -39,6 +39,8 @@ namespace Space_Shooter.AccountManagement
         LoginComponent loginComponent = null;
         SignUpComponent signUpComponent = null;
 
+        public static readonly GameDataManager GameDataManager = GameDataManager.Instance;
+
         public HomeScreen(User user)
         {
             InitializeComponent();

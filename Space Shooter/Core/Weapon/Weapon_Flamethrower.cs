@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Weapon
 {
-    internal class Weapon_Flamethrower : Game_Weapon
+    public class Weapon_Flamethrower : Game_Weapon
     {
         public Weapon_Flamethrower(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
         : base(Owner, OffsetX, OffsetY)

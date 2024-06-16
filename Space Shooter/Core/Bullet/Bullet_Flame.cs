@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Space_Shooter.Core.Bullet
 {
-    internal class Bullet_Flame : Game_Bullet
+    public class Bullet_Flame : Game_Bullet
     {
         private int remainTime = 100;
         private int triggerInterval = 4;
