@@ -91,6 +91,8 @@ namespace Space_Shooter.Control
         {
             _timer.Stop();
             _timer.Dispose();
+            GameDataManager.init = false;
+            GameDataManager.StopGame = true;
             parentForm.GameScreen_ToMainMenu();
         }
 
