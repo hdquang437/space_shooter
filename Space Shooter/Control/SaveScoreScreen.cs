@@ -23,11 +23,10 @@ namespace Space_Shooter.Control
 
         public static readonly GameDataManager GameDataManger = GameDataManager.Instance;
 
-        public SaveScoreScreen(User user)
+        public SaveScoreScreen()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            this.currentUser = user;
         }
 
         public event EventHandler BackButtonClick;
@@ -45,15 +44,19 @@ namespace Space_Shooter.Control
             Bitmap bmp = new Bitmap(this.Width, this.Height);
             this.DrawToBitmap(bmp, new Rectangle(Point.Empty, new Size(Screen_Game.REAL_SCREEN_WIDTH - 4, Screen_Game.REAL_SCREEN_HEIGHT)));
             DateTime time = DateTime.Now;
-            string path = GameDataManager.SCREENSHOT_FOLDER_PATH + "user_" + currentUser.name + time.ToString("yyyyMMddHHmmss") + ".png";
+            string path = GameDataManager.SCREENSHOT_FOLDER_PATH + "user_" + currentUser.name + "_" + time.ToString("yyyyMMddHHmmss") + ".png";
             bmp.Save(path, ImageFormat.Png);
             MessageBox.Show("Your screenshot has been saved to: " + path);
 
             BackButtonClick(sender, e);
         }
 
-        public void UpdateScreen()
+        public void UpdateScreen(User user)
         {
+            this.btn_back.Visible = true;
+            this.btn_save.Visible = true;
+            currentUser = user;
+            richTextBox1.Text = "";
             pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + currentUser.avaPath);
             lb_userName.Text = currentUser.name;
             if (GameDataManger.GameEnd == true)
@@ -89,7 +92,7 @@ namespace Space_Shooter.Control
 
         private void SaveScoreScreen_Load(object sender, EventArgs e)
         {
-            UpdateScreen();
+
         }
     }
 }

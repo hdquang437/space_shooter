@@ -20,7 +20,6 @@ namespace Space_Shooter
         public Screen_Game gameScreen;
         public HomeScreen homeScreen;
         public EndGameScreen endGameScreen;
-        public SaveScoreScreen saveScoreScreen;
         User currentUser;
         GameDifficulty currentDiff = GameDifficulty.Normal;
         Ship currentShip = Ship.Default;
@@ -44,11 +43,6 @@ namespace Space_Shooter
             endGameScreen = new EndGameScreen(currentUser);
             endGameScreen.GoToMainMenu += EndGameScreen_GoToMainMenu;
             endGameScreen.Continue += EndGameScreen_Continue;
-            endGameScreen.ShareOnFacebook += EndGameScreen_ShareOnFacebook;
-            //panel_screen.Controls.Add(gameScreen);
-
-            saveScoreScreen = new SaveScoreScreen(currentUser);
-            saveScoreScreen.BackButtonClick += SaveScoreScreen_BackButtonClick;
         }
 
         private void SaveScoreScreen_BackButtonClick(object sender, EventArgs e)
@@ -111,14 +105,6 @@ namespace Space_Shooter
             panel_screen.Controls.Add(gameScreen);
             panel_screen.Refresh();
             gameScreen.StartGame();
-        }
-
-        private void EndGameScreen_ShareOnFacebook(object sender, EventArgs e)
-        {
-            panel_screen.Controls.Clear();
-            saveScoreScreen.currentUser = homeScreen.currentUser;
-            saveScoreScreen.UpdateScreen();
-            panel_screen.Controls.Add(saveScoreScreen);
         }
 
         private void EndGameScreen_Continue(object sender, EventArgs e)
