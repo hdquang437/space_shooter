@@ -91,6 +91,12 @@
     <Compile Include="AccountManagement\Repository\FilePathManager.cs" />
     <Compile Include="AccountManagement\Repository\InputValidator.cs" />
     <Compile Include="AccountManagement\Repository\UserRepo.cs" />
+    <Compile Include="Control\SaveScoreScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\SaveScoreScreen.Designer.cs">
+      <DependentUpon>SaveScoreScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\Screen_Pause.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\LoginComponent.resx">
       <DependentUpon>LoginComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\SaveScoreScreen.resx">
+      <DependentUpon>SaveScoreScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\Screen_Pause.resx">
       <DependentUpon>Screen_Pause.cs</DependentUpon>
