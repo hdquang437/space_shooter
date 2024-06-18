@@ -19,7 +19,7 @@ namespace Space_Shooter.Core
         protected int _reward = 1;
         public int Reward { get { return _reward; } }
 
-        protected Mode mode = Mode.forward;
+        [JsonProperty] protected Mode mode = Mode.forward;
 
         public Game_Enemy(Game_Sprite sprite, float x, float y)
             : base(sprite, x, y)

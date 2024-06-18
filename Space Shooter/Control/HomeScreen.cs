@@ -148,7 +148,7 @@ namespace Space_Shooter.AccountManagement
         private void loadSavefileComponent_LoadProfile(object sender, EventArgs e)
         {
             loadSavefileComponent.Visible = false;
-            LoadGame(this, e);
+            LoadGame(currentUser, e);
         }
 
         private void btn_logout_Click(object sender, EventArgs e)

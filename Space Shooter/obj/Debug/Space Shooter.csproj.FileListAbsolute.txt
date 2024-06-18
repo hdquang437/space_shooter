@@ -43,4 +43,3 @@ D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\De
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.Screen_Pause.resources
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.Screen_SaveAndLoad.resources
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.SaveProfile.resources
-D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\JsonSubTypes.dll

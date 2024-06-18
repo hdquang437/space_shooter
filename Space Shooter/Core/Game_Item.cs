@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Core.Enemy;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Core.Enemy;
 using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Space_Shooter.Core
     {
         public override Type realType { get; } = typeof(Game_Item);
 
-        string buffType;
+        [JsonProperty] string buffType;
 
         public Game_Item(string spriteID, float x, float y, string buffType)
             : base(SpriteManager.Sprites[spriteID], x, y)

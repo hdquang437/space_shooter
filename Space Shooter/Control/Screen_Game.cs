@@ -36,6 +36,8 @@ namespace Space_Shooter.Control
         int _framesRendered; // an increasing count
         int _fps;
 
+        int _countDownToStart;
+
         #endregion
 
         public static GameDataManager GameDataManager;
@@ -88,6 +90,16 @@ namespace Space_Shooter.Control
         public void LoadGame()
         {
             GameDataManager = GameDataManager.Instance;
+
+            // Check if need countdown before game start
+            if (GameDataManager.GameOverTimeRemain == 0
+                && GameDataManager.NoteStageEndTimeRemain == 0
+                && GameDataManager.NoteStageStartTimeRemain == 0)
+            {
+                _countDownToStart = 300;
+            }
+
+            // Other setup
             screenPause.Visible = false;
             screenSaveAndLoad.Visible = false;
             label_Difficulty.Text = $"Difficulty: {GameDataManager.GetDifficultyStr}";
@@ -124,12 +136,15 @@ namespace Space_Shooter.Control
 
         void TimerOnTick(object obj, EventArgs e)
         {
-            //System.Windows.Forms.Control a = this.Parent;
-            //this.Parent.Size = new Size(REAL_SCREEN_WIDTH, REAL_SCREEN_HEIGHT);
-            //this.ParentForm.Size = new Size(REAL_SCREEN_WIDTH + 20, REAL_SCREEN_HEIGHT + 20);
-            //this.Size = this.Parent.Size;
+            
             if (GameDataManager.isPaused)
             {
+                return;
+            }
+
+            if (WaitToStart())
+            {
+                Refresh();
                 return;
             }
 
@@ -207,12 +222,15 @@ namespace Space_Shooter.Control
             {
                 //died_enemies.Add(obj);
                 obj.Process_BeforeDie();
+                GameDataManager.freeID.Add(obj.ID);
             }
             foreach (Game_Bullet obj in GameDataManager.bullets.GetRange(0, GameDataManager.bullets.Count).Where(x => x.die))
             {
                 //died_bullets.Add(obj);
                 obj.Process_BeforeDie();
+                GameDataManager.freeID.Add(obj.ID);
             }
+
             if (GameDataManager.player != null && GameDataManager.player.die)
             {
                 GameDataManager.player.Process_BeforeDie();
@@ -229,15 +247,19 @@ namespace Space_Shooter.Control
             {
                 background = new Bitmap(Space_Shooter.Properties.Resources.Background, (int)g.ClipBounds.Width, (int)g.ClipBounds.Width);
             }
-            if (scrollY < background.Height)
+
+            if (_countDownToStart == 0)
             {
-                scrollY++;
+                if (scrollY < background.Height)
+                {
+                    scrollY++;
+                }
+                else
+                {
+                    scrollY = 1;
+                }
             }
-            else
-            {
-                scrollY = 1;
-            }
-            
+        
             g.DrawImage(background, 0, 0, new Rectangle(0, background.Height - scrollY - 1, background.Width, scrollY), GraphicsUnit.Pixel);
             if (scrollY < Height)
                 g.DrawImage(background, 0, scrollY, new Rectangle(0, 0, background.Width, background.Height - scrollY), GraphicsUnit.Pixel);
@@ -282,6 +304,40 @@ namespace Space_Shooter.Control
             labelScore.Text = GameDataManager.score.ToString();
             label_Playtime.Text = $"Play time: {GameDataManager.PlayTimeStr}";
             label_screenshot.Text = GameDataManager.screenshotText;
+        }
+
+        bool WaitToStart()
+        {
+            if (_countDownToStart > 0)
+            {
+                FPS_Update();
+                _countDownToStart--;
+                labelMessage.Text = $"{_countDownToStart / 100 + 1}";
+
+                Game_Player player = GameDataManager.player;
+                if (player != null)
+                {
+                    valueBar_HP.Maximum = player.MaxHP;
+                    valueBar_HP.Value = player.HP;
+                    valueBar_Ammo.Maximum = player.MaxAmmo;
+                    valueBar_Ammo.Value = player.Ammo;
+                    valueBar_Ammo.ForeColor = player.WepPrimaryColor;
+                    valueBar_Ammo.BackColor = player.WepSecondaryColor;
+                }
+                else
+                {
+                    valueBar_HP.Maximum = 1;
+                    valueBar_HP.Value = 0;
+                    valueBar_Ammo.Maximum = 1;
+                    valueBar_Ammo.Value = 0;
+                }
+
+                labelScore.Text = GameDataManager.score.ToString();
+                label_Playtime.Text = $"Play time: {GameDataManager.PlayTimeStr}";
+                label_screenshot.Text = GameDataManager.screenshotText;
+                return true;
+            }
+            return false;
         }
 
         #endregion

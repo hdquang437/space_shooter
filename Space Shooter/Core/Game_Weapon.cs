@@ -9,43 +9,11 @@ using static System.Windows.Forms.AxHost;
 using System.Windows.Media.Media3D;
 using System.Drawing.Text;
 using Newtonsoft.Json;
-using JsonSubTypes;
 using Space_Shooter.Core.Weapon;
 using System.CodeDom;
 
 namespace Space_Shooter.Core
 {
-    public enum WeaponType
-    {
-        WeaponDefault,
-        WeaponBio,
-        WeaponFlamethrower,
-        WeaponGatling,
-        WeaponPiercing,
-        WeaponRocket,
-        WeaponShotgun,
-        EnemyWeaponHoming,
-        EnemyWeaponHomingRifle,
-        EnemyWeaponRifle,
-        EnemyWeaponSingle,
-        EnemyWeaponSniper,
-        EnemyWeaponSniperRifle
-    }
-
-    //[JsonConverter(typeof(Game_Weapon), "weaponType")]
-    //[JsonSubtypes.KnownSubType(typeof(Weapon_Default), WeaponType.WeaponDefault)]
-    //[JsonSubtypes.KnownSubType(typeof(Weapon_Bio), WeaponType.WeaponBio)]
-    //[JsonSubtypes.KnownSubType(typeof(Weapon_Flamethrower), WeaponType.WeaponFlamethrower)]
-    //[JsonSubtypes.KnownSubType(typeof(Weapon_Gatling), WeaponType.WeaponGatling)]
-    //[JsonSubtypes.KnownSubType(typeof(Weapon_Piercing), WeaponType.WeaponPiercing)]
-    //[JsonSubtypes.KnownSubType(typeof(Weapon_Rocket), WeaponType.WeaponRocket)]
-    //[JsonSubtypes.KnownSubType(typeof(Weapon_Shotgun), WeaponType.WeaponShotgun)]
-    //[JsonSubtypes.KnownSubType(typeof(EnemyWeapon_Homing), WeaponType.EnemyWeaponHoming)]
-    //[JsonSubtypes.KnownSubType(typeof(EnemyWeapon_HomingRifle), WeaponType.EnemyWeaponHomingRifle)]
-    //[JsonSubtypes.KnownSubType(typeof(EnemyWeapon_Rifle), WeaponType.EnemyWeaponRifle)]
-    //[JsonSubtypes.KnownSubType(typeof(EnemyWeapon_Single), WeaponType.EnemyWeaponSingle)]
-    //[JsonSubtypes.KnownSubType(typeof(EnemyWeapon_Sniper), WeaponType.EnemyWeaponSniper)]
-    //[JsonSubtypes.KnownSubType(typeof(EnemyWeapon_SniperRifle), WeaponType.EnemyWeaponSniperRifle)]
     public class Game_Weapon
     {
         public virtual Type realType { get; } = typeof(Game_Weapon);

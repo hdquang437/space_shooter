@@ -387,7 +387,7 @@ namespace Space_Shooter.Manager
             }
             else if (obj is Game_Animation animation)
             {
-                animation.ID = GetAvailableID();
+                //animation.ID = GetAvailableID();
                 animations.Add(animation);
             }
         }
