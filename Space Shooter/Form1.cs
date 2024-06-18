@@ -20,7 +20,7 @@ namespace Space_Shooter
         public Screen_Game gameScreen;
         public HomeScreen homeScreen;
         public EndGameScreen endGameScreen;
-        User currentUser;
+        public User currentUser;
         GameDifficulty currentDiff = GameDifficulty.Normal;
         Ship currentShip = Ship.Default;
 
@@ -33,11 +33,13 @@ namespace Space_Shooter
             AudioManager.InitializeController();
 
             AudioManager.PlayBGM(BGM.bgm_menu);
+            
             gameScreen = new Screen_Game(this);
             homeScreen = new HomeScreen(null);
             homeScreen.StartGame += new EventHandler(this.HomeScreen_StartGame);
             homeScreen.SetDiff += HomeScreen_SetDiff;
             homeScreen.ChooseShip += HomeScreen_ChooseShip;
+            homeScreen.LoadGame += HomeScreen_LoadGame;
             panel_screen.Controls.Add(homeScreen);
 
             endGameScreen = new EndGameScreen(currentUser);
@@ -100,6 +102,16 @@ namespace Space_Shooter
             panel_screen.Controls.Add(gameScreen);
             panel_screen.Refresh();
             gameScreen.StartGame();
+        }
+
+        private void HomeScreen_LoadGame(object sender, EventArgs e)
+        {
+            AudioManager.PlayBGM(BGM.bgm_ingame);
+            currentUser = sender as User;
+            panel_screen.Controls.Clear();
+            panel_screen.Controls.Add(gameScreen);
+            panel_screen.Refresh();
+            gameScreen.LoadGame();
         }
 
         private void EndGameScreen_ShareOnFacebook(object sender, EventArgs e)

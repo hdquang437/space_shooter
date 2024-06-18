@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,15 +11,23 @@ namespace Space_Shooter.Core.Bullet
 {
     public class EnemyBullet_Homing : Game_Bullet
     {
-        int changeDirectionTimes = 0;
-        float vX = 0;
-        float vY = 1;
-        int actionTimer = 5;
-        int actionCD = 0;
+        public override Type realType { get; } = typeof(EnemyBullet_Homing);
 
-        public EnemyBullet_Homing(Game_Object owner, Game_Sprite sprite, float x, float y)
-        : base(owner, sprite, x, y, 7)
+        [JsonProperty] int changeDirectionTimes = 0;
+        [JsonProperty] float vX = 0;
+        [JsonProperty] float vY = 1;
+        int actionTimer = 5;
+        [JsonProperty] int actionCD = 0;
+
+        public EnemyBullet_Homing(int ownerID, Game_Sprite sprite, float x, float y)
+        : base(ownerID, sprite, x, y, 7)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["enemy_bullet"];
+                _sprite = sprite;
+            }
+            spriteID = "enemy_bullet";
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;

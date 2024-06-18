@@ -415,6 +415,7 @@
             this.btn_continue.Text = "CONTINUE";
             this.btn_continue.UseVisualStyleBackColor = false;
             this.btn_continue.Visible = false;
+            this.btn_continue.Click += new System.EventHandler(this.btn_continue_Click);
             // 
             // pn_Controller
             // 

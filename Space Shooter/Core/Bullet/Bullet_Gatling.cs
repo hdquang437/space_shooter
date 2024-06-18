@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +10,20 @@ namespace Space_Shooter.Core.Bullet
 {
     public class Bullet_Gatling : Game_Bullet
     {
-        float vX;
-        float vY;
+        public override Type realType { get; } = typeof(Bullet_Gatling);
 
-        public Bullet_Gatling(Game_Object owner, Game_Sprite sprite, float x, float y)
-            : base(owner, sprite, x, y, 9)
+        [JsonProperty] float vX;
+        [JsonProperty] float vY;
+
+        public Bullet_Gatling(int ownerID, Game_Sprite sprite, float x, float y)
+            : base(ownerID, sprite, x, y, 9)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["gatling"];
+                _sprite = sprite;
+            }
+            spriteID = "gatling";
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width * 0.3f;

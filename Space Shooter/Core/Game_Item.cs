@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Space_Shooter.Core.Enemy;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,15 @@ namespace Space_Shooter.Core
 {
     public class Game_Item : Game_Enemy
     {
+        public override Type realType { get; } = typeof(Game_Item);
+
         string buffType;
 
-        public Game_Item(Game_Sprite sprite, float x, float y, string buffType)
-            : base(sprite, x, y)
+        public Game_Item(string spriteID, float x, float y, string buffType)
+            : base(SpriteManager.Sprites[spriteID], x, y)
         {
+            this.spriteID = spriteID;
+            Game_Sprite sprite = SpriteManager.Sprites[spriteID];
             _hp = 1;
             _collideDamage = 0;
             this.buffType = buffType;

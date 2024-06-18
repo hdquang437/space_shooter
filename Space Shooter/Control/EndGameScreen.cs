@@ -19,7 +19,7 @@ namespace Space_Shooter.Control
         string defeatedSentence = "Too bad! Better luck next time!";
         public User currentUser;
 
-        static public readonly GameDataManager GameDataManager = GameDataManager.Instance;
+        static public GameDataManager GameDataManager = GameDataManager.Instance;
 
         public EndGameScreen(User user)
         {

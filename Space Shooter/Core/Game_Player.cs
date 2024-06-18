@@ -1,4 +1,6 @@
-﻿using Space_Shooter.Core.Bullet;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Space_Shooter.Core.Bullet;
 using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
@@ -13,20 +15,24 @@ namespace Space_Shooter.Core
 {
     public class Game_Player : Game_CollidableObject
     {
+        public override Type realType { get; } = typeof(Game_Player);
+
+        [JsonIgnore]
         public Game_Weapon Weapon {
             get { return secondaryWep != null ? secondaryWep : primaryWep; }
         }
 
-        Game_Weapon primaryWep;
-        Game_Weapon secondaryWep;
+        [JsonProperty] Game_Weapon primaryWep;
+        [JsonProperty] Game_Weapon secondaryWep;
 
-        int changeWepDelay = 0;
-        int maxChangeWepDelay = 80;
-        int baseSpeed = 4;
-        int boostSpeed = 10;
+        [JsonProperty] int changeWepDelay = 0;
+        readonly int maxChangeWepDelay = 80;
+        readonly int baseSpeed = 4;
+        readonly int boostSpeed = 10;
 
-        int _maxHP = 100;
+        readonly int _maxHP = 100;
 
+        [JsonIgnore]
         override public int HP
         {
             get
@@ -38,9 +44,9 @@ namespace Space_Shooter.Core
                 _hp = (Math.Max(0, Math.Min(_maxHP, value)));
             }
         }
-
+        [JsonIgnore]
         public int MaxHP {  get { return _maxHP; } }
-
+        [JsonIgnore]
         public int MaxAmmo
         {
             get
@@ -52,6 +58,7 @@ namespace Space_Shooter.Core
                 return Weapon != null ? Weapon.MaxAmmo : 0;
             }
         }
+        [JsonIgnore]
         public int Ammo
         {
             get
@@ -63,7 +70,7 @@ namespace Space_Shooter.Core
                 return Weapon != null ? Weapon.Ammo : 0;
             }
         }
-
+        [JsonIgnore]
         public Color WepPrimaryColor
         {
             get
@@ -75,7 +82,7 @@ namespace Space_Shooter.Core
                 return Weapon != null ? Weapon.PrimaryColor : System.Drawing.Color.White;
             }
         }
-
+        [JsonIgnore]
         public Color WepSecondaryColor
         {
             get
@@ -93,6 +100,12 @@ namespace Space_Shooter.Core
         {
             // Data
             _z = 3;
+            if (sprite == null)
+            {
+                Game_Player tmp = Factory.Create_PlayerSpaceship(0, 0, GameDataManager.playerShipType);
+                sprite = tmp._sprite;
+                _sprite = sprite;
+            }           
             _Width = sprite.Width;
             _Height = sprite.Height;
             _collidable = true;
@@ -101,6 +114,10 @@ namespace Space_Shooter.Core
             _MoveSpeed = 4;
             _frame_CD = 10;
             _hp = _maxHP;
+        }
+
+        public void LoadDefaultWeapon()
+        {
             primaryWep = Factory.Create_PlayerWeapon_Default(this);
             secondaryWep = null;
         }
@@ -108,12 +125,13 @@ namespace Space_Shooter.Core
         public override void Update()
         {
             base.Update();
+            Fix_Weapon();
+            primaryWep?.Update();
+            secondaryWep?.Update();
             Process_Action();
             List<Game_CollidableObject> enemyTeam = GameDataManager.EnemyTeam_CollidableObjects;
             Game_Collision.Scan(this, enemyTeam);
             Update_Data();
-            primaryWep?.Update();
-            secondaryWep?.Update();
         }
 
         public override void Update_Data()
@@ -123,6 +141,18 @@ namespace Space_Shooter.Core
             {
                 secondaryWep = null;
                 changeWepDelay = maxChangeWepDelay;
+            }
+        }
+
+        public void Fix_Weapon()
+        {
+            if (primaryWep != null && primaryWep.GetType() != primaryWep.realType)
+            {
+                primaryWep = primaryWep.DeserializingPackup();
+            }
+            if (secondaryWep != null && secondaryWep.GetType() != secondaryWep.realType)
+            {
+                secondaryWep = secondaryWep.DeserializingPackup();
             }
         }
 
@@ -199,6 +229,19 @@ namespace Space_Shooter.Core
         {
             secondaryWep = wep;
             changeWepDelay = maxChangeWepDelay;
+        }
+
+        public override void SelfSerializing()
+        {
+            if (primaryWep != null)
+            {
+                primaryWep.SelfSerializing();
+            }
+            if (secondaryWep != null)
+            {
+                secondaryWep.SelfSerializing();
+            }
+            base.SelfSerializing();
         }
     }
 }

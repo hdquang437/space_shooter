@@ -84,6 +84,7 @@
             this.btn_save.TabIndex = 8;
             this.btn_save.Text = "save";
             this.btn_save.UseVisualStyleBackColor = false;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // btn_backToMenu
             // 

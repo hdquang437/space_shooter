@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,8 +11,11 @@ namespace Space_Shooter.Core.Weapon
 {
     public class Weapon_Flamethrower : Game_Weapon
     {
-        public Weapon_Flamethrower(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
-        : base(Owner, OffsetX, OffsetY)
+        public override Type realType { get; } = typeof(Weapon_Flamethrower);
+        //public override WeaponType weaponType { get; set; } = WeaponType.WeaponFlamethrower;
+
+        public Weapon_Flamethrower(int ownerID, float OffsetX = 0, float OffsetY = 0)
+        : base(ownerID, OffsetX, OffsetY)
         {
             attack_cd = 10;
             maxAmmo = 100;

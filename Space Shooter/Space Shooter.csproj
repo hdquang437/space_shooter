@@ -88,6 +88,12 @@
     <Compile Include="AccountManagement\Repository\FilePathManager.cs" />
     <Compile Include="AccountManagement\Repository\InputValidator.cs" />
     <Compile Include="AccountManagement\Repository\UserRepo.cs" />
+    <Compile Include="Control\SaveProfile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\SaveProfile.Designer.cs">
+      <DependentUpon>SaveProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\Screen_Pause.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +145,7 @@
     <Compile Include="Core\Enemy\Enemy_Klaed_SupportShip.cs" />
     <Compile Include="Core\Enemy\Enemy_Klaed_TorpedoShip.cs" />
     <Compile Include="Core\Enemy\Enemy_Meteor.cs" />
+    <Compile Include="Core\Extensions\ObjectExtensions.cs" />
     <Compile Include="Core\Game_Animation.cs" />
     <Compile Include="Core\Game_Bullet.cs" />
     <Compile Include="Core\Game_CollidableObject.cs" />
@@ -176,6 +183,7 @@
     <Compile Include="Manager\GameDataManager.cs" />
     <Compile Include="Manager\Input.cs" />
     <Compile Include="Manager\ObjectID.cs" />
+    <Compile Include="Manager\SaveFileManager.cs" />
     <Compile Include="Manager\SpriteManager.cs" />
     <Compile Include="Manager\Utilities.cs" />
     <Compile Include="Program.cs" />
@@ -194,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\LoginComponent.resx">
       <DependentUpon>LoginComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\SaveProfile.resx">
+      <DependentUpon>SaveProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\Screen_Pause.resx">
       <DependentUpon>Screen_Pause.cs</DependentUpon>

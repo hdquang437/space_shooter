@@ -38,13 +38,14 @@ namespace Space_Shooter.Control
 
         #endregion
 
-        private readonly GameDataManager GameDataManager = GameDataManager.Instance;
+        public static GameDataManager GameDataManager;
 
         public Screen_Game(Form1 parent)
         {
             InitializeComponent();
 
             parentForm = parent;
+            GameDataManager = GameDataManager.Instance;
 
             SpriteManager.Initialize();
             GameDataManager.LoadAllStages();
@@ -58,9 +59,10 @@ namespace Space_Shooter.Control
             screenPause = new Screen_Pause();
             screenSaveAndLoad = new Screen_SaveAndLoad();
             screenPause.parentControl = this;
-            screenSaveAndLoad.parentControl = this;
+            screenSaveAndLoad.backButton = new EventHandler(ScreenSaveAndLoad_CloseSave);
+            screenSaveAndLoad.SaveAndLoadButton = new EventHandler(ScreenSaveAndLoad_CloseSave);
+
             screenSaveAndLoad.mode = Screen_SaveAndLoad.Mode.Save;
-            screenSaveAndLoad.Setup();
 
             Controls.Add(screenPause);
             Controls.Add(screenSaveAndLoad);
@@ -74,10 +76,20 @@ namespace Space_Shooter.Control
 
         public void StartGame()
         {
+            GameDataManager = GameDataManager.Instance;
             screenPause.Visible = false;
             screenSaveAndLoad.Visible = false;
             GameDataManager.Reset();
             GameDataManager.player.ToCenterPoint(REAL_SCREEN_WIDTH / 2, REAL_SCREEN_HEIGHT - 200);
+            label_Difficulty.Text = $"Difficulty: {GameDataManager.GetDifficultyStr}";
+            _timer.Start();
+        }
+
+        public void LoadGame()
+        {
+            GameDataManager = GameDataManager.Instance;
+            screenPause.Visible = false;
+            screenSaveAndLoad.Visible = false;
             label_Difficulty.Text = $"Difficulty: {GameDataManager.GetDifficultyStr}";
             _timer.Start();
         }
@@ -100,7 +112,14 @@ namespace Space_Shooter.Control
 
         public void OpenSave()
         {
+            screenSaveAndLoad.Setup(parentForm.currentUser);
+            screenSaveAndLoad.BringToFront();
             screenSaveAndLoad.Visible = true;
+        }
+
+        public void ScreenSaveAndLoad_CloseSave(object sender, EventArgs e)
+        {
+            screenSaveAndLoad.Visible = false;
         }
 
         void TimerOnTick(object obj, EventArgs e)
@@ -153,7 +172,7 @@ namespace Space_Shooter.Control
         {
             FPS_Update();
             GameDataManager.cursorPosition = PointToClient(Cursor.Position);
-            Debug.Print(Cursor.Position.ToString());
+            //Debug.Print(Cursor.Position.ToString());
             GameDataManager.Update();
             Game_Player player = GameDataManager.player;
             player?.Update();

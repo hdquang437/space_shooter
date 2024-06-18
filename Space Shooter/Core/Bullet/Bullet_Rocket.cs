@@ -1,4 +1,5 @@
 ﻿using Microsoft.SqlServer.Server;
+using Newtonsoft.Json;
 using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,21 @@ namespace Space_Shooter.Core.Bullet
 {
     public class Bullet_Rocket : Game_Bullet
     {
-        private bool triggered = false;
-        private int remainTime = 10;
-        private List<Game_CollidableObject> collidedList = new List<Game_CollidableObject>();
+        public override Type realType { get; } = typeof(Bullet_Rocket);
 
-        public Bullet_Rocket(Game_Object owner, Game_Sprite sprite, float x, float y)
-        : base(owner, sprite, x, y, 5)
+        [JsonProperty] private bool triggered = false;
+        [JsonProperty] private int remainTime = 10;
+        [JsonProperty] private List<Game_CollidableObject> collidedList = new List<Game_CollidableObject>();
+
+        public Bullet_Rocket(int ownerID, Game_Sprite sprite, float x, float y)
+        : base(ownerID, sprite, x, y, 5)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["rocket"];
+                _sprite = sprite;
+            }
+            spriteID = "rocket";
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;

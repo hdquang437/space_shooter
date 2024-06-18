@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,9 @@ namespace Space_Shooter.Core
 
         }
 
-        protected List<T> _minions = new List<T>();
+        [JsonProperty] protected List<T> _minions = new List<T>();
+        
+        [JsonIgnore]        
         public List<T> minions
         {
             get { return _minions; }

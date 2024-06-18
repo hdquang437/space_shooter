@@ -10,8 +10,9 @@ namespace Space_Shooter.Core.Weapon
 {
     public class EnemyWeapon_Single : Game_EnemyWeapon
     {
-        public EnemyWeapon_Single(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
-        : base(Owner, OffsetX, OffsetY)
+        public override Type realType { get; } = typeof(EnemyWeapon_Single);
+        public EnemyWeapon_Single(int ownerID, float OffsetX = 0, float OffsetY = 0)
+        : base(ownerID, OffsetX, OffsetY)
         {
             attack_cd = 40;
             maxAmmo = 3;

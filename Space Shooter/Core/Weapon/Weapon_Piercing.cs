@@ -10,8 +10,10 @@ namespace Space_Shooter.Core.Weapon
 {
     public class Weapon_Piercing : Game_Weapon
     {
-        public Weapon_Piercing(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
-        : base(Owner, OffsetX, OffsetY)
+        public override Type realType { get; } = typeof(Weapon_Piercing);
+        //public override WeaponType weaponType { get; set; } = WeaponType.WeaponPiercing;
+        public Weapon_Piercing(int ownerID, float OffsetX = 0, float OffsetY = 0)
+        : base(ownerID, OffsetX, OffsetY)
         {
             attack_cd = 50;
             maxAmmo = 20;

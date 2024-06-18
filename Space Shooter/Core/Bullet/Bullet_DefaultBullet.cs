@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Space_Shooter.Manager;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -12,9 +13,16 @@ namespace Space_Shooter.Core.Bullet
     {
         public const int EXPLOSION_SIZE = 30;
 
-        public Bullet_DefaultBullet(Game_Object owner, Game_Sprite sprite, float x, float y, float speed = 7)
-             : base(owner, sprite, x, y, speed)
+        public override Type realType { get; } = typeof(Bullet_DefaultBullet);
+        public Bullet_DefaultBullet(int ownerID, Game_Sprite sprite, float x, float y, float speed = 7)
+             : base(ownerID, sprite, x, y, speed)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["default_bullet"];
+                _sprite = sprite;
+            }
+            spriteID = "default_bullet";
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;

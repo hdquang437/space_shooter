@@ -15,7 +15,6 @@ namespace Space_Shooter.Control
     public partial class Screen_Pause : UserControl
     {
         public Screen_Game parentControl;
-        public static readonly GameDataManager GameDataManager = GameDataManager.Instance;
 
         public Screen_Pause()
         {
@@ -25,32 +24,37 @@ namespace Space_Shooter.Control
         private void btn_resume_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            GameDataManager.isPaused = false;
+            GameDataManager.Instance.isPaused = false;
         }
 
         private void btn_backToMenu_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            GameDataManager.isPaused = false;
+            GameDataManager.Instance.isPaused = false;
             parentControl.BackToMenu();
         }
 
         private void btn_controlMouse_Click(object sender, EventArgs e)
         {
-            if (GameDataManager.playMode == PlayMode.Mouse)
+            if (GameDataManager.Instance.playMode == PlayMode.Mouse)
                 return;
-            GameDataManager.playMode = PlayMode.Mouse;
+            GameDataManager.Instance.playMode = PlayMode.Mouse;
             btn_controlMouse.BackgroundImage = Resources.controller_mouse_active;
             btn_controlKeyboard.BackgroundImage = Resources.controller_keyboard_deactive;
         }
 
         private void btn_controlKeyboard_Click(object sender, EventArgs e)
         {
-            if (GameDataManager.playMode == PlayMode.Keyboard)
+            if (GameDataManager.Instance.playMode == PlayMode.Keyboard)
                 return;
-            GameDataManager.playMode = PlayMode.Keyboard;
+            GameDataManager.Instance.playMode = PlayMode.Keyboard;
             btn_controlMouse.BackgroundImage = Resources.controller_mouse_deactive;
             btn_controlKeyboard.BackgroundImage = Resources.controller_keyboard_active;
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            parentControl.OpenSave();
         }
     }
 }
