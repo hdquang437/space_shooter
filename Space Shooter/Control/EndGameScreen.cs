@@ -19,6 +19,8 @@ namespace Space_Shooter.Control
         string defeatedSentence = "Too bad! Better luck next time!";
         public User currentUser;
 
+        private SaveScoreScreen saveScoreScreen;
+
         static public GameDataManager GameDataManager = GameDataManager.Instance;
 
         public EndGameScreen(User user)
@@ -26,6 +28,13 @@ namespace Space_Shooter.Control
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             this.currentUser = user;
+
+            saveScoreScreen = new SaveScoreScreen();
+            saveScoreScreen.BackButtonClick += new EventHandler(SaveScoreScreen_Close);
+            Controls.Add(saveScoreScreen);
+            saveScoreScreen.Visible = false;
+            saveScoreScreen.BringToFront();
+
         }
 
         private void EndGameScreen_Load(object sender, EventArgs e)
@@ -70,7 +79,6 @@ namespace Space_Shooter.Control
 
         public event EventHandler GoToMainMenu;
         public event EventHandler Continue;
-        public event EventHandler ShareOnFacebook;
 
         private void btn_mainmenu_Click(object sender, EventArgs e)
         {
@@ -84,7 +92,13 @@ namespace Space_Shooter.Control
 
         private void btn_share_Click(object sender, EventArgs e)
         {
-            ShareOnFacebook(this,e);
+            saveScoreScreen.UpdateScreen(currentUser);
+            saveScoreScreen.Visible = true;
+        }
+
+        public void SaveScoreScreen_Close(object sender, EventArgs e)
+        {
+            saveScoreScreen.Visible = false;
         }
     }
 }

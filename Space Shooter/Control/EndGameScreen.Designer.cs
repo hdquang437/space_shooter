@@ -174,7 +174,7 @@
             this.btn_share.Name = "btn_share";
             this.btn_share.Size = new System.Drawing.Size(537, 101);
             this.btn_share.TabIndex = 4;
-            this.btn_share.Text = "Share On Facebook";
+            this.btn_share.Text = "Save Your Score";
             this.btn_share.UseVisualStyleBackColor = false;
             this.btn_share.Click += new System.EventHandler(this.btn_share_Click);
             // 

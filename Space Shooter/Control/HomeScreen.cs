@@ -39,6 +39,7 @@ namespace Space_Shooter.AccountManagement
 
         LoginComponent loginComponent = null;
         SignUpComponent signUpComponent = null;
+        InstructionScreen instructionScreen = null;
         Screen_SaveAndLoad loadSavefileComponent = null;
 
         public static GameDataManager GameDataManager = GameDataManager.Instance;
@@ -61,13 +62,16 @@ namespace Space_Shooter.AccountManagement
 
             loginComponent = new LoginComponent();
             signUpComponent = new SignUpComponent();
+            instructionScreen = new InstructionScreen();
             loadSavefileComponent = new Screen_SaveAndLoad();
             loadSavefileComponent.mode = Screen_SaveAndLoad.Mode.Load;
             loadSavefileComponent.Visible = false;
             loginComponent.Visible = false;
             signUpComponent.Visible = false;
+            instructionScreen.Visible = false;
             Controls.Add(loginComponent);
             Controls.Add(signUpComponent);
+            Controls.Add(instructionScreen);
             Controls.Add(loadSavefileComponent);
             loginComponent.BringToFront();
             signUpComponent.BringToFront();
@@ -134,6 +138,7 @@ namespace Space_Shooter.AccountManagement
             this.btn_login.Visible = false;
             this.btn_signup.Visible = false;
             this.btn_start.Visible = true;
+            this.btn_instruction.Visible = true;
             this.btn_logout.Visible = true;
             this.btn_continue.Visible = true;
             this.pn_chooseShip.Visible = true;
@@ -154,6 +159,7 @@ namespace Space_Shooter.AccountManagement
         private void btn_logout_Click(object sender, EventArgs e)
         {
             this.btn_start.Visible = false;
+            this.btn_instruction.Visible = false;
             this.btn_logout.Visible = false;
             this.pn_user.Visible = false;
             this.btn_login.Visible = true;
@@ -197,6 +203,7 @@ namespace Space_Shooter.AccountManagement
                 this.btn_login.Visible = false;
                 this.btn_signup.Visible = false;
                 this.btn_start.Visible = true;
+                this.btn_instruction.Visible = true;
                 this.btn_logout.Visible = true;
                 this.pn_chooseShip.Visible = true;
                 this.pn_Controller.Visible = true;
@@ -310,6 +317,11 @@ namespace Space_Shooter.AccountManagement
             btn_controlKeyboard.BackgroundImage = Resources.controller_keyboard_active;
         }
 
+        private void btn_instruction_Click(object sender, EventArgs e)
+        {
+            instructionScreen.BringToFront();
+            this.instructionScreen.Visible = true;
+        }
         private void btn_continue_Click(object sender, EventArgs e)
         {
             if (GameDataManager.init)

@@ -45,8 +45,13 @@ namespace Space_Shooter
             endGameScreen = new EndGameScreen(currentUser);
             endGameScreen.GoToMainMenu += EndGameScreen_GoToMainMenu;
             endGameScreen.Continue += EndGameScreen_Continue;
-            endGameScreen.ShareOnFacebook += EndGameScreen_ShareOnFacebook;
-            //panel_screen.Controls.Add(gameScreen);
+        }
+
+        private void SaveScoreScreen_BackButtonClick(object sender, EventArgs e)
+        {
+            AudioManager.PlayBGM(BGM.bgm_gameover);
+            panel_screen.Controls.Clear();
+            panel_screen.Controls.Add(endGameScreen);
         }
 
         private void HomeScreen_ChooseShip(object sender, EventArgs e)
