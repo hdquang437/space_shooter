@@ -72,6 +72,12 @@
     <Compile Include="Control\HomeScreen.Designer.cs">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\InstructionScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\InstructionScreen.Designer.cs">
+      <DependentUpon>InstructionScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\LeaderBoardUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -93,6 +99,12 @@
     </Compile>
     <Compile Include="Control\SaveProfile.Designer.cs">
       <DependentUpon>SaveProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SaveScoreScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\SaveScoreScreen.Designer.cs">
+      <DependentUpon>SaveScoreScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\Screen_Pause.cs">
       <SubType>UserControl</SubType>
@@ -197,6 +209,9 @@
     <EmbeddedResource Include="Control\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Control\InstructionScreen.resx">
+      <DependentUpon>InstructionScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\LeaderBoardUser.resx">
       <DependentUpon>LeaderBoardUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\SaveProfile.resx">
       <DependentUpon>SaveProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\SaveScoreScreen.resx">
+      <DependentUpon>SaveScoreScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\Screen_Pause.resx">
       <DependentUpon>Screen_Pause.cs</DependentUpon>

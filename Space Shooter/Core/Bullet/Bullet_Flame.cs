@@ -38,6 +38,31 @@ namespace Space_Shooter.Core.Bullet
             //die_ani_sprite = "flame_bullet";
         }
 
+        [JsonConstructor]
+        public Bullet_Flame(int ownerID, Game_Sprite sprite, float x, float y, bool triggered, int remainTimes,
+            int triggerCD)
+        : base(ownerID, sprite, x, y, 4)
+        {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["flame"];
+                _sprite = sprite;
+            }
+            spriteID = "flame";
+            _z = 11;
+            remainTime = sprite.TotalFrame * Game_Animation.animationFrame;
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = _Width / 2;
+            _team = 0;
+            _immortal = true;
+            _collideDamage = 5;
+            triggerInterval = 4;
+            this.triggerCD = triggerCD;
+            this.remainTime = remainTimes;
+            _die_ani = false;
+        }
+
         public override void Update()
         {
             base.Update();

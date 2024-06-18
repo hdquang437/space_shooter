@@ -10,18 +10,26 @@ namespace Space_Shooter.Core
 {
     public class Game_Sprite
     {
+        public static Game_Sprite Empty = new Game_Sprite();
+
         Bitmap _sprite = null;
         int _max_frameX = 1;
         int _max_frameY = 1;
         int _totalFrame = -1;
         int _width = 0;
         int _height = 0;
+        bool _isSpriteEmpty;
         public int Width { get { return _width; } }
         public int Height { get { return _height; } }
 
         public int TotalFrame
         {
             get { return _totalFrame <= 0 ? _max_frameX * _max_frameY : _totalFrame; }
+        }
+
+        public Game_Sprite()
+        {
+            _isSpriteEmpty = true;
         }
 
         public Game_Sprite(Bitmap image, int frameX, int frameY, int width, int height, int maxIndex = -1)
@@ -35,6 +43,8 @@ namespace Space_Shooter.Core
 
         public void Render(Graphics g, float x, float y, int index)
         {
+            if (_isSpriteEmpty)
+                return;
             index %= TotalFrame;
             int curFrameColumn = index % _max_frameX;
             int curFrameRow = index / _max_frameX;

@@ -479,9 +479,9 @@
             this.btn_instruction.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_instruction.Font = new System.Drawing.Font("Showcard Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_instruction.ForeColor = System.Drawing.Color.Khaki;
-            this.btn_instruction.Location = new System.Drawing.Point(494, 424);
+            this.btn_instruction.Location = new System.Drawing.Point(843, 871);
             this.btn_instruction.Name = "btn_instruction";
-            this.btn_instruction.Size = new System.Drawing.Size(322, 101);
+            this.btn_instruction.Size = new System.Drawing.Size(349, 101);
             this.btn_instruction.TabIndex = 10;
             this.btn_instruction.Text = "Instruction";
             this.btn_instruction.UseVisualStyleBackColor = false;

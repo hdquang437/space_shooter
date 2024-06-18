@@ -32,6 +32,27 @@ namespace Space_Shooter.Core.Bullet
             die_ani_sprite = "piercing_bullet";
         }
 
+        [JsonConstructor]
+        public Bullet_Piercing(int ownerID, Game_Sprite sprite, float x, float y,
+            List<Game_CollidableObject> collidedList)
+        : base(ownerID, sprite, x, y, 15)
+        {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["pierce"];
+                _sprite = sprite;
+            }
+            spriteID = "pierce";
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = _Width / 2;
+            _team = 0;
+            _immortal = true;
+            _collideDamage = 80;
+            die_ani_sprite = "piercing_bullet";
+            this.collidedList = collidedList;
+        }
+
         public override void Update()
         {
             base.Update();

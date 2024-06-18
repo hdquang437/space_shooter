@@ -36,6 +36,29 @@ namespace Space_Shooter.Core.Bullet
             die_ani_sprite = "rocket_bullet";
         }
 
+        [JsonConstructor]
+        public Bullet_Rocket(int ownerID, Game_Sprite sprite, float x, float y, bool triggered, int remainTimes,
+            List<Game_CollidableObject> collidedList)
+        : base(ownerID, sprite, x, y, 5)
+        {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["rocket"];
+                _sprite = sprite;
+            }
+            spriteID = "rocket";
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = _Width / 2;
+            _team = 0;
+            _immortal = true;
+            _collideDamage = 100;
+            die_ani_sprite = "rocket_bullet";
+            this.triggered = triggered;
+            this.remainTime = remainTimes;
+            this.collidedList = collidedList;
+        }
+
         public override void Update()
         {
             base.Update();
@@ -76,7 +99,7 @@ namespace Space_Shooter.Core.Bullet
                     ToCenterPoint(center.X, center.Y);
                     Game_Animation ani = Factory.Create_ani_Explosion(die_ani_sprite, center.X, center.Y);
                     _r = ani.Width * 0.4f;
-                    _sprite = null;
+                    _sprite = Game_Sprite.Empty;
                     AudioManager.PlaySE(die_ani_audio);
                 }
 
