@@ -119,6 +119,7 @@
             this.Controls.Add(this.btn_next_bot);
             this.Controls.Add(this.btn_next_top);
             this.Controls.Add(this.pb_exit);
+            this.DoubleBuffered = true;
             this.Name = "InstructionScreen";
             this.Size = new System.Drawing.Size(1540, 838);
             ((System.ComponentModel.ISupportInitialize)(this.pb_exit)).EndInit();

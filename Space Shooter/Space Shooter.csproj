@@ -293,6 +293,7 @@
     <None Include="Resources\controller_keyboard_deactive.png" />
     <None Include="Resources\controller_mouse_deactive.png" />
     <Content Include="Resources\exit_icon.png" />
+    <None Include="Resources\instruc_1.png" />
     <Content Include="Resources\leaderboard_bg.png" />
     <None Include="Resources\char_Spaceship.png" />
     <None Include="Resources\char_Meteor.png" />
