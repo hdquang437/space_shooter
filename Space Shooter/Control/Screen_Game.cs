@@ -158,9 +158,12 @@ namespace Space_Shooter.Control
             if (GameDataManager.triggeredPause)
             {
                 GameDataManager.triggeredPause = false;
-                GameDataManager.isPaused = true;
-                screenPause.Visible = true;
-                return;
+                if (GameDataManager.player != null)
+                {
+                    GameDataManager.isPaused = true;
+                    screenPause.Visible = true;
+                    return;
+                }
             }
 
             Game_Update();

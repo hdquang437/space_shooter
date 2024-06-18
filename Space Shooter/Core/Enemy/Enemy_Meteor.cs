@@ -92,6 +92,30 @@ namespace Space_Shooter.Core.Enemy
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;
+            switch (size)
+            {
+                case 1:
+                    _hp = 10;
+                    _collideDamage = 10;
+                    _reward = 5;
+                    break;
+                case 2:
+                    _hp = 50;
+                    _reward = 10;
+                    break;
+                case 3:
+                    _hp = 100;
+                    _reward = 25;
+                    break;
+                case 4:
+                    _hp = 200;
+                    _reward = 50;
+                    break;
+                case 5:
+                    _hp = 500;
+                    _reward = 100;
+                    break;
+            }
         }
 
         [JsonConstructor]
