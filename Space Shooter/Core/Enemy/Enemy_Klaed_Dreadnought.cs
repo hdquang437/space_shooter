@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,15 +11,23 @@ namespace Space_Shooter.Core.Enemy
 {
     public class Enemy_Klaed_Dreadnought : Game_Enemy
     {
-        private int actionTimer = 400;
-        private int actionCD = 0;
-        private int spawnMinionTimes = 10;
-        private bool init = false;
-        private Game_EnemyWeapon weapon1 = null;
-        private Game_EnemyWeapon weapon2 = null;
+        public override Type realType { get; } = typeof(Enemy_Klaed_Dreadnought);
+
+        [JsonProperty] private int actionTimer = 400;
+        [JsonProperty] private int actionCD = 0;
+        [JsonProperty] private int spawnMinionTimes = 10;
+        [JsonProperty] private bool init = false;
+        [JsonProperty] private Game_EnemyWeapon weapon1 = null;
+        [JsonProperty] private Game_EnemyWeapon weapon2 = null;
         public Enemy_Klaed_Dreadnought(Game_Sprite sprite, float x, float y, float speed)
             : base(sprite, x, y)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["klaed_dreadnought"];
+                _sprite = sprite;
+            }
+            spriteID = "klaed_dreadnought";
             _z = 8;
             _Width = sprite.Width;
             _Height = sprite.Height;
@@ -27,6 +36,35 @@ namespace Space_Shooter.Core.Enemy
             _MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
             _collideDamage = 100;
             _reward = 2000;
+        }
+
+        [JsonConstructor]
+        public Enemy_Klaed_Dreadnought(Game_Sprite sprite, float x, float y, float speed,
+            int actionTimer, int actionCD, int spawnMinionTimes, bool init, int hp)
+        : base(sprite, x, y)
+        {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["klaed_dreadnought"];
+                _sprite = sprite;
+            }
+            spriteID = "klaed_dreadnought";
+            _z = 8;
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = sprite.Width * 0.3f;
+            _hp = hp;
+            _MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
+            _collideDamage = 100;
+            _reward = 2000;
+            this.actionTimer = actionTimer;
+            this.actionCD = actionCD;
+            this.spawnMinionTimes = spawnMinionTimes;
+            this.init = init;
+        }
+
+        public override void LoadWeapon()
+        {
             weapon1 = Factory.Create_EnemyWeapon_HomingRifle(this, 0, -30);
             weapon2 = Factory.Create_EnemyWeapon_Rifle(this, 0, -40);
         }
@@ -73,11 +111,25 @@ namespace Space_Shooter.Core.Enemy
 
         public override void Update()
         {
+            Fix_Weapon();
+            weapon1.Update();
+            weapon2.Update();
             Process_Action();
             base.Update();
             Update_Data();
-            weapon1.Update();
-            weapon2.Update();
+        }
+
+        public override void Fix_Weapon()
+        {
+            base.Fix_Weapon();
+            if (weapon1 != null && weapon1.GetType() != weapon1.realType)
+            {
+                weapon1 = (Game_EnemyWeapon)weapon1.DeserializingPackup();
+            }
+            if (weapon2 != null && weapon1.GetType() != weapon2.realType)
+            {
+                weapon2 = (Game_EnemyWeapon)weapon1.DeserializingPackup();
+            }
         }
 
         public override void Update_Data()
@@ -141,6 +193,13 @@ namespace Space_Shooter.Core.Enemy
                     break;
             }
             minion?.ToCenterPoint(Center.X + offsetX, Center.Y);
+        }
+
+        public override void SelfSerializing()
+        {
+            weapon1?.SelfSerializing();
+            weapon2?.SelfSerializing();
+            base.SelfSerializing();
         }
     }
 }

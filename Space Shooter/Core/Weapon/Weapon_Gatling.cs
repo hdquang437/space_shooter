@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,8 +11,10 @@ namespace Space_Shooter.Core.Weapon
 {
     public class Weapon_Gatling : Game_Weapon
     {
-        public Weapon_Gatling(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
-        : base(Owner, OffsetX, OffsetY)
+        public override Type realType { get; } = typeof(Weapon_Gatling);
+        //public override WeaponType weaponType { get; set; } = WeaponType.WeaponGatling;
+        public Weapon_Gatling(int ownerID, float OffsetX = 0, float OffsetY = 0)
+        : base(ownerID, OffsetX, OffsetY)
         {
             attack_cd = 8;
             maxAmmo = 80;

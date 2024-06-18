@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,21 +10,28 @@ namespace Space_Shooter.Core
 {
     public class Game_CollidableObject : Game_Object
     {
+        public override Type realType { get; } = typeof(Game_CollidableObject);
+
         protected bool _collidable = true;
         protected bool _needScan = true;
         protected int _collideDamage = 0;
-        protected int _hp = 0;
-        protected bool _immortal = false;
+        [JsonProperty] protected int _hp = 0;
+        [JsonProperty] protected bool _immortal = false;
         protected bool _ignoreBullet = false;
 
         // 0 - Player Team
         // 1 - Enemy Team
         protected int _team = 0;
 
+        [JsonIgnore]
         public bool Collidable { get { return _collidable && !_die; } }
+        [JsonIgnore]
         public bool NeedScan { get { return _needScan; } }
+        [JsonIgnore]
         public bool Immortal {  get { return _immortal; } }
+        [JsonIgnore]
         public bool IgnoreBullet { get { return _ignoreBullet; } }
+        [JsonIgnore]
         virtual public int HP {
             get
             {
@@ -34,7 +42,9 @@ namespace Space_Shooter.Core
                 _hp = (Math.Max(0, value));
             }
         }
+        [JsonIgnore]
         public int CollideDamage { get { return _collideDamage; } }
+        [JsonIgnore]
         public int Team { get { return _team; } }
 
         public Game_CollidableObject(Game_Sprite sprite , float x, float y)
@@ -90,6 +100,11 @@ namespace Space_Shooter.Core
                 _die = true;
                 _die_ani = false;
             }
+        }
+
+        public override void SelfSerializing()
+        {
+            base.SelfSerializing();
         }
     }
 }

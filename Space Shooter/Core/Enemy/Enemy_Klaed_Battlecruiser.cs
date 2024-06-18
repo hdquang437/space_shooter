@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,20 +11,28 @@ namespace Space_Shooter.Core.Enemy
 {
     public class Enemy_Klaed_Battlecruiser : Game_Enemy
     {
+        public override Type realType { get; } = typeof(Enemy_Klaed_Battlecruiser);
+
         private int actionTimer = 250;
-        private int actionCD = 0;
-        private int spawnMinionTimes = 15;
-        private bool init = false;
-        private Game_EnemyWeapon weaponL1 = null;
-        private Game_EnemyWeapon weaponL2 = null;
-        private Game_EnemyWeapon weaponR1 = null;
-        private Game_EnemyWeapon weaponR2 = null;
-        private Game_EnemyWeapon weaponC = null;
-        int spawnType = 0;
+        [JsonProperty] private int actionCD = 0;
+        [JsonProperty] private int spawnMinionTimes = 15;
+        [JsonProperty] private bool init = false;
+        [JsonProperty] private Game_EnemyWeapon weaponL1 = null;
+        [JsonProperty] private Game_EnemyWeapon weaponL2 = null;
+        [JsonProperty] private Game_EnemyWeapon weaponR1 = null;
+        [JsonProperty] private Game_EnemyWeapon weaponR2 = null;
+        [JsonProperty] private Game_EnemyWeapon weaponC = null;
+        [JsonProperty] int spawnType = 0;
 
         public Enemy_Klaed_Battlecruiser(Game_Sprite sprite, float x, float y, float speed)
             : base(sprite, x, y)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["klaed_battlecruiser"];
+                _sprite = sprite;
+            }
+            spriteID = "klaed_battlecruiser";
             _z = 8;
             _Width = sprite.Width;
             _Height = sprite.Height;
@@ -31,12 +40,41 @@ namespace Space_Shooter.Core.Enemy
             _hp = 1000;
             _MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
             _collideDamage = 100;
+            _reward = 2000;
+        }
+
+        [JsonConstructor]
+        public Enemy_Klaed_Battlecruiser(Game_Sprite sprite, float x, float y, float speed,
+            int actionTimer, int actionCD, int spawnMinionTimes, bool init, int hp)
+            : base(sprite, x, y)
+        {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["klaed_battlecruiser"];
+                _sprite = sprite;
+            }
+            spriteID = "klaed_battlecruiser";
+            _z = 8;
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = sprite.Width * 0.3f;
+            _hp = hp;
+            _MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
+            _collideDamage = 100;
+            _reward = 2000;
+            this.actionTimer = actionTimer;
+            this.actionCD = actionCD;
+            this.spawnMinionTimes = spawnMinionTimes;
+            this.init = init;
+        }
+
+        public override void LoadWeapon()
+        {
             weaponC = Factory.Create_EnemyWeapon_Sniper(this, 0, -20);
             weaponL1 = Factory.Create_EnemyWeapon_Rifle(this, -60, -20);
             weaponR1 = Factory.Create_EnemyWeapon_Rifle(this, 60, -20);
             weaponL2 = Factory.Create_EnemyWeapon_SniperRifle(this, -40, 40);
             weaponR2 = Factory.Create_EnemyWeapon_SniperRifle(this, 40, 40);
-            _reward = 2000;
         }
 
         public override void Process_Action()
@@ -82,19 +120,44 @@ namespace Space_Shooter.Core.Enemy
 
         public override void Update()
         {
-            Process_Action();
-            base.Update();
-            Update_Data();
-        }
-
-        public override void Update_Data()
-        {
-            base.Update_Data();
+            Fix_Weapon();
             weaponC.Update();
             weaponL1.Update();
             weaponL2.Update();
             weaponR1.Update();
             weaponR2.Update();
+            Process_Action();
+            base.Update();
+            Update_Data();
+        }
+        public override void Fix_Weapon()
+        {
+            base.Fix_Weapon();
+            if (weaponC != null && weaponC.GetType() != weaponC.realType)
+            {
+                weaponC = (Game_EnemyWeapon)weaponC.DeserializingPackup();
+            }
+            if (weaponL1 != null && weaponL1.GetType() != weaponL1.realType)
+            {
+                weaponL1 = (Game_EnemyWeapon)weaponL1.DeserializingPackup();
+            }
+            if (weaponL2 != null && weaponL2.GetType() != weaponL2.realType)
+            {
+                weaponL2 = (Game_EnemyWeapon)weaponL2.DeserializingPackup();
+            }
+            if (weaponR1 != null && weaponR1.GetType() != weaponR1.realType)
+            {
+                weaponR1 = (Game_EnemyWeapon)weaponR1.DeserializingPackup();
+            }
+            if (weaponR2 != null && weaponR2.GetType() != weaponR2.realType)
+            {
+                weaponR2 = (Game_EnemyWeapon)weaponR2.DeserializingPackup();
+            }
+        }
+
+        public override void Update_Data()
+        {
+            base.Update_Data();
         }
 
         public override void Process_BeforeDie()
@@ -146,6 +209,31 @@ namespace Space_Shooter.Core.Enemy
                     break;
             }
             minion?.ToCenterPoint(Center.X, Center.Y);
+        }
+
+        public override void SelfSerializing()
+        {
+            if (weaponC != null)
+            {
+                weaponC.SelfSerializing();
+            }
+            if (weaponL1 != null)
+            {
+                weaponL1.SelfSerializing();
+            }
+            if (weaponL2 != null)
+            {
+                weaponL2.SelfSerializing();
+            }
+            if (weaponR1 != null)
+            {
+                weaponR1.SelfSerializing();
+            }
+            if (weaponR2 != null)
+            {
+                weaponR2.SelfSerializing();
+            }
+            base.SelfSerializing();
         }
     }
 }

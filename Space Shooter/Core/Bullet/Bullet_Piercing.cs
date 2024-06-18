@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,19 @@ namespace Space_Shooter.Core.Bullet
 {
     public class Bullet_Piercing : Game_Bullet
     {
-        private List<Game_CollidableObject> collidedList = new List<Game_CollidableObject>();
+        public override Type realType { get; } = typeof(Bullet_Piercing);
 
-        public Bullet_Piercing(Game_Object owner, Game_Sprite sprite, float x, float y)
-        : base(owner, sprite, x, y, 15)
+        [JsonProperty] private List<Game_CollidableObject> collidedList = new List<Game_CollidableObject>();
+
+        public Bullet_Piercing(int ownerID, Game_Sprite sprite, float x, float y)
+        : base(ownerID, sprite, x, y, 15)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["pierce"];
+                _sprite = sprite;
+            }
+            spriteID = "pierce";
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;

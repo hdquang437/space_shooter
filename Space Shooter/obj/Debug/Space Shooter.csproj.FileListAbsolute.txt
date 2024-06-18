@@ -42,12 +42,4 @@ F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.EndGa
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.EndGameScreen.resources
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.Screen_Pause.resources
 D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.Screen_SaveAndLoad.resources
-F:\HK2-Nam3\C#\space_shooter\Space Shooter\bin\Debug\Facebook.dll
-F:\HK2-Nam3\C#\space_shooter\Space Shooter\bin\Debug\Facebook.xml
-F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.SaveScoreScreen.resources
-F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.Screen_Pause.resources
-F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.Screen_SaveAndLoad.resources
-D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.SaveScoreScreen.resources
-D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\Facebook.dll
-D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\bin\Debug\Facebook.xml
-F:\HK2-Nam3\C#\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.InstructionScreen.resources
+D:\Quang\Tai Lieu\DaiHoc\HK6\Ngon Ngu C#\Code\space_shooter\Space Shooter\obj\Debug\Space_Shooter.Control.SaveProfile.resources

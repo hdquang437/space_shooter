@@ -10,8 +10,9 @@ namespace Space_Shooter.Core.Weapon
 {
     public class EnemyWeapon_HomingRifle : Game_EnemyWeapon
     {
-        public EnemyWeapon_HomingRifle(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
-        : base(Owner, OffsetX, OffsetY)
+        public override Type realType { get; } = typeof(EnemyWeapon_HomingRifle);
+        public EnemyWeapon_HomingRifle(int ownerID, float OffsetX = 0, float OffsetY = 0)
+        : base(ownerID, OffsetX, OffsetY)
         {
             attack_cd = 50;
             maxAmmo = 5;

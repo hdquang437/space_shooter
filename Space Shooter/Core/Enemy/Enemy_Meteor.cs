@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -25,19 +26,27 @@ namespace Space_Shooter.Core.Enemy
 
     public class Enemy_Meteor : Game_SpawnableEnemy<MeteorMinion>
     {
+        public override Type realType { get; } = typeof(Enemy_Meteor);
+
         public const int SIZE_1 = 40;
         public const int SIZE_2 = 80;
         public const int SIZE_3 = 150;
         public const int SIZE_4 = 320;
         public const int SIZE_5 = 540;
 
-        private float velocityX;
-        private float velocityY;
-        private int size;
+        [JsonProperty] private float velocityX;
+        [JsonProperty] private float velocityY;
+        [JsonProperty] private int size;
 
         public Enemy_Meteor(Game_Sprite sprite, float x, float y, int size, float vX = 0, float vY = 1, float speed = 5)
             : base(sprite, x, y)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites[$"meteor_size{size}"];
+                _sprite = sprite;
+            }
+            spriteID = $"meteor_size{size}";
             _z = 10;
             this.velocityX = vX;
             this.velocityY = vY;
@@ -83,6 +92,29 @@ namespace Space_Shooter.Core.Enemy
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;
+        }
+
+        [JsonConstructor]
+        public Enemy_Meteor(Game_Sprite sprite, float x, float y, int size, float vX, float vY, float speed, List<MeteorMinion> minions)
+            : base(sprite, x, y)
+        {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites[$"meteor_size{size}"];
+                _sprite = sprite;
+            }
+            spriteID = $"meteor_size{size}";
+            _z = 10;
+            this.velocityX = vX;
+            this.velocityY = vY;
+            this.size = size;
+            this._MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
+            _frame_CD = 12;
+            _collideDamage = 1000;
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = _Width / 2;
+            this._minions = minions;
         }
 
         private void GenerateRandomMinions(int minSize, int maxSize, int minChildAmount, int maxChildAmount)

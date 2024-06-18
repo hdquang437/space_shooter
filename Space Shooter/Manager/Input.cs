@@ -31,7 +31,7 @@ namespace Space_Shooter.Manager
     {
         public static bool IsMouseDown;
 
-        public static readonly GameDataManager GameDataManager = GameDataManager.Instance;
+        public static GameDataManager GameDataManager = GameDataManager.Instance;
 
         public static void GetKeyStates()
         {

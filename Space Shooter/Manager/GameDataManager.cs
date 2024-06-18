@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Space_Shooter.AccountManagement;
 using Space_Shooter.Control;
 using Space_Shooter.Core;
 using Space_Shooter.Core.Enemy;
@@ -39,6 +40,10 @@ namespace Space_Shooter.Manager
         public List<Game_Enemy> enemies = new List<Game_Enemy>();
         public List<Game_Bullet> bullets = new List<Game_Bullet>();
         public List<Game_Animation> animations = new List<Game_Animation>();
+
+        public int usedID = 0;
+        public List<int> freeID = new List<int>();
+
         public Game_Player player;
         public Ship playerShipType = Ship.Default;
         public PlayMode playMode = PlayMode.Mouse;
@@ -56,6 +61,7 @@ namespace Space_Shooter.Manager
         [JsonProperty]
         private int time = 0;
         public int PlayTime = 0;
+        public string lastPlayTime = "";
 
         // pause game
         public bool isPaused = false;
@@ -94,14 +100,14 @@ namespace Space_Shooter.Manager
             }
         }
 
-        //public int Stage { get { return stage; } }
+        public int Stage { get { return stage; } }
         //static public int highest_score;
         public GameDifficulty Difficulty = GameDifficulty.Easy;
 
         [JsonProperty]
         private SortedDictionary<string, StageData> StagesDict = new SortedDictionary<string, StageData>();
         [JsonProperty]
-        private SortedDictionary<int, List<Game_Object>> stageObjects = new SortedDictionary<int, List<Game_Object>>();
+        public SortedDictionary<int, List<Game_Enemy>> stageObjects = new SortedDictionary<int, List<Game_Enemy>>();
 
         #region Stage Control
         public bool init = false;
@@ -168,15 +174,12 @@ namespace Space_Shooter.Manager
             {
                 return;
             }
-            List<Game_Object> list = stageObjects[time];
+            List<Game_Enemy> list = stageObjects[time];
             if (list != null && list.Count != 0)
             {
-                foreach (Game_Object obj in list)
+                foreach (Game_Enemy obj in list)
                 {
-                    if (obj is Game_Enemy enemy)
-                    {
-                        enemies.Add(enemy);
-                    }
+                    enemies.Add(obj);
                 }
                 stageObjects.Remove(time);
             }
@@ -243,6 +246,8 @@ namespace Space_Shooter.Manager
             animations.Clear();
             stageObjects.Clear();
             player = Factory.Create_PlayerSpaceship(0, 0, playerShipType);
+            player.ID = GetAvailableID();
+            player.LoadDefaultWeapon();
             score = 0;
             stage = 0;
             PlayTime = 0;
@@ -287,6 +292,7 @@ namespace Space_Shooter.Manager
         }
 
         #region Getter
+        [JsonIgnore]
         public List<Game_CollidableObject> EnemyTeam_CollidableObjects
         {
             get
@@ -298,6 +304,7 @@ namespace Space_Shooter.Manager
             }
         }
 
+        [JsonIgnore]
         public List<Game_CollidableObject> PlayerTeam_CollidableObjects
         {
             get
@@ -309,6 +316,22 @@ namespace Space_Shooter.Manager
             }
         }
 
+        [JsonIgnore]
+        public List<Game_CollidableObject> AllCollidableObjects
+        {
+            get
+            {
+                List<Game_CollidableObject> list = new List<Game_CollidableObject>
+                {
+                    player
+                };
+                list.AddRange(bullets);
+                list.AddRange(enemies);
+                return list;
+            }
+        }
+
+        [JsonIgnore]
         public List<Game_Object> AllDrawableObjects
         {
             get
@@ -323,9 +346,51 @@ namespace Space_Shooter.Manager
                 return list.OrderBy(obj => obj?.z).ToList();
             }
         }
+
+        public int GetAvailableID()
+        {
+            int result = -1;
+            if (freeID.Count > 0)
+            {
+                result = freeID.First();
+                freeID.RemoveAt(0);
+                return result;
+            }
+            else
+            {
+                result = usedID;
+                usedID++;
+            }
+            return result;
+        }
+
+        public Game_Object FindObjectByID(int id)
+        {
+            return AllDrawableObjects.Find(x => x != null && x.ID == id);
+        }
+
         #endregion
 
         #region Action
+
+        public void AddObjects(Game_Object obj)
+        {
+            if (obj is Game_Enemy enemy)
+            {
+                enemy.ID = GetAvailableID();
+                enemies.Add(enemy);
+            }
+            else if (obj is Game_Bullet bullet)
+            {
+                bullet.ID = GetAvailableID();
+                bullets.Add(bullet);
+            }
+            else if (obj is Game_Animation animation)
+            {
+                //animation.ID = GetAvailableID();
+                animations.Add(animation);
+            }
+        }
 
         public void RequestScreenshot(Screen_Game control)
         {
@@ -456,7 +521,7 @@ namespace Space_Shooter.Manager
                 float x = float.Parse(parse[2]);
                 float y = float.Parse(parse[3]);
 
-                Game_Object obj = null;
+                Game_Enemy obj = null;
                 switch (parse[1])
                 {
                     // METEOR
@@ -529,13 +594,17 @@ namespace Space_Shooter.Manager
                         Console.WriteLine("[Unknown ID]:" + line);
                         continue;
                 }
+
+                obj.ID = GetAvailableID();
+                obj.LoadWeapon();
+
                 if (stageObjects.ContainsKey(key))
                 {
                     stageObjects[key].Add(obj);
                 }
                 else
                 {
-                    stageObjects.Add(key, new List<Game_Object>());
+                    stageObjects.Add(key, new List<Game_Enemy>());
                     stageObjects[key].Add(obj);
                 }
             }
@@ -565,6 +634,47 @@ namespace Space_Shooter.Manager
             return false;
         }
 
+
+        public static void LoadSaveProfile(GameDataManager savedata)
+        {
+            // packup
+            PlayMode playMode = instance.playMode;
+
+            instance = savedata;
+
+            instance.isPaused = false;
+            instance.playMode = playMode;
+
+            // Deserializing all collidable objects
+            for (int i = 0; i < instance.enemies.Count; i++)
+            {
+                if (instance.enemies[i] == null)
+                    continue;
+                instance.enemies[i] = instance.enemies[i].DeserializingPackup();
+            }
+
+            for (int i = 0; i < instance.bullets.Count; i++)
+            {
+                if (instance.bullets[i] == null)
+                    continue;
+                instance.bullets[i] = instance.bullets[i].DeserializingPackup();
+            }
+
+            foreach (List<Game_Enemy> objects in instance.stageObjects.Values)
+            {
+                for (int i = 0; i < objects.Count; i++)
+                {
+                    objects[i] = objects[i].DeserializingPackup();
+                }
+            }
+
+            // Update Instance
+            Game_Object.GameDataManager = instance;
+            Input.GameDataManager = instance;
+            Factory.GameDataManager = instance;
+            EndGameScreen.GameDataManager = instance;
+            HomeScreen.GameDataManager = instance;
+        }
         #endregion
     }
 

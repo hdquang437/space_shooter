@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,19 @@ namespace Space_Shooter.Core.Bullet
 {
     public class EnemyBullet_Spread : Game_Bullet
     {
-        float vX;
-        float vY;
-        public EnemyBullet_Spread(Game_Object owner, Game_Sprite sprite, float x, float y)
-        : base(owner, sprite, x, y, 7)
+        public override Type realType { get; } = typeof(EnemyBullet_Spread);
+
+        [JsonProperty] float vX;
+        [JsonProperty] float vY;
+        public EnemyBullet_Spread(int ownerID, Game_Sprite sprite, float x, float y)
+        : base(ownerID, sprite, x, y, 7)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["enemy_bullet"];
+                _sprite = sprite;
+            }
+            spriteID = "enemy_bullet";
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;

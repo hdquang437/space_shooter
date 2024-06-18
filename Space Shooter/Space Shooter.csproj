@@ -36,9 +36,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
-      <HintPath>packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -75,12 +72,6 @@
     <Compile Include="Control\HomeScreen.Designer.cs">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Control\InstructionScreen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Control\InstructionScreen.Designer.cs">
-      <DependentUpon>InstructionScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Control\LeaderBoardUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,11 +88,11 @@
     <Compile Include="AccountManagement\Repository\FilePathManager.cs" />
     <Compile Include="AccountManagement\Repository\InputValidator.cs" />
     <Compile Include="AccountManagement\Repository\UserRepo.cs" />
-    <Compile Include="Control\SaveScoreScreen.cs">
+    <Compile Include="Control\SaveProfile.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Control\SaveScoreScreen.Designer.cs">
-      <DependentUpon>SaveScoreScreen.cs</DependentUpon>
+    <Compile Include="Control\SaveProfile.Designer.cs">
+      <DependentUpon>SaveProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\Screen_Pause.cs">
       <SubType>UserControl</SubType>
@@ -154,6 +145,7 @@
     <Compile Include="Core\Enemy\Enemy_Klaed_SupportShip.cs" />
     <Compile Include="Core\Enemy\Enemy_Klaed_TorpedoShip.cs" />
     <Compile Include="Core\Enemy\Enemy_Meteor.cs" />
+    <Compile Include="Core\Extensions\ObjectExtensions.cs" />
     <Compile Include="Core\Game_Animation.cs" />
     <Compile Include="Core\Game_Bullet.cs" />
     <Compile Include="Core\Game_CollidableObject.cs" />
@@ -191,6 +183,7 @@
     <Compile Include="Manager\GameDataManager.cs" />
     <Compile Include="Manager\Input.cs" />
     <Compile Include="Manager\ObjectID.cs" />
+    <Compile Include="Manager\SaveFileManager.cs" />
     <Compile Include="Manager\SpriteManager.cs" />
     <Compile Include="Manager\Utilities.cs" />
     <Compile Include="Program.cs" />
@@ -204,17 +197,14 @@
     <EmbeddedResource Include="Control\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Control\InstructionScreen.resx">
-      <DependentUpon>InstructionScreen.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Control\LeaderBoardUser.resx">
       <DependentUpon>LeaderBoardUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\LoginComponent.resx">
       <DependentUpon>LoginComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Control\SaveScoreScreen.resx">
-      <DependentUpon>SaveScoreScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Control\SaveProfile.resx">
+      <DependentUpon>SaveProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\Screen_Pause.resx">
       <DependentUpon>Screen_Pause.cs</DependentUpon>
@@ -285,9 +275,6 @@
     <None Include="Resources\controller_keyboard_deactive.png" />
     <None Include="Resources\controller_mouse_deactive.png" />
     <Content Include="Resources\exit_icon.png" />
-    <None Include="Resources\instruc_2.png" />
-    <None Include="Resources\instruc_3.png" />
-    <None Include="Resources\instruc_1.png" />
     <Content Include="Resources\leaderboard_bg.png" />
     <None Include="Resources\char_Spaceship.png" />
     <None Include="Resources\char_Meteor.png" />

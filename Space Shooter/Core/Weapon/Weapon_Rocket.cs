@@ -10,8 +10,9 @@ namespace Space_Shooter.Core.Weapon
 {
     public class Weapon_Rocket : Game_Weapon
     {
-        public Weapon_Rocket(Game_CollidableObject Owner, float OffsetX = 0, float OffsetY = 0)
-        : base(Owner, OffsetX, OffsetY)
+        public override Type realType { get; } = typeof(Weapon_Rocket);
+        public Weapon_Rocket(int ownerID, float OffsetX = 0, float OffsetY = 0)
+        : base(ownerID, OffsetX, OffsetY)
         {
             attack_cd = 60;
             maxAmmo = 15;

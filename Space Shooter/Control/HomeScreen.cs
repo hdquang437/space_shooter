@@ -40,8 +40,9 @@ namespace Space_Shooter.AccountManagement
         LoginComponent loginComponent = null;
         SignUpComponent signUpComponent = null;
         InstructionScreen instructionScreen = null;
+        Screen_SaveAndLoad loadSavefileComponent = null;
 
-        public static readonly GameDataManager GameDataManager = GameDataManager.Instance;
+        public static GameDataManager GameDataManager = GameDataManager.Instance;
 
         public HomeScreen(User user)
         {
@@ -62,17 +63,24 @@ namespace Space_Shooter.AccountManagement
             loginComponent = new LoginComponent();
             signUpComponent = new SignUpComponent();
             instructionScreen = new InstructionScreen();
+            loadSavefileComponent = new Screen_SaveAndLoad();
+            loadSavefileComponent.mode = Screen_SaveAndLoad.Mode.Load;
+            loadSavefileComponent.Visible = false;
             loginComponent.Visible = false;
             signUpComponent.Visible = false;
             instructionScreen.Visible = false;
             Controls.Add(loginComponent);
             Controls.Add(signUpComponent);
             Controls.Add(instructionScreen);
+            Controls.Add(loadSavefileComponent);
             loginComponent.BringToFront();
             signUpComponent.BringToFront();
+            loadSavefileComponent.BringToFront();
 
             loginComponent.getUser += new EventHandler(loginComponent_getUser);
             signUpComponent.reloadUser += new EventHandler(signUpComponent_reloadUser);
+            loadSavefileComponent.SaveAndLoadButton += new EventHandler(loadSavefileComponent_LoadProfile);
+            loadSavefileComponent.backButton += new EventHandler(loadSavefileComponent_Back);
 
             pn_chooseShipDiff.Visible = true;
             pn_chooseShip.Visible = false;
@@ -82,6 +90,7 @@ namespace Space_Shooter.AccountManagement
         public event EventHandler StartGame;
         public event EventHandler ChooseShip;
         public event EventHandler SetDiff;
+        public event EventHandler LoadGame;
 
         private void pb_exit_Click(object sender, EventArgs e)
         {
@@ -121,6 +130,7 @@ namespace Space_Shooter.AccountManagement
         private void loginComponent_getUser(object sender, EventArgs e)
         {
             currentUser = sender as User;
+            SaveFileManager.Instance.LoadSaveProfilesFromLocal(currentUser);
             this.lb_userName.Text = currentUser.name;
             this.lb_highestScoreValue.Text = currentUser.highestScore[GameDataManager.GetDifficultyStr.ToLower()].ToString();
             this.pb_avatar.Image = Image.FromFile(FilePathManager.GetFilePath("images") + currentUser.avaPath);
@@ -133,6 +143,17 @@ namespace Space_Shooter.AccountManagement
             this.btn_continue.Visible = true;
             this.pn_chooseShip.Visible = true;
             this.pn_Controller.Visible = true;
+        }
+
+        private void loadSavefileComponent_Back(object sender, EventArgs e)
+        {
+            loadSavefileComponent.Visible = false;
+        }
+
+        private void loadSavefileComponent_LoadProfile(object sender, EventArgs e)
+        {
+            loadSavefileComponent.Visible = false;
+            LoadGame(currentUser, e);
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
@@ -300,6 +321,15 @@ namespace Space_Shooter.AccountManagement
         {
             instructionScreen.BringToFront();
             this.instructionScreen.Visible = true;
+        private void btn_continue_Click(object sender, EventArgs e)
+        {
+            if (GameDataManager.init)
+            {
+                return;
+            }
+            loadSavefileComponent.Setup(currentUser);
+            loadSavefileComponent.BringToFront();
+            loadSavefileComponent.Visible = true;
         }
     }
 }

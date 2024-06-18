@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Control;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Control;
 using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
@@ -11,61 +12,78 @@ namespace Space_Shooter.Core
 {
     public class Game_Object
     {
-        public static readonly GameDataManager GameDataManager = GameDataManager.Instance;
+        public static GameDataManager GameDataManager = GameDataManager.Instance;
 
+        [JsonProperty]
+        public virtual Type realType { get;  } = typeof(Game_Object);
+        public string json = "";
         #region Attributes
         // Logical
-        protected int _z = 0;
-        protected float _x = 0;
-        protected float _y = 0;
-        protected float _vx = 0;
-        protected float _vy = 0;
-        protected float _MoveSpeed = 1;
-        protected int _Width = 0;
-        protected int _Height = 0;
-        protected bool _IgnoreWall = false;
-        protected bool _die_ani = true;
-        protected bool _die = false;
-        protected float _r;
+        [JsonProperty] public int ID = -1;
+        [JsonProperty] protected string spriteID;
+        [JsonProperty] protected int _z = 0;
+        [JsonProperty] protected float _x = 0;
+        [JsonProperty] protected float _y = 0;
+        [JsonProperty] protected float _vx = 0;
+        [JsonProperty] protected float _vy = 0;
+        [JsonProperty] protected float _MoveSpeed = 1;
+        [JsonProperty] protected int _Width = 0;
+        [JsonProperty] protected int _Height = 0;
+        [JsonProperty] protected bool _IgnoreWall = false;
+        [JsonProperty] protected bool _die_ani = true;
+        [JsonProperty] protected bool _die = false;
+        [JsonProperty] protected float _r;
         // Sprite
         protected Game_Sprite _sprite;
-        protected int _index = 0;
-        protected int _frame_CD = 0;
-        protected int _frame_CD_timer = 0;
+        [JsonProperty] protected int _index = 0;
+        [JsonProperty] protected int _frame_CD = 0;
+        [JsonProperty] protected int _frame_CD_timer = 0;
         #endregion
 
         #region Properties
+        [JsonIgnore]
         public float x
         { get { return _x; } set { _x = value; } }
+        [JsonIgnore]
         public float y
         { get { return _y; } set { _y = value; } }
+        [JsonIgnore] 
         public int z
         { get { return _z; } }
+        [JsonIgnore]
         public float Vx
         { get { return _vx; } set { _vx = value; } }
+        [JsonIgnore]
         public float Vy
         { get { return _vy; } set { _vy = value; } }
+        [JsonIgnore]
         public float MoveSpeed
         { get { return _MoveSpeed; } }
+        [JsonIgnore]
         public float Width
         { get { return _Width; } }
+        [JsonIgnore]
         public float Height
         { get { return _Height; } }
+        [JsonIgnore]
         public bool die
         {
             get { return _die; }
             set { _die = value; }
         }
+        [JsonIgnore]
         public Rectangle Hitbox
         {
             get { return new Rectangle((int)Math.Round(_x), (int)Math.Round(_y), (int)Width, (int)Height); }
         }
 
+        [JsonIgnore]
         public PointF Center
         {
             get { return new PointF(_x + Width / 2.0f, _y + Height / 2.0f); }
         }
 
+        [JsonIgnore]
         public Circle Cir_Hitbox
         {
             get { return new Circle(x + Width / 2.0f, y + Height / 2.0f, _r); }
@@ -244,6 +262,11 @@ namespace Space_Shooter.Core
         #region Update Data Method
         public virtual void Update_Data()
         {
+            if (_sprite == null && spriteID != null && SpriteManager.Sprites.ContainsKey(spriteID))
+            {
+                _sprite = SpriteManager.Sprites[spriteID];
+            }
+
             if (_sprite?.TotalFrame == 1)
             {
                 if (_index != 0) _index = 0;
@@ -275,6 +298,11 @@ namespace Space_Shooter.Core
         public virtual void Process_BeforeDie()
         {
 
+        }
+
+        public virtual void SelfSerializing()
+        {
+            json = JsonConvert.SerializeObject(this);
         }
         #endregion
     }

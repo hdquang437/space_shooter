@@ -1,4 +1,5 @@
-﻿using Space_Shooter.Manager;
+﻿using Newtonsoft.Json;
+using Space_Shooter.Manager;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,13 +11,21 @@ namespace Space_Shooter.Core.Bullet
 {
     public class Bullet_Flame : Game_Bullet
     {
-        private int remainTime = 100;
-        private int triggerInterval = 4;
-        private int triggerCD = 0;
+        public override Type realType { get; } = typeof(Bullet_Flame);
 
-        public Bullet_Flame(Game_Object owner, Game_Sprite sprite, float x, float y)
-        : base(owner, sprite, x, y, 4)
+        [JsonProperty] private int remainTime = 100;
+        private int triggerInterval = 4;
+        [JsonProperty] private int triggerCD = 0;
+
+        public Bullet_Flame(int ownerID, Game_Sprite sprite, float x, float y)
+        : base(ownerID, sprite, x, y, 4)
         {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites["flame"];
+                _sprite = sprite;
+            }
+            spriteID = "flame";
             _z = 11;
             remainTime = sprite.TotalFrame * Game_Animation.animationFrame;
             _Width = sprite.Width;

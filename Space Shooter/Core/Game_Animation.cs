@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Space_Shooter.Manager;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,17 +11,15 @@ namespace Space_Shooter.Core
 {
     public class Game_Animation : Game_Object
     {
-        public const int animationFrame = 4; 
+        public override Type realType { get; } = typeof(Game_Animation);
 
-        //int _size = 256;
+        public const int animationFrame = 4;
 
-        //Rectangle Box
-        //{
-        //    get { return new Rectangle(_x, _y, _size, _size); }
-        //}
-
-        public Game_Animation(Game_Sprite sprite, float x, float y)
+        public Game_Animation(string spriteID, float x, float y)
         {
+            this.spriteID = spriteID;
+            Game_Sprite sprite = SpriteManager.Sprites[spriteID];
+
             _z = 20;
             _die = false;
             _index = 0;
