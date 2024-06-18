@@ -92,6 +92,29 @@ namespace Space_Shooter.Core.Enemy
             _Width = sprite.Width;
             _Height = sprite.Height;
             _r = _Width / 2;
+        }
+
+        [JsonConstructor]
+        public Enemy_Meteor(Game_Sprite sprite, float x, float y, int size, float vX, float vY, float speed, List<MeteorMinion> minions)
+            : base(sprite, x, y)
+        {
+            if (sprite == null)
+            {
+                sprite = SpriteManager.Sprites[$"meteor_size{size}"];
+                _sprite = sprite;
+            }
+            spriteID = $"meteor_size{size}";
+            _z = 10;
+            this.velocityX = vX;
+            this.velocityY = vY;
+            this.size = size;
+            this._MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
+            _frame_CD = 12;
+            _collideDamage = 1000;
+            _Width = sprite.Width;
+            _Height = sprite.Height;
+            _r = _Width / 2;
+            this._minions = minions;
             switch (size)
             {
                 case 1:
@@ -116,29 +139,6 @@ namespace Space_Shooter.Core.Enemy
                     _reward = 100;
                     break;
             }
-        }
-
-        [JsonConstructor]
-        public Enemy_Meteor(Game_Sprite sprite, float x, float y, int size, float vX, float vY, float speed, List<MeteorMinion> minions)
-            : base(sprite, x, y)
-        {
-            if (sprite == null)
-            {
-                sprite = SpriteManager.Sprites[$"meteor_size{size}"];
-                _sprite = sprite;
-            }
-            spriteID = $"meteor_size{size}";
-            _z = 10;
-            this.velocityX = vX;
-            this.velocityY = vY;
-            this.size = size;
-            this._MoveSpeed = Math.Max(speed, 0.1f); // Minimum speed is 0.1f
-            _frame_CD = 12;
-            _collideDamage = 1000;
-            _Width = sprite.Width;
-            _Height = sprite.Height;
-            _r = _Width / 2;
-            this._minions = minions;
         }
 
         private void GenerateRandomMinions(int minSize, int maxSize, int minChildAmount, int maxChildAmount)
