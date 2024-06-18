@@ -21,7 +21,7 @@ namespace Space_Shooter.Control
 
         private SaveScoreScreen saveScoreScreen;
 
-        static public readonly GameDataManager GameDataManager = GameDataManager.Instance;
+        static public GameDataManager GameDataManager = GameDataManager.Instance;
 
         public EndGameScreen(User user)
         {

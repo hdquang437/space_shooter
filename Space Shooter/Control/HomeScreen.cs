@@ -321,6 +321,7 @@ namespace Space_Shooter.AccountManagement
         {
             instructionScreen.BringToFront();
             this.instructionScreen.Visible = true;
+        }
         private void btn_continue_Click(object sender, EventArgs e)
         {
             if (GameDataManager.init)
