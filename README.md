@@ -32,6 +32,8 @@
 
 ## I. Giới thiệu
 
+Spaceship shooter là một trò chơi 2D lấy cảm hứng từ trò bắn gà huyền thoại.Trong không gian bao la, bạn sẽ vào vai một phi công dũng cảm, điều khiển tàu chiến của mình để tiêu diệt phi thuyền địch. Hãy chuẩn bị sẵn sàng để đối mặt với những đợt tấn công không ngừng từ kẻ thù và những cơn mưa thiên thạch nguy hiểm. Bạn cần sự nhanh nhẹn và chiến lược thông minh để sống sót qua mỗi màn chơi. Hãy chứng tỏ khả năng của bạn bằng cách đạt điểm cao và vượt qua tất cả các cấp độ.
+
 <img src="https://github.com/hdquang437/space_shooter/blob/main/Space%20Shooter/Resources/screenshot_1.png" alt="screenshoot" width="900"/>
 <img src="https://github.com/hdquang437/space_shooter/blob/main/Space%20Shooter/Resources/screenshot_2.png" alt="screenshoot" width="900"/>
 <img src="https://github.com/hdquang437/space_shooter/blob/main/Space%20Shooter/Resources/screenshot_3.png" alt="screenshoot" width="900"/>
