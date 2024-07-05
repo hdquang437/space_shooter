@@ -21,7 +21,7 @@ namespace Space_Shooter.Control
         string defeatedSentence = "Too bad! Better luck next time!";
         public User currentUser;
 
-        public static readonly GameDataManager GameDataManger = GameDataManager.Instance;
+        public static GameDataManager GameDataManger = GameDataManager.Instance;
 
         public SaveScoreScreen()
         {
@@ -71,7 +71,7 @@ namespace Space_Shooter.Control
             }
             lb_scoreVal.Text = GameDataManger.score.ToString();
             string difficulty = GameDataManger.GetDifficultyStr.ToLower();
-            if (GameDataManger.score > currentUser.highestScore[difficulty])
+            if (Utilities.IsHighScore(currentUser, difficulty))
             {
                 lb_yourScore.Text = "New High Score";
             }
@@ -82,7 +82,7 @@ namespace Space_Shooter.Control
             lb_playtime.Text = "Play time: " + GameDataManger.PlayTimeStr;
 
             // Update user score
-            if (currentUser.highestScore[difficulty] < GameDataManger.score)
+            if (Utilities.IsHighScore(currentUser, difficulty))
             {
                 UserRepo.UpdateScore(currentUser.email, GameDataManger.score, GameDataManger.PlayTime, difficulty);
                 currentUser.SetHighestScore(difficulty, GameDataManger.score);

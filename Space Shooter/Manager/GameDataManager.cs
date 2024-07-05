@@ -674,6 +674,7 @@ namespace Space_Shooter.Manager
             Factory.GameDataManager = instance;
             EndGameScreen.GameDataManager = instance;
             HomeScreen.GameDataManager = instance;
+            SaveScoreScreen.GameDataManger = instance;
         }
         #endregion
     }
@@ -698,7 +699,8 @@ namespace Space_Shooter.Manager
     {
         Default,
         Emissary,
-        Beholder
+        Beholder,
+        A
     }
 
     public enum PlayMode

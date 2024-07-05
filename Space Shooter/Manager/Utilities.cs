@@ -16,7 +16,7 @@ namespace Space_Shooter.Manager
         {
             return new PointF(des.X - src.X, des.Y - src.Y);
         }
-    
+
         static public Game_Enemy.Mode ParseMode(string modeStr)
         {
             switch (modeStr)
@@ -44,14 +44,38 @@ namespace Space_Shooter.Manager
 
         static public int CompareUserResult(User user1, User user2, string difficulty)
         {
-            if (user1.highestScore != user2.highestScore)
+            if (user1.highestScore[difficulty] != user2.highestScore[difficulty])
             {
                 return user1.highestScore[difficulty] - user2.highestScore[difficulty];
             }
             else
             {
+                if (user1.playTime[difficulty] > 0 && user2.playTime[difficulty] < 0)
+                {
+                    return 1;
+                }
+                if (user1.playTime[difficulty] < 0 && user2.playTime[difficulty] > 0)
+                {
+                    return -1;
+                }
+                if (user1.playTime[difficulty] < 0 && user2.playTime[difficulty] < 0)
+                {
+                    return user2.name.CompareTo(user1.name);
+                }
                 return user2.playTime[difficulty] - user1.playTime[difficulty];
             }
+        }
+
+        static public bool IsHighScore(User user, string difficulty)
+        {
+            GameDataManager gameDataManager = GameDataManager.Instance;
+            if (gameDataManager.score > user.highestScore[difficulty]
+            || (gameDataManager.score == user.highestScore[difficulty]
+                && gameDataManager.PlayTime < user.playTime[difficulty] || user.playTime[difficulty] < 0))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

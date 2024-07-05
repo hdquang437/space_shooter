@@ -117,6 +117,7 @@ namespace Space_Shooter.Control
                         {
                             SaveFileManager.Instance.SaveProfileToLocal(chooseIndex, currentUser);
                             MessageBox.Show($"Save successfully to profile {chooseIndex}!", "Information");
+                            UpdateProfiles();
                         }
                     }
                     else

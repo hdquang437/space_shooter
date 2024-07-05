@@ -104,16 +104,16 @@ namespace Space_Shooter.Core.Enemy
                 }
                 actionCD = actionTimer;
             }
-            weapon1.Shoot();
-            weapon2.Shoot();
+            weapon1?.Shoot();
+            weapon2?.Shoot();
             base.Process_Action();
         }
 
         public override void Update()
         {
             Fix_Weapon();
-            weapon1.Update();
-            weapon2.Update();
+            weapon1?.Update();
+            weapon2?.Update();
             Process_Action();
             base.Update();
             Update_Data();

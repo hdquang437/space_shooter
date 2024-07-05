@@ -58,7 +58,7 @@ namespace Space_Shooter.Control
             }
             lb_scoreVal.Text = GameDataManager.score.ToString();
             string difficulty = GameDataManager.GetDifficultyStr.ToLower();
-            if (GameDataManager.score > currentUser.highestScore[difficulty])
+            if (Utilities.IsHighScore(currentUser, difficulty))
             {
                 lb_yourScore.Text = "New High Score";
             }
@@ -69,7 +69,7 @@ namespace Space_Shooter.Control
             lb_playtime.Text = "Play time: " + GameDataManager.PlayTimeStr;
 
             // Update user score
-            if (currentUser.highestScore[difficulty] < GameDataManager.score)
+            if (Utilities.IsHighScore(currentUser, difficulty))
             {
                 UserRepo.UpdateScore(currentUser.email, GameDataManager.score, GameDataManager.PlayTime, difficulty);
                 currentUser.SetHighestScore(difficulty, GameDataManager.score);
