@@ -30,8 +30,11 @@
 <!-- MỞ ĐẦU -->
 <div id="Modau"></div>
 
-## I. Mở đầu
+## I. Giới thiệu
 
+<img src="https://github.com/hdquang437/space_shooter/blob/main/Space%20Shooter/Resources/screenshot_1.png" alt="screenshoot" width="900"/>
+<img src="https://github.com/hdquang437/space_shooter/blob/main/Space%20Shooter/Resources/screenshot_2.png" alt="screenshoot" width="900"/>
+<img src="https://github.com/hdquang437/space_shooter/blob/main/Space%20Shooter/Resources/screenshot_3.png" alt="screenshoot" width="900"/>
 
 <!-- MÔ TẢ -->
 <div id="Mota"></div>
@@ -93,6 +96,8 @@
 <div id="Tinhnang"></div>
 
 ### 5. Tính năng
+
+<img src="https://github.com/hdquang437/space_shooter/blob/main/Space%20Shooter/Resources/screenshot_mainscreen.png" alt="main screen" width="900"/>
 
  * <strong>Danh sách tính năng</strong>
 
