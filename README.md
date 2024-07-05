@@ -4,7 +4,7 @@
 
 ## Danh mục
 
- [I. Mở đầu](#Modau)
+ [I. Giới thiệu](#Gioithieu)
 
  [II. Mô tả](#Mota)
 
@@ -27,8 +27,8 @@
 
 [VI. Tổng kết](#Tongket)
 
-<!-- MỞ ĐẦU -->
-<div id="Modau"></div>
+<!-- GIỚI THIỆU -->
+<div id="GioiThieu"></div>
 
 ## I. Giới thiệu
 
