@@ -94,8 +94,6 @@
 
 ### 5. Tính năng
 
-<img src="https://github.com/leehungw/Blackjack/assets/110316749/396ad4a9-58bb-4d9b-ae20-ab03ac9d79c1" alt="Logo LUCKY CARD" width="250"/>
-
  * <strong>Danh sách tính năng</strong>
 
     * Đăng nhập, đăng ký, đăng xuất, quên mật khẩu.
